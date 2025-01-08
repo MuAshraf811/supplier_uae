@@ -1,0 +1,175 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supplier/core/utils/constants/color_consatnts.dart';
+import 'package:supplier/core/utils/styles/text_styles.dart';
+import 'package:supplier/core/utils/widgets/app_button.dart';
+import 'package:supplier/core/utils/widgets/terms_and_conditions_dialog.dart';
+import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
+import 'package:supplier/features/client/Authentication/presentation/widgets/drop_down_text_field.dart';
+import '../../../../../core/utils/widgets/app_text_field.dart';
+import '../../../../../core/utils/widgets/custom_app_bar.dart';
+import '../../../../../core/utils/widgets/snack_bar.dart';
+import '../../../../../core/utils/widgets/spacers.dart';
+
+class CompleteLoginView extends StatelessWidget {
+  const CompleteLoginView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    
+    return Scaffold(
+      body:  Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Form(
+            key: context.read<AuthenticationCubit>().registerFormKey,
+            child: ListView(
+              children: [
+                const VerticalSpacer(space: 18),
+                const GeneralAppBar(title: "Complete Registeration", isBackArrowShown: true,),
+                const VerticalSpacer(space: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: AppTextField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "This Field Shouldn't be empty";
+                          }
+                          return null;
+                        },
+                        label: 'First Name',
+                        maxHeight: 40,
+                        suffixIcon: Icons.person_2_rounded,
+                        controller: context
+                            .read<AuthenticationCubit>()
+                            .firstNameRegisterController,
+                      ),
+                    ),
+                    const HorizontalSpacer(space: 12),
+                    Expanded(
+                      child: AppTextField(
+                        label: 'Last Name',
+                        maxHeight: 40,
+                        suffixIcon: Icons.person_2_rounded,
+                        controller: context
+                            .read<AuthenticationCubit>()
+                            .lastNameRegisterController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "This Field Shouldn't be empty";
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              
+                const VerticalSpacer(space: 8),
+              
+            
+                const VerticalSpacer(space: 8),
+                AppTextField(
+                  label: "Mobile Number",
+                  maxHeight: 40,
+                  controller: context
+                      .read<AuthenticationCubit>()
+                      .mobileNumberRegisterController,
+                  type: TextInputType.phone,
+                  suffixIcon: Icons.phone_android_outlined,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "This Field Shouldn't be empty";
+                    }
+                    return null;
+                  },
+                ),
+                const VerticalSpacer(space: 10),
+                Row(
+                  children: [
+                    Text(
+                      " City :",
+                      style: applyMediumStyle(
+                        fontSize: 15,
+                        fontColor: ColorConsatnts.black,
+                      ),
+                    ),
+                    const HorizontalSpacer(space: 10),
+                    const Expanded(
+                      child: DropDownWithTextField(),
+                    ),
+                  ],
+                ),
+                const VerticalSpacer(space: 10),
+                BlocConsumer<AuthenticationCubit, AuthenticationState>(
+                  listener: (context, state) {
+                  
+
+                    if (state is AddingUserDataSuccessState) {
+                      showCustomSnackBar(context, "Successful Registration ",
+                          ColorConsatnts.primary,
+                          duration: 3);
+                      showTermsAndConditionsDialog(context, false);
+                    }
+                   
+                    if (state is AddingUserDataErrorState) {
+                      showCustomSnackBar(
+                          context, state.error, ColorConsatnts.red,
+                          duration: 3);
+                    }
+                  },
+                  listenWhen: (previous, current) =>
+                   
+                      current is AddingUserDataErrorState ||
+                      current is AddingUserDataSuccessState,
+                  buildWhen: (previous, current) =>
+                       current is AddingUserDataState||
+                        current is AddingUserDataErrorState ||
+                      current is AddingUserDataSuccessState, 
+                  builder: (context, state) {
+                    if (state is AddingUserDataState) {
+                      return Container(
+                        width: double.infinity,
+                        height: 38.h,
+                        decoration: BoxDecoration(
+                            color: ColorConsatnts.primary,
+                            borderRadius: BorderRadius.circular(12.r)),
+                        child: Center(
+                          child: Transform.scale(
+                            scale: 0.95,
+                            child:const CircularProgressIndicator.adaptive(
+                              backgroundColor: ColorConsatnts.primary,
+                             
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    return AppButton(
+                      text: "Register",
+                      onTap: () {
+                        if (context
+                            .read<AuthenticationCubit>()
+                            .registerFormKey
+                            .currentState!
+                            .validate()) {
+                          context
+                              .read<AuthenticationCubit>()
+                              .addUserToDataBaseWithOtherMethods();
+                          //  showTermsAndConditionsDialog(context, false);
+                        }
+                      },
+                    );
+                  },
+                ),
+                const VerticalSpacer(space: 14),
+            
+              ],
+            ),
+          ),
+        ),
+    );
+
+  }
+}
