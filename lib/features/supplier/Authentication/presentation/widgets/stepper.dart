@@ -21,6 +21,9 @@ class RegisterStepper extends StatefulWidget {
 
 class _RegisterStepperState extends State<RegisterStepper> {
   int stepIndex = 0;
+
+  final stepOneFormKey = GlobalKey<FormState>();
+  final stepTwoFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -43,21 +46,21 @@ class _RegisterStepperState extends State<RegisterStepper> {
                   if (state is UploadingTradeLisenceErrorState) {
                     showCustomSnackBar(
                         context, state.error, ColorConsatnts.red);
-                  }  
+                  }
                     if (state is UploadingUserStateErrorState) {
                     showCustomSnackBar(
                         context, state.error, ColorConsatnts.red);
-                  } 
-                  if (state is UploadingUserStateSuccessState){ 
+                  }
+                  if (state is UploadingUserStateSuccessState){
                                               showTermsAndConditionsDialog(context, true);
 
                   }
                 },
                 builder: (context, state) {
                   if ( state is UploadingUserState || state is UploadingTradeLisenceState) {
-                    return Container( 
-                      margin: EdgeInsets.only(right: 24.w), 
-                      width: 20.w, 
+                    return Container(
+                      margin: EdgeInsets.only(right: 24.w),
+                      width: 20.w,
                       height: 20.h,
                         child: const CircularProgressIndicator.adaptive());
                   }
@@ -65,9 +68,7 @@ class _RegisterStepperState extends State<RegisterStepper> {
                     text: details.currentStep == 0 ? "Continue" : "Register",
                     onTap: () {
                       if (stepIndex == 0) {
-                        if (context
-                            .read<SupplierAuthCubit>()
-                            .stepOneFormKey
+                        if (stepOneFormKey
                             .currentState!
                             .validate()) {
                           setState(
@@ -77,20 +78,19 @@ class _RegisterStepperState extends State<RegisterStepper> {
                           );
                         }
                       } else {
-                        if (context
-                            .read<SupplierAuthCubit>()
-                            .stepTwoFormKey
+                        if (stepTwoFormKey
                             .currentState!
-                            .validate()) {   
+                            .validate()) {
                               //   context
                               // .read<SupplierAuthCubit>()
                               // .uploadTradeLisence();
-                              if(context.read<SupplierAuthCubit>().imageFile==null){ 
-                                       showCustomSnackBar(context, "Upload Lisence", ColorConsatnts.red); 
-                              } 
-                                                                     context.read<SupplierAuthCubit>().registerUserData();
+                        if(context.read<SupplierAuthCubit>().imageFile==null){
+                           showCustomSnackBar(context, "Upload Licence", ColorConsatnts.red);
+                        }
+                        print('register');
+                         context.read<SupplierAuthCubit>().registerSupplierData();
 
-                        
+
                         }
                       }
                     },
@@ -111,6 +111,8 @@ class _RegisterStepperState extends State<RegisterStepper> {
                     setState(() {
                       stepIndex--;
                     });
+                  }else{
+                    Navigator.pop(context);
                   }
                 },
                 width: 80.w,
@@ -135,7 +137,7 @@ class _RegisterStepperState extends State<RegisterStepper> {
                 fontColor: ColorConsatnts.black,
               ),
             ),
-            content: const StepOneContent(),
+            content: StepOneContent(stepOneFormKey: stepOneFormKey),
           ),
           Step(
             //  isActive: false,
@@ -152,7 +154,7 @@ class _RegisterStepperState extends State<RegisterStepper> {
                 fontColor: ColorConsatnts.black,
               ),
             ),
-            content: const StepTwoContent(),
+            content: StepTwoContent(stepTwoFormKey: stepTwoFormKey,),
           ),
         ],
       ),

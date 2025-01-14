@@ -2,6 +2,7 @@ import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/assets_constants.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
+import 'package:supplier/core/utils/service_locator.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/app_button.dart';
 import 'package:supplier/core/utils/widgets/app_text_field.dart';
@@ -14,13 +15,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/constants/app_const.dart';
+import '../../../../../core/utils/constants/storage_const.dart';
 import '../../../../../core/utils/storage/shared_preferences.dart';
 import '../../../../../core/utils/widgets/snack_bar.dart';
 import '../widgets/register_question.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+  LoginView({super.key});
 
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +32,7 @@ class LoginView extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
         child: Form(
-          key: context.read<AuthenticationCubit>().logInFormKey,
+          key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
@@ -52,7 +55,7 @@ class LoginView extends StatelessWidget {
                 type: TextInputType.emailAddress,
                 suffixIcon: Icons.email_rounded,
                 controller:
-                    context.read<AuthenticationCubit>().emailLogInController,
+                    ServiceLocator.getIt<AuthenticationCubit>().emailLogInController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "This Field Shouldn't be empty";
@@ -66,26 +69,25 @@ class LoginView extends StatelessWidget {
                   return AppTextField(
                     label: "Enter Your Password",
                     type: TextInputType.visiblePassword,
-                    isSecured: context.read<AuthenticationCubit>().isTextSecure,
+                    isSecured: ServiceLocator.getIt<AuthenticationCubit>().isTextSecure,
                     maxLines: 1,
                     minLines: 1,
                     suffixIcon: Icons.remove_red_eye_rounded,
                     suffixSvg: InkWell(
                       onTap: () {
                         changeState(() {
-                          context.read<AuthenticationCubit>().isTextSecure =
-                              !context.read<AuthenticationCubit>().isTextSecure;
+                          ServiceLocator.getIt<AuthenticationCubit>().isTextSecure =
+                              !ServiceLocator.getIt<AuthenticationCubit>().isTextSecure;
                         });
                       },
                       child: Icon(
-                        !context.read<AuthenticationCubit>().isTextSecure
+                        !ServiceLocator.getIt<AuthenticationCubit>().isTextSecure
                             ? Icons.remove_red_eye_outlined
                             : Icons.visibility_off_outlined,
                         color: ColorConsatnts.primary,
                       ),
                     ),
-                    controller: context
-                        .read<AuthenticationCubit>()
+                    controller: ServiceLocator.getIt<AuthenticationCubit>()
                         .passwordLogInController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -116,14 +118,14 @@ class LoginView extends StatelessWidget {
               ),
               const VerticalSpacer(space: 24),
               BlocConsumer<AuthenticationCubit, AuthenticationState>(
-                listenWhen: (previous, current) =>
-                    current is SuccessLogInWithEmailState ||
-                    current is ErrorLogInWithEmailState ||
-                    current is LoadingLogInWithEmailState,
-                buildWhen: (previous, current) =>
-                    current is SuccessLogInWithEmailState ||
-                    current is ErrorLogInWithEmailState ||
-                    current is LoadingLogInWithEmailState,
+                // listenWhen: (previous, current) =>
+                //     current is SuccessLogInWithEmailState ||
+                //     current is ErrorLogInWithEmailState ||
+                //     current is LoadingLogInWithEmailState,
+                // buildWhen: (previous, current) =>
+                //     current is SuccessLogInWithEmailState ||
+                //     current is ErrorLogInWithEmailState ||
+                //     current is LoadingLogInWithEmailState,
                 listener: (context, state) {
                   if (state is ErrorLogInWithEmailState) {
                     showCustomSnackBar(
@@ -134,16 +136,22 @@ class LoginView extends StatelessWidget {
                   }
                   if (state is SuccessLogInWithEmailState) {
 
-                    AppConfigCubit.isUserLogged = true;
+                    AppConfigCubit.isLogged = true;
                     AppConfigCubit.isSupplier = false;
-                    AppConfigCubit.userDataId = SharedPreferencesManager
-                        .getStringValue(key: AppConst.userDataId) ;
-                    print('userDataId: ${AppConfigCubit.userDataId}');
+                    AppConfigCubit.currentUserDataId = SharedPreferencesManager
+                        .getStringValue(
+                        key: StorageConstants.userDataIdKey
+                    );
+                    AppConfigCubit.currentUserId = SharedPreferencesManager
+                        .getStringValue(
+                        key: StorageConstants.userId
+                    );
 
                     SharedPreferencesManager.storeBoolValue(
-                        key: AppConst.isUserLogged, value: true);
+                        key: StorageConstants.isUserLoggedKey, value: true);
                     SharedPreferencesManager.storeBoolValue(
-                        key: AppConst.isSupplier, value: false);
+                        key: StorageConstants.isSupplierKey, value: false);
+
                     Navigator.pushReplacementNamed(
                         context, RouteConstants.homePage);
                   }
@@ -157,7 +165,7 @@ class LoginView extends StatelessWidget {
                   if (state is LoadingLogInWithEmailState) {
                     return Container(
                       width: double.infinity,
-                      height: 38.h, 
+                      height: 38.h,
                       margin: EdgeInsets.only(bottom: 12.h),
                       decoration: BoxDecoration(
                           color: ColorConsatnts.primary,
@@ -173,12 +181,10 @@ class LoginView extends StatelessWidget {
                   return AppButton(
                     text: "LogIn",
                     onTap: () {
-                      if (context
-                          .read<AuthenticationCubit>()
-                          .logInFormKey
+                      if (formKey
                           .currentState!
                           .validate()) {
-                        context.read<AuthenticationCubit>().logInWithEmail();
+                        ServiceLocator.getIt<AuthenticationCubit>().logInWithEmail();
                       }
                     },
                   );
@@ -195,7 +201,7 @@ class LoginView extends StatelessWidget {
                 listenWhen: (previous, current) =>
                     current is SuccessLogInWithGoogleState ||
                     current is ErrorLogInWithGoogleState ||
-                    current is LoadingLogInWithGoogleState,
+                    current is LoadingLogInWithGoogleState || current is NewUserState,
                 buildWhen: (previous, current) =>
                     current is SuccessLogInWithGoogleState ||
                     current is LoadingLogInWithGoogleState ||
@@ -207,17 +213,23 @@ class LoginView extends StatelessWidget {
                   }
                   if (state is SuccessLogInWithGoogleState) {
                     showCustomSnackBar(
-                        context, 'WElcome', ColorConsatnts.primary,
+                        context, 'Welcome', ColorConsatnts.primary,
                         duration: 8);
                     Navigator.pushReplacementNamed(
                         context, RouteConstants.homePage);
+                  }else  if (state is NewUserState) {
+                    showCustomSnackBar(
+                        context, 'Welcome', ColorConsatnts.primary,
+                        duration: 8);
+                    Navigator.pushReplacementNamed(
+                        context, RouteConstants.completeLoginView);
                   }
                 },
                 builder: (context, state) {
                   if (state is LoadingLogInWithGoogleState) {
                     return Container(
                       width: double.infinity,
-                      height: 38.h, 
+                      height: 38.h,
                       margin: EdgeInsets.only(bottom: 12.h),
                       decoration: BoxDecoration(
                           color: ColorConsatnts.white,
@@ -237,7 +249,7 @@ class LoginView extends StatelessWidget {
                   }
                   return InkWell(
                     onTap: () {
-                      context.read<AuthenticationCubit>().registerWithGoogle();
+                      ServiceLocator.getIt<AuthenticationCubit>().registerWithGoogle();
                     },
                     child: const LogInWithContainer(
                       label: "LogIn With Gmail",
@@ -251,7 +263,7 @@ class LoginView extends StatelessWidget {
                 listenWhen: (previous, current) =>
                     current is SuccessLogInWithAppleState ||
                     current is ErrorLogInWithAppleState ||
-                    current is LoadingLogInWithAppleState|| current is NewUserStata,
+                    current is LoadingLogInWithAppleState|| current is NewUserState,
                 buildWhen: (previous, current) =>
                     current is SuccessLogInWithAppleState ||
                     current is ErrorLogInWithAppleState ||
@@ -262,12 +274,12 @@ class LoginView extends StatelessWidget {
                         duration: 8);
                   }
                   if (state is SuccessLogInWithAppleState) {
-                   
+
                     Navigator.pushReplacementNamed(
                         context, RouteConstants.homePage);
-                  }else  if (state is NewUserStata) {
+                  }else  if (state is NewUserState) {
                     showCustomSnackBar(
-                        context, 'WElCOME', ColorConsatnts.primary,
+                        context, 'Welcome', ColorConsatnts.primary,
                         duration: 8);
                     Navigator.pushReplacementNamed(
                         context, RouteConstants.completeLoginView);
@@ -281,7 +293,7 @@ class LoginView extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: ColorConsatnts.white,
                           border: Border.all(color: ColorConsatnts.primary),
-                          borderRadius: BorderRadius.circular(12.r)), 
+                          borderRadius: BorderRadius.circular(12.r)),
                       child: Center(
                         child: Transform.scale(
                           scale: 0.9,
@@ -296,7 +308,7 @@ class LoginView extends StatelessWidget {
                   }
                   return InkWell(
                     onTap: () {
-                      context.read<AuthenticationCubit>().logInWithApple();
+                      ServiceLocator.getIt<AuthenticationCubit>().logInWithApple();
                     },
                     child: const LogInWithContainer(
                       label: "LogIn With Apple",

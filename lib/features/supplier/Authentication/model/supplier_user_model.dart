@@ -8,8 +8,9 @@ class SupplierUserModel {
   final String companyName;
   final String taxNumber;
   final String bankName;
-  final String ipanNumber; 
+  final String ipanNumber;
   final String imagePath;
+  final String uuid;
 
   SupplierUserModel(
       {required this.email,
@@ -18,8 +19,9 @@ class SupplierUserModel {
       required this.imagePath, 
       required this.companyName,
       required this.taxNumber,
-      required this.bankName,
-      required this.ipanNumber});  
+        required this.bankName,
+        required this.uuid,
+      required this.ipanNumber});
 
       // this is factory constructor to convert firebase response to dart model 
       factory SupplierUserModel.fromJson(Map<String, dynamic> json) {
@@ -32,11 +34,12 @@ class SupplierUserModel {
       taxNumber: json['taxNumber'],
       bankName: json['bankName'],
       ipanNumber: json['ipanNumber'],
+      uuid: json['uuid'],
     );
   }
 
   // Method to convert the instance to a Map
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap(String fcmToken,String notiHistory) {
     return {
       'email': email,
       'mobile': mobile,
@@ -46,6 +49,9 @@ class SupplierUserModel {
       'taxNumber': taxNumber,
       'bankName': bankName,
       'ipanNumber': ipanNumber,
+      'uuid': uuid,
+      "fcmToken":"",
+      "notificationHistory":""
     };
   }
 }

@@ -172,10 +172,8 @@ showQuotationDialog(BuildContext context, QuotationCubit cubit) {
                     },
                     builder: (context, state) {
                       if (state is AddingQuotationState) {
-                        return SizedBox(
-                          width: 32.w,
-                          height: 32.w,
-                          child: const CircularProgressIndicator.adaptive(
+                        return const Center(
+                          child: CircularProgressIndicator(
                             backgroundColor: ColorConsatnts.primary,
                           ),
                         );
@@ -189,7 +187,7 @@ showQuotationDialog(BuildContext context, QuotationCubit cubit) {
                               .currentState!
                               .validate()) {
                             context.read<QuotationCubit>().addquotationOffer(
-                                  supplierId: SharedPreferencesManager.getStringValue(key: StorageConstants.userDataId),
+                                  supplierId: SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey),
                                   supplierName: "Muhammed Ashraf",
                                 );
                           }

@@ -7,12 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/constants/color_consatnts.dart';
+import '../../../../../core/utils/service_locator.dart';
 import '../../../../../core/utils/styles/text_styles.dart';
 import '../../../../../core/utils/widgets/app_button.dart';
 import '../../../Authentication/presentation/widgets/drop_down_text_field.dart';
 
 class AccountView extends StatelessWidget {
-  const AccountView({super.key});
+  AccountView({super.key});
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +25,7 @@ class AccountView extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 14.w),
           child: 
                Form(
-                key: context.read<AuthenticationCubit>().profileFormKey,
+                key: formKey,
                 child: ListView(
                   children: [
                     const VerticalSpacer(space: 32),
@@ -134,9 +137,7 @@ class AccountView extends StatelessWidget {
                         return AppButton(
                           text: "Update Information",
                           onTap: () {
-                            if (context
-                                .read<AuthenticationCubit>()
-                                .profileFormKey
+                            if (formKey
                                 .currentState!
                                 .validate()) {
                               context

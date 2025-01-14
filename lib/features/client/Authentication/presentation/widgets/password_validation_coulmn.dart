@@ -43,27 +43,32 @@ class _PasswordValidationPartState extends State<PasswordValidationPart> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 10.w),
-      child: Column(
-        children: [
-          PasswordValidationItem(
-            validationText: "At least 8 characters",
-            isActive: widget.ctx.read<AuthenticationCubit>().isMoreThan8,
-          ),
-          PasswordValidationItem(
-            validationText: "At least 1 Uppercase letter (A-Z)",
-            isActive: widget.ctx.read<AuthenticationCubit>().isUpperCase,
-          ),
-          PasswordValidationItem(
-            validationText: " At least 1 special Character",
-            isActive: widget.ctx.read<AuthenticationCubit>().isSpecial,
-          ),
-          PasswordValidationItem(
-            validationText: "At least 1 number (0-9)",
-            isActive: widget.ctx.read<AuthenticationCubit>().isNumber,
-          ),
-        ],
+    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+      listener:  (context, state) {
+
+      },
+      builder:(context, state) =>  Padding(
+        padding: EdgeInsets.only(left: 10.w),
+        child: Column(
+          children: [
+            PasswordValidationItem(
+              validationText: "At least 8 characters",
+              isActive: widget.ctx.read<AuthenticationCubit>().isMoreThan8,
+            ),
+            PasswordValidationItem(
+              validationText: "At least 1 Uppercase letter (A-Z)",
+              isActive: widget.ctx.read<AuthenticationCubit>().isUpperCase,
+            ),
+            PasswordValidationItem(
+              validationText: " At least 1 special Character",
+              isActive: widget.ctx.read<AuthenticationCubit>().isSpecial,
+            ),
+            PasswordValidationItem(
+              validationText: "At least 1 number (0-9)",
+              isActive: widget.ctx.read<AuthenticationCubit>().isNumber,
+            ),
+          ],
+        ),
       ),
     );
   }

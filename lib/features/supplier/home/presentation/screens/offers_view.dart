@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supplier/core/utils/constants/assets_constants.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
@@ -65,7 +66,10 @@ class OffersView extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: context.read<OffersCubit>().supplierOffers.length,
                     itemBuilder: (context, index) => OfferItem(  
-                      onDelete: () {
+                      onDelete: () async {
+
+                        context.read<OffersCubit>().deleteMyOffer(context, index);
+
                       },
                       index: index + 1,
                       offerDetails: res[index].quotationDescription,
@@ -86,6 +90,7 @@ class OffersView extends StatelessWidget {
       ),
     );
   }
+
 }
 
 class OfferItem extends StatelessWidget {

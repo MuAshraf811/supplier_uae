@@ -1,6 +1,11 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
+import 'package:supplier/core/utils/app_global.dart';
 import 'package:supplier/core/utils/configurations.dart';
+import 'core/bloc_observer/bloc_observer.dart';
+import 'core/utils/constants/storage_const.dart';
 import 'firebase_options.dart';
 import 'package:supplier/app.dart';
 import 'package:supplier/core/utils/constants/app_const.dart';
@@ -12,9 +17,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: "supa_keys.env");
+  Bloc.observer = MyBlocObserver();
 
   SharedPreferencesManager.init(); 
   ServiceLocator.setObjects();  
@@ -26,17 +34,24 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
 );
    FirebaseMessaging.onBackgroundMessage(_handleBackGroundFirebaseMessage); 
-  await Configurations.initializeFCM();
-   FlutterError.onError = (FlutterErrorDetails details){ 
-    FlutterError.dumpErrorToConsole(details); 
-    runApp(CustomErrorWidget(errorMessage: details));
-   };
+  await NotificationsManager().initialize();
+  // FlutterError.onError = (FlutterErrorDetails details){
+  //   FlutterError.dumpErrorToConsole(details);
+  //   Navigator
+  //       .of(AppGlobal.navigatorKey.currentState!.context)
+  //       .push(MaterialPageRoute(
+  //     builder: (context) => CustomErrorWidget(errorMessage: details),));
+  //   // runApp();
+  // };
 
-  AppConfigCubit.isUserLogged = SharedPreferencesManager.getBoolValue(key: AppConst.isUserLogged)??false;
-  AppConfigCubit.isSupplier = SharedPreferencesManager.getBoolValue(key: AppConst.isSupplier)??false;
-  AppConfigCubit.isBoarded = SharedPreferencesManager.getBoolValue(key: AppConst.isBoarded)??false;
-  AppConfigCubit.isEnglish = SharedPreferencesManager.getBoolValue(key: AppConst.isEnglish)??true;
+  AppConfigCubit.currentUserDataId = SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey);
+  AppConfigCubit.currentUserId = SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey);
+  AppConfigCubit.isLogged = SharedPreferencesManager.getBoolValue(key: StorageConstants.isUserLoggedKey)??false;
+  AppConfigCubit.isSupplier = SharedPreferencesManager.getBoolValue(key: StorageConstants.isSupplierKey)??false;
+  AppConfigCubit.isBoarded = SharedPreferencesManager.getBoolValue(key: StorageConstants.isBoardedKey)??false;
+  AppConfigCubit.isEnglish = SharedPreferencesManager.getBoolValue(key: StorageConstants.isEnglishKey)??true;
 
+  // runApp(DevicePreview(builder: (context) => const EPrinter(),));
   runApp(const EPrinter());
 }
 

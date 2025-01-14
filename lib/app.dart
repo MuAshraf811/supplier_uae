@@ -7,29 +7,32 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/utils/app_global.dart';
 import 'core/utils/constants/app_const.dart';
 import 'core/utils/constants/route_constants.dart';
+import 'core/utils/constants/storage_const.dart';
 import 'core/utils/storage/shared_preferences.dart';
+import 'core/utils/widgets/custom_error_widget.dart';
 import 'features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
+import 'features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
+import 'features/supplier/notifications/presentation/cubit/notification_cubit.dart';
+
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class EPrinter extends StatelessWidget {
   const EPrinter({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AppConfigCubit.isUserLogged = SharedPreferencesManager.getBoolValue(key: AppConst.isUserLogged)??false;
-    AppConfigCubit.userDataId = SharedPreferencesManager
-        .getStringValue(key: AppConst.userDataId);
-    if(AppConfigCubit.userDataId == "No Value Found"){
-      AppConfigCubit.userDataId = '';
-    }
-    AppConfigCubit.isSupplier = SharedPreferencesManager.getBoolValue(key: AppConst.isSupplier)??false;
-    AppConfigCubit.isBoarded = SharedPreferencesManager.getBoolValue(key: AppConst.isBoarded)??false;
-    AppConfigCubit.isEnglish = SharedPreferencesManager.getBoolValue(key: AppConst.isEnglish)??true;
 
-    print('isLogged: ${AppConfigCubit.isUserLogged}');
-    print('userDataId: ${AppConfigCubit.userDataId}');
-    print('isBoarded: ${AppConfigCubit.isBoarded}');
+    AppConfigCubit.currentUserDataId = SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey);
+    AppConfigCubit.currentUserId = SharedPreferencesManager.getStringValue(key: StorageConstants.userId);
+    AppConfigCubit.isLogged = SharedPreferencesManager.getBoolValue(key: StorageConstants.isUserLoggedKey)??false;
+    AppConfigCubit.isSupplier = SharedPreferencesManager.getBoolValue(key: StorageConstants.isSupplierKey)??false;
+    AppConfigCubit.isBoarded = SharedPreferencesManager.getBoolValue(key: StorageConstants.isBoardedKey)??false;
+    AppConfigCubit.isEnglish = SharedPreferencesManager.getBoolValue(key: StorageConstants.isEnglishKey)??true;
+
+    NotificationsCubit().clearNotifications();
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
@@ -42,12 +45,19 @@ class EPrinter extends StatelessWidget {
           ),
           BlocProvider<AuthenticationCubit>(
             create: (context) =>
-            AuthenticationCubit()..getUserData(),
+            ServiceLocator.getIt<AuthenticationCubit>(),
+            // ServiceLocator.getIt<AuthenticationCubit>()..getUserData(),
+            // AuthenticationCubit()..getUserData(),
+          ),
+          BlocProvider<SupplierAuthCubit>(
+            create: (context) =>
+            ServiceLocator.getIt<SupplierAuthCubit>() ,
             // AuthenticationCubit()..getUserData(),
           ),
         ],
         child: BlocBuilder<AppConfigCubit, AppConfigState>(
           builder: (context , state)=> MaterialApp(
+            navigatorKey: navigatorKey,
             localizationsDelegates:const [
                     S.delegate,
                     GlobalMaterialLocalizations.delegate,
@@ -60,12 +70,12 @@ class EPrinter extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             initialRoute:
             AppConfigCubit.isBoarded?
-            ( AppConfigCubit.isUserLogged?
+            ( AppConfigCubit.isLogged?
                   ( AppConfigCubit.isSupplier?
                       RouteConstants.supplierHomeView:
                       RouteConstants.homePage
                   )
-                : RouteConstants.userTypeView
+                : RouteConstants.firstView
             )
                 :RouteConstants.onBoardingView,
             onGenerateRoute: AppRouter.onGenerateRoute,

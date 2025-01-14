@@ -18,7 +18,7 @@ class OffersCubit extends Cubit<OffersState> {
   void fetchSupplierAvailableOffers() async {
     try { 
        final String userId = SharedPreferencesManager.getStringValue(
-        key: StorageConstants.userDataId,
+        key: StorageConstants.userDataIdKey,
       );
       emit(FetchingOfferState());
 
@@ -39,4 +39,26 @@ class OffersCubit extends Cubit<OffersState> {
       log("Error fetching orders: $error");
       emit(FetchingOfferErrorState(error: error.toString()));
     }
-  }}
+  }
+
+  Future<void> deleteMyOffer(BuildContext context, int index) async {
+
+    emit(OffersInitial());
+    final currentOffer = await FirebaseFirestore.instance
+        .collection('accepted_offers')
+        .where(
+        'orderNumber',
+        isEqualTo: context.read<OffersCubit>().supplierOffers[index].orderNumber
+    ).get();
+
+    FirebaseFirestore.instance.collection('accepted_offers')
+        .doc(currentOffer.docs.first.id).delete();
+
+    fetchSupplierAvailableOffers();
+
+    // emit(FetchingOfferSuccessState());
+  }
+
+
+
+}

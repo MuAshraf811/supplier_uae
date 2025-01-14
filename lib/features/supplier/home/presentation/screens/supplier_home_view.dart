@@ -4,6 +4,7 @@ import 'package:supplier/features/client/orders/notifications/presentation/scree
 import 'package:supplier/features/client/orders/presentation/cubit/orders_cubit.dart';
 import 'package:supplier/features/client/orders/presentation/widget/order_shimmer.dart';
 import 'package:supplier/features/client/settings/presentation/views/profile_view.dart';
+import 'package:supplier/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
 import 'package:supplier/features/supplier/home/presentation/cubit/offer/offers_cubit.dart';
 import 'package:supplier/features/supplier/home/presentation/cubit/quotation/quotation_cubit.dart';
 import 'package:supplier/features/supplier/home/presentation/screens/offers_view.dart';
@@ -56,7 +57,7 @@ class SupplierHomeView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    ServiceLocator.getIt<AuthenticationCubit>().getUserData().then((value) {
+    ServiceLocator.getIt<SupplierAuthCubit>().getUserData().then((value) {
     // print(AuthenticationCubit.userPersonalData.toString());
 
     },);
@@ -74,7 +75,7 @@ class SupplierHomeView extends StatelessWidget {
           width: 22,
         ),
         onPressed: () {
-          Navigator.pushNamed(context, RouteConstants.chatView);
+          Navigator.pushNamed(context, RouteConstants.chatSupplierView);
         },
       ),
       bottomNavigationBar: const SupplierBottomBar(),

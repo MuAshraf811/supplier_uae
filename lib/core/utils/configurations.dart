@@ -1,47 +1,102 @@
-import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:supplier/core/utils/constants/storage_const.dart';
+import 'package:supplier/core/utils/storage/shared_preferences.dart';
+import 'package:supplier/features/supplier/notifications/data/models/notifications_model.dart';
+import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
 
-class Configurations {
-  Configurations._();
+class NotificationsManager {
+  NotificationsManager._();
+  static final NotificationsManager _instance = NotificationsManager._();
+  factory NotificationsManager() => _instance;
 
-  static Future<void> initializeFCM() async {
-    final FirebaseMessaging messaging = FirebaseMessaging.instance;
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  final NotificationsCubit _notificationsCubit = NotificationsCubit();
 
-    // Request permissions
-    NotificationSettings settings = await messaging.requestPermission(
+  Future<void> initialize() async {
+
+    print('initializing notifications');
+
+    final settings = await _requestPermissions();
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      await _setupTokens();
+      await _setupMessageHandlers();
+    }
+  }
+
+  Future<NotificationSettings> _requestPermissions() async {
+    final settings = await _firebaseMessaging.requestPermission(
       alert: true,
       badge: true,
       sound: true,
     );
-    log('User granted permission: ${settings.authorizationStatus}');
+    return settings;
+  }
 
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      // Get the APNs token for iOS
-      String? apnsToken = await messaging.getAPNSToken();
-      if (apnsToken != null) {
-        log('APNs Token: $apnsToken');
-      } else {
-        log('APNs Token is not available yet.');
-      }
-
-      // Get the FCM token
-      String? fcmToken = await messaging.getToken();
-      if (fcmToken != null) {
-        log('FCM Token: $fcmToken');
-      } else {
-        log('FCM Token is not available yet.');
-      }
-    } else {
-      log('User denied notification permissions.');
+  Future<void> _setupTokens() async {
+    // Handle APNS token for iOS
+    final apnsToken = await _firebaseMessaging.getAPNSToken();
+    if (apnsToken != null) {
+      await _storeFCMToken(apnsToken);
     }
 
-    // Listen for messages
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      log('Message received: ${message.notification?.title}');
-    });
+    // Handle FCM token
+    final fcmToken = await _firebaseMessaging.getToken();
+    if (fcmToken != null) {
+      await _storeFCMToken(fcmToken);
+    }
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      log('Message opened: ${message.notification?.title}');
-    });
+    // Listen for token refresh
+    _firebaseMessaging.onTokenRefresh.listen(_storeFCMToken);
   }
+
+  Future<void> _storeFCMToken(String token) async {
+    await SharedPreferencesManager.storeStringValue(
+      key: StorageConstants.fcmToken,
+      value: token,
+    );
+  }
+
+  Future<void> _setupMessageHandlers() async {
+    // Foreground messages
+    FirebaseMessaging.onMessage.listen(_handleMessage);
+
+    // When app is opened from notification
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+
+    // Background messages
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  }
+
+  void _handleMessage(RemoteMessage message) {
+    if (message.notification != null) {
+      final notification = NotificationModel(
+        title: message.notification?.title ?? "NO TITLE",
+        body: message.notification?.body ?? "NO BODY",
+        date: message.data['date']
+      );
+
+      // Add to Cubit state which handles both current state and caching
+      _notificationsCubit.addNotification(notification);
+    }
+  }
+
+  Future<String?> getToken() async {
+    return await _firebaseMessaging.getToken();
+  }
+
+  Future<void> clearNotifications() async {
+    await _notificationsCubit.clearNotifications();
+  }
+}
+
+// Top-level background handler
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  final notification = NotificationModel(
+    title: message.notification?.title ?? "NO TITLE",
+    body: message.notification?.body ?? "NO BODY",
+  );
+
+  // Handle background message through Cubit
+  await NotificationsCubit().addNotification(notification);
 }

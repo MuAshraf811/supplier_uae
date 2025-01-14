@@ -12,12 +12,14 @@ import '../../../../../core/utils/widgets/svg_handler.dart';
 import '../../../../client/Authentication/presentation/widgets/drop_down_text_field.dart';
 
 class StepOneContent extends StatelessWidget {
-  const StepOneContent({super.key});
+  final stepOneFormKey;
+
+  const StepOneContent({super.key, required this.stepOneFormKey});
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<SupplierAuthCubit>().stepOneFormKey,
+      key: stepOneFormKey,
       child: Column(
         children: [
           AppTextField(
@@ -79,10 +81,12 @@ class StepOneContent extends StatelessWidget {
             validator: (val) {
               if (val == null || val.isEmpty) {
                 return "This field should not be null";
-              }if(val.length != 10){ 
-                return "Enter Valid Mobile Number" ;
               }
-              return null;
+              // else if(val.length != 10 || val.length != 11){
+              //   print(val.length);
+              //   return "Enter Valid Mobile Number" ;
+              // }
+              // return null;
             },
             type: TextInputType.phone,
             suffixIcon: Icons.phone_android_outlined,
@@ -118,12 +122,14 @@ class StepOneContent extends StatelessWidget {
 }
 
 class StepTwoContent extends StatelessWidget {
-  const StepTwoContent({super.key});
+  final stepTwoFormKey;
+
+  const StepTwoContent({super.key, required this.stepTwoFormKey});
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<SupplierAuthCubit>().stepTwoFormKey,
+      key: stepTwoFormKey,
       child: Column(
         children: [
           const VerticalSpacer(space: 16),

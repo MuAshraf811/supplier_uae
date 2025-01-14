@@ -5,6 +5,8 @@ import 'package:supplier/features/client/settings/presentation/controller/cubit/
 import 'package:supplier/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/supplier/chatSupplier/presentation/cubit/chat_cubit.dart';
+
 class ServiceLocator {
   static GetIt getIt = GetIt.instance;
 
@@ -25,7 +27,10 @@ class ServiceLocator {
     );
 
     getIt.registerFactory<ChatCubit>(
-      () => ChatCubit(),
+          () => ChatCubit(),
+    );
+    getIt.registerFactory<SupplierChatCubit>(
+          () => SupplierChatCubit(),
     );
   }
 }

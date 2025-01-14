@@ -59,7 +59,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       //                          }
                       AppConfigCubit.isBoarded = true;
                       SharedPreferencesManager.storeBoolValue(
-                          key: AppConst.isBoarded,
+                          key: StorageConstants.isBoardedKey,
                           value: true
                       );
 
@@ -145,7 +145,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         () {
                           AppConfigCubit.isBoarded = true;
                           SharedPreferencesManager.storeBoolValue(
-                              key: AppConst.isBoarded, value: true);
+                              key: StorageConstants.isBoardedKey, value: true);
                           Navigator.pushReplacementNamed(
                               context, RouteConstants.userTypeView);
                         },

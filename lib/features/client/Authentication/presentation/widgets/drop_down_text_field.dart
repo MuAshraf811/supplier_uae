@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/service_locator.dart';
+
 class DropDownWithTextField extends StatelessWidget {
   const DropDownWithTextField({super.key , this.onchanged});
  final void Function(String?)? onchanged;
@@ -13,8 +15,8 @@ class DropDownWithTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
       onChanged:onchanged?? (value) { 
-        context.read<AuthenticationCubit>().citySelection = value as String? ??'Abu Dhabi';  
-                context.read<AuthenticationCubit>().profileCitySelection = value ??'Abu Dhabi'; 
+        ServiceLocator.getIt<AuthenticationCubit>().citySelection = value as String? ??'Abu Dhabi';  
+                ServiceLocator.getIt<AuthenticationCubit>().profileCitySelection = value ??'Abu Dhabi'; 
 
 
       },

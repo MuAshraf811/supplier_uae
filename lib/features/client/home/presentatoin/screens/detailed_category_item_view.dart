@@ -61,14 +61,17 @@ class DetailedCategoryItemView extends StatelessWidget {
                 child: BlocBuilder<HomePageCubit, HomePageState>(
                   buildWhen: (previous, current) =>
                       current is RadioCurrentChoice,
-                  builder: (context, state) => Text(
-                    CategoryConstants.printing[categoryItemIndex].details[
-                        context.read<HomePageCubit>().indexFromChoice]["title"],
+                  builder: (context, state) {
+                    return Text(
+                    CategoryConstants.printing[categoryItemIndex]
+                        .details[context.read<HomePageCubit>().indexFromChoice]
+                    ["title"],
                     style: applySemiBoldStyle(
                       fontSize: 16,
                       fontColor: ColorConsatnts.primary,
                     ),
-                  ),
+                  );
+                  },
                 ),
               ),
               const VerticalSpacer(space: 12),

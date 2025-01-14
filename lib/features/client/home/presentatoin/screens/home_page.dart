@@ -35,10 +35,10 @@ class HomePageView extends StatelessWidget {
     const NotificationsScreen(),
     MultiBlocProvider(
       providers: [
-        BlocProvider<AuthenticationCubit>(
-          create: (context) =>
-          AuthenticationCubit()..getUserData(),
-        ),
+        // BlocProvider<AuthenticationCubit>(
+        //   create: (context) =>
+        //   ServiceLocator.getIt<AuthenticationCubit>(),
+        // ),
         BlocProvider(
           create: (context) => ServiceLocator.getIt.get<SettingsCubit>(),
         ),

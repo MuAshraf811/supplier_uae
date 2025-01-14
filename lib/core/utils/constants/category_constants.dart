@@ -1072,7 +1072,24 @@ class CategoryConstants {
         "Printers Paper",
         "Thermal Paper For Printers"
       ],
-      details: [],
+      details: [
+        {
+          "title": "Plastic Cup PET",
+          "details": {
+            "Size": [8, 10, 12, 14, 16,20 , 22],
+            "Lid": ["Yes", "No"],
+            "Foil": ['Silver', 'Gold', 'Non'],
+            "Printing": [1, 2, 3],
+            "Block": ["Laser", "Normal"],
+            "Quantity": [5000, 10000, 20000, 30000],
+          },
+          "other": {
+            "Emboss": ["Yes", "No"],
+            "Packing": ["1x1000 pcs"],
+          },
+          "isRequired": true,
+        },
+      ],
     ),
   ];
 }

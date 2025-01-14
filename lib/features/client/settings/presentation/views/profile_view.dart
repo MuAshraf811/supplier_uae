@@ -6,22 +6,41 @@ import 'package:supplier/core/utils/service_locator.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
 import 'package:supplier/core/utils/widgets/svg_handler.dart';
+import 'package:supplier/features/client/Authentication/model/user_data_model.dart';
 import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier/features/client/home/presentatoin/widgets/custom_drop_down.dart';
 import 'package:supplier/features/client/settings/presentation/controller/cubit/settings_cubit.dart';
+import 'package:supplier/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
+import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:supplier/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/utils/constants/storage_const.dart';
 import '../../../../../core/utils/storage/shared_preferences.dart';
 import '../../../../../core/utils/widgets/custom_dialog.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+
+  @override @override
+  void initState() {
+    if(AppConfigCubit.isSupplier) {
+      ServiceLocator.getIt<SupplierAuthCubit>().getUserData();
+    }else{
+      ServiceLocator.getIt<AuthenticationCubit>().getUserData();
+    }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -50,10 +69,10 @@ class ProfileView extends StatelessWidget {
               height: 32.w,
               child: ListView.builder(
                 physics:const  NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.only(left: 85.w),
+                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.14),
                 scrollDirection: Axis.horizontal,
                 itemCount: AppConst.socialMediaIcons.length,
-                itemBuilder: (context, index) => SocialMdiaIcons(
+                itemBuilder: (context, index) => SocialMediaIcons(
                   onTap: () {
                     context.read<SettingsCubit>().launchUrl(url: AppConst.socialMediaLinks[index]);
                   },
@@ -68,8 +87,8 @@ class ProfileView extends StatelessWidget {
   }
 }
 
-class SocialMdiaIcons extends StatelessWidget {
-  const SocialMdiaIcons({
+class SocialMediaIcons extends StatelessWidget {
+  const SocialMediaIcons({
     super.key,
     required this.icon, required this.onTap,
   });
@@ -108,31 +127,50 @@ class SettingsItem extends StatelessWidget {
         onTap: () {
           switch (index) {
             case 0:
+              AppConfigCubit.isSupplier?
+              Navigator.pushNamed(context, RouteConstants.supplierAccountView)    :
               Navigator.pushNamed(context, RouteConstants.accountView);
             case 1:
               Navigator.pushNamed(
                   context, RouteConstants.termsAndConditionsView);
+            case 2:
+              launchUrl(Uri.parse('https://www.supplieruae.com'));
              case 3:
               showCustomDialog(context, title: "Delete Account", onConfirm: () {
+
+                /// todo logic to delete missing
+
                 SharedPreferencesManager.storeBoolValue(
-                    key: AppConst.isUserLogged, value: false);
+                    key: StorageConstants.isUserLoggedKey, value: false);
                 Navigator.pushReplacementNamed(
                     context, RouteConstants.userTypeView);
               }, buttonText: "Delete");
             case 4:
               showCustomDialog(context, title: "Log Out", onConfirm: () async {
                 SharedPreferencesManager.storeBoolValue(
-                    key: AppConst.isUserLogged, value: false);
+                    key: StorageConstants.isUserLoggedKey, value: false);
                 SharedPreferencesManager.storeBoolValue(
-                    key: AppConst.isSupplier, value: false);
-                AppConfigCubit.isUserLogged = false;
+                    key: StorageConstants.isSupplierKey, value: false);
+                SharedPreferencesManager.storeStringValue(
+                    key: StorageConstants.userDataIdKey,
+                    value: ''
+                );
+
+                NotificationsCubit().clearNotifications();
+
+                AppConfigCubit.isLogged = false;
                 AppConfigCubit.isSupplier=false;
-                // await  SharedPreferencesManager.storeStringValue(
-                //     key: StorageConstants.userDataId,
-                //     value: ''
-                // );
-                Navigator.pushReplacementNamed(
-                    context, RouteConstants.userTypeView);
+                AppConfigCubit.currentUserDataId = '';
+                AppConfigCubit.currentUserId = '';
+                // AuthenticationCubit.userPersonalData = UserDataModel(email: 'email', password: 'password', firstName: 'firstName', lastName: 'lastName', mobileNumber: 'mobileNumber', city: 'city', uuid: 'uuid');
+
+                ServiceLocator.getIt<SupplierAuthCubit>().clearControllers();
+                ServiceLocator.getIt<AuthenticationCubit>().clearControllers();
+
+                Navigator.of(context,rootNavigator: true).pushNamedAndRemoveUntil(
+                     RouteConstants.userTypeView,
+                  (route) => false,
+                );
               }, buttonText: "Log Out");
           }
         },
@@ -173,24 +211,28 @@ class LanguageDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
             S.of(context).language,
             style:
                 applyBoldStyle(fontSize: 15, fontColor: ColorConsatnts.black),
           ),
-          CustomDropDown(
-            onSelected: (val) {
-              context.read<AppConfigCubit>().changeLanguage(val);
-            },
-            text: "",
-            entries: const [
-              "en",
-              "ar",
-            ],
+          SizedBox(
+            // width: 200,
+            child: CustomDropDown(
+              width: 100,
+              onSelected: (val) {
+                context.read<AppConfigCubit>().changeLanguage(val);
+              },
+              text: "",
+              entries: const [
+                "English",
+                "ألعربية",
+              ],
+            ),
           )
         ],
       ),
@@ -250,12 +292,15 @@ class ProfileInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthenticationCubit, AuthenticationState>(
-      buildWhen: (previous, current) =>
-          current is FetchUserDataErrorState ||
-          current is FetchingUserDataState ||
-          current is FetchingUserDataSuccessState,
-      builder: (context, state) {
+    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+      listener: (context, state) {
+
+      },
+      // buildWhen: (previous, current) =>
+      //     current is FetchUserDataErrorState ||
+      //     current is FetchingUserDataState ||
+      //     current is FetchingUserDataSuccessState,
+      builder:  (context, state) {
         if (state is FetchingUserDataSuccessState) {
           final userModel =
               AuthenticationCubit.userPersonalData;
@@ -275,34 +320,39 @@ class ProfileInformation extends StatelessWidget {
                 CircleAvatar(
                   backgroundColor: ColorConsatnts.primary,
                   radius: 32.w,
+                  child: Icon(Icons.person),
                 ),
                 const HorizontalSpacer(space: 24),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${userModel.firstName} ${userModel.lastName}",
+                      "${AuthenticationCubit.userPersonalData.firstName} ${AuthenticationCubit.userPersonalData.lastName}",
                       style: applyBoldStyle(
                         fontSize: 16,
                         fontColor: ColorConsatnts.black,
                       ),
                     ),
                     Text(
-                      userModel.city,
+                      AuthenticationCubit.userPersonalData.city,
                       style: applySemiBoldStyle(
                         fontSize: 16,
                         fontColor: ColorConsatnts.lightBlack,
                       ),
                     ),
-                    Text(
-                      userModel.email,
-                      style: applySemiBoldStyle(
-                        fontSize: 16,
-                        fontColor: ColorConsatnts.primary,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width*0.6,
+                      child: Text(
+                        AuthenticationCubit.userPersonalData.email,
+                        overflow: TextOverflow.ellipsis,
+                        style: applySemiBoldStyle(
+                          fontSize: 16,
+                          fontColor: ColorConsatnts.primary,
+                        ),
                       ),
                     ),
                     Text(
-                      userModel.mobileNumber,
+                      AuthenticationCubit.userPersonalData.mobileNumber,
                       style: applySemiBoldStyle(
                         fontSize: 16,
                         fontColor: ColorConsatnts.lightBlack,
@@ -316,6 +366,8 @@ class ProfileInformation extends StatelessWidget {
         } else if (state is FetchUserDataErrorState) {
           return Text(state.error);
         }
+        print(state);
+        ServiceLocator.getIt<AuthenticationCubit>().getUserData();
         return const InfoShimmer();
       },
     );

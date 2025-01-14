@@ -22,6 +22,8 @@ class _FirstViewState extends State<FirstView> {
       () {
         if(!AppConfigCubit.isBoarded) {
           Navigator.pushNamed(context, RouteConstants.onBoardingView);
+        }else if (!AppConfigCubit.isLogged){
+          Navigator.pushNamed(context, RouteConstants.userTypeView);
         }
       },
     );

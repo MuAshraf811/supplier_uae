@@ -7,17 +7,19 @@ class CustomDropDown extends StatelessWidget {
   const CustomDropDown({
     super.key,
     required this.text,
+    this.width = 58,
     required this.entries, required this.onSelected,
   });
   final String text;
-  final List entries; 
+  final double? width;
+  final List entries;
   final void Function(dynamic)? onSelected;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         SizedBox(
-          width: 58.w,
+          width: width,
           child: Text(
             text,
             style:
@@ -27,12 +29,11 @@ class CustomDropDown extends StatelessWidget {
         Transform.scale(
           scaleY: 0.6,
           child: DropdownMenu(
-            width: 90.w,  
-            
+            width: width! * 1.2,
             onSelected:onSelected,
             trailingIcon: const Icon(
               Icons.arrow_drop_down,
-              size: 24,
+              size: 20,
             ),
             inputDecorationTheme: InputDecorationTheme(
               contentPadding: EdgeInsets.only(left: 4.w),

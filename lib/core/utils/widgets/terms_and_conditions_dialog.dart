@@ -49,7 +49,7 @@ showTermsAndConditionsDialog(BuildContext context, bool isSeller) {
                       context,
                       isSeller
                           ? RouteConstants.supplierHomeView
-                          : RouteConstants.logInView);
+                          : RouteConstants.homePage);
                 })
           ],
         ),
