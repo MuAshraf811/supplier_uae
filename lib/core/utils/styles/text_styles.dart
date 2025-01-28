@@ -11,6 +11,7 @@ TextStyle applyRegularStyle({
     fontWeight: FontWeight.w400,
     fontFamily: fontFamily,
     fontSize: fontSize,
+    // overflow: TextOverflow.ellipsis
   );
 }
 
@@ -24,6 +25,7 @@ TextStyle applyMediumStyle({
     fontWeight: FontWeight.w500,
     fontFamily: fontFamily,
     fontSize: fontSize,
+    // overflow: TextOverflow.ellipsis
   );
 }
 
@@ -37,6 +39,7 @@ TextStyle applySemiBoldStyle({
     fontWeight: FontWeight.w600,
     fontFamily: fontFamily,
     fontSize: fontSize,
+    // overflow: TextOverflow.ellipsis
   );
 }
 
@@ -50,5 +53,6 @@ TextStyle applyBoldStyle({
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
     fontSize: fontSize,
+    // overflow: TextOverflow.ellipsis
   );
 }

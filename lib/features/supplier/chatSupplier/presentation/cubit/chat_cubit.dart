@@ -42,6 +42,7 @@ StreamSubscription? messageSubscription;
     return FirebaseFirestore.instance
         .collection("Chat")
         .doc(SharedPreferencesManager.getStringValue(
+            key: StorageConstants.userDataIdKey).isEmpty?"error":SharedPreferencesManager.getStringValue(
             key: StorageConstants.userDataIdKey))
         .collection("messages")
         .orderBy('time', descending: true)

@@ -32,4 +32,8 @@ class SharedPreferencesManager {
   static int getIntValue({required String key}) {
     return _object!.getInt(key) ?? 0;
   }
+
+  static void clearCache() async{
+    await _object!.clear();
+  }
 }

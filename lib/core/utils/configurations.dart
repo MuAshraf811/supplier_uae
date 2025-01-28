@@ -36,12 +36,12 @@ class NotificationsManager {
     // Handle APNS token for iOS
     final apnsToken = await _firebaseMessaging.getAPNSToken();
     if (apnsToken != null) {
-      await _storeFCMToken(apnsToken);
+      //await _storeFCMToken(apnsToken);
     }
 
     // Handle FCM token
     final fcmToken = await _firebaseMessaging.getToken();
-    if (fcmToken != null) {
+    if (fcmToken != null && fcmToken.isNotEmpty) {
       await _storeFCMToken(fcmToken);
     }
 
@@ -50,10 +50,12 @@ class NotificationsManager {
   }
 
   Future<void> _storeFCMToken(String token) async {
-    await SharedPreferencesManager.storeStringValue(
+    if(token.isNotEmpty) {
+      await SharedPreferencesManager.storeStringValue(
       key: StorageConstants.fcmToken,
       value: token,
     );
+    }
   }
 
   Future<void> _setupMessageHandlers() async {
@@ -72,7 +74,8 @@ class NotificationsManager {
       final notification = NotificationModel(
         title: message.notification?.title ?? "NO TITLE",
         body: message.notification?.body ?? "NO BODY",
-        date: message.data['date']
+        date: message.data['date'],
+        offerSupplierId: message.data['offerSupplierId']
       );
 
       // Add to Cubit state which handles both current state and caching

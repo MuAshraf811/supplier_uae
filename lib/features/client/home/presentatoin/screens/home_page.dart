@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
+import '../../../../../core/cubit/app_config_cubit.dart';
 import '../../../../../core/cubit/nav_bar_cubit.dart';
 import '../../../../../core/utils/constants/app_const.dart';
 import '../../../../../core/utils/constants/assets_constants.dart';
@@ -11,6 +12,7 @@ import '../../../../../core/utils/constants/color_consatnts.dart';
 import '../../../../../core/utils/service_locator.dart';
 import '../../../../../core/utils/widgets/spacers.dart';
 import '../../../../../core/utils/widgets/svg_handler.dart';
+import '../../../../supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
 import '../../../Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import '../../../orders/notifications/presentation/screens/notifications_screen.dart';
 import '../../../orders/presentation/cubit/orders_cubit.dart';
@@ -70,9 +72,23 @@ class HomePageView extends StatelessWidget {
   }
 }
 
-class MainView extends StatelessWidget {
+class MainView extends StatefulWidget {
   const MainView({super.key});
 
+  @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  @override
+  void initState() {
+    if(AppConfigCubit.isSupplier) {
+      ServiceLocator.getIt<SupplierAuthCubit>().getUserData();
+    }else{
+      ServiceLocator.getIt<AuthenticationCubit>().getUserData();
+    }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Column(

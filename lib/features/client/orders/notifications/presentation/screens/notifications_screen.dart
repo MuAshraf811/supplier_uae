@@ -7,13 +7,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_states.dart';
 
+import '../../../../../../core/utils/service_locator.dart';
+import '../../../../../../core/utils/widgets/terms_and_conditions_dialog.dart';
+import '../../../../chat/presentation/cubit/chat_cubit.dart';
+
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotificationsCubit(),
+    return MultiBlocProvider(
+      providers: [
+      BlocProvider(create: (context) => ServiceLocator.getIt<ChatCubit>()),
+        BlocProvider(create: (context) => NotificationsCubit(),)
+      ],
       child: BlocConsumer<NotificationsCubit,NotificationStates>(
         listener: (context, state) {
 
@@ -43,6 +50,7 @@ class NotificationsScreen extends StatelessWidget {
                         notificationTitle: notifications[index].title,
                         notificationDate: NotificationsCubit.allNotifications[index].date.toString(),
                         notificationBody: notifications[index].body,
+                        offerSupplierId: notifications[index].offerSupplierId,
                       ),
                     ),
                   ) : const Center(child: Text('No Notifications Yet!'),),
@@ -50,7 +58,7 @@ class NotificationsScreen extends StatelessWidget {
               ),
             );
           } else if (state is FetchingNotificationErrorState) {
-            return Text('Error: ${state.error}');
+            return Center(child: Text(state.error));
           }
           return Container();
         },
@@ -65,10 +73,12 @@ class NotificationItem extends StatelessWidget {
     required this.notificationTitle,
     required this.notificationBody,
     required this.notificationDate,
+    this.offerSupplierId,
   });
   final String notificationTitle;
   final String notificationBody;
   final String notificationDate;
+  final String? offerSupplierId;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -99,13 +109,36 @@ class NotificationItem extends StatelessWidget {
           ),
           FittedBox(
             child: Text(
-              notificationDate.split(' ')[0],
+              notificationDate,//.split(' ')[0],
               style: applyRegularStyle(
                   fontSize: 14, fontColor: ColorConsatnts.primary),
             ),
           ),
+          if(offerSupplierId !=null && offerSupplierId!.isNotEmpty)
+          Row(
+            children: [
+              BlocProvider(
+                create:(context) =>  ServiceLocator.getIt<ChatCubit>(),
+                child: ElevatedButton(onPressed: () {
+                  // context.read<ChatCubit>().messageController.text = ;
+                  showTermsAndConditionsDialog(context, false,offerSupplierId: offerSupplierId);
+                }, child: const Text('Accept')
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
   }
 }
+/*
+
+[
+{"title":"Congratulation! accepted Offer","body":"Your offer has been accepted successfully","data":{"date":"2025-1-17 at: 15:37","offerSupplierId":""}},
+{"title":"Congratulation! accepted Offer","body":"Your offer has been accepted successfully","data":{"date":"2025-1-17 at: 16:18","offerSupplierId":""}},
+{"title":"Congratulation! accepted Offer","body":"Your offer has been accepted successfully","data":{"date":"2025-1-25 at: 18:51","offerSupplierId":""}}
+]
+ 
+ 
+  */

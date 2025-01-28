@@ -27,9 +27,9 @@ class NotificationsCubit extends Cubit<NotificationStates> {
     allNotifications.add(content);
     print('added to cubit list::: current isSupplier? ${AppConfigCubit.isSupplier}');
     // Cache the updated list
-    await _cacheNotifications();
+    // await _cacheNotifications();
 
-    print('cached to storage');
+    // print('cached to storage');
     await saveNotificationsToFirestore();
     print('saved to firestore');
 
@@ -156,15 +156,18 @@ class NotificationsCubit extends Cubit<NotificationStates> {
           }else{
             allNotifications = [];
             emit(EmptyNotificationsState());
+      return;
           }
         } else {
           print('no user found');
           emit(FetchingNotificationErrorState('No Notification found'));
+      return;
         }
 
       }
 
       emit(FetchingNotificationSuccessState());
+      return;
     } catch (e) {
       emit(FetchingNotificationErrorState('Failed to load notifications: ${e.toString()}'));
       rethrow;

@@ -1,5 +1,8 @@
+import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/assets_constants.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
+import 'package:supplier/core/utils/constants/storage_const.dart';
+import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/core/utils/widgets/custom_app_bar.dart';
 import 'package:supplier/core/utils/widgets/snack_bar.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
@@ -242,6 +245,14 @@ class RegisterView extends StatelessWidget {
                         showCustomSnackBar(context, state.error, Colors.red,
                             duration: 8);
                         if (state is SuccessLogInWithGoogleState) {
+                          
+                    AppConfigCubit.isLogged = true;
+                    AppConfigCubit.isSupplier = false;
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isUserLoggedKey, value: true);
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isSupplierKey, value: false);
+
                           Navigator.pushReplacementNamed(
                           context, RouteConstants.homePage);
                         }
@@ -300,6 +311,13 @@ class RegisterView extends StatelessWidget {
                           duration: 8);
                     }
                     if (state is SuccessLogInWithAppleState) {
+
+                    AppConfigCubit.isLogged = true;
+                    AppConfigCubit.isSupplier = false;
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isUserLoggedKey, value: true);
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isSupplierKey, value: false);
 
                       Navigator.pushReplacementNamed(
                           context, RouteConstants.homePage);

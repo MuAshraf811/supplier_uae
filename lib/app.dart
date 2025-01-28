@@ -25,6 +25,7 @@ class EPrinter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    initErrorHandling();
     AppConfigCubit.currentUserDataId = SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey);
     AppConfigCubit.currentUserId = SharedPreferencesManager.getStringValue(key: StorageConstants.userId);
     AppConfigCubit.isLogged = SharedPreferencesManager.getBoolValue(key: StorageConstants.isUserLoggedKey)??false;
@@ -68,7 +69,8 @@ class EPrinter extends StatelessWidget {
                 locale: AppConfigCubit.isEnglish? const Locale("en")
                     :const Locale("ar"),
             debugShowCheckedModeBanner: false,
-            initialRoute:
+            initialRoute: 
+            // RouteConstants.suppCompleteLoginView,
             AppConfigCubit.isBoarded?
             ( AppConfigCubit.isLogged?
                   ( AppConfigCubit.isSupplier?
@@ -86,5 +88,42 @@ class EPrinter extends StatelessWidget {
         ),
       ),
     );
+  }
+
+
+  void initErrorHandling() {
+    FlutterError.onError = (FlutterErrorDetails details) {
+      FlutterError.dumpErrorToConsole(details);
+      
+      if (navigatorKey.currentState?.mounted ?? false) {
+        showDialog(
+          context: navigatorKey.currentState!.context,
+          barrierDismissible: true,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Oops, Something went wrong'),
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Text(details.exceptionAsString()),
+                    const SizedBox(height: 16),
+                    const Text('Please try again or contact support if the problem persists.'),
+                  ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  };
   }
 }

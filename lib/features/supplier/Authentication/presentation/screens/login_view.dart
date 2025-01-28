@@ -116,8 +116,6 @@ class SupplierLoginView extends StatelessWidget {
                     showCustomSnackBar(
                         context, state.error, ColorConsatnts.red);
                   } else if (state is LogingInSuccessState) {
-
-
                     AppConfigCubit.isLogged = true;
                     AppConfigCubit.isSupplier = true;
                     AppConfigCubit.currentUserDataId = SharedPreferencesManager
@@ -187,7 +185,7 @@ class SupplierLoginView extends StatelessWidget {
                         context, 'Welcome', ColorConsatnts.primary,
                         duration: 8);
                     Navigator.pushReplacementNamed(
-                        context, RouteConstants.completeLoginView);
+                        context, RouteConstants.suppCompleteLoginView);
                   }
                 },
                 builder: (context, state) {
@@ -247,7 +245,7 @@ class SupplierLoginView extends StatelessWidget {
                         context, 'Welcome', ColorConsatnts.primary,
                         duration: 8);
                     Navigator.pushReplacementNamed(
-                        context, RouteConstants.completeLoginView);
+                        context, RouteConstants.suppCompleteLoginView);
                   }
                 },
                 builder: (context, state) {

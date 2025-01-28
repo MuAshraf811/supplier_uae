@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/app_const.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
@@ -32,21 +36,33 @@ class ProfileView extends StatefulWidget {
 
 class _ProfileViewState extends State<ProfileView> {
 
-  @override @override
+  @override
   void initState() {
-    if(AppConfigCubit.isSupplier) {
+    // if(AppConfigCubit.isSupplier) {
       ServiceLocator.getIt<SupplierAuthCubit>().getUserData();
-    }else{
+      print('Supplier');
+    // }else{
+      print("Client");
       ServiceLocator.getIt<AuthenticationCubit>().getUserData();
-    }
+    // }
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+
+    // if( SupplierAuthCubit.supplierPersonalData.uuid == null && AppConfigCubit.isSupplier){
+       ServiceLocator.getIt<SupplierAuthCubit>().getUserData();
+      print('Supplier');
+    // }else{
+      print("Client");
+      ServiceLocator.getIt<AuthenticationCubit>().getUserData();
+    // }
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12.w),
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const ProfileInformation(),
             const LanguageDropDown(),
@@ -67,16 +83,29 @@ class _ProfileViewState extends State<ProfileView> {
             const VerticalSpacer(space: 16),
             SizedBox(
               height: 32.w,
-              child: ListView.builder(
-                physics:const  NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.14),
-                scrollDirection: Axis.horizontal,
-                itemCount: AppConst.socialMediaIcons.length,
-                itemBuilder: (context, index) => SocialMediaIcons(
-                  onTap: () {
-                    context.read<SettingsCubit>().launchUrl(url: AppConst.socialMediaLinks[index]);
+              width: MediaQuery.of(context).size.width*0.9,
+              child: Center(
+                child: ListView.builder(
+                  physics:const  NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.14),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: AppConst.socialMediaIcons.length,
+                  itemBuilder: (context, index) {
+                    if(index==3 && Platform.isIOS){
+                      return const SizedBox();
+                    }
+                    return SocialMediaIcons(
+                      onTap: () {
+                        if(index==3 && Platform.isIOS){
+                          Fluttertoast.showToast(msg: "This feature is not available on iOS");
+                        }
+                        context.read<SettingsCubit>().launchUrl(url: AppConst.socialMediaLinks[index]);
+                      },
+                      icon: AppConst.socialMediaIcons[index],
+                    );
                   },
-                  icon: AppConst.socialMediaIcons[index],
+                            
+                            
                 ),
               ),
             ),
@@ -134,11 +163,23 @@ class SettingsItem extends StatelessWidget {
               Navigator.pushNamed(
                   context, RouteConstants.termsAndConditionsView);
             case 2:
-              launchUrl(Uri.parse('https://www.supplieruae.com'));
+              launchUrl(Uri.parse(AppConst.websiteUrl));
              case 3:
-              showCustomDialog(context, title: "Delete Account", onConfirm: () {
+              showCustomDialog(context, title: "Delete Account", onConfirm: () async {
 
-                /// todo logic to delete missing
+                String collectionName = AppConfigCubit.isSupplier ? 'Suppliers' : 'Users';
+                String userId =  SharedPreferencesManager
+                    .getStringValue(key: StorageConstants.userId);
+                
+                final userData = await FirebaseFirestore.instance
+                    .collection(collectionName)
+                    .where('uuid', isEqualTo: userId).get();
+                    if(userData.docs.isNotEmpty){
+                      FirebaseFirestore.instance
+                      .collection(collectionName)
+                    .doc(userData.docs.first.id).delete();
+                    }
+                    
 
                 SharedPreferencesManager.storeBoolValue(
                     key: StorageConstants.isUserLoggedKey, value: false);
@@ -147,6 +188,7 @@ class SettingsItem extends StatelessWidget {
               }, buttonText: "Delete");
             case 4:
               showCustomDialog(context, title: "Log Out", onConfirm: () async {
+
                 SharedPreferencesManager.storeBoolValue(
                     key: StorageConstants.isUserLoggedKey, value: false);
                 SharedPreferencesManager.storeBoolValue(
@@ -158,6 +200,8 @@ class SettingsItem extends StatelessWidget {
 
                 NotificationsCubit().clearNotifications();
 
+
+
                 AppConfigCubit.isLogged = false;
                 AppConfigCubit.isSupplier=false;
                 AppConfigCubit.currentUserDataId = '';
@@ -166,6 +210,7 @@ class SettingsItem extends StatelessWidget {
 
                 ServiceLocator.getIt<SupplierAuthCubit>().clearControllers();
                 ServiceLocator.getIt<AuthenticationCubit>().clearControllers();
+                SharedPreferencesManager.clearCache();
 
                 Navigator.of(context,rootNavigator: true).pushNamedAndRemoveUntil(
                      RouteConstants.userTypeView,
@@ -331,7 +376,9 @@ class ProfileInformation extends StatelessWidget {
                       style: applyBoldStyle(
                         fontSize: 16,
                         fontColor: ColorConsatnts.black,
+                        
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                     Text(
                       AuthenticationCubit.userPersonalData.city,
@@ -341,7 +388,7 @@ class ProfileInformation extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width*0.6,
+                      width: MediaQuery.of(context).size.width*0.5,
                       child: Text(
                         AuthenticationCubit.userPersonalData.email,
                         overflow: TextOverflow.ellipsis,
@@ -351,20 +398,22 @@ class ProfileInformation extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width*0.5,
+                      child: Text(
                       AuthenticationCubit.userPersonalData.mobileNumber,
                       style: applySemiBoldStyle(
                         fontSize: 16,
                         fontColor: ColorConsatnts.lightBlack,
                       ),
-                    ),
+                    ),)
                   ],
                 ),
               ],
             ),
           );
         } else if (state is FetchUserDataErrorState) {
-          return Text(state.error);
+          return Center(child: Text("No user data found"));
         }
         print(state);
         ServiceLocator.getIt<AuthenticationCubit>().getUserData();
@@ -403,7 +452,7 @@ class InfoShimmer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 140.w,
+                  width: 100.w,
                   height: 4.h,
                   margin: EdgeInsets.only(bottom: 4.h),
                   decoration: BoxDecoration(
@@ -411,14 +460,6 @@ class InfoShimmer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(14.r)),
                 ),
                 Container(
-                  width: 180.w,
-                  height: 4.h,
-                  margin: EdgeInsets.only(bottom: 4.h),
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade500,
-                      borderRadius: BorderRadius.circular(14.r)),
-                ),
-                Container(
                   width: 100.w,
                   height: 4.h,
                   margin: EdgeInsets.only(bottom: 4.h),
@@ -427,7 +468,15 @@ class InfoShimmer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(14.r)),
                 ),
                 Container(
-                  width: 100.w,
+                  width: 80.w,
+                  height: 4.h,
+                  margin: EdgeInsets.only(bottom: 4.h),
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade500,
+                      borderRadius: BorderRadius.circular(14.r)),
+                ),
+                Container(
+                  width: 90.w,
                   height: 4.h,
                   margin: EdgeInsets.only(bottom: 4.h),
                   decoration: BoxDecoration(

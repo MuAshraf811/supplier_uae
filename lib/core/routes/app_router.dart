@@ -9,6 +9,7 @@ import 'package:supplier/features/client/home/presentatoin/screens/detailed_item
 import 'package:supplier/features/client/home/presentatoin/screens/detailed_packaging_view.dart';
 import 'package:supplier/features/client/home/presentatoin/screens/other_detailed_screen.dart';
 import 'package:supplier/features/client/settings/presentation/views/account_view.dart';
+import 'package:supplier/features/supplier/Authentication/presentation/screens/supplier_complete_logIn_view.dart';
 import 'package:supplier/features/onboarding&splash/first_view.dart';
 import 'package:supplier/features/onboarding&splash/on_boarding_view.dart';
 import 'package:supplier/features/onboarding&splash/user_type_view.dart';
@@ -156,10 +157,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => RegisterView(),
 
-        ); 
-        case RouteConstants.completeLoginView:
+        );
+      case RouteConstants.completeLoginView:
         return MaterialPageRoute(
           builder: (context) =>  CompleteLoginView(),
+
+        );
+      case RouteConstants.suppCompleteLoginView:
+        return MaterialPageRoute(
+          builder: (context) =>  SupplierCompleteLoginView(),
 
         );
       case RouteConstants.forgetPasswordView:

@@ -135,7 +135,7 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
       if (userDataId.isEmpty) {
         log(userDataId);
         log('User id not cached');
-        emit(FetchSupplierDataErrorState(error: "User Data fetch failed"));
+        emit(FetchSupplierDataErrorState(error: "No user data found"));
         return;
       }
 
@@ -284,45 +284,51 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
   logInWithApple() async {
     try {
       emit(LoadingLogInWithAppleState());
-      final provider = AppleAuthProvider();
+      final provider = AppleAuthProvider()
+        ..addScope('email')
+        ..addScope('fullName')
+        ..setCustomParameters({
+          'prompt': 'consent', 
+          'access_type': 'offline'
+        });
 
       final UserCredential res =
       await FirebaseAuth.instance.signInWithProvider(provider);
-      log(res.additionalUserInfo!.isNewUser.toString());
-      log(res.additionalUserInfo!.toString());
+      
+      
+      final additionalInfo = res.additionalUserInfo?.profile;
+      if (additionalInfo != null) {
+        String? email = additionalInfo['email'];
+        emailRegisterController.text = email??"N/A";
+      }
+
 
       String collectionName = AppConfigCubit.isSupplier ? 'Suppliers' : 'Users';
       final userRes = await FirebaseFirestore.instance
           .collection(collectionName)
-          .where('email', isEqualTo: res.user!.email!).get();
+          .where('uuid', isEqualTo: res.user!.uid).get();
 
-      if (res.additionalUserInfo?.isNewUser == true) {
+      if (userRes.docs.isEmpty) {
         SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userId, value: res.user!.uid);
-        if(res.user?.email != null){
-          emailRegisterController.text = res.user!.email!;
-        }else{
-          emailRegisterController.text = "Couldn't get the email";
-        }
-        emit(NewUserStata());
+        emit(NewUserState());
       }
       if (res.credential == null) {
         emit(ErrorLogInWithAppleState(
             error: "Something went wrong , Please try again later"));
-      } else if (res.additionalUserInfo?.isNewUser == false) {
-
+      } else if (userRes.docs.isNotEmpty) {
         SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userId,
-            value: userRes.docs.first['uuid']);
+            value: res.user!.uid);
 
         SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userDataIdKey,
             value: userRes.docs.first.id);
 
-
         emit(SuccessLogInWithAppleState());
+        }
       }
-    } catch (e) {
+      catch (e) {
       log(e.toString());
       emit(ErrorLogInWithAppleState(error: e.toString()));
     }
@@ -379,5 +385,56 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
           error: "An error occurred: ${e.toString()}"));
     }
   }
+
+  easyAddSupplier() async {
+    try {
+      emit(AddingSupplierDataState());
+      // final user = await FirebaseAuth.instance
+      //     .signInWithEmailAndPassword(
+      //   email: emailRegisterController.text,
+      //   password: passwordRegisterController.text,);
+      String currentUUID = SharedPreferencesManager.getStringValue(
+        key: StorageConstants.userId,);
+
+      final fcmToken = SharedPreferencesManager.getStringValue(key: StorageConstants.fcmToken);
+
+      final instance =
+      FirebaseFirestore.instance.collection("Suppliers");
+      final supplierData = SupplierUserModel(
+        email: emailRegisterController.text,
+        imagePath: RemoteDataBase.getImageUrl(path: 'imageName') ?? "",
+        mobile: mobileNumberController.text,
+        city: citySelection,
+        companyName: companyNameRegisterController.text,
+        taxNumber: taxNumberController.text,
+        bankName: bankNameRegisterController.text,
+        ipanNumber: ipanNumberController.text,
+        uuid: currentUUID,
+      );
+
+      final  supplierDataId =
+          await FirebaseFirestore.instance
+          .collection("Suppliers")
+          .add(supplierData.toMap(fcmToken,""));
+      print('Registered supplier with data id:');
+      print(supplierDataId.id);
+      AppConfigCubit.currentUserDataId = supplierDataId.id;
+      await  SharedPreferencesManager.storeStringValue(
+          key: StorageConstants.userDataIdKey,
+          value: supplierDataId.id
+      );
+      log("******* addUserToDataBaseWithOtherMethods Success *******");
+      log(supplierDataId.path);
+      SharedPreferencesManager.storeStringValue(
+          key: StorageConstants.userDataIdKey, value: supplierDataId.id);
+      emit(AddingSupplierDataSuccessState());
+    } catch (e) {
+      log("******** addUserToDataBaseWithOtherMethods Failure ********");
+      log(e.toString());
+      AddingSupplierDataErrorState(error: e.toString());
+    }
+  }
+
+
 
 }

@@ -91,3 +91,14 @@ final class ErrorLogInWithAppleState extends SupplierAuthState {
 
   ErrorLogInWithAppleState({required this.error});
 }
+
+
+final class AddingSupplierDataState extends SupplierAuthState {}
+
+final class AddingSupplierDataSuccessState extends SupplierAuthState {}
+
+final class AddingSupplierDataErrorState extends SupplierAuthState {
+  final String error;
+
+  AddingSupplierDataErrorState({required this.error});
+}

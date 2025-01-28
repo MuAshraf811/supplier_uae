@@ -135,9 +135,6 @@ class LoginView extends StatelessWidget {
                         duration: 8);
                   }
                   if (state is SuccessLogInWithEmailState) {
-
-                    AppConfigCubit.isLogged = true;
-                    AppConfigCubit.isSupplier = false;
                     AppConfigCubit.currentUserDataId = SharedPreferencesManager
                         .getStringValue(
                         key: StorageConstants.userDataIdKey
@@ -146,7 +143,9 @@ class LoginView extends StatelessWidget {
                         .getStringValue(
                         key: StorageConstants.userId
                     );
-
+                    
+                    AppConfigCubit.isLogged = true;
+                    AppConfigCubit.isSupplier = false;
                     SharedPreferencesManager.storeBoolValue(
                         key: StorageConstants.isUserLoggedKey, value: true);
                     SharedPreferencesManager.storeBoolValue(
@@ -215,6 +214,14 @@ class LoginView extends StatelessWidget {
                     showCustomSnackBar(
                         context, 'Welcome', ColorConsatnts.primary,
                         duration: 8);
+
+                    AppConfigCubit.isLogged = true;
+                    AppConfigCubit.isSupplier = false;
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isUserLoggedKey, value: true);
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isSupplierKey, value: false);
+
                     Navigator.pushReplacementNamed(
                         context, RouteConstants.homePage);
                   }else  if (state is NewUserState) {
@@ -274,6 +281,13 @@ class LoginView extends StatelessWidget {
                         duration: 8);
                   }
                   if (state is SuccessLogInWithAppleState) {
+
+                    AppConfigCubit.isLogged = true;
+                    AppConfigCubit.isSupplier = false;
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isUserLoggedKey, value: true);
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isSupplierKey, value: false);
 
                     Navigator.pushReplacementNamed(
                         context, RouteConstants.homePage);

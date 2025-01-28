@@ -1,3 +1,4 @@
+import 'package:supplier/app.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
@@ -13,6 +14,7 @@ class UserTypeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: ColorConsatnts.white,
       body: SafeArea(
@@ -39,6 +41,7 @@ class UserTypeView extends StatelessWidget {
                 children: [
                   RoleContainer(
                     onTap: () { 
+
                       AppConfigCubit.isSupplier = false;
                       Navigator.popAndPushNamed(
                           context, RouteConstants.logInView); 

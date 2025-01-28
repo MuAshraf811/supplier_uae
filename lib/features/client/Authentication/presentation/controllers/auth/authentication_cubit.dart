@@ -229,9 +229,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
           email: emailLogInController.text,
           password: passwordLogInController.text);
 
-      print('signed in with email and password');
-
-
       await SharedPreferencesManager.storeStringValue(
           key: StorageConstants.userId, value: response.user?.uid ?? "");
       print('current logged user id..not data id?');
@@ -330,35 +327,46 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   logInWithApple() async {
     try {
       emit(LoadingLogInWithAppleState());
-      final provider = AppleAuthProvider();
+      final provider = AppleAuthProvider()
+        ..addScope('email')
+        ..addScope('fullName')
+        ..setCustomParameters({
+          'prompt': 'consent', 
+          'access_type': 'offline'
+        });
 
-      final UserCredential res =
-      await FirebaseAuth.instance.signInWithProvider(provider);
-      log(res.additionalUserInfo!.isNewUser.toString());
-      log(res.additionalUserInfo!.toString());
-
+      final UserCredential res = await FirebaseAuth.instance
+                          .signInWithProvider(provider);
+      
+      
+      final additionalInfo = res.additionalUserInfo?.profile;
+      if (additionalInfo != null) {
+        String? firstName = additionalInfo['given_name'];
+        String? lastName = additionalInfo['family_name'];
+        String? email = additionalInfo['email'];
+      
+        firstNameRegisterController.text = firstName??"N/A";
+        lastNameRegisterController.text = lastName??"N/A";
+        emailRegisterController.text = email??"N/A";
+      }
+      
       String collectionName = AppConfigCubit.isSupplier ? 'Suppliers' : 'Users';
       final userRes = await FirebaseFirestore.instance
           .collection(collectionName)
-          .where('email', isEqualTo: res.user!.email!).get();
+          .where('uuid', isEqualTo: res.user!.uid).get();
 
-      if (res.additionalUserInfo?.isNewUser == true) {
+      if (userRes.docs.isEmpty) {
         SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userId, value: res.user!.uid);
-        if(res.user?.email != null){
-          emailRegisterController.text = res.user!.email!;
-        }else{
-          emailRegisterController.text = "Couldn't get the email";
-        }
         emit(NewUserState());
       }
       if (res.credential == null) {
         emit(ErrorLogInWithAppleState(
             error: "Something went wrong , Please try again later"));
-      } else if (res.additionalUserInfo?.isNewUser == false) {
+      } else if (userRes.docs.isNotEmpty) {
         SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userId,
-            value: userRes.docs.first['uuid']);
+            value: res.user!.uid);
 
         SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userDataIdKey,

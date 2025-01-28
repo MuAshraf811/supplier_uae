@@ -15,6 +15,7 @@ import 'package:supplier/features/supplier/home/presentation/widgets/supplier_or
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/cubit/app_config_cubit.dart';
 import '../../../../../core/utils/constants/color_consatnts.dart';
 import '../../../../../core/utils/service_locator.dart';
 import '../../../../../core/utils/widgets/svg_handler.dart';
@@ -22,7 +23,7 @@ import '../../../../client/Authentication/presentation/controllers/auth/authenti
 import '../../../../client/settings/presentation/controller/cubit/settings_cubit.dart';
 import '../cubit/supplier_nav_bar_cubit.dart';
 
-class SupplierHomeView extends StatelessWidget {
+class SupplierHomeView extends StatefulWidget {
   const SupplierHomeView({super.key});
   static final _view = [
     MultiBlocProvider(
@@ -55,12 +56,29 @@ class SupplierHomeView extends StatelessWidget {
       child: const ProfileView(),
     )
   ];
+
+  @override
+  State<SupplierHomeView> createState() => _SupplierHomeViewState();
+}
+
+class _SupplierHomeViewState extends State<SupplierHomeView> {
+
+
+  @override
+  void initState() {
+    if(AppConfigCubit.isSupplier) {
+      ServiceLocator.getIt<SupplierAuthCubit>().getUserData();
+    }else{
+      ServiceLocator.getIt<AuthenticationCubit>().getUserData();
+    }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    ServiceLocator.getIt<SupplierAuthCubit>().getUserData().then((value) {
-    // print(AuthenticationCubit.userPersonalData.toString());
-
-    },);
+    // ServiceLocator.getIt<SupplierAuthCubit>().getUserData().then((value) {
+    // // print(AuthenticationCubit.userPersonalData.toString());
+    //
+    // },);
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButtonLocation:
@@ -84,7 +102,7 @@ class SupplierHomeView extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           child: BlocBuilder<SupplierNavBarCubit, int>(
             builder: (context, state) {
-              return _view[state];
+              return SupplierHomeView._view[state];
             },
           ),
         ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
+import 'package:supplier/core/utils/constants/storage_const.dart';
+import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/app_button.dart';
 import 'package:supplier/core/utils/widgets/terms_and_conditions_dialog.dart';
@@ -22,6 +25,7 @@ class CompleteLoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
+
       body:  Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Form(
@@ -31,43 +35,43 @@ class CompleteLoginView extends StatelessWidget {
                 const VerticalSpacer(space: 18),
                 const GeneralAppBar(title: "Complete Registration", isBackArrowShown: true,),
                 const VerticalSpacer(space: 20),
-                Row(
-                  children: [
-                    Expanded(
-                      child: AppTextField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "This Field Shouldn't be empty";
-                          }
-                          return null;
-                        },
-                        label: 'First Name',
-                        maxHeight: 40,
-                        suffixIcon: Icons.person_2_rounded,
-                        controller: context.read<AuthenticationCubit>()
-                            .firstNameRegisterController,
-                      ),
-                    ),
-                    const HorizontalSpacer(space: 12),
-                    Expanded(
-                      child: AppTextField(
-                        label: 'Last Name',
-                        maxHeight: 40,
-                        suffixIcon: Icons.person_2_rounded,
-                        controller: context.read<AuthenticationCubit>()
-                            .lastNameRegisterController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "This Field Shouldn't be empty";
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     Expanded(
+                //       child: AppTextField(
+                //         validator: (value) {
+                //           if (value == null || value.isEmpty) {
+                //             return "This Field Shouldn't be empty";
+                //           }
+                //           return null;
+                //         },
+                //         label: 'First Name',
+                //         maxHeight: 40,
+                //         suffixIcon: Icons.person_2_rounded,
+                //         controller: context.read<AuthenticationCubit>()
+                //             .firstNameRegisterController,
+                //       ),
+                //     ),
+                //     const HorizontalSpacer(space: 12),
+                //     Expanded(
+                //       child: AppTextField(
+                //         label: 'Last Name',
+                //         maxHeight: 40,
+                //         suffixIcon: Icons.person_2_rounded,
+                //         controller: context.read<AuthenticationCubit>()
+                //             .lastNameRegisterController,
+                //         validator: (value) {
+                //           if (value == null || value.isEmpty) {
+                //             return "This Field Shouldn't be empty";
+                //           }
+                //           return null;
+                //         },
+                //       ),
+                //     ),
+                //   ],
+                // ),
               
-                const VerticalSpacer(space: 8),
+                // const VerticalSpacer(space: 8),
               
             
                 const VerticalSpacer(space: 8),
@@ -105,6 +109,15 @@ class CompleteLoginView extends StatelessWidget {
                 BlocConsumer<AuthenticationCubit, AuthenticationState>(
                   listener: (context, state) {
                     if (state is AddingUserDataSuccessState) {
+
+                      
+                    AppConfigCubit.isLogged = true;
+                    AppConfigCubit.isSupplier = false;
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isUserLoggedKey, value: true);
+                    SharedPreferencesManager.storeBoolValue(
+                        key: StorageConstants.isSupplierKey, value: false);
+
                       showCustomSnackBar(context, "Successful Registration ",
                           ColorConsatnts.primary,
                           duration: 3);

@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/app_global.dart';
 import 'package:supplier/core/utils/configurations.dart';
@@ -35,14 +36,6 @@ void main() async {
 );
    FirebaseMessaging.onBackgroundMessage(_handleBackGroundFirebaseMessage); 
   await NotificationsManager().initialize();
-  // FlutterError.onError = (FlutterErrorDetails details){
-  //   FlutterError.dumpErrorToConsole(details);
-  //   Navigator
-  //       .of(AppGlobal.navigatorKey.currentState!.context)
-  //       .push(MaterialPageRoute(
-  //     builder: (context) => CustomErrorWidget(errorMessage: details),));
-  //   // runApp();
-  // };
 
   AppConfigCubit.currentUserDataId = SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey);
   AppConfigCubit.currentUserId = SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey);
@@ -59,3 +52,5 @@ void main() async {
 Future<void> _handleBackGroundFirebaseMessage(RemoteMessage message)async{ 
   await Firebase.initializeApp();
 }
+
+

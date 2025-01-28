@@ -153,7 +153,7 @@ showOrderConfirmation(
                         context, state.error, ColorConsatnts.red);
                   }
                   if (state is AddingOrderSuccessState) {
-                    showCustomSnackBar(context, "Orders added successfully",
+                    showCustomSnackBar(context, "Order added successfully",
                         ColorConsatnts.primary);
                     Navigator.pop(context);
                   }
