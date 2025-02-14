@@ -23,13 +23,13 @@ class CustomDropDown extends StatelessWidget {
           child: Text(
             text,
             style:
-                applyBoldStyle(fontSize: 12, fontColor: ColorConsatnts.black),
+                applyBoldStyle(fontSize: 10, fontColor: ColorConsatnts.black),
           ),
         ),
         Transform.scale(
           scaleY: 0.6,
           child: DropdownMenu(
-            width: width! * 1.2,
+            width: width! * 1.4,
             onSelected:onSelected,
             trailingIcon: const Icon(
               Icons.arrow_drop_down,

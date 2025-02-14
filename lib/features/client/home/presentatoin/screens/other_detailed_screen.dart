@@ -11,6 +11,8 @@ import 'package:supplier/features/client/home/presentatoin/widgets/show_order_di
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class OtherDetailedScreen extends StatefulWidget {
   const OtherDetailedScreen({super.key, required this.data});
   final Map data;
@@ -40,7 +42,7 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const VerticalSpacer(space: 16),
-                const CustomAppbar(title: "Order View"),
+                CustomAppbar(title: S.of(context).order_view),
                 const VerticalSpacer(space: 18),
                 Row(
                   children: [
@@ -74,7 +76,7 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
                 ),
                 const VerticalSpacer(space: 36),
                 Text(
-                  "Please Write your order details : ",
+                  S.of(context).write_order_details,
                   style: applyMediumStyle(
                     fontSize: 16,
                     fontColor: ColorConsatnts.red,
@@ -82,7 +84,7 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
                 ),
                 const VerticalSpacer(space: 8),
                 Text(
-                  "Note , Your order will be made based on details you provide in this section",
+                  S.of(context).note_order_details,
                   style: applyMediumStyle(
                     fontSize: 14,
                     fontColor: ColorConsatnts.primary,
@@ -90,7 +92,7 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
                 ),
                 const VerticalSpacer(space: 8),
                 AppTextField(
-                  label: "Order details", 
+                  label: S.of(context).order_details,
                   controller: detailsController,
                   suffixIcon: Icons.edit,
                   minLines: 5,
@@ -110,7 +112,7 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
                 ),
                 const VerticalSpacer(space: 18),
                 Text(
-                  "Extra Details",
+                  S.of(context).extra_details,
                   style: applyMediumStyle(
                     fontSize: 16,
                     fontColor: ColorConsatnts.red,
@@ -118,7 +120,7 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
                 ),
                 const VerticalSpacer(space: 8),
                 AppTextField(
-                  label: "Extra details", 
+                  label: S.of(context).extra_details,
                   controller: extradetailsController,
                   suffixIcon: Icons.edit,
                   minLines: 3,
@@ -133,7 +135,7 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
                 ),
                 const VerticalSpacer(space: 24),
                 AppButton(
-                  text: "Add Order",
+                  text: S.of(context).add_order,
                   onTap: () { 
                     if(key.currentState!.validate()){ 
                        showOrderConfirmation(

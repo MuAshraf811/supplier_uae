@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/constants/packaging_constants.dart';
 import '../../../../../core/utils/constants/route_constants.dart';
+import '../../../../../generated/l10n.dart';
 
 class DetailedItemPackaging extends StatelessWidget {
   const DetailedItemPackaging({
@@ -33,9 +34,9 @@ class DetailedItemPackaging extends StatelessWidget {
               const VerticalSpacer(space: 16),
               CustomAppbar(title: title),
               const VerticalSpacer(space: 12),
-              const Text(
-                "Select Your Wanted Section :",
-                style: TextStyle(
+               Text(
+                S.of(context).select_section,
+                style: const TextStyle(
                     fontSize: 14,
                     color: Colors.red,
                     fontWeight: FontWeight.bold),

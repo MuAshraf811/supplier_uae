@@ -9,6 +9,7 @@ import 'package:supplier/features/supplier/notifications/presentation/cubit/noti
 
 import '../../../../../../core/utils/service_locator.dart';
 import '../../../../../../core/utils/widgets/terms_and_conditions_dialog.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../../../chat/presentation/cubit/chat_cubit.dart';
 
 class NotificationsScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class NotificationsScreen extends StatelessWidget {
                 children: [
                   const VerticalSpacer(space: 16),
                   Text(
-                    " Notifications",
+                    S.of(context).notifications,
                     style:
                     applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black),
                   ),
@@ -53,7 +54,7 @@ class NotificationsScreen extends StatelessWidget {
                         offerSupplierId: notifications[index].offerSupplierId,
                       ),
                     ),
-                  ) : const Center(child: Text('No Notifications Yet!'),),
+                  ) : Center(child: Text(S.of(context).no_notifications),),
                 ],
               ),
             );
@@ -122,7 +123,7 @@ class NotificationItem extends StatelessWidget {
                 child: ElevatedButton(onPressed: () {
                   // context.read<ChatCubit>().messageController.text = ;
                   showTermsAndConditionsDialog(context, false,offerSupplierId: offerSupplierId);
-                }, child: const Text('Accept')
+                }, child: Text(S.of(context).accept)
                 ),
               ),
             ],

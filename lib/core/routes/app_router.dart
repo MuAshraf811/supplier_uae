@@ -30,6 +30,7 @@ import '../../features/client/chat/presentation/views/chat_view.dart';
 import '../../features/client/home/presentatoin/cubit/main_home_cubit.dart';
 import '../../features/client/home/presentatoin/screens/detailed_category_item_view.dart';
 import '../../features/client/home/presentatoin/screens/home_page.dart';
+import '../../features/client/settings/presentation/views/terms_conditions.dart';
 import '../../features/supplier/chatSupplier/presentation/cubit/chat_cubit.dart';
 import '../../features/supplier/chatSupplier/presentation/views/chat_view.dart';
 import '../../features/supplier/settings/presentation/views/terms_conditions.dart';
@@ -55,11 +56,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => LoginView(),
         );
-      case RouteConstants.termsAndConditionsView:
+      case RouteConstants.termsAndConditionsSupplierView:
         return MaterialPageRoute(
-          builder: (context) => const TermsAndConditionsView(),
-        ); 
-         case RouteConstants.firstView:
+          builder: (context) => const TermsAndConditionsViewSupplier(),
+        );
+      case RouteConstants.termsAndConditionsClientView:
+        return MaterialPageRoute(
+          builder: (context) => const TermsAndConditionsViewClient(),
+        );
+      case RouteConstants.firstView:
         return MaterialPageRoute(
           builder: (context) => const FirstView(),
         );

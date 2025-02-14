@@ -17,7 +17,7 @@ class SupplierChatCubit extends Cubit<ChatState> {
   final ScrollController chatScrollController = ScrollController();
   final TextEditingController messageController = TextEditingController();
   final chatTextFieldKey = GlobalKey<FormState>();
-  List<MessageModel> allMessages = AppConst.chatMessagesExamples;
+  // List<MessageModel> allMessages = AppConst.chatMessagesExamples;
   List<MessageprodModel>? allChatMessages = [];
 
   String? imagepath;

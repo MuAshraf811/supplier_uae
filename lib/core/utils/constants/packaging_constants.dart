@@ -20,7 +20,7 @@ class PackagingConstants {
     ],
     [
       "Bakery Range",
-      "Bottels",
+      "Bottles",
       "Cling Film",
       "Containers",
       "Cups",
@@ -36,7 +36,7 @@ class PackagingConstants {
       "Table Sheets",
       "Tamper Evident Containers"
     ],
-    ["Dispanser", "Cleaner", "Gloves", "Hygiene"],
+    ["Dispenser", "Cleaner", "Gloves", "Hygiene"],
     [
       "Baking Range",
       "Bowls",

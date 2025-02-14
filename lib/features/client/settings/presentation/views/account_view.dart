@@ -1,3 +1,4 @@
+import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
 import 'package:supplier/core/utils/widgets/app_text_field.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
@@ -10,6 +11,7 @@ import '../../../../../core/utils/constants/color_consatnts.dart';
 import '../../../../../core/utils/service_locator.dart';
 import '../../../../../core/utils/styles/text_styles.dart';
 import '../../../../../core/utils/widgets/app_button.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../Authentication/presentation/widgets/drop_down_text_field.dart';
 
 class AccountView extends StatelessWidget {
@@ -29,19 +31,19 @@ class AccountView extends StatelessWidget {
                 child: ListView(
                   children: [
                     const VerticalSpacer(space: 32),
-                    const CustomAppbar(title: "Account View"),
+                    CustomAppbar(title: S.of(context).account),// AppConfigCubit.isEnglish? "Account View": "الحساب"),
                     const VerticalSpacer(space: 12),
                     Row(
                       children: [
                         Expanded(
                           child: AppTextField(
-                              label: 'First Name',
+                              label: S.of(context).first_name,
                               controller: context
                                   .read<AuthenticationCubit>()
                                   .firstNameProfileController,
                               validator: (val) {
                                 if (val == null || val.isEmpty) {
-                                  return "This field should not be embty";
+                                  return "This field should not be empty";
                                 }
                                 return null;
                               },
@@ -50,14 +52,14 @@ class AccountView extends StatelessWidget {
                         const HorizontalSpacer(space: 12),
                         Expanded(
                           child: AppTextField(
-                              label: 'Last Name',
+                              label:  S.of(context).last_name,
                               suffixIcon: Icons.person_2_rounded,
                               controller: context
                                   .read<AuthenticationCubit>()
                                   .lastNameProfileController,
                               validator: (val) {
                                 if (val == null || val.isEmpty) {
-                                  return "This field should not be embty";
+                                  return "This field should not be empty";
                                 }
                                 return null;
                               }),
@@ -75,7 +77,7 @@ class AccountView extends StatelessWidget {
                     ),
                     const VerticalSpacer(space: 10),
                     AppTextField(
-                      label: "Mobile Number",
+                      label:  S.of(context).mobile_number,
                       type: TextInputType.phone,
                       controller: context
                           .read<AuthenticationCubit>()
@@ -92,7 +94,7 @@ class AccountView extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          " City :",
+                          S.of(context).city,
                           style: applySemiBoldStyle(
                             fontSize: 16,
                             fontColor: ColorConsatnts.black,
@@ -106,7 +108,7 @@ class AccountView extends StatelessWidget {
                     ),
                     const VerticalSpacer(space: 48),
                     AppButton(
-                      text: "Change Password",
+                      text:  S.of(context).change_pass,
                       onTap: () {
                         Navigator.pushNamed(
                             context, RouteConstants.changePasswordView);
@@ -135,7 +137,7 @@ class AccountView extends StatelessWidget {
                           );
                         }
                         return AppButton(
-                          text: "Update Information",
+                          text:  S.of(context).update_info,
                           onTap: () {
                             if (formKey
                                 .currentState!
