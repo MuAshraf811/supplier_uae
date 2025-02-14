@@ -26,13 +26,7 @@ static const  socialMediaIcons = [
 ];
 
 
-
-  static const termsAndConditions =
-      "This application provides the service of obtaining price quotes and marketing for companies for free.\nNO FEES are collected from the buyer,FREE DELIVERY, FREE REGISTRATION.\n -----------\nWelcome to SUPPLIER app! By accessing or using our app, you agree to comply with and be bound by these Terms and Conditions.\n Please read them carefully. If you disagree with any part of these Terms, you may not use our service.\n------------------------------ \n1. Deﬁnitions * App: Refers to the SUPPLIER mobile application. * User: Any individual or entity accessing the app, including both Buyers and Sellers. * Buyer: A User seeking printing, packaging, and advertising services. * Seller: A User offering printing, packaging, and advertising services. * Services: Refers to all functionalities provided by SUPPLIER, including quote requests, price comparisons, and communication tools.\n------------------ \n2. Acceptance of Terms By creating an account, accessing, or using the app, you accept and agree to these Terms and our Privacy Policy. SUPPLIER reserves the right to modify these Terms at any time.Users are encouraged to review these Terms periodically.\n------------------ \n3. User Accounts 3.1 Account Registration: To access certain features, Users must create an account by providing accurate and complete information. Users are responsible for keeping their login information conﬁdential.\n------------------ \n 3.2 Account Suspension/Termination: SUPPLIER reserves the right to suspend or terminate accounts that violate these Terms or engage in fraudulent or abusive activities.\n------------------ \n 4. Services Provided\n 4.1 Platform Use: SUPPLIER connects Buyers and Sellers in the printing, packaging, and advertising industry and we participate in oversee transactions. SUPPLIER is responsible for the quality, accuracy, or timeliness of services provided by Sellers.\n 4.2 Quote Requests and Communication: Buyers can request quotes from Sellers. All interactions, including negotiations, payments, and service fulﬁllment, are through only of SUPPLIER app.\n------------------ \n 5. User Obligations and Conduct 5.1 Prohibited Activities: Users agree not to engage in fraudulent, defamatory, or harmful activities, nor to misuse the app’s services in any way.. \n5.2 Compliance with Laws: Users must comply with all applicable laws and regulations while using the app. \n5.4 Legal obligations of clients : You acknowledge and commit as a party to this agreement to: Compliance with applicable laws at all times and with legislation and regulations, including - without exception - all privacy protection legislation, laws and regulations. You have all the powers and capacity to enter into this agreement and pay the dues in accordance with the terms and conditions contained therein. If you purchase the Product on behalf of a company, you conﬁrm that you represent it and are acting on its behalf and that you will abide by these terms of purchase \n5.5 Communication between sellers and buyers: Communication between the seller and the buyer is prohibited in order to maintain the quality of service and to adhere to the application’s standards. The user has the right to communicate with the supplier application at any time and through the means of communication available within the application.\n 5.6 In the event of communication between the seller and the buyer illegally,whether by adding a phone number, address, or any means of communication within the application The SUPPLIER application has the right to block the seller and the buyer without referring to both of them and without bearing any responsibility towards them.\n------------------ \n 6. Payments and Fees \n6.1 Pricing: Prices for services are set by Sellers. \n6.2 Transaction Handling: SUPPLIER may facilitate payment transactions through secure SUPPLIER APP providers. and we take responsibility for the completion or quality of services once payment is made.\n 6.3 Payment method : There is no way to purchase online at the present time, and when a purchase method is added, the SUPPLIER application will notify customers directly.\n------------------ \n8. Intellectual Property SUPPLIER and all associated logos, designs, and trademarks are the property of SUPPLYER PORTAL. Unauthorized use or distribution of these materials is strictly prohibited. \n------------------ \n9. Privacy Policy Our Privacy Policy, which explains how we collect, use, and protect personal information,is part of these Terms. By using the app, you agree to the terms outlined in our Privacy Policy.\n------------------ \n10. Dispute Resolution\n 10.1 User Disputes: Any dispute that arises between the user and the SUPPLIER application is resolved through the SUPPLYER PORTAL.\n10.2 Governing Law: These Terms are governed by the laws of [UAE].Any disputes arising from these Terms or the use of SUPPLIER application will be subject to the exclusive jurisdiction of the courts in [Dubai].\n------------------ \n11. Disclaimer SUPPLIER app provides its services 'as is' without any warranties.We do not guarantee uninterrupted access or the accuracy, reliability,or suitability of any services provided through the app. \n------------------ \n12. Changes to Terms SUPPLIER app reserves the right to modify these Terms at any time. Users will be notiﬁed of signiﬁcant changes, and continued use of the app constitutes acceptance of any modiﬁed terms.\n------------------ \n13. Contact Us If you have questions regarding these Terms, please contact us at [support@supplier.shop].Acknowledgment By using SUPPLIER app, you acknowledge that you have read, understood, and agreed to these Terms and Conditions. If you do not agree to these Terms,please discontinue use of the app.";
-
-  static const sellerTermsAndConditions =
-      "SELLER TERMS AND CONDITIONS By joining SUPPLIER app as a Seller, you agree to uphold the following standards in quality, quantity, and delivery timing. Failure to meet these conditions may result in penalties, suspension, or termination of your account.\n---------------\n - The seller must provide complete and correct information along with a copy of the trade license.\n---------\nIn the event that fraud or fraudulent information is discovered, the account will be deleted immediately without consulting the seller.\n---------------------------------\n Shipping and delivery : (FREE) are the responsibility of the SUPPLIER app and without collecting fees from the seller \n----------\n1. Quality Standards 1.1 Quality Assurance: Sellers must ensure that all products and services meet industry standards and comply with specifications provided by the Buyer in the quote request.1.2 Consistency: Sellers agree to deliver consistent quality across all orders. This includes using appropriate materials, adhering to design specifications, and maintaining color accuracy, print clarity, and finishing quality.1.3 Inspection: Sellers must inspect each order before dispatch to verify that it meetsagreed-upon quality standards. Repeated failure to meet quality standards may result in account suspension.1.4 Complaint Resolution: Sellers are required to promptly address any complaints about quality. a product or service is deemed unsatisfactory or defective,the Seller must offer an appropriate resolution, which may include repairs, replacements, or refunds, as SUPPLIER app requierment determined on a case-by-case basis.\n------------------------------\n 2. Quantity Standards 2.1 Order Fulfillment: Sellers must fulfill orders according to the quantities specified in each contract. Any discrepancies in quantity (shortage or surplus) without prior written agreement from the SUPPLIER app are not permitted. 2.2 Excess Quantity Handling: Any excess quantity delivered without the Buyer’s request or consent may be returned at the Seller’s expense or discarded. 2.3 Shortage Penalties: Failure to deliver the agreed quantity may result in a penalty and potential reimbursement of costs incurred by the Buyer due to the shortage.\n-------------------------\n 3. Delivery Timing 3.1 On-Time Delivery: Sellers are required to meet the delivery timeline specified in the Buyer’s contract or agreement. Late deliveries can negatively impact the Buyer and may result in penalties. 3.2 Communication of Delays: If delays are unavoidable, Sellers must notify the SUPPLIER app immediately, providing an updated delivery timeline. Failure to communicate delays promptly may result in additional penalties. 3.3 Rush Orders: If the Seller accepts a rush order, they must deliver within the expedited timeline specified. If the Seller fails to meet the rush order timing, they may be liable for refunds or compensation. 3.4 Penalty for Delays: Repeated or unjustified delays may result in penalties, and SUPPLIER app reserves the right to suspend or terminate the Seller’s account if they consistently fail to meet agreed-upon timelines.\n-----------------------\n 4. Guarantee 4.1 Satisfaction Guarantee: Sellers must guarantee satisfaction in terms of quality, quantity, and timeliness. If the product does not meet the agreed-upon standards, the Seller agrees to offer a replacement, repair, or refund as According to the conditions applicable in the SUPPLIER app. 4.2 Guarantee Period: The seller must ensure the quality of the product before sending it for shipping or delivery The seller is also committed to the agreed upon product sent in the price offer with all its details In the event of a violation of the product details sent by the seller, the supplier application has the right to reject the product or return it according to the customer’s requirements without the seller rejecting it and deducting the full price of the product or offering the seller a solution by reproducing the product according to the specifications of the price offer.\n------------------------\n 5. Return and Refund Policy: 5.1 Sellers must return products in the following cases: - The product is different from the specifications included in the price quote. - Defect in agreed upon colours. - Change in the materials agreed upon in the price offer. - Shortage in the agreed upon quantity. - Delay in product delivery. 5.2 Accountability: SUPPLIER app reserves the right to review Seller performance periodically. Sellers who repeatedly fail to uphold these conditions may face account penalties, including suspension or permanent removal from the platform.\n----------------------------------\n6.Commission Tiers (Dubai - Sharjah - Ajman) Orders from Dhs. 500, to Dhs. 1000 Commission Rate: %15 Example: For an order worth Dhs. 500 is a minimum , the commission fee would be Dhs. 75, and the Seller would receive Dhs 425.\n--------------------------\n .Orders from Dhs. 1001 to Dhs. 5000 Commission Rate: %10 Example: For an order worth Dhs 1,500, the commission fee would be Dhs.150, and the Seller would receive Dhs.1,350. \n----------------------------\nOrders from Dhs. 5,001 to Dhs. 10,000 Commission Rate: %7 Example: For an order worth Dhs. 5,100, the commission fee would be Dhs. 510, and the Seller would receive Dhs. 4,590.\n----------------------\n Orders Above Dhs. 10,000 Commission Rate: %5 Example: For an order worth Dhs. 10,050, the commission fee would be Dhs. 502.50, and the Seller would receive Dhs. 9,547.50.\n-----------------------\n Delivery Conditions\n--------\n 1. It is prohibited to place the seller’s logo or any details (address, phone number, any social media method) on the shipment when it is received by the shipping company.\n-----------\n2. The seller must ship the product, whatever it is, in plain boxes/wrapping paper without any drawings or details.\n-------------------\n 3. The shipping company must deliver a delivery note in the name of the SUPPLIER app.\n------------------------------\n* If the seller does not adhere to the shipping terms, fees and penalties may be imposed on the seller from SUPPLIER app.\nAdditional Conditions \nPromotional Discounts: SUPPLIER app may, at its discretion, offer promotional discounts on commission rates. Sellers will be notified of such promotions and how long they apply.Commission Deduction and Payout Automatic Deduction: The commission is automatically deducted from the Seller’s payout upon completion of each transaction.Payout Schedule: Payouts are issued on a [weekly] basis to the Seller’s designated account,minus the commission fee and any applicable processing charges (Agreed upon in advance).Refunds and Adjustments Order Cancellations: If an order is canceled before completion, no commission is charged.Disputed Orders: In cases of disputes where a partial refund is granted, the commission will be adjusted based on the final agreed-upon amount. Invoices Sellers must issue an invoice in the name of SUPPLYER PORTAL.For every purchase made through the supplier’s application.Disputes This Agreement is protected and construed in accordance with the laws of the United Arab Emirates and the laws of the Emirate of Dubai. The Dubai Courts have jurisdiction to hear every dispute arising from this agreement.Legal obligations of Seller You acknowledge and commit as a party to this agreement to: Compliance with applicable laws at all times and with legislation and regulations, including - without exception - all privacy protection legislation, laws and regulations.\n---------------------------------------\n You have all the powers and capacity to enter into this agreement and pay the dues in accordance with the terms and conditions contained therein.Acknowledgment\n----------\n - By joining SUPPLIER app as a Seller, you acknowledge and agree to abide by these standards.-\n-----\n By accepting these terms, you agree to the commission structure outlined above.\n-----------------\n SUPPLIER app reserves the right to modify commission rates with advance notice to Sellers.";
-  static List<String> homeCategoryStrings(BuildContext context) {
+static List<String> homeCategoryStrings(BuildContext context) {
     return [
       S.of(context).printing,
       S.of(context).fast_print,
@@ -61,28 +55,28 @@ static const  socialMediaIcons = [
 //       localizations.gift_items,
 //     ];
 //   }
-  static final chatMessagesExamples = [
-    MessageModel(
-        message: "Hello This is Test Message", time: "2:13", isSender: true),
-    MessageModel(message: "I'm Muhammed Ashraf", time: "2:09", isSender: true),
-    MessageModel(message: "Test ", time: "9:00", isSender: false),
-    MessageModel(message: "This is Message", time: "2:13", isSender: true),
-    MessageModel(
-        message: "Hello This is Test Message", time: "4:44", isSender: false),
-    MessageModel(
-        message: "Hello Hello Hello Hello ", time: "3:11", isSender: true),
-    MessageModel(
-        message: " is this Test Message?", time: "2:13", isSender: false),
-    MessageModel(
-        message: "Test me Test Me Test  ", time: "2:13", isSender: false),
-    MessageModel(
-        message: "Dummy Dummy Dummy Dummy Dummy Dummy ",
-        time: "5:22",
-        isSender: true),
-    MessageModel(message: "01002011850", time: "10:45", isSender: false),
-    MessageModel(
-        message: "Text Message Message Message ", time: "6:20", isSender: true),
-  ];
+//   static final chatMessagesExamples = [
+//     MessageModel(
+//         message: "Hello This is Test Message", time: "2:13", isSender: true),
+//     MessageModel(message: "I'm Muhammed Ashraf", time: "2:09", isSender: true),
+//     MessageModel(message: "Test ", time: "9:00", isSender: false),
+//     MessageModel(message: "This is Message", time: "2:13", isSender: true),
+//     MessageModel(
+//         message: "Hello This is Test Message", time: "4:44", isSender: false),
+//     MessageModel(
+//         message: "Hello Hello Hello Hello ", time: "3:11", isSender: true),
+//     MessageModel(
+//         message: " is this Test Message?", time: "2:13", isSender: false),
+//     MessageModel(
+//         message: "Test me Test Me Test  ", time: "2:13", isSender: false),
+//     MessageModel(
+//         message: "Dummy Dummy Dummy Dummy Dummy Dummy ",
+//         time: "5:22",
+//         isSender: true),
+//     MessageModel(message: "01002011850", time: "10:45", isSender: false),
+//     MessageModel(
+//         message: "Text Message Message Message ", time: "6:20", isSender: true),
+//   ];
   static List<String> uaeCities = [
     'Abu Dhabi',
     'Dubai',
@@ -95,26 +89,27 @@ static const  socialMediaIcons = [
     'Khor Fakkan',
     'Dibba Al-Fujairah',
   ];
-  static String getQuotationConditionText(int index) {
+  static String getQuotationConditionText(BuildContext context, int index) {
     switch (index) {
       case 1:
-        return 'By accepting this price offer, you agree to Quotes Terms & Conditions and provide your LPO approval to place the order.';
+        return S.of(context).quotation_condition_1;
       case 2:
-        return 'The application agent will get in touch with you to collect the deposit.';
+        return S.of(context).quotation_condition_2;
       case 3:
-        return 'A sample of the order to be completed will be created and signed by the buyer after the deposit has been paid.';
+        return S.of(context).quotation_condition_3;
       case 4:
-        return 'On the same day of delivery, the remaining balance must be paid.';
+        return S.of(context).quotation_condition_4;
       case 5:
-        return 'Delivery Date is determined by the shape, size and details of the order (one order may differ from another based on the details).';
+        return S.of(context).quotation_condition_5;
       case 6:
-        return 'Using the communication channels provided by SUPPLIER App, the application administrator must be informed of any errors in the order details on the same day of delivery.';
+        return S.of(context).quotation_condition_6;
       case 7:
-        return 'Returning the order is not possible if the delivery exceeds one business day and the order is considered to have been successfully delivered.';
+        return S.of(context).quotation_condition_7;
       default:
         return '';
     }
   }
+
 
   static List<String> settingsText(BuildContext context) {
     return [
@@ -198,7 +193,7 @@ static const  socialMediaIcons = [
             index: 9),
         CategoryModel(
             image: "assets/images/printing/Diverse.jpeg",
-            title: "Diverse",
+            title: S.of(context).diverse_digital,
             index: 11),
         CategoryModel(
             image: "assets/images/printing/plastic cup.jpeg",
@@ -220,7 +215,7 @@ static const  socialMediaIcons = [
             index: 2),
         CategoryModel(
             image: "assets/images/Digital/diverse.jpeg",
-            title: "Diverse",
+            title: S.of(context).diverse_digital,
             index: 3),
         CategoryModel(
             image: "assets/images/Digital/Flyer.jpeg",
@@ -288,11 +283,11 @@ static const  socialMediaIcons = [
             index: 2),
         CategoryModel(
             image: "assets/images/Signage/diverse.jpeg",
-            title: "diverse",
+            title: S.of(context).diverse_digital,
             index: 3),
         CategoryModel(
             image: "assets/images/Signage/exhibition stand.jpeg",
-            title: "exhibition stand.",
+            title: S.of(context).exhibition_stand,
             index: 4),
         CategoryModel(
             image: "assets/images/Signage/Flag.jpeg",
@@ -304,7 +299,7 @@ static const  socialMediaIcons = [
             index: 6),
         CategoryModel(
             image: "assets/images/Signage/large format sticker.jpeg",
-            title: "large format sticker",
+            title: S.of(context).large_format_sticker,
             index: 7),
         CategoryModel(
             image: "assets/images/Signage/pop up.jpeg",
@@ -330,7 +325,7 @@ static const  socialMediaIcons = [
             index: 1),
         CategoryModel(
             image: "assets/images/Unifoarm/diverse.jpeg",
-            title: "diverse",
+            title: S.of(context).diverse_digital,
             index: 2),
         CategoryModel(
             image: "assets/images/Unifoarm/full set.jpg",
@@ -360,7 +355,7 @@ static const  socialMediaIcons = [
             index: 0),
         CategoryModel(
             image: "assets/images/Gift Items/Diverse.jpeg",
-            title: "Diverse",
+            title: S.of(context).diverse_digital,
             index: 1),
         CategoryModel(
             image: "assets/images/Gift Items/flash memory.jpeg",
@@ -392,7 +387,7 @@ static const  socialMediaIcons = [
             index: 8),
         CategoryModel(
             image: "assets/images/Gift Items/Trophy.jpeg",
-            title: "Trophy",
+            title: S.of(context).trophy,
             index: 9),
         CategoryModel(
             image: "assets/images/Gift Items/umbrella.jpeg",

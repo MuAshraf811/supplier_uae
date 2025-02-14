@@ -15,6 +15,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../generated/l10n.dart';
+
 showQuotationDialog(BuildContext context, QuotationCubit cubit) {
   showModalBottomSheet(
     context: context,
@@ -262,26 +264,26 @@ class QuotationTermsAndCondition extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Terms and Conditions :',
+        Text(S.of(context).terms_and_conditions,
             style: applyBoldStyle(fontSize: 18, fontColor: ColorConsatnts.red)),
         const VerticalSpacer(space: 4),
-        Text('VALIDITY: 10 DAYS FROM ABOVE DATE',
+        Text(S.of(context).validity,
             style:
                 applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black)),
         Text(
-            'NOTE: AMOUNT PAYMENT 50% IN ADVANCE AND 50% CASH ON DATE OF RECEIVED.',
+            S.of(context).note_payment,
             style:
                 applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black)),
         Text(
-            'SOME TYPE OF ORDERS THAT ARE 10% MORE OR 10% LESS THAN THE QUANTITY QUOTED WILL BE INVOICED AT THE TIME THE ORDER IS COMPLETED AND WILL BE ADDED OR DEDUCTED FROM THE TOTAL AMOUNT REMAINING.',
+            S.of(context).order_variation,
             style: applyMediumStyle(
                 fontSize: 15, fontColor: ColorConsatnts.black)),
         const VerticalSpacer(space: 4),
-        Text('Quotes Terms & Conditions : ',
+        Text(S.of(context).quotes_terms,
             style: applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.red)),
         const VerticalSpacer(space: 4),
         for (var i = 1; i <= 7; i++)
-          Text('$i- ${AppConst.getQuotationConditionText(i)}',
+          Text('$i- ${AppConst.getQuotationConditionText(context,i)}',
               style: applySemiBoldStyle(
                   fontSize: 15, fontColor: ColorConsatnts.black)),
       ],

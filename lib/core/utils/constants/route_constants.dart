@@ -18,7 +18,8 @@ class RouteConstants {
   static const firstView = "/";  
   static const onBoardingView = "/onBordingView";
 
-  static const termsAndConditionsView = "/TermsAndConditionsView";
+  static const termsAndConditionsSupplierView = "/termsAndConditionsSupplierView";
+  static const termsAndConditionsClientView = "/termsAndConditionsClientView";
   static const supplierHomeView = "/SupplierHomeView";
   static const supplierFilterView = "/SupplierFilterView";
   static const supplierRegistererView = "/SupplierRegisterView"; 

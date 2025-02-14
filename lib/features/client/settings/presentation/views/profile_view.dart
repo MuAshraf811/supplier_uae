@@ -161,7 +161,7 @@ class SettingsItem extends StatelessWidget {
               Navigator.pushNamed(context, RouteConstants.accountView);
             case 1:
               Navigator.pushNamed(
-                  context, RouteConstants.termsAndConditionsView);
+                  context, AppConfigCubit.isSupplier? RouteConstants.termsAndConditionsSupplierView : RouteConstants.termsAndConditionsClientView);
             case 2:
               launchUrl(Uri.parse(AppConst.websiteUrl));
              case 3:

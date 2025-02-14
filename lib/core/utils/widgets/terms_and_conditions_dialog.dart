@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/app_const.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../features/client/chat/presentation/cubit/chat_cubit.dart';
+import '../../../generated/l10n.dart';
 
 showTermsAndConditionsDialog(
     BuildContext context,
@@ -33,7 +35,7 @@ showTermsAndConditionsDialog(
         child: ListView(
           children: [
             Text(
-              "By Signing In , You agree to Our Terms & Conditions Which is : ",
+              AppConfigCubit.isEnglish? "By Signing In , You agree to Our Terms & Conditions Which is : ": "انا اوافق علي الشروط والاحكام الاتيه:",
               style: applyBoldStyle(
                 fontSize: 16,
                 fontColor: ColorConsatnts.primary,
@@ -42,8 +44,8 @@ showTermsAndConditionsDialog(
             const VerticalSpacer(space: 12),
             Text(
               isSeller
-                  ? AppConst.sellerTermsAndConditions
-                  : AppConst.termsAndConditions,
+                  ? S.of(context).terms_supplier
+                  : S.of(context).terms_client,
               style: applySemiBoldStyle(
                 fontSize: 16,
                 fontColor: ColorConsatnts.black,
@@ -53,7 +55,7 @@ showTermsAndConditionsDialog(
             BlocProvider(
               create: (context) => ServiceLocator.getIt<ChatCubit>(),
               child:  AppButton(
-                    text: "Agree",
+                    text: S.of(context).accept,
                     onTap: () {
                       if(offerSupplierId != null){
                         // print(ServiceLocator.getIt<ChatCubit>().messageController.text);

@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
 
@@ -25,7 +27,7 @@ class OrdersView extends StatelessWidget {
           Align( 
             alignment: Alignment.topCenter,
             child: Text(
-              "Your Order Summary ",
+              S.of(context).your_order,
               style:
                   applyBoldStyle(fontSize: 17, fontColor: ColorConsatnts.black),
             ),
@@ -50,7 +52,7 @@ class OrdersView extends StatelessWidget {
                             width: 54),
                         const VerticalSpacer(space: 28),
                         Text(
-                          "There is no orders ",
+                          S.of(context).no_orders,
                           style: applyMediumStyle(
                               fontSize: 18, fontColor: ColorConsatnts.black),
                         )

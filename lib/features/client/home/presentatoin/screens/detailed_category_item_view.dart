@@ -80,7 +80,7 @@ class DetailedCategoryItemView extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Additionals",
+                  S.of(context).extra_details,
                   style: applySemiBoldStyle(
                     fontSize: 16,
                     fontColor: ColorConsatnts.primary,
