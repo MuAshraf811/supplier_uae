@@ -8,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/utils/app_global.dart';
+import 'core/utils/configurations.dart';
 import 'core/utils/constants/app_const.dart';
 import 'core/utils/constants/route_constants.dart';
 import 'core/utils/constants/storage_const.dart';
@@ -24,6 +25,7 @@ class EPrinter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   NotificationsManager().initialize();
 
     initErrorHandling();
     AppConfigCubit.currentUserDataId = SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey);

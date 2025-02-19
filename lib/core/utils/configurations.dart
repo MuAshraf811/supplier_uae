@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:supplier/core/utils/constants/storage_const.dart';
 import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/features/supplier/notifications/data/models/notifications_model.dart';
 import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
+
+import '../cubit/app_config_cubit.dart';
 
 class NotificationsManager {
   NotificationsManager._();
@@ -17,6 +20,7 @@ class NotificationsManager {
     print('initializing notifications');
 
     final settings = await _requestPermissions();
+    print("requesting permission");
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       await _setupTokens();
       await _setupMessageHandlers();
@@ -35,8 +39,8 @@ class NotificationsManager {
   Future<void> _setupTokens() async {
     // Handle APNS token for iOS
     final apnsToken = await _firebaseMessaging.getAPNSToken();
-    if (apnsToken != null) {
-      //await _storeFCMToken(apnsToken);
+    if (apnsToken != null && apnsToken.isNotEmpty) {
+      // await _storeFCMToken(apnsToken);
     }
 
     // Handle FCM token
@@ -50,11 +54,30 @@ class NotificationsManager {
   }
 
   Future<void> _storeFCMToken(String token) async {
-    if(token.isNotEmpty) {
+    if(token != null && token.isNotEmpty) {
+      print("storing token: $token");
       await SharedPreferencesManager.storeStringValue(
       key: StorageConstants.fcmToken,
       value: token,
     );
+
+
+    if(AppConfigCubit.isLogged) {
+      
+      String collectionName = AppConfigCubit.isSupplier ? 'Suppliers' : 'Users';
+
+      final instance =
+      FirebaseFirestore.instance.collection(collectionName);
+      instance.doc(AppConfigCubit.currentUserDataId).update(
+        {
+          "fcmToken": token,
+        },
+      );
+    }
+
+
+
+
     }
   }
 

@@ -210,7 +210,7 @@ class SettingsItem extends StatelessWidget {
 
                 ServiceLocator.getIt<SupplierAuthCubit>().clearControllers();
                 ServiceLocator.getIt<AuthenticationCubit>().clearControllers();
-                SharedPreferencesManager.clearCache();
+                // SharedPreferencesManager.clearCache();
 
                 Navigator.of(context,rootNavigator: true).pushNamedAndRemoveUntil(
                      RouteConstants.userTypeView,
