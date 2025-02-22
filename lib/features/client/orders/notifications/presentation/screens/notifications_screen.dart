@@ -52,6 +52,8 @@ class NotificationsScreen extends StatelessWidget {
                         notificationDate: NotificationsCubit.allNotifications[index].date.toString(),
                         notificationBody: notifications[index].body,
                         offerSupplierId: notifications[index].offerSupplierId,
+                        offerId: notifications[index].offerId,
+                        orderId: notifications[index].orderId,
                       ),
                     ),
                   ) : Center(child: Text(S.of(context).no_notifications),),
@@ -75,11 +77,15 @@ class NotificationItem extends StatelessWidget {
     required this.notificationBody,
     required this.notificationDate,
     this.offerSupplierId,
+    this.offerId,
+    this.orderId,
   });
   final String notificationTitle;
   final String notificationBody;
   final String notificationDate;
   final String? offerSupplierId;
+  final String? offerId;
+  final String? orderId;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -122,7 +128,11 @@ class NotificationItem extends StatelessWidget {
                 create:(context) =>  ServiceLocator.getIt<ChatCubit>(),
                 child: ElevatedButton(onPressed: () {
                   // context.read<ChatCubit>().messageController.text = ;
-                  showTermsAndConditionsDialog(context, false,offerSupplierId: offerSupplierId);
+                  showTermsAndConditionsDialog(context, false,
+                    offerSupplierId: offerSupplierId,
+                    offerId: offerId,
+                    orderId: orderId,
+                  );
                 }, child: Text(S.of(context).accept)
                 ),
               ),

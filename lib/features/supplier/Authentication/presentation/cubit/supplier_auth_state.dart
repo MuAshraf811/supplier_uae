@@ -24,7 +24,7 @@ final class  UploadingTradeLisenceErrorState extends SupplierAuthState{
 
 }
  
-
+final class DuplicateUserDataStateState extends SupplierAuthState{}
 
 final class UploadingUserState extends SupplierAuthState{} 
 final class  UploadingUserStateSuccessState extends SupplierAuthState{}

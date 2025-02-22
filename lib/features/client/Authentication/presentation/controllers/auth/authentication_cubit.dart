@@ -62,6 +62,12 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       final fcmToken = SharedPreferencesManager.getStringValue(key: StorageConstants.fcmToken);
 
       final instance = FirebaseFirestore.instance.collection("Users");
+      bool isDuplicate = await checkEmailOrPhoneDuplication(emailRegisterController.text, mobileNumberRegisterController.text);
+
+      if(isDuplicate){
+        emit(AddingUserDataErrorState(error: "Email or Phone number already exists"));
+        return;
+      }
       final obj = await instance.add({
         "first_name": firstNameRegisterController.text,
         "last_name": lastNameRegisterController.text,
@@ -100,6 +106,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
       final instance =
         FirebaseFirestore.instance.collection("Users");
+      
+      bool isDuplicate = await checkEmailOrPhoneDuplication(emailRegisterController.text, mobileNumberRegisterController.text);
+
+      if(isDuplicate){
+        emit(AddingUserDataErrorState(error: "Email or Phone number already exists"));
+        return;
+      }
       final obj = await instance.add({
         "first_name": firstNameRegisterController.text,
         "last_name": lastNameRegisterController.text,
@@ -123,7 +136,9 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  void changePassword() async {}
+  void changePassword() async {
+    
+  }
   void deleteAccount() async {
     try {} catch (e) {
       log(e.toString());
@@ -395,4 +410,43 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     mobileNumberRegisterController.clear();
     lastNameRegisterController.clear();
   }
+
+
+  Future<bool> checkEmailOrPhoneDuplication(String email, String phone)async {
+    
+    var res = await FirebaseFirestore.instance
+          .collection('Suppliers')
+          .where('email', isEqualTo: email).get();
+    if(res.docs.isNotEmpty){
+      return true;
+    }
+    res = await FirebaseFirestore.instance
+          .collection('Suppliers')
+          .where('mobile', isEqualTo: phone).get();
+    if(res.docs.isNotEmpty){
+      return true;
+    }
+
+    res = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('email', isEqualTo: email).get();
+    if(res.docs.isNotEmpty){
+      return true;
+    }
+    res = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('mobile_number', isEqualTo: phone).get();
+    if(res.docs.isNotEmpty){
+      return true;
+    }
+
+
+
+    return false;
+  }
+
+
+
+
+
 }

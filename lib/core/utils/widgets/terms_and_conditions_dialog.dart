@@ -16,7 +16,7 @@ import '../../../generated/l10n.dart';
 showTermsAndConditionsDialog(
     BuildContext context,
     bool isSeller,
-    {String? offerSupplierId}
+    {String? offerSupplierId, String? offerId, String? orderId}
     ) {
   showModalBottomSheet(
     context: context,
@@ -59,7 +59,9 @@ showTermsAndConditionsDialog(
                     onTap: () {
                       if(offerSupplierId != null){
                         // print(ServiceLocator.getIt<ChatCubit>().messageController.text);
-                        ServiceLocator.getIt<ChatCubit>().sendAMessage(customMsg: "I accept the offer from: $offerSupplierId");
+                        ServiceLocator.getIt<ChatCubit>().sendAMessage(
+                          customMsg: "I accept the offer from: $offerSupplierId\n[Offer ID: $offerId]\n[Order ID: $orderId]",
+                        );
                       }
                       // ServiceLocator.getIt<ChatCubit>().messageController.clear();
                       Navigator.pushReplacementNamed(

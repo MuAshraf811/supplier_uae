@@ -55,7 +55,7 @@ class NotificationsManager {
 
   Future<void> _storeFCMToken(String token) async {
     if(token != null && token.isNotEmpty) {
-      print("storing token: $token");
+      // print("storing token: $token");
       await SharedPreferencesManager.storeStringValue(
       key: StorageConstants.fcmToken,
       value: token,
@@ -98,7 +98,9 @@ class NotificationsManager {
         title: message.notification?.title ?? "NO TITLE",
         body: message.notification?.body ?? "NO BODY",
         date: message.data['date'],
-        offerSupplierId: message.data['offerSupplierId']
+        offerSupplierId: message.data['offerSupplierId'],
+        offerId: message.data['offerId'],
+        orderId: message.data['orderId'],
       );
 
       // Add to Cubit state which handles both current state and caching
@@ -119,9 +121,13 @@ class NotificationsManager {
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   final notification = NotificationModel(
-    title: message.notification?.title ?? "NO TITLE",
-    body: message.notification?.body ?? "NO BODY",
-  );
+        title: message.notification?.title ?? "NO TITLE",
+        body: message.notification?.body ?? "NO BODY",
+        date: message.data['date'],
+        offerSupplierId: message.data['offerSupplierId'],
+        offerId: message.data['offerId'],
+        orderId: message.data['orderId'],
+      );
 
   // Handle background message through Cubit
   await NotificationsCubit().addNotification(notification);

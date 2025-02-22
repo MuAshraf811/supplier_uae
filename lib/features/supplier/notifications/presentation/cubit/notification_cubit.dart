@@ -23,15 +23,15 @@ class NotificationsCubit extends Cubit<NotificationStates> {
 
   addNotification(NotificationModel content) async {
     emit(FetchingNotificationState());
-
-    allNotifications.add(content);
-    print('added to cubit list::: current isSupplier? ${AppConfigCubit.isSupplier}');
+    /// TODO load past notifications
+    // print('added to cubit list::: current isSupplier? ${AppConfigCubit.isSupplier}');
     // Cache the updated list
     // await _cacheNotifications();
-
     // print('cached to storage');
-    await saveNotificationsToFirestore();
-    print('saved to firestore');
+    // await saveNotificationsToFirestore();
+    // print('saved to firestore');
+    
+    allNotifications.add(content);
 
     // Convert to JSON for Firestore
     final List<Map<String, dynamic>> notificationsJson =
@@ -52,57 +52,57 @@ class NotificationsCubit extends Cubit<NotificationStates> {
     emit(FetchingNotificationSuccessState());
 
   }
-  Future<void> saveNotificationsToFirestore() async {
-    try {
-      // Convert notifications to JSON
-      final List<Map<String, dynamic>> notificationsJson =
-      allNotifications.map((notification) => notification.toJson()).toList();
+  // Future<void> saveNotificationsToFirestore() async {
+  //   try {
+  //     // Convert notifications to JSON
+  //     final List<Map<String, dynamic>> notificationsJson =
+  //     allNotifications.map((notification) => notification.toJson()).toList();
 
-      // Convert to string for storage
-      final String notificationsString = jsonEncode(notificationsJson);
+  //     // Convert to string for storage
+  //     final String notificationsString = jsonEncode(notificationsJson);
 
-    // Update user document in Firestore
-    //await /* your Firestore update logic */
+  //   // Update user document in Firestore
+  //   //await /* your Firestore update logic */
 
-    emit(FetchingNotificationSuccessState());
-    } catch (e) {
-    emit(FetchingNotificationErrorState(e.toString()));
-    }
-  }
-  Future<void> _cacheNotifications() async {
-    try {
-      // Convert notifications list to JSON
-      final List<Map<String, dynamic>> notificationsJson =
-      allNotifications.map(
-              (notification) => notification.toJson()).toList();
+  //   emit(FetchingNotificationSuccessState());
+  //   } catch (e) {
+  //   emit(FetchingNotificationErrorState(e.toString()));
+  //   }
+  // }
+  // Future<void> _cacheNotifications() async {
+  //   try {
+  //     // Convert notifications list to JSON
+  //     final List<Map<String, dynamic>> notificationsJson =
+  //     allNotifications.map(
+  //             (notification) => notification.toJson()).toList();
 
-      // Store JSON string in SharedPreferences
-      await SharedPreferencesManager.storeStringValue(
-        key: StorageConstants.msgHistory,
-        value: jsonEncode(notificationsJson),
-      );
+  //     // Store JSON string in SharedPreferences
+  //     await SharedPreferencesManager.storeStringValue(
+  //       key: StorageConstants.msgHistory,
+  //       value: jsonEncode(notificationsJson),
+  //     );
 
-      String collectionName = AppConfigCubit.isSupplier ? 'Suppliers' : 'Users';
+  //     String collectionName = AppConfigCubit.isSupplier ? 'Suppliers' : 'Users';
 
-      final instance =
-      FirebaseFirestore.instance.collection(collectionName);
+  //     final instance =
+  //     FirebaseFirestore.instance.collection(collectionName);
 
-      final  res = await instance
-          .where("uuid",isEqualTo: AppConfigCubit.currentUserId).get();
+  //     final  res = await instance
+  //         .where("uuid",isEqualTo: AppConfigCubit.currentUserId).get();
 
-      final notificationHistory = SharedPreferencesManager.getStringValue(key: StorageConstants.msgHistory);
-      instance.doc(res.docs.first.id).update(
-        {
-          "notificationHistory": notificationHistory,
-        },
-      );
+  //     final notificationHistory = SharedPreferencesManager.getStringValue(key: StorageConstants.msgHistory);
+  //     instance.doc(res.docs.first.id).update(
+  //       {
+  //         "notificationHistory": notificationHistory,
+  //       },
+  //     );
 
 
 
-    } catch (e) {
-      emit(FetchingNotificationErrorState('Failed to cache notifications: ${e.toString()}'));
-    }
-  }
+  //   } catch (e) {
+  //     emit(FetchingNotificationErrorState('Failed to cache notifications: ${e.toString()}'));
+  //   }
+  // }
 
   Future<void> loadNotifications() async {
     try {
@@ -116,11 +116,11 @@ class NotificationsCubit extends Cubit<NotificationStates> {
 
       if (cachedNotifications != null && cachedNotifications.isNotEmpty) {
 
-        print('found cached notifications');
+        // print('found cached notifications');
 
         // Parse JSON string to List of Maps
         final List<dynamic> notificationsJson = jsonDecode(cachedNotifications);
-        print(notificationsJson.toString());
+        // print(notificationsJson.toString());
         // Convert each Map to NotificationModel
         allNotifications = notificationsJson
             .map((json) => NotificationModel.fromJson(json as Map<String, dynamic>))
@@ -138,11 +138,11 @@ class NotificationsCubit extends Cubit<NotificationStates> {
         // print('uuid:::${AppConfigCubit.currentUserId}');
         // print('res:::${res.size}');
         if(res.docs.isNotEmpty) {
-          print('fetching user notifications');
+          // print('fetching user notifications');
           String currentUserNotifications = UserDataModel.fromJson(res.docs.first.data()).notificationHistory;
           if(currentUserNotifications.isNotEmpty){
             final dynamic jsonData = jsonDecode(currentUserNotifications);
-            print(jsonData.toString());
+            // print(jsonData.toString());
             // Handle single notification case
             if (jsonData is Map<String, dynamic>) {
               // If it's a single notification
@@ -191,6 +191,51 @@ class NotificationsCubit extends Cubit<NotificationStates> {
     } catch (e) {
       emit(FetchingNotificationErrorState('Failed to clear notifications: ${e.toString()}'));
     }
+  }
+
+  // TODO will have a list of notifi model and proccess it below
+  addToNotificationHistory(NotificationModel notification, targetDataId, bool isSupplier) async {
+    
+    String collectionName = isSupplier ? 'Suppliers' : 'Users';
+    final instance = FirebaseFirestore.instance.collection(collectionName);
+
+    // get past history
+    final  targetDetails = await instance.doc(targetDataId).get();
+
+    // convert history into a list
+    if(targetDetails.data()!=null) {
+      String currentUserNotifications = UserDataModel.fromJson(targetDetails.data()!).notificationHistory;
+      if(currentUserNotifications.isNotEmpty){
+        final dynamic jsonData = jsonDecode(currentUserNotifications);
+        // print(jsonData.toString());
+        // Handle single notification case
+        if (jsonData is Map<String, dynamic>) {
+          // If it's a single notification
+          allNotifications = [NotificationModel.fromJson(jsonData)];
+        } else if (jsonData is List) {
+          // If it's a list of notifications
+          allNotifications = jsonData
+              .map((item) => NotificationModel.fromJson(item as Map<String, dynamic>))
+              .toList();
+        }
+      }else{
+        allNotifications = [];
+      }
+    } 
+
+    // add new notification to the list
+    allNotifications.add(notification);
+
+    // convert list back to json encodded string
+    final List<Map<String, dynamic>> notificationsJson =
+    allNotifications.map((notification) => notification.toJson()).toList();
+
+    // update the notificationHistory in the firestore for the required user or supplier
+    await instance
+        .doc(targetDataId)
+        .update({
+      'notificationHistory': jsonEncode(notificationsJson)
+    });
   }
 
 }

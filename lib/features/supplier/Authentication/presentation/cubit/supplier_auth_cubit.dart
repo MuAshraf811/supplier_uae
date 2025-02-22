@@ -198,18 +198,24 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
       );
       final fcmToken = SharedPreferencesManager.getStringValue(key: StorageConstants.fcmToken);
 
+    bool isDuplicate = await checkEmailOrPhoneDuplication(emailRegisterController.text,mobileNumberController.text);
+
+    if(isDuplicate){
+      emit(UploadingUserStateErrorState(error: "Email or Phone number already exists"));
+    }else{
       final  supplierDataId =
      await FirebaseFirestore.instance
           .collection("Suppliers")
           .add(supplierData.toMap(fcmToken,""));
-     print('Registered supplier with data id:');
-      print(supplierDataId.id);
-      AppConfigCubit.currentUserDataId = supplierDataId.id;
+    
+    AppConfigCubit.currentUserDataId = supplierDataId.id;
         await  SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userDataIdKey,
             value: supplierDataId.id
         );
       emit(UploadingUserStateSuccessState());
+    }
+
     } catch (e) {  
       log(e.toString());
       UploadingUserStateErrorState(error: e.toString());
@@ -433,6 +439,39 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
       log(e.toString());
       AddingSupplierDataErrorState(error: e.toString());
     }
+  }
+  
+  Future<bool> checkEmailOrPhoneDuplication(String email, String phone)async {
+    
+    var res = await FirebaseFirestore.instance
+          .collection('Suppliers')
+          .where('email', isEqualTo: email).get();
+    if(res.docs.isNotEmpty){
+      return true;
+    }
+    res = await FirebaseFirestore.instance
+          .collection('Suppliers')
+          .where('mobile', isEqualTo: phone).get();
+    if(res.docs.isNotEmpty){
+      return true;
+    }
+
+    res = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('email', isEqualTo: email).get();
+    if(res.docs.isNotEmpty){
+      return true;
+    }
+    res = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('mobile_number', isEqualTo: phone).get();
+    if(res.docs.isNotEmpty){
+      return true;
+    }
+
+
+
+    return false;
   }
 
 
