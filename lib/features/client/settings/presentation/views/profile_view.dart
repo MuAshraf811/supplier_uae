@@ -260,15 +260,18 @@ class LanguageDropDown extends StatelessWidget {
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            S.of(context).language,
-            style:
-                applyBoldStyle(fontSize: 15, fontColor: ColorConsatnts.black),
+          SizedBox(
+            width: MediaQuery.of(context).size.width*0.25,
+            child: Text(
+              S.of(context).language,
+              style:
+                  applyBoldStyle(fontSize: 15, fontColor: ColorConsatnts.black),
+            ),
           ),
           SizedBox(
             // width: 200,
             child: CustomDropDown(
-              width: 100,
+              width: MediaQuery.of(context).size.width*0.2,
               onSelected: (val) {
                 context.read<AppConfigCubit>().changeLanguage(val);
               },

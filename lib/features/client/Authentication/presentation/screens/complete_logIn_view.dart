@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:phone_form_field/phone_form_field.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/constants/storage_const.dart';
 import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/app_button.dart';
+import 'package:supplier/core/utils/widgets/custom_phone_field.dart';
 import 'package:supplier/core/utils/widgets/terms_and_conditions_dialog.dart';
 import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier/features/client/Authentication/presentation/widgets/drop_down_text_field.dart';
@@ -21,6 +23,8 @@ class CompleteLoginView extends StatelessWidget {
   CompleteLoginView({super.key});
 
   final formKey = GlobalKey<FormState>();
+
+  PhoneController thePhoneController = PhoneController(initialValue: PhoneNumber.parse('+971'));
   @override
   Widget build(BuildContext context) {
     
@@ -75,20 +79,22 @@ class CompleteLoginView extends StatelessWidget {
               
             
                 const VerticalSpacer(space: 8),
-                AppTextField(
-                  label: "Mobile Number",
-                  maxHeight: 40,
-                  controller: context.read<AuthenticationCubit>()
-                      .mobileNumberRegisterController,
-                  type: TextInputType.phone,
-                  suffixIcon: Icons.phone_android_outlined,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "This Field Shouldn't be empty";
-                    }
-                    return null;
-                  },
-                ),
+                CustomPhoneField(
+                    context: context, thePhoneController: thePhoneController, myWidth: MediaQuery.of(context).size.width),
+                // AppTextField(
+                //   label: "Mobile Number",
+                //   maxHeight: 40,
+                //   controller: context.read<AuthenticationCubit>()
+                //       .mobileNumberRegisterController,
+                //   type: TextInputType.phone,
+                //   suffixIcon: Icons.phone_android_outlined,
+                //   validator: (value) {
+                //     if (value == null || value.isEmpty) {
+                //       return "This Field Shouldn't be empty";
+                //     }
+                //     return null;
+                //   },
+                // ),
                 const VerticalSpacer(space: 10),
                 Row(
                   children: [
@@ -161,6 +167,8 @@ class CompleteLoginView extends StatelessWidget {
                         if (formKey
                             .currentState!
                             .validate()) {
+                          context.read<AuthenticationCubit>()
+                                .mobileNumberRegisterController.text = "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}";
                           ServiceLocator.getIt<AuthenticationCubit>()
                               .addUserToDataBaseWithOtherMethods();
                           //  showTermsAndConditionsDialog(context, false);

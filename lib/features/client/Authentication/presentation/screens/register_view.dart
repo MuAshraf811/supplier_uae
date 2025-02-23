@@ -1,9 +1,11 @@
+import 'package:phone_form_field/phone_form_field.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/assets_constants.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
 import 'package:supplier/core/utils/constants/storage_const.dart';
 import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/core/utils/widgets/custom_app_bar.dart';
+import 'package:supplier/core/utils/widgets/custom_phone_field.dart';
 import 'package:supplier/core/utils/widgets/snack_bar.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
 import 'package:supplier/core/utils/widgets/terms_and_conditions_dialog.dart';
@@ -25,6 +27,8 @@ class RegisterView extends StatelessWidget {
   RegisterView({super.key});
 
   final formKey = GlobalKey<FormState>();
+
+  PhoneController thePhoneController = PhoneController(initialValue: PhoneNumber.parse("+971"));
   @override
   Widget build(BuildContext context) {
     return  BlocConsumer<AuthenticationCubit, AuthenticationState>(
@@ -137,20 +141,21 @@ class RegisterView extends StatelessWidget {
                     },
                   ),
                   const VerticalSpacer(space: 8),
-                  AppTextField(
-                    label: "Mobile Number",
-                    maxHeight: 40,
-                    controller: ServiceLocator.getIt<AuthenticationCubit>()
-                        .mobileNumberRegisterController,
-                    type: TextInputType.phone,
-                    suffixIcon: Icons.phone_android_outlined,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "This Field Shouldn't be empty";
-                      }
-                      return null;
-                    },
-                  ),
+                  CustomPhoneField(context: context, thePhoneController: thePhoneController, myWidth: MediaQuery.of(context).size.width),
+                  // AppTextField(
+                  //   label: "Mobile Number",
+                  //   maxHeight: 40,
+                  //   controller: ServiceLocator.getIt<AuthenticationCubit>()
+                  //       .mobileNumberRegisterController,
+                  //   type: TextInputType.phone,
+                  //   suffixIcon: Icons.phone_android_outlined,
+                  //   validator: (value) {
+                  //     if (value == null || value.isEmpty) {
+                  //       return "This Field Shouldn't be empty";
+                  //     }
+                  //     return null;
+                  //   },
+                  // ),
                   const VerticalSpacer(space: 10),
                   Row(
                     children: [
@@ -214,6 +219,10 @@ class RegisterView extends StatelessWidget {
                           if (formKey
                               .currentState!
                               .validate()) {
+
+                            ServiceLocator.getIt<AuthenticationCubit>()
+                                .mobileNumberRegisterController.text = "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}";
+
                             ServiceLocator.getIt<AuthenticationCubit>()
                                 .registerWithEmail().then((value) {
                               ServiceLocator.getIt<AuthenticationCubit>()

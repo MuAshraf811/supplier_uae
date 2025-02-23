@@ -11,6 +11,7 @@ class SupplierUserModel {
   final String ipanNumber;
   final String imagePath;
   final String uuid;
+  final String approved;
 
   SupplierUserModel(
       {required this.email,
@@ -21,6 +22,7 @@ class SupplierUserModel {
       required this.taxNumber,
         required this.bankName,
         required this.uuid,
+        required this.approved,
       required this.ipanNumber});
 
       // this is factory constructor to convert firebase response to dart model 
@@ -35,6 +37,7 @@ class SupplierUserModel {
       bankName: json['bankName'],
       ipanNumber: json['ipanNumber'],
       uuid: json['uuid'],
+      approved: json['approved']??"FALSE"
     );
   }
 
@@ -50,6 +53,7 @@ class SupplierUserModel {
       'bankName': bankName,
       'ipanNumber': ipanNumber,
       'uuid': uuid,
+      "approved": "FALSE",
       "fcmToken":"",
       "notificationHistory":""
     };

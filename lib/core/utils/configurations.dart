@@ -104,7 +104,7 @@ class NotificationsManager {
       );
 
       // Add to Cubit state which handles both current state and caching
-      _notificationsCubit.addNotification(notification);
+      // _notificationsCubit.addNotification(notification);
     }
   }
 
@@ -130,5 +130,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       );
 
   // Handle background message through Cubit
-  await NotificationsCubit().addNotification(notification);
+  // await NotificationsCubit().addNotification(notification);
 }
+

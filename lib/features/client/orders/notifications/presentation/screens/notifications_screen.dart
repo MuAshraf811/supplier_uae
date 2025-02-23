@@ -4,6 +4,7 @@ import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supplier/features/supplier/notifications/data/models/notifications_model.dart';
 import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_states.dart';
 
@@ -30,7 +31,7 @@ class NotificationsScreen extends StatelessWidget {
           if (state is FetchingNotificationState) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is FetchingNotificationSuccessState) {
-            final notifications = NotificationsCubit.allNotifications;
+            final List<NotificationModel> notifications = NotificationsCubit.allNotifications.reversed.toList();
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Column(
@@ -49,7 +50,7 @@ class NotificationsScreen extends StatelessWidget {
                       itemCount: NotificationsCubit.allNotifications.length,
                       itemBuilder: (context, index) => NotificationItem(
                         notificationTitle: notifications[index].title,
-                        notificationDate: NotificationsCubit.allNotifications[index].date.toString(),
+                        notificationDate: notifications[index].date.toString(),
                         notificationBody: notifications[index].body,
                         offerSupplierId: notifications[index].offerSupplierId,
                         offerId: notifications[index].offerId,
@@ -88,6 +89,8 @@ class NotificationItem extends StatelessWidget {
   final String? orderId;
   @override
   Widget build(BuildContext context) {
+    print(notificationBody);
+    print("---------------------------");
     return Container(
       width: 600.w,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
@@ -109,7 +112,7 @@ class NotificationItem extends StatelessWidget {
           FittedBox(
             child: Text(
               notificationBody,
-              maxLines: 4,
+              maxLines: 10,
               overflow: TextOverflow.ellipsis,
               style: applyMediumStyle(fontSize: 14, fontColor: Colors.grey),
             ),

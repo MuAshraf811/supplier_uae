@@ -40,20 +40,20 @@ class SupplierOrderItem extends StatelessWidget {
               Text(
               "Client : ",
               style: applyBoldStyle(
-                  fontSize: 14, fontColor: ColorConsatnts.primary),
+                  fontSize: 12, fontColor: ColorConsatnts.primary),
             ),
               const SvgHandler(
                 imagePath: AssetsConstants.anonymousPerson,
                 color: ColorConsatnts.grey,
-                height: 26,
+                height: 24,
                 width: 24,
               ),
 
-            const HorizontalSpacer(space: 3),
+            const HorizontalSpacer(space: 2),
             Text(
               clientId,
               style: applyMediumStyle(
-                  fontSize: 14, fontColor: ColorConsatnts.lightBlack).copyWith(
+                  fontSize: 13, fontColor: ColorConsatnts.lightBlack).copyWith(
                 overflow: TextOverflow.ellipsis
               ),
             )

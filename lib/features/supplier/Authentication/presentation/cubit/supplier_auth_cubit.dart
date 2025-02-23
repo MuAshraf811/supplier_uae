@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:phone_form_field/phone_form_field.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/storage_const.dart';
 import 'package:supplier/core/utils/native/image_picker.dart';
@@ -25,7 +26,8 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
   TextEditingController bankNameProfileController = TextEditingController();
   TextEditingController ipanNumberController = TextEditingController();
   TextEditingController taxNumberController = TextEditingController();
-  TextEditingController mobileNumberController = TextEditingController();
+  // TextEditingController mobileNumberController = TextEditingController();
+  PhoneController thePhoneController = PhoneController(initialValue: PhoneNumber.parse("+971"));
   TextEditingController cityController = TextEditingController();
   TextEditingController emailLogInController = TextEditingController();
   TextEditingController passwordLogInController = TextEditingController();
@@ -77,6 +79,13 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
 
     try { 
       emit(LogingInState());
+
+      final isApproved = await checkSupplierApproved(email: emailLogInController.text);
+      if(! isApproved){
+        emit(LogingInErrorState(error: "Pending admin approval."));
+        return;
+      }
+
       final response = await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: emailLogInController.text,
       password: passwordLogInController.text,
@@ -167,19 +176,25 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
   registerSupplierData() async {
     try {
       emit(UploadingUserState());
+      bool isDuplicate = await checkEmailOrPhoneDuplication(emailRegisterController.text,"+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}");
+      if(isDuplicate){
+        emit(UploadingUserStateErrorState(error: "Email or Phone number already exists"));
+        return;
+      }
       final imageName =
           "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().second}.jpg";
 
       final userCred = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
           email: emailRegisterController.text,
-          password: passwordRegisterController.text);
+          password: passwordRegisterController.text).timeout(const Duration(seconds: 5));
       try {
         await SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userId, value: userCred.user!.uid );
       } on Exception catch (e) {
         log(e.toString());
         UploadingUserStateErrorState(error: e.toString());
+        return;
       }
       await RemoteDataBase.createSupaBaseBucket();
       await RemoteDataBase.insertImageIntoBacket(
@@ -188,20 +203,21 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
       final supplierData = SupplierUserModel(
         email: emailRegisterController.text,
         imagePath: RemoteDataBase.getImageUrl(path: imageName) ?? "",
-        mobile: mobileNumberController.text,
+        mobile:"+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}",
         city: citySelection,
         companyName: companyNameRegisterController.text,
         taxNumber: taxNumberController.text,
         bankName: bankNameRegisterController.text,
         ipanNumber: ipanNumberController.text,
         uuid: userCred.user!.uid,
+        approved: "FALSE"
       );
       final fcmToken = SharedPreferencesManager.getStringValue(key: StorageConstants.fcmToken);
 
-    bool isDuplicate = await checkEmailOrPhoneDuplication(emailRegisterController.text,mobileNumberController.text);
 
     if(isDuplicate){
       emit(UploadingUserStateErrorState(error: "Email or Phone number already exists"));
+      return;
     }else{
       final  supplierDataId =
      await FirebaseFirestore.instance
@@ -214,11 +230,13 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
             value: supplierDataId.id
         );
       emit(UploadingUserStateSuccessState());
+      return;
     }
 
     } catch (e) {  
       log(e.toString());
       UploadingUserStateErrorState(error: e.toString());
+      return;
     }
   }
 
@@ -261,7 +279,7 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
     cityController.text = '';
     ipanNumberProfileController.text = '';
     mobileProfileController.text = '';
-    mobileNumberController.text = '';
+    thePhoneController.value = PhoneNumber.parse("+971");
     taxNumberController.text = '';
     emailLogInController.text = '';
     emailProfileController.text = '';
@@ -277,7 +295,6 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
     cityController.clear();
     ipanNumberProfileController.clear();
     mobileProfileController.clear();
-    mobileNumberController.clear();
     taxNumberController.clear();
     emailLogInController.clear();
     emailProfileController.clear();
@@ -323,6 +340,12 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
         emit(ErrorLogInWithAppleState(
             error: "Something went wrong , Please try again later"));
       } else if (userRes.docs.isNotEmpty) {
+        bool isApproved = await checkSupplierApproved(email: userRes.docs.first['email']);
+        if(! isApproved){
+          emit(LogingInErrorState(error: "Registered and pending admin approval."));
+          return;
+        }
+
         SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userId,
             value: res.user!.uid);
@@ -367,6 +390,11 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
           .where('email', isEqualTo: googleUser.email).get();
 
       if(res.docs.isNotEmpty){
+        bool isApproved = await checkSupplierApproved(email: res.docs.first['email']);
+        if(! isApproved){
+          emit(LogingInErrorState(error: "Registered and pending admin approval."));
+          return;
+        }
         SharedPreferencesManager.storeStringValue(
             key: StorageConstants.userId,
             value: res.docs.first['uuid']);
@@ -409,13 +437,14 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
       final supplierData = SupplierUserModel(
         email: emailRegisterController.text,
         imagePath: RemoteDataBase.getImageUrl(path: 'imageName') ?? "",
-        mobile: mobileNumberController.text,
+        mobile: "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}",
         city: citySelection,
         companyName: companyNameRegisterController.text,
         taxNumber: taxNumberController.text,
         bankName: bankNameRegisterController.text,
         ipanNumber: ipanNumberController.text,
         uuid: currentUUID,
+        approved: "FALSE"
       );
 
       final  supplierDataId =
@@ -474,6 +503,21 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
     return false;
   }
 
+  Future<bool> checkSupplierApproved({required String email})async{
 
+    var res = await FirebaseFirestore.instance
+        .collection('Suppliers')
+        .where('email', isEqualTo: email).get();
+
+    if(res.docs.isNotEmpty){
+      SupplierUserModel supplier = SupplierUserModel.fromJson(res.docs.first.data());
+      if(supplier.approved == "FALSE"){
+        return false;
+      }else{
+        return true;
+      }
+    }
+    return false;
+  }
 
 }

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/app_button.dart';
+import 'package:supplier/core/utils/widgets/custom_phone_field.dart';
 import 'package:supplier/core/utils/widgets/svg_handler.dart';
 import 'package:supplier/core/utils/widgets/terms_and_conditions_dialog.dart';
 import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
@@ -70,22 +71,10 @@ class SupplierCompleteLoginView extends StatelessWidget {
               
                 const VerticalSpacer(space: 8),
               
-            
-                const VerticalSpacer(space: 8),
-                AppTextField(
-                  label: "Mobile Number",
-                  maxHeight: 40,
-                  controller: context.read<SupplierAuthCubit>()
-                      .mobileNumberController,
-                  type: TextInputType.phone,
-                  suffixIcon: Icons.phone_android_outlined,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "This Field Shouldn't be empty";
-                    }
-                    return null;
-                  },
-                ),
+                CustomPhoneField(
+                    context: context,
+                    thePhoneController: context.read<SupplierAuthCubit>().thePhoneController,
+                    myWidth: MediaQuery.of(context).size.width),
                 VerticalSpacer(space: 20),
                 InkWell(
             onTap: () {
