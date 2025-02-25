@@ -38,119 +38,121 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           child: Form( 
             key: key,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const VerticalSpacer(space: 16),
-                CustomAppbar(title: S.of(context).order_view),
-                const VerticalSpacer(space: 18),
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12.r),
-                      child: Image.asset(
-                        widget.data["image"],
-                        width: 120.w,
-                        height: 80.h,
-                        fit: BoxFit.cover,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const VerticalSpacer(space: 16),
+                  CustomAppbar(title: S.of(context).order_view),
+                  const VerticalSpacer(space: 18),
+                  Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12.r),
+                        child: Image.asset(
+                          widget.data["image"],
+                          width: 120.w,
+                          height: 80.h,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    const HorizontalSpacer(space: 32),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                           widget.data["cat name"], 
-                           style:const  TextStyle( color: Colors.black, fontSize: 17),
-                         
-                        ),
-                        const VerticalSpacer(space: 8),
+                      const HorizontalSpacer(space: 32),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Text(
-                           widget.data["item name"], 
-                           style:const  TextStyle( color: Colors.blue, fontSize: 12, fontWeight: FontWeight.bold),
-                         
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                const VerticalSpacer(space: 36),
-                Text(
-                  S.of(context).write_order_details,
-                  style: applyMediumStyle(
-                    fontSize: 16,
-                    fontColor: ColorConsatnts.red,
+                             widget.data["cat name"],
+                             style:const  TextStyle( color: Colors.black, fontSize: 17),
+
+                          ),
+                          const VerticalSpacer(space: 8),
+                            Text(
+                             widget.data["item name"],
+                             style:const  TextStyle( color: Colors.blue, fontSize: 12, fontWeight: FontWeight.bold),
+
+                          ),
+                        ],
+                      )
+                    ],
                   ),
-                ),
-                const VerticalSpacer(space: 8),
-                Text(
-                  S.of(context).note_order_details,
-                  style: applyMediumStyle(
-                    fontSize: 14,
-                    fontColor: ColorConsatnts.primary,
+                  const VerticalSpacer(space: 36),
+                  Text(
+                    S.of(context).write_order_details,
+                    style: applyMediumStyle(
+                      fontSize: 16,
+                      fontColor: ColorConsatnts.red,
+                    ),
                   ),
-                ),
-                const VerticalSpacer(space: 8),
-                AppTextField(
-                  label: S.of(context).order_details,
-                  controller: detailsController,
-                  suffixIcon: Icons.edit,
-                  minLines: 5,
-                  maxLines: 10, 
-                  validator: (val) {
-                    if(val==null || val.isEmpty){ 
-                      return "This Field should not be empty";
-                    }return null ;
-                  },
-                  suffixSvg: Transform.scale(
-                    scale: 0.6,
-                    child: const SvgHandler(
-                        imagePath: AssetsConstants.description,
-                        height: 12,
-                        width: 12),
+                  const VerticalSpacer(space: 8),
+                  Text(
+                    S.of(context).note_order_details,
+                    style: applyMediumStyle(
+                      fontSize: 14,
+                      fontColor: ColorConsatnts.primary,
+                    ),
                   ),
-                ),
-                const VerticalSpacer(space: 18),
-                Text(
-                  S.of(context).extra_details,
-                  style: applyMediumStyle(
-                    fontSize: 16,
-                    fontColor: ColorConsatnts.red,
+                  const VerticalSpacer(space: 8),
+                  AppTextField(
+                    label: S.of(context).order_details,
+                    controller: detailsController,
+                    suffixIcon: Icons.edit,
+                    minLines: 5,
+                    maxLines: 10,
+                    validator: (val) {
+                      if(val==null || val.isEmpty){
+                        return "This Field should not be empty";
+                      }return null ;
+                    },
+                    suffixSvg: Transform.scale(
+                      scale: 0.6,
+                      child: const SvgHandler(
+                          imagePath: AssetsConstants.description,
+                          height: 12,
+                          width: 12),
+                    ),
                   ),
-                ),
-                const VerticalSpacer(space: 8),
-                AppTextField(
-                  label: S.of(context).extra_details,
-                  controller: extradetailsController,
-                  suffixIcon: Icons.edit,
-                  minLines: 3,
-                  maxLines: 10,
-                  suffixSvg: Transform.scale(
-                    scale: 0.6,
-                    child: const SvgHandler(
-                        imagePath: AssetsConstants.description,
-                        height: 12,
-                        width: 12),
+                  const VerticalSpacer(space: 18),
+                  Text(
+                    S.of(context).extra_details,
+                    style: applyMediumStyle(
+                      fontSize: 16,
+                      fontColor: ColorConsatnts.red,
+                    ),
                   ),
-                ),
-                const VerticalSpacer(space: 24),
-                AppButton(
-                  text: S.of(context).add_order,
-                  onTap: () { 
-                    if(key.currentState!.validate()){ 
-                       showOrderConfirmation(
-                      context: context,
-                      orderCategory: widget.data["cat name"],
-                      orderType: widget.data['item name'],
-                      orderDate: AppConst.getDate(),
-                      details: detailsController.text,
-                      extraDetails: extradetailsController.text,
-                    );
-                    }
-                   
-                  },
-                )
-              ],
+                  const VerticalSpacer(space: 8),
+                  AppTextField(
+                    label: S.of(context).extra_details,
+                    controller: extradetailsController,
+                    suffixIcon: Icons.edit,
+                    minLines: 3,
+                    maxLines: 10,
+                    suffixSvg: Transform.scale(
+                      scale: 0.6,
+                      child: const SvgHandler(
+                          imagePath: AssetsConstants.description,
+                          height: 12,
+                          width: 12),
+                    ),
+                  ),
+                  const VerticalSpacer(space: 24),
+                  AppButton(
+                    text: S.of(context).add_order,
+                    onTap: () {
+                      if(key.currentState!.validate()){
+                         showOrderConfirmation(
+                        context: context,
+                        orderCategory: widget.data["cat name"],
+                        orderType: widget.data['item name'],
+                        orderDate: AppConst.getDate(),
+                        details: detailsController.text,
+                        extraDetails: extradetailsController.text,
+                      );
+                      }
+
+                    },
+                  )
+                ],
+              ),
             ),
           ),
         ),

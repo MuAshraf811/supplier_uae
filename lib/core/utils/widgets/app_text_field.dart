@@ -20,7 +20,7 @@ class AppTextField extends StatelessWidget {
     this.suffixSvg , 
     this.readOnly,   
     this.isSecured,
-    
+    this.onChange
   });
   final String label; 
   final bool? readOnly;
@@ -36,11 +36,13 @@ class AppTextField extends StatelessWidget {
   final  Widget? suffixSvg;
   final Color? suffixColor;  
   final bool? isSecured;
+  final void Function(String)? onChange;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       validator: validator,
+      onChanged: onChange ,
       keyboardType: type,
       maxLines: maxLines,
       minLines: minLines, 

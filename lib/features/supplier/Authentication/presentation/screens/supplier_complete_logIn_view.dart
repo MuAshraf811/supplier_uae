@@ -14,10 +14,12 @@ import '../../../../../core/utils/widgets/app_text_field.dart';
 import '../../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../../core/utils/widgets/snack_bar.dart';
 import '../../../../../core/utils/widgets/spacers.dart';
+import '../../../../client/Authentication/otp/otp_remote_data_source_firebase_impl.dart';
 import '../cubit/supplier_auth_cubit.dart';
 
 class SupplierCompleteLoginView extends StatelessWidget {
   SupplierCompleteLoginView({super.key});
+  TextEditingController otpController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
   @override
@@ -218,8 +220,64 @@ class SupplierCompleteLoginView extends StatelessWidget {
                         if (formKey
                             .currentState!
                             .validate()) {
-                          ServiceLocator.getIt<SupplierAuthCubit>()
-                              .easyAddSupplier();
+
+
+                          ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
+                              .sendOtp(mobile: "+${context.read<SupplierAuthCubit>().thePhoneController.value.countryCode}${context.read<SupplierAuthCubit>().thePhoneController.value.nsn}")
+                              .then((value) {
+                            if(value.success){
+                              showDialog(
+                                context: context,
+                                builder: (context) => Scaffold(
+                                  appBar: AppBar(
+                                    leading: IconButton(
+                                        onPressed: () => Navigator.of(context).pop(),
+                                        icon: const Icon(Icons.close)),
+                                  ),
+                                  body: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          const SizedBox(height: 50,),
+                                          const Text("Enter Verification Code below",style: TextStyle(fontSize: 20,),maxLines: 2,),
+                                          const SizedBox(height: 20,),
+                                          AppTextField(
+                                            label: "Otp code",
+                                            type: TextInputType.number,
+                                            suffixIcon: Icons.numbers,
+                                            controller: otpController,
+                                          ),
+                                          VerticalSpacer(space: 20),
+                                          AppButton(text: "Verify Code", onTap: () {
+                                            if(otpController.text.isNotEmpty){
+                                              ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {
+                                                if(value.success){
+                                                  showCustomSnackBar(context, "Code Verified", Colors.green);
+                                                  Navigator.of(context).pop();
+
+                                                  ServiceLocator.getIt<SupplierAuthCubit>()
+                                                      .easyAddSupplier();
+                                                }else{
+                                                  showCustomSnackBar(context, value.message, Colors.redAccent);
+                                                }
+                                              },);
+                                            }
+                                          },),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ) ,);
+                              showCustomSnackBar(context, "Code sent successfully", Colors.green);
+                            }else{
+                              showCustomSnackBar(context, value.message, Colors.redAccent);
+                            }
+                          },);
+
+
+
                           //  showTermsAndConditionsDialog(context, false);
                         }
                       },

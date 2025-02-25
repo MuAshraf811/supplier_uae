@@ -19,25 +19,25 @@ class _PasswordValidationPartState extends State<PasswordValidationPart> {
   @override
   void initState() {
     widget.ctx.read<AuthenticationCubit>().isMoreThan8;
-    widget.ctx
-        .read<AuthenticationCubit>()
-        .passwordRegisterController
-        .addListener(() {
-      final text = widget.ctx
-          .read<AuthenticationCubit>()
-          .passwordRegisterController
-          .text;
-
-      setState(() {
-        widget.ctx.read<AuthenticationCubit>().isMoreThan8 = text.length >= 8;
-        widget.ctx.read<AuthenticationCubit>().isSpecial =
-            RegexValidators.specialCharsValidator.hasMatch(text);
-        widget.ctx.read<AuthenticationCubit>().isUpperCase =
-            RegexValidators.upperCaseValidator.hasMatch(text);
-        widget.ctx.read<AuthenticationCubit>().isNumber =
-            RegexValidators.numbersValidator.hasMatch(text);
-      });
-    });
+    // widget.ctx
+    //     .read<AuthenticationCubit>()
+    //     .passwordRegisterController
+    //     .addListener(() {
+    //   final text = widget.ctx
+    //       .read<AuthenticationCubit>()
+    //       .passwordRegisterController
+    //       .text;
+    //
+    //   setState(() {
+    //     widget.ctx.read<AuthenticationCubit>().isMoreThan8 = text.length >= 8;
+    //     widget.ctx.read<AuthenticationCubit>().isSpecial =
+    //         RegexValidators.specialCharsValidator.hasMatch(text);
+    //     widget.ctx.read<AuthenticationCubit>().isUpperCase =
+    //         RegexValidators.upperCaseValidator.hasMatch(text);
+    //     widget.ctx.read<AuthenticationCubit>().isNumber =
+    //         RegexValidators.numbersValidator.hasMatch(text);
+    //   });
+    // });
     super.initState();
   }
 
@@ -45,6 +45,22 @@ class _PasswordValidationPartState extends State<PasswordValidationPart> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener:  (context, state) {
+        if(state is PassFieldChangedState){
+          final text = widget.ctx
+              .read<AuthenticationCubit>()
+              .passwordRegisterController
+              .text;
+
+          setState(() {
+            widget.ctx.read<AuthenticationCubit>().isMoreThan8 = text.length >= 8;
+            widget.ctx.read<AuthenticationCubit>().isSpecial =
+                RegexValidators.specialCharsValidator.hasMatch(text);
+            widget.ctx.read<AuthenticationCubit>().isUpperCase =
+                RegexValidators.upperCaseValidator.hasMatch(text);
+            widget.ctx.read<AuthenticationCubit>().isNumber =
+                RegexValidators.numbersValidator.hasMatch(text);
+          });
+        }
 
       },
       builder:(context, state) =>  Padding(

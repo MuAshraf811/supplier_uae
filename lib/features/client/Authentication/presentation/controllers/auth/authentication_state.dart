@@ -93,3 +93,4 @@ final class SendingPasswordResetEmailErrorState extends AuthenticationState {
 
   SendingPasswordResetEmailErrorState({required this.error});
 }
+final class PassFieldChangedState extends AuthenticationState {}

@@ -220,7 +220,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  Future<void> registerWithEmail() async {
+  Future<bool> registerWithEmail() async {
     try {
       emit(LoadingAuthenticationWithEmailState());
       final response = await FirebaseAuth.instance
@@ -229,9 +229,17 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
               password: passwordRegisterController.text);
 
       log(response.user!.email.toString());
+      bool isDuplicate = await checkEmailOrPhoneDuplication(emailRegisterController.text, mobileNumberRegisterController.text);
+
+      if(isDuplicate){
+        emit(AddingUserDataErrorState(error: "Email or Phone number already exists"));
+        return false;
+      }
       emit(SuccessAuthenticationWithEmailState());
+      return true;
     } on FirebaseAuthException catch (e) {
       emit(ErrorAuthenticationWithEmailState(error: e.message.toString()));
+      return false;
     }
   }
 
@@ -439,10 +447,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     if(res.docs.isNotEmpty){
       return true;
     }
-
-
-
     return false;
+  }
+
+  void passwordChangeNotifier() {
+    emit(PassFieldChangedState());
   }
 
 

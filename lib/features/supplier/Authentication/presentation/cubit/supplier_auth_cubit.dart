@@ -503,12 +503,12 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
     return false;
   }
 
-  Future<bool> checkSupplierApproved({required String email})async{
-
+  Future<bool> checkSupplierApproved({
+    required String email
+  }) async {
     var res = await FirebaseFirestore.instance
         .collection('Suppliers')
         .where('email', isEqualTo: email).get();
-
     if(res.docs.isNotEmpty){
       SupplierUserModel supplier = SupplierUserModel.fromJson(res.docs.first.data());
       if(supplier.approved == "FALSE"){
@@ -517,7 +517,6 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
         return true;
       }
     }
-    return false;
+    return true;
   }
-
 }

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:supplier/features/client/Authentication/otp/otp_remote_data_source_firebase_impl.dart';
 import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier/features/client/chat/presentation/cubit/chat_cubit.dart';
 import 'package:supplier/features/client/orders/presentation/cubit/orders_cubit.dart';
@@ -11,6 +13,9 @@ class ServiceLocator {
   static GetIt getIt = GetIt.instance;
 
   static void setObjects() {
+
+    getIt.registerLazySingleton<OtpRemoteDataSourceFirebaseImpl>(() => OtpRemoteDataSourceFirebaseImpl(auth: FirebaseAuth.instance),);
+
     getIt.registerLazySingleton<AuthenticationCubit>(
       () => AuthenticationCubit(),
     );

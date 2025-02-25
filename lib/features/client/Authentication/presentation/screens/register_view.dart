@@ -9,6 +9,8 @@ import 'package:supplier/core/utils/widgets/custom_phone_field.dart';
 import 'package:supplier/core/utils/widgets/snack_bar.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
 import 'package:supplier/core/utils/widgets/terms_and_conditions_dialog.dart';
+import 'package:supplier/features/client/Authentication/otp/otp_remote_data_source_firebase_impl.dart';
+import 'package:supplier/features/client/Authentication/otp/otp_screen.dart';
 import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier/features/client/Authentication/presentation/widgets/drop_down_text_field.dart';
 import 'package:supplier/features/client/Authentication/presentation/widgets/or_divider.dart';
@@ -29,6 +31,8 @@ class RegisterView extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
 
   PhoneController thePhoneController = PhoneController(initialValue: PhoneNumber.parse("+971"));
+
+  TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return  BlocConsumer<AuthenticationCubit, AuthenticationState>(
@@ -103,6 +107,9 @@ class RegisterView extends StatelessWidget {
                     suffixIcon: Icons.remove_red_eye,
                     controller: ServiceLocator.getIt<AuthenticationCubit>()
                         .passwordRegisterController,
+                    onChange: (p0) {
+                      ServiceLocator.getIt<AuthenticationCubit>().passwordChangeNotifier();
+                    },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "This Field Shouldn't be empty";
@@ -125,6 +132,9 @@ class RegisterView extends StatelessWidget {
                     suffixIcon: Icons.remove_red_eye_rounded,
                     controller: ServiceLocator.getIt<AuthenticationCubit>()
                         .passwordConfirmationRegisterController,
+                    onChange: (p0) {
+                      ServiceLocator.getIt<AuthenticationCubit>().passwordChangeNotifier();
+                    },
                     validator: (value) {
                       if (ServiceLocator.getIt<AuthenticationCubit>()
                               .passwordRegisterController
@@ -223,14 +233,64 @@ class RegisterView extends StatelessWidget {
                             ServiceLocator.getIt<AuthenticationCubit>()
                                 .mobileNumberRegisterController.text = "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}";
 
-                            ServiceLocator.getIt<AuthenticationCubit>()
-                                .registerWithEmail().then((value) {
-                              ServiceLocator.getIt<AuthenticationCubit>()
-                                  .addUserToDataBase().then((value) {
 
-                                  },);
-                                },);
+                            ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
+                                .sendOtp(mobile: "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}")
+                                .then((value) {
+                                  if(value.success){
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => Scaffold(
+                                        appBar: AppBar(
+                                          leading: IconButton(
+                                              onPressed: () => Navigator.of(context).pop(),
+                                              icon: const Icon(Icons.close)),
+                                        ),
+                                        body: Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                const SizedBox(height: 50,),
+                                                const Text("Enter Verification Code below",style: TextStyle(fontSize: 20,),maxLines: 2,),
+                                                const SizedBox(height: 20,),
+                                                AppTextField(
+                                                  label: "Otp code",
+                                                  type: TextInputType.number,
+                                                  suffixIcon: Icons.numbers,
+                                                  controller: otpController,
+                                                ),
+                                                VerticalSpacer(space: 20),
+                                                AppButton(text: "Verify Code", onTap: () {
+                                                  ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {
+                                                    if(value.success){
+                                                      showCustomSnackBar(context, "Code Verified", Colors.green);
+                                                      Navigator.of(context).pop();
+                                                      ServiceLocator.getIt<AuthenticationCubit>()
+                                                          .registerWithEmail().then((value) {
+                                                        if(value){
+                                                          ServiceLocator.getIt<AuthenticationCubit>()
+                                                              .addUserToDataBase().then((value) {
 
+                                                          },);
+                                                            }
+                                                      },);
+                                                    }else{
+                                                      showCustomSnackBar(context, value.message, Colors.redAccent);
+                                                    }
+                                                  },);
+                                                },),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ) ,);
+                                    showCustomSnackBar(context, "Code sent successfully", Colors.green);
+                                  }else{
+                                    showCustomSnackBar(context, value.message, Colors.redAccent);
+                                  }
+                            },);
                             //  showTermsAndConditionsDialog(context, false);
                           }
                         },

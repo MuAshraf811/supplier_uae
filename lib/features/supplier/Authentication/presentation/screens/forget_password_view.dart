@@ -6,6 +6,8 @@ import 'package:supplier/core/utils/widgets/spacers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/service_locator.dart';
+import '../../../../client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import '../../../../client/Authentication/presentation/widgets/password_validation_coulmn.dart';
 
 class ForgetPasswordView extends StatelessWidget {
@@ -23,21 +25,29 @@ class ForgetPasswordView extends StatelessWidget {
               const VerticalSpacer(space: 32),
               const GeneralAppBar(title: "Reset Password View", isBackArrowShown: true,),
               const VerticalSpacer(space: 24),
-              const AppTextField(
+              AppTextField(
                   label: "Enter password",
+                  onChange: (p0) {
+                    ServiceLocator.getIt<AuthenticationCubit>().passwordChangeNotifier();
+                  },
                   suffixIcon: Icons.remove_red_eye_rounded),
               const VerticalSpacer(space: 12),
               PasswordValidationPart(
                 ctx: context,
               ),
               const VerticalSpacer(space: 12),
-              const AppTextField(
+              AppTextField(
                   label: "Confirm password",
+                  onChange: (p0) {
+                    ServiceLocator.getIt<AuthenticationCubit>().passwordChangeNotifier();
+                  },
                   suffixIcon: Icons.remove_red_eye_rounded),
               const VerticalSpacer(space: 24),
               AppButton(
                 text: "Submit",
-                onTap: () {},
+                onTap: () {
+
+                },
               )
             ],
           ),
