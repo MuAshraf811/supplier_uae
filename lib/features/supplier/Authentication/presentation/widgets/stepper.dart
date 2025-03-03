@@ -26,6 +26,8 @@ class RegisterStepper extends StatefulWidget {
 class _RegisterStepperState extends State<RegisterStepper> {
   int stepIndex = 0;
   TextEditingController otpController = TextEditingController();
+  bool isContinueClicked = false;
+  bool isVerifyClicked = false;
 
   final stepOneFormKey = GlobalKey<FormState>();
   final stepTwoFormKey = GlobalKey<FormState>();
@@ -69,26 +71,33 @@ class _RegisterStepperState extends State<RegisterStepper> {
                       height: 20.h,
                         child: const CircularProgressIndicator.adaptive());
                   }
-                  return AppButton(
+                  return details.currentStep == 0 && isContinueClicked?
+                      const Center(child: CircularProgressIndicator(),)
+                      :AppButton(
                     text: details.currentStep == 0 ? "Continue" : "Register",
                     onTap: () {
                       if (stepIndex == 0) {
                         if (stepOneFormKey
                             .currentState!
                             .validate()) {
-
+                          setState(() {
+                            isContinueClicked = true;
+                          });
                           ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
                               .sendOtp(mobile: "+${context.read<SupplierAuthCubit>().thePhoneController.value.countryCode}${context.read<SupplierAuthCubit>().thePhoneController.value.nsn}")
                               .then((value) {
                             if(value.success){
+                              setState(() {
+                                isContinueClicked = false;
+                              });
                               showDialog(
                                 context: context,
                                 builder: (context) => Scaffold(
-                                  appBar: AppBar(
+                                 /* appBar: AppBar(
                                     leading: IconButton(
                                         onPressed: () => Navigator.of(context).pop(),
                                         icon: const Icon(Icons.close)),
-                                  ),
+                                  ),*/
                                   body: Center(
                                     child: Padding(
                                       padding: const EdgeInsets.all(20.0),
@@ -105,18 +114,27 @@ class _RegisterStepperState extends State<RegisterStepper> {
                                             controller: otpController,
                                           ),
                                           VerticalSpacer(space: 20),
-                                          AppButton(text: "Verify Code", onTap: () {
+                                          details.currentStep == 0 && isVerifyClicked?
+                                          const Center(child: CircularProgressIndicator(),)
+                                          : AppButton(text: "Verify Code", onTap: () {
                                             if(otpController.text.isNotEmpty){
+                                              setState(() {
+                                                isVerifyClicked = true;
+                                              });
                                               ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {
                                                 if(value.success){
                                                   showCustomSnackBar(context, "Code Verified", Colors.green);
                                                   Navigator.of(context).pop();
                                                   setState(
                                                         () {
+                                                      isVerifyClicked = false;
                                                       stepIndex++;
                                                     },
                                                   );
                                                 }else{
+                                                  setState(() {
+                                                    isVerifyClicked = false;
+                                                  });
                                                   showCustomSnackBar(context, value.message, Colors.redAccent);
                                                 }
                                               },);
@@ -129,6 +147,9 @@ class _RegisterStepperState extends State<RegisterStepper> {
                                 ) ,);
                               showCustomSnackBar(context, "Code sent successfully", Colors.green);
                             }else{
+                              setState(() {
+                                isContinueClicked = false;
+                              });
                               showCustomSnackBar(context, value.message, Colors.redAccent);
                             }
                           },);
