@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supplier/core/utils/constants/assets_constants.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
@@ -7,6 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/cubit/app_config_cubit.dart';
+import '../../../../../core/utils/constants/storage_const.dart';
+import '../../../../../core/utils/notification_service.dart';
+import '../../../../../core/utils/service_locator.dart';
+import '../../../../../core/utils/storage/shared_preferences.dart';
 import '../../../../../core/utils/widgets/spacers.dart';
 import '../../../../../core/utils/widgets/svg_handler.dart';
 
@@ -175,13 +181,25 @@ class ChatBottomBar extends StatelessWidget {
           ),
           const Spacer(),
           InkWell(
-            onTap: () {
+            onTap: () async {
               if (context
                   .read<ChatCubit>()
                   .chatTextFieldKey
                   .currentState!
                   .validate()) {
                 context.read<ChatCubit>().sendAMessage();
+                String collectionName = AppConfigCubit.isSupplier ? 'Suppliers' : 'Users';
+
+                final userData = await FirebaseFirestore.instance
+                    .collection(collectionName)
+                    .doc(SharedPreferencesManager.getStringValue(
+                    key: StorageConstants.userDataIdKey))
+                    .get();
+                ServiceLocator.getIt<NotificationService>().createNotification(
+                  title: "New message received !!",
+                  body: "Messages from: ${userData.data()?['email']??userData.id??""}",
+                  recipientId: 'admin',
+                );
                 context.read<ChatCubit>().messageController.clear();
                 FocusScope.of(context).unfocus();
               }

@@ -1,6 +1,6 @@
 import 'package:supplier/core/utils/constants/route_constants.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/features/client/orders/notifications/presentation/screens/notifications_screen.dart';
+import 'package:supplier/features/supplier/notifications/presentation/notifications_screen.dart';
 import 'package:supplier/features/client/orders/presentation/cubit/orders_cubit.dart';
 import 'package:supplier/features/client/orders/presentation/widget/order_shimmer.dart';
 import 'package:supplier/features/client/settings/presentation/views/profile_view.dart';

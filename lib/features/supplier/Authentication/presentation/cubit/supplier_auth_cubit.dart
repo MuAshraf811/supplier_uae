@@ -14,6 +14,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/notification_service.dart';
+import '../../../../../core/utils/service_locator.dart';
+
 part 'supplier_auth_state.dart';
 
 class SupplierAuthCubit extends Cubit<SupplierAuthState> {
@@ -229,6 +232,11 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
             key: StorageConstants.userDataIdKey,
             value: supplierDataId.id
         );
+      ServiceLocator.getIt<NotificationService>().createNotification(
+        title: "New Supplier registered",
+        body: "Supplier email: ${emailRegisterController.text}\nSupplier Id: ${supplierDataId.id}",
+        recipientId: 'admin',
+      );
       emit(UploadingUserStateSuccessState());
       return;
     }

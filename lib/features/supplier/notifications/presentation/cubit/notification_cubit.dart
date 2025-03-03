@@ -36,13 +36,15 @@ class NotificationsCubit extends Cubit<NotificationStates> {
 
           if (currentUserNotifications.isNotEmpty) {
             final dynamic jsonData = jsonDecode(currentUserNotifications);
-            // print(jsonData.toString());
+            print(jsonData.toString());
             // Handle single notification case
             if (jsonData is Map<String, dynamic>) {
               // If it's a single notification
+              print('single');
               allNotifications = [NotificationModel.fromJson(jsonData)];
             } else if (jsonData is List) {
               // If it's a list of notifications
+              print('list');
               allNotifications = jsonData
                   .map((item) =>
                       NotificationModel.fromJson(item as Map<String, dynamic>))

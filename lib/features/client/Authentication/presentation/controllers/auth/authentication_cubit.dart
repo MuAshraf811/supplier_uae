@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,6 +11,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../../../../../core/utils/notification_service.dart';
+import '../../../../../../core/utils/service_locator.dart';
+import '../../../../../supplier/notifications/data/models/notifications_model.dart';
 part 'authentication_state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
@@ -84,6 +89,12 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       log(obj.path);
       SharedPreferencesManager.storeStringValue(
           key: StorageConstants.userDataIdKey, value: obj.id);
+
+      ServiceLocator.getIt<NotificationService>().createNotification(
+        title: "New client registered",
+        body: "Client email: ${emailRegisterController.text}",
+        recipientId: 'admin',
+      );
       emit(AddingUserDataSuccessState());
     } catch (e) {
       log("******** addUserToDataBase ********");
@@ -128,6 +139,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       log(obj.path);
       SharedPreferencesManager.storeStringValue(
           key: StorageConstants.userDataIdKey, value: obj.id);
+      ServiceLocator.getIt<NotificationService>().createNotification(
+        title: "New client registered",
+        body: "Client email: ${emailRegisterController.text}",
+        recipientId: 'admin',
+      );
       emit(AddingUserDataSuccessState());
     } catch (e) {
       log("******** addUserToDataBaseWithOtherMethods Failure ********");
@@ -455,7 +471,72 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   }
 
 
+Future<String> approveOffer(String? offerId,String? orderId,String? supplierId,) async {
+  try {
+    final  supplierDataId =
+    await FirebaseFirestore.instance.collection('Suppliers')
+        .doc(supplierId).get();
 
+    await FirebaseFirestore.instance
+        .collection("client_approvals")
+        .add({
+          "offerId":offerId??"",
+          "orderId":orderId??"",
+          "supplierId":supplierId??"",
+          "clientEmail":userPersonalData.email,
+          "supplierName":supplierDataId.data()!['companyName']??"",
+          "offerDate":"${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} at: ${DateTime.now().hour}:${DateTime.now().minute}"
+        });
+    return "Congrats! Now, wait for admin to contact you";
+  } on Exception catch (e) {
+    return e.toString();
+  }
+}
 
+  //
+  // Future<void> reportAdmin(String? title,String? body,String? userId,) async {
+  //   // String reportDate = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} at: ${DateTime.now().hour}:${DateTime.now().minute}";
+  //
+  //   String collectionName = 'admin_notifications';
+  //   final instance = FirebaseFirestore.instance.collection(collectionName);
+  //   final res = await instance.get();
+  //   String responseHistory= res.docs.first.data()['notifications_history'];
+  //   List<NotificationModel> adminNotifications = [];
+  //
+  //     // convert history into a list
+  //     if (responseHistory.isNotEmpty) {
+  //       final dynamic jsonData = jsonDecode(responseHistory);
+  //       // print(jsonData.toString());
+  //       // Handle single notification case
+  //       if (jsonData is Map<String, dynamic>) {
+  //         // If it's a single notification
+  //         adminNotifications = [NotificationModel.fromJson(jsonData)];
+  //       } else if (jsonData is List) {
+  //         // If it's a list of notifications
+  //         adminNotifications = jsonData
+  //             .map((item) =>
+  //             NotificationModel.fromJson(item as Map<String, dynamic>))
+  //             .toList();
+  //       }
+  //     } else {
+  //       adminNotifications = [];
+  //     }
+  //   // add new notification to the list
+  //   adminNotifications.add(NotificationModel(
+  //       id: '0',
+  //       title: title??"",
+  //       body: body??"",
+  //       date: DateTime.now(),
+  //       userId: AppConfigCubit.currentUserDataId
+  //   ));
+  //
+  //   // convert list back to json encodded string
+  //   final List<Map<String, dynamic>> notificationsJson =
+  //   adminNotifications.map((notification) => notification.toJson()).toList();
+  //
+  //   await instance
+  //       .doc(res.docs.first.id)
+  //       .update({'notification_history': jsonEncode(notificationsJson)});
+  // }
 
 }

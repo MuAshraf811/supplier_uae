@@ -10,6 +10,10 @@ import 'package:supplier/features/client/chat/model/message_model.dart';
 import 'package:supplier/features/client/chat/model/message_prod_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/cubit/app_config_cubit.dart';
+import '../../../../../core/utils/notification_service.dart';
+import '../../../../../core/utils/service_locator.dart';
 part 'chat_state.dart';
 
 class ChatCubit extends Cubit<ChatState> {
@@ -110,6 +114,7 @@ StreamSubscription? messageSubscription;
           .add(
             message.toMap(),
           );
+
       getAllmessages();
     } catch (e) {
       log(e.toString());

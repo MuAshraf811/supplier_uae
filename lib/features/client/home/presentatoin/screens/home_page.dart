@@ -14,7 +14,7 @@ import '../../../../../core/utils/widgets/spacers.dart';
 import '../../../../../core/utils/widgets/svg_handler.dart';
 import '../../../../supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
 import '../../../Authentication/presentation/controllers/auth/authentication_cubit.dart';
-import '../../../orders/notifications/presentation/screens/notifications_screen.dart';
+import '../../../../supplier/notifications/presentation/notifications_screen.dart';
 import '../../../orders/presentation/cubit/orders_cubit.dart';
 import '../../../orders/presentation/screens/orders_view.dart';
 import '../../../settings/presentation/controller/cubit/settings_cubit.dart';

@@ -7,6 +7,9 @@ import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/features/supplier/Authentication/model/supplier_user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../core/utils/notification_service.dart';
+import '../../../../../../core/utils/service_locator.dart';
 part 'quotation_state.dart';
 
 class QuotationCubit extends Cubit<QuotationState> {
@@ -57,7 +60,7 @@ fetchOffers()async{
 
            final userData =    SupplierUserModel.fromJson(user.data() as Map<String , dynamic>);
           log(userData.toString());
-          await instance.add(
+          final response = await instance.add(
           {
             "quotationDescription" : quotationDescriptionController.text,
             "quantity" : quotationQuantityController.text,
@@ -73,9 +76,13 @@ fetchOffers()async{
             "mobile": userData.mobile,
             "city": userData.mobile,
             "deliverDate": deliverDateController.text
-
           }
          );
+      ServiceLocator.getIt<NotificationService>().createNotification(
+        title: "New Offer Created !!",
+        body: "Offer Id: ${response.id}",
+        recipientId: 'admin',
+      );
      emit(AddingQuotationSuccessState());
      AddingQuotationSuccessState();
     } catch (e) { 

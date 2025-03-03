@@ -42,17 +42,14 @@ class NotificationsManager {
     if (apnsToken != null && apnsToken.isNotEmpty) {
       // await _storeFCMToken(apnsToken);
     }
-
     // Handle FCM token
     final fcmToken = await _firebaseMessaging.getToken();
     if (fcmToken != null && fcmToken.isNotEmpty) {
       await _storeFCMToken(fcmToken);
     }
-
     // Listen for token refresh
     _firebaseMessaging.onTokenRefresh.listen(_storeFCMToken);
   }
-
   Future<void> _storeFCMToken(String token) async {
     if(token != null && token.isNotEmpty) {
       // print("storing token: $token");
@@ -60,7 +57,6 @@ class NotificationsManager {
       key: StorageConstants.fcmToken,
       value: token,
     );
-
 
     if(AppConfigCubit.isLogged) {
       
@@ -74,10 +70,6 @@ class NotificationsManager {
         },
       );
     }
-
-
-
-
     }
   }
 
@@ -94,17 +86,15 @@ class NotificationsManager {
 
   void _handleMessage(RemoteMessage message) {
     if (message.notification != null) {
-      final notification = NotificationModel(
-        title: message.notification?.title ?? "NO TITLE",
-        body: message.notification?.body ?? "NO BODY",
-        date: message.data['date'],
-        offerSupplierId: message.data['offerSupplierId'],
-        offerId: message.data['offerId'],
-        orderId: message.data['orderId'],
-      );
-
-      // Add to Cubit state which handles both current state and caching
-      // _notificationsCubit.addNotification(notification);
+      // final notification = NotificationModel(
+      //   id: '0',
+      //   title: message.notification?.title ?? "NO TITLE",
+      //   body: message.notification?.body ?? "NO BODY",
+      //   date: DateTime.tryParse(message.data['date']),
+      //   offerSupplierId: message.data['offerSupplierId'],
+      //   offerId: message.data['offerId'],
+      //   orderId: message.data['orderId'],
+      // );
     }
   }
 
@@ -120,16 +110,14 @@ class NotificationsManager {
 // Top-level background handler
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  final notification = NotificationModel(
-        title: message.notification?.title ?? "NO TITLE",
-        body: message.notification?.body ?? "NO BODY",
-        date: message.data['date'],
-        offerSupplierId: message.data['offerSupplierId'],
-        offerId: message.data['offerId'],
-        orderId: message.data['orderId'],
-      );
-
-  // Handle background message through Cubit
-  // await NotificationsCubit().addNotification(notification);
+  // final notification = NotificationModel(
+  //       id: '0',
+  //       title: message.notification?.title ?? "NO TITLE",
+  //       body: message.notification?.body ?? "NO BODY",
+  //       date: message.data['date'],
+  //       offerSupplierId: message.data['offerSupplierId'],
+  //       offerId: message.data['offerId'],
+  //       orderId: message.data['orderId'],
+  //     );
 }
 

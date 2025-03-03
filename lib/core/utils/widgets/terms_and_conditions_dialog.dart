@@ -6,9 +6,11 @@ import 'package:supplier/core/utils/constants/route_constants.dart';
 import 'package:supplier/core/utils/service_locator.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/app_button.dart';
+import 'package:supplier/core/utils/widgets/snack_bar.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 
 import '../../../features/client/chat/presentation/cubit/chat_cubit.dart';
 import '../../../generated/l10n.dart';
@@ -16,7 +18,7 @@ import '../../../generated/l10n.dart';
 showTermsAndConditionsDialog(
     BuildContext context,
     bool isSeller,
-    {String? offerSupplierId, String? offerId, String? orderId}
+    {String? offerSupplierId, String? offerId, String? orderId, String? supplierName}
     ) {
   showModalBottomSheet(
     context: context,
@@ -56,14 +58,17 @@ showTermsAndConditionsDialog(
               create: (context) => ServiceLocator.getIt<ChatCubit>(),
               child:  AppButton(
                     text: S.of(context).accept,
-                    onTap: () {
+                    onTap: () async {
                       if(offerSupplierId != null){
-                        // print(ServiceLocator.getIt<ChatCubit>().messageController.text);
-                        ServiceLocator.getIt<ChatCubit>().sendAMessage(
-                          customMsg: "I accept the offer from: $offerSupplierId\n[Offer ID: $offerId]\n[Order ID: $orderId]",
-                        );
+
+                       final response = await ServiceLocator.getIt<AuthenticationCubit>()
+                           .approveOffer(offerId, orderId, offerSupplierId);
+                       showCustomSnackBar(context,
+                           response,
+                           response=="Congrats! Now, wait for admin to contact you"?
+                           Colors.green: Colors.red
+                       );
                       }
-                      // ServiceLocator.getIt<ChatCubit>().messageController.clear();
                       Navigator.pushReplacementNamed(
                           context,
                           isSeller

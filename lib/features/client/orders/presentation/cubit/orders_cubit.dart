@@ -6,6 +6,9 @@ import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/features/client/orders/model/client_order_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/notification_service.dart';
+import '../../../../../core/utils/service_locator.dart';
 part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
@@ -91,7 +94,7 @@ class OrdersCubit extends Cubit<OrdersState> {
       emit(AddingOrderState());
       final instance = FirebaseFirestore.instance.collection("Orders");
 
-      await instance.add({
+      final response = await instance.add({
         "userId": SharedPreferencesManager.getStringValue(
             key: StorageConstants.userId),
         "date": date,
@@ -104,7 +107,11 @@ class OrdersCubit extends Cubit<OrdersState> {
         "mobile": mobile,
         "address": address
       });
-
+      ServiceLocator.getIt<NotificationService>().createNotification(
+        title: "New order created!!",
+        body: "Order Id: ${response.id}",
+        recipientId: 'admin',
+      );
       emit(AddingOrderSuccessState());
     } catch (error) {
       log(error.toString());

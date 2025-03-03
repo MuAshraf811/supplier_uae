@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:supplier/core/utils/notification_service.dart';
 import 'package:supplier/features/client/Authentication/otp/otp_remote_data_source_firebase_impl.dart';
 import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier/features/client/chat/presentation/cubit/chat_cubit.dart';
@@ -37,5 +38,13 @@ class ServiceLocator {
     getIt.registerFactory<SupplierChatCubit>(
           () => SupplierChatCubit(),
     );
+
+
+  getIt.registerLazySingleton<NotificationService>(
+        () => NotificationService(userId: 'admin'),
+  );
+
+
+
   }
 }
