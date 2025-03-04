@@ -59,7 +59,7 @@ class _RegisterStepperState extends State<RegisterStepper> {
                         context, state.error, ColorConsatnts.red);
                   }
                   if (state is UploadingUserStateSuccessState){
-                                              showTermsAndConditionsDialog(context, true);
+                     showTermsAndConditionsDialog(context, true);
 
                   }
                 },
@@ -92,55 +92,58 @@ class _RegisterStepperState extends State<RegisterStepper> {
                               });
                               showDialog(
                                 context: context,
-                                builder: (context) => Scaffold(
-                                 /* appBar: AppBar(
-                                    leading: IconButton(
-                                        onPressed: () => Navigator.of(context).pop(),
-                                        icon: const Icon(Icons.close)),
-                                  ),*/
-                                  body: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          const SizedBox(height: 50,),
-                                          const Text("Enter Verification Code below",style: TextStyle(fontSize: 20,),maxLines: 2,),
-                                          const SizedBox(height: 20,),
-                                          AppTextField(
-                                            label: "Otp code",
-                                            type: TextInputType.number,
-                                            suffixIcon: Icons.numbers,
-                                            controller: otpController,
-                                          ),
-                                          VerticalSpacer(space: 20),
-                                          details.currentStep == 0 && isVerifyClicked?
-                                          const Center(child: CircularProgressIndicator(),)
-                                          : AppButton(text: "Verify Code", onTap: () {
-                                            if(otpController.text.isNotEmpty){
-                                              setState(() {
-                                                isVerifyClicked = true;
-                                              });
-                                              ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {
-                                                if(value.success){
-                                                  showCustomSnackBar(context, "Code Verified", Colors.green);
-                                                  Navigator.of(context).pop();
-                                                  setState(
-                                                        () {
+                                builder: (context) => Padding(
+                                  padding: const EdgeInsets.all(28.0),
+                                  child: Scaffold(
+                                   appBar: AppBar(
+                                      leading: IconButton(
+                                          onPressed: () => Navigator.of(context).pop(),
+                                          icon: const Icon(Icons.close)),
+                                    ),
+                                    body: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            const SizedBox(height: 50,),
+                                            const Text("Enter Verification Code below",style: TextStyle(fontSize: 20,),maxLines: 2,),
+                                            const SizedBox(height: 20,),
+                                            AppTextField(
+                                              label: "Otp code",
+                                              type: TextInputType.number,
+                                              suffixIcon: Icons.numbers,
+                                              controller: otpController,
+                                            ),
+                                            VerticalSpacer(space: 20),
+                                            details.currentStep == 0 && isVerifyClicked?
+                                            const Center(child: CircularProgressIndicator(),)
+                                            : AppButton(text: "Verify Code", onTap: () {
+                                              if(otpController.text.isNotEmpty){
+                                                setState(() {
+                                                  isVerifyClicked = true;
+                                                });
+                                                ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {
+                                                  if(value.success){
+                                                    showCustomSnackBar(context, "Code Verified", Colors.green);
+                                                    Navigator.of(context).pop();
+                                                    setState(
+                                                          () {
+                                                        isVerifyClicked = false;
+                                                        stepIndex++;
+                                                      },
+                                                    );
+                                                  }else{
+                                                    setState(() {
                                                       isVerifyClicked = false;
-                                                      stepIndex++;
-                                                    },
-                                                  );
-                                                }else{
-                                                  setState(() {
-                                                    isVerifyClicked = false;
-                                                  });
-                                                  showCustomSnackBar(context, value.message, Colors.redAccent);
-                                                }
-                                              },);
-                                            }
-                                          },),
-                                        ],
+                                                    });
+                                                    showCustomSnackBar(context, value.message, Colors.redAccent);
+                                                  }
+                                                },);
+                                              }
+                                            },),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

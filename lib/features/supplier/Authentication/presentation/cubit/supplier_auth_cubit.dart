@@ -243,7 +243,7 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
 
     } catch (e) {  
       log(e.toString());
-      UploadingUserStateErrorState(error: e.toString());
+      emit(UploadingUserStateErrorState(error: e.toString()));
       return;
     }
   }

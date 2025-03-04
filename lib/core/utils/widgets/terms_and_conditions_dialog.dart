@@ -69,10 +69,14 @@ showTermsAndConditionsDialog(
                            Colors.green: Colors.red
                        );
                       }
+                      showCustomSnackBar(context,
+                          "Congrats!",
+                          Colors.green
+                      );
                       Navigator.pushReplacementNamed(
                           context,
                           isSeller
-                              ? RouteConstants.supplierHomeView
+                              ? RouteConstants.logInView
                               : RouteConstants.homePage);
                     }),
             )
