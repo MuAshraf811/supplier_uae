@@ -137,23 +137,23 @@ class NotificationItem extends StatelessWidget {
             child: Text(
               notificationTitle,
               style: applyBoldStyle(
-                  fontSize: 16, fontColor: ColorConsatnts.black,),
+                  fontSize: 18, fontColor: ColorConsatnts.black,),
             ),
           ),
           const VerticalSpacer(space: 8),
           FittedBox(
             child: Text(
               notificationBody,
-              maxLines: 10,
+              maxLines: 20,
               overflow: TextOverflow.ellipsis,
-              style: applyMediumStyle(fontSize: 14, fontColor: Colors.grey),
+              style: applyMediumStyle(fontSize: 17, fontColor: Colors.grey),
             ),
           ),
           FittedBox(
             child: Text(
-              notificationDate,//.split(' ')[0],
+              notificationDate.substring(0,19).replaceFirst(' ', ' at '),//.split(' ')[0],
               style: applyRegularStyle(
-                  fontSize: 14, fontColor: ColorConsatnts.primary),
+                  fontSize: 15, fontColor: ColorConsatnts.primary),
             ),
           ),
           if(offerSupplierId !=null && offerSupplierId!.isNotEmpty)

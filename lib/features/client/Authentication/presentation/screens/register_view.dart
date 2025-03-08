@@ -10,7 +10,6 @@ import 'package:supplier/core/utils/widgets/snack_bar.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
 import 'package:supplier/core/utils/widgets/terms_and_conditions_dialog.dart';
 import 'package:supplier/features/client/Authentication/otp/otp_remote_data_source_firebase_impl.dart';
-import 'package:supplier/features/client/Authentication/otp/otp_screen.dart';
 import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier/features/client/Authentication/presentation/widgets/drop_down_text_field.dart';
 import 'package:supplier/features/client/Authentication/presentation/widgets/or_divider.dart';
@@ -25,14 +24,22 @@ import '../../../../../core/utils/widgets/app_text_field.dart';
 import '../widgets/login_with_container.dart';
 import '../widgets/password_validation_coulmn.dart';
 
-class RegisterView extends StatelessWidget {
-  RegisterView({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
 
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
   final formKey = GlobalKey<FormState>();
 
   PhoneController thePhoneController = PhoneController(initialValue: PhoneNumber.parse("+971"));
 
   TextEditingController otpController = TextEditingController();
+
+  bool isVerifyPressed= false;
+
   @override
   Widget build(BuildContext context) {
     return  BlocConsumer<AuthenticationCubit, AuthenticationState>(
@@ -262,8 +269,18 @@ class RegisterView extends StatelessWidget {
                                                   controller: otpController,
                                                 ),
                                                 VerticalSpacer(space: 20),
+                                                isVerifyPressed?
+                                                const Center(child: CircularProgressIndicator(),):
                                                 AppButton(text: "Verify Code", onTap: () {
-                                                  ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {
+                                                  setState(() {
+                                                    isVerifyPressed = true;
+                                                  });
+                                                  ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
+                                                      .verifyOtp(userCode: otpController.text)
+                                                      .then((value) {
+                                                    setState(() {
+                                                      isVerifyPressed = false;
+                                                    });
                                                     if(value.success){
                                                       showCustomSnackBar(context, "Code Verified", Colors.green);
                                                       Navigator.of(context).pop();
@@ -314,7 +331,7 @@ class RegisterView extends StatelessWidget {
                         showCustomSnackBar(context, state.error, Colors.red,
                             duration: 8);
                         if (state is SuccessLogInWithGoogleState) {
-                          
+
                     AppConfigCubit.isLogged = true;
                     AppConfigCubit.isSupplier = false;
                     SharedPreferencesManager.storeBoolValue(

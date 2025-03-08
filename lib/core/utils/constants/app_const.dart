@@ -192,13 +192,13 @@ static List<String> homeCategoryStrings(BuildContext context) {
             title: S.of(context).paper_cups,
             index: 9),
         CategoryModel(
-            image: "assets/images/printing/Diverse.jpeg",
-            title: S.of(context).diverse_digital,
-            index: 11),
-        CategoryModel(
             image: "assets/images/printing/plastic cup.jpeg",
             title: S.of(context).plastic_cups,
             index: 10),
+        CategoryModel(
+            image: "assets/images/printing/Diverse.jpeg",
+            title: S.of(context).diverse_digital,
+            index: 11),
       ],
       [
         CategoryModel(
@@ -214,21 +214,21 @@ static List<String> homeCategoryStrings(BuildContext context) {
             title: S.of(context).digital_cards,
             index: 2),
         CategoryModel(
-            image: "assets/images/Digital/diverse.jpeg",
-            title: S.of(context).diverse_digital,
-            index: 3),
-        CategoryModel(
             image: "assets/images/Digital/Flyer.jpeg",
             title: S.of(context).flyers,
-            index: 4),
+            index: 3),
         CategoryModel(
             image: "assets/images/Digital/small shopping bag.png",
             title: S.of(context).small_shopping_bag,
-            index: 5),
+            index: 4),
         CategoryModel(
             image: "assets/images/Digital/Stickers.jpg",
             title: S.of(context).stickers,
             index: 5),
+        CategoryModel(
+            image: "assets/images/Digital/diverse.jpeg",
+            title: S.of(context).diverse_digital,
+            index: 6),
       ],
       [
         CategoryModel(
@@ -282,36 +282,36 @@ static List<String> homeCategoryStrings(BuildContext context) {
             title: S.of(context).digital_screen,
             index: 2),
         CategoryModel(
-            image: "assets/images/Signage/diverse.jpeg",
-            title: S.of(context).diverse_digital,
-            index: 3),
-        CategoryModel(
             image: "assets/images/Signage/exhibition stand.jpeg",
             title: S.of(context).exhibition_stand,
-            index: 4),
+            index: 3),
         CategoryModel(
             image: "assets/images/Signage/Flag.jpeg",
             title: S.of(context).flags,
-            index: 5),
+            index: 4),
         CategoryModel(
             image: "assets/images/Signage/flix signage.jpeg",
             title: S.of(context).flex_signage,
-            index: 6),
+            index: 5),
         CategoryModel(
             image: "assets/images/Signage/large format sticker.jpeg",
             title: S.of(context).large_format_sticker,
-            index: 7),
+            index: 6),
         CategoryModel(
             image: "assets/images/Signage/pop up.jpeg",
             title: S.of(context).pop_up,
-            index: 8),
+            index: 7),
         CategoryModel(
             image: "assets/images/Signage/roll up.jpeg",
             title: S.of(context).rollup,
-            index: 9),
+            index: 8),
         CategoryModel(
             image: "assets/images/Signage/side signage.jpeg",
             title: S.of(context).side_signage,
+            index: 9),
+        CategoryModel(
+            image: "assets/images/Signage/diverse.jpeg",
+            title: S.of(context).diverse_digital,
             index: 10),
       ],
       [
@@ -324,28 +324,28 @@ static List<String> homeCategoryStrings(BuildContext context) {
             title: S.of(context).chef_jacket,
             index: 1),
         CategoryModel(
-            image: "assets/images/Unifoarm/diverse.jpeg",
-            title: S.of(context).diverse_digital,
-            index: 2),
-        CategoryModel(
             image: "assets/images/Unifoarm/full set.jpg",
             title: S.of(context).full_set,
-            index: 3),
+            index: 2),
         CategoryModel(
             image: "assets/images/Unifoarm/shirt.jpeg",
             title: S.of(context).shirt,
-            index: 4),
+            index: 3),
         CategoryModel(
             image: "assets/images/Unifoarm/suit.jpeg",
             title: S.of(context).suit,
-            index: 5),
+            index: 4),
         CategoryModel(
             image: "assets/images/Unifoarm/T-shirt.jpeg",
             title: S.of(context).t_shirt,
-            index: 6),
+            index: 5),
         CategoryModel(
             image: "assets/images/Unifoarm/trouser.jpeg",
             title: S.of(context).trouser,
+            index: 6),
+        CategoryModel(
+            image: "assets/images/Unifoarm/diverse.jpeg",
+            title: S.of(context).diverse_digital,
             index: 7),
       ],
       [
@@ -354,52 +354,52 @@ static List<String> homeCategoryStrings(BuildContext context) {
             title: S.of(context).agenda,
             index: 0),
         CategoryModel(
-            image: "assets/images/Gift Items/Diverse.jpeg",
-            title: S.of(context).diverse_digital,
-            index: 1),
-        CategoryModel(
             image: "assets/images/Gift Items/flash memory.jpeg",
             title: S.of(context).offset_print,
-            index: 2),
+            index: 1),
         CategoryModel(
             image: "assets/images/Gift Items/ID Card.jpeg",
             title: S.of(context).id_cards,
-            index: 3),
+            index: 2),
         CategoryModel(
             image: "assets/images/Gift Items/Lanyard.jpeg",
             title: S.of(context).lanyard,
-            index: 4),
+            index: 3),
         CategoryModel(
             image: "assets/images/Gift Items/mobile cover.jpeg",
             title: S.of(context).mobile_cover,
-            index: 5),
+            index: 4),
         CategoryModel(
             image: "assets/images/Gift Items/Mouse Pad.jpeg",
             title: S.of(context).mouse_pad,
-            index: 6),
+            index: 5),
         CategoryModel(
             image: "assets/images/Gift Items/Mug.jpeg",
             title: S.of(context).mugs,
-            index: 7),
+            index: 6),
         CategoryModel(
             image: "assets/images/Gift Items/Pen.jpeg",
             title: S.of(context).pen,
-            index: 8),
+            index: 7),
         CategoryModel(
             image: "assets/images/Gift Items/Trophy.jpeg",
             title: S.of(context).trophy,
-            index: 9),
+            index: 8),
         CategoryModel(
             image: "assets/images/Gift Items/umbrella.jpeg",
             title: S.of(context).umbrella,
-            index: 10),
+            index: 9),
         CategoryModel(
             image: "assets/images/Gift Items/Wooden-Stand-.jpeg",
             title: S.of(context).offset_print,
-            index: 11),
+            index: 10),
         CategoryModel(
             image: "assets/images/Gift Items/Wristband.jpeg",
             title: S.of(context).wristband,
+            index: 11),
+        CategoryModel(
+            image: "assets/images/Gift Items/Diverse.jpeg",
+            title: S.of(context).diverse_digital,
             index: 12),
       ],
     ];
