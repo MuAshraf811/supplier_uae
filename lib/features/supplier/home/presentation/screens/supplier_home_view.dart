@@ -10,7 +10,6 @@ import 'package:supplier/features/supplier/home/presentation/cubit/quotation/quo
 import 'package:supplier/features/supplier/home/presentation/screens/offers_view.dart';
 import 'package:supplier/features/supplier/home/presentation/widgets/quotation_dialog.dart';
 import 'package:supplier/features/supplier/home/presentation/widgets/supplier_bottom_bar.dart';
-import 'package:supplier/features/supplier/home/presentation/widgets/supplier_home_app_bar.dart';
 import 'package:supplier/features/supplier/home/presentation/widgets/supplier_order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

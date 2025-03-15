@@ -148,6 +148,8 @@ showQuotationDialog(BuildContext context, QuotationCubit cubit) {
                     svg: AssetsConstants.editIcon,
                     icon: Icons.date_range,
                   ),
+                  // const VerticalSpacer(space: 10),
+                  // const QuotationTermsAndCondition(),
                   const VerticalSpacer(space: 8),
                   BlocConsumer<QuotationCubit, QuotationState>(
                     buildWhen: (previous, current) =>

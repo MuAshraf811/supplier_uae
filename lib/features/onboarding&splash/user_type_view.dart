@@ -1,4 +1,3 @@
-import 'package:supplier/app.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
@@ -46,7 +45,8 @@ class UserTypeView extends StatelessWidget {
                       Navigator.popAndPushNamed(
                           context, RouteConstants.logInView); 
                     },
-                    title: 'FIND SUPPLIER',
+                    title: 'FIND SUPPLIER', 
+                    titleAr: 'البحث عن مورد',
                     discription: '(Person / Company)',
                     imagePath: 'assets/images/role1.jpeg',
                   ),
@@ -58,7 +58,8 @@ class UserTypeView extends StatelessWidget {
                       Navigator.popAndPushNamed(
                           context, RouteConstants.supplierLogInView);
                     },
-                    title: "I AM A SUPPLIER",
+                    title: "I AM A SUPPLIER", 
+                    titleAr: 'أنا مورد',
                     discription: '(Printing Press / Company / Agency).',
                     imagePath: 'assets/images/role2.jpeg',
                   ),
