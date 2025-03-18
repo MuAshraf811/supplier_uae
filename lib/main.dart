@@ -1,9 +1,6 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
-import 'package:supplier/core/utils/app_global.dart';
 import 'package:supplier/core/utils/configurations.dart';
 import 'core/bloc_observer/bloc_observer.dart';
 import 'core/utils/constants/storage_const.dart';
@@ -12,7 +9,6 @@ import 'package:supplier/app.dart';
 import 'package:supplier/core/utils/constants/app_const.dart';
 import 'package:supplier/core/utils/service_locator.dart';
 import 'package:supplier/core/utils/storage/shared_preferences.dart';
-import 'package:supplier/core/utils/widgets/custom_error_widget.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

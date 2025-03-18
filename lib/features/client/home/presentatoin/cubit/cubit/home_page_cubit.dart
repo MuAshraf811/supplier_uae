@@ -14,8 +14,8 @@ class HomePageCubit extends Cubit<HomePageState> {
   late String radioButtonGroupValue;
   late OrderModel addedOrder;
   Map<String, dynamic> orderDetails = {};
-  initGroupVal(int index) {
-    radioButtonGroupValue = CategoryConstants.printing[index].radioOptions[0];
+  initGroupVal(int index, BuildContext context) {
+    radioButtonGroupValue = CategoryConstants.getPrintingCategories(context)[index].radioOptions[0];
   }
  
   rebuildRadioOnChooseing(String choice, int choiceIndex) {

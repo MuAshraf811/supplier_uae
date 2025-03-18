@@ -20,7 +20,7 @@ class DetailedCategoryItemView extends StatelessWidget {
   final int categoryItemIndex;
   @override
   Widget build(BuildContext context) {
-    context.read<HomePageCubit>().initGroupVal(categoryItemIndex);
+    context.read<HomePageCubit>().initGroupVal(categoryItemIndex, context);
     return Scaffold( 
       backgroundColor: ColorConsatnts.white,
       body: SafeArea(
@@ -47,7 +47,7 @@ class DetailedCategoryItemView extends StatelessWidget {
               ),
               const VerticalSpacer(space: 18),
               Text(
-                CategoryConstants.printing[categoryItemIndex].title,
+                    CategoryConstants.getPrintingCategories(context)[categoryItemIndex].title,
                 style: applySemiBoldStyle(
                   fontSize: 16,
                   fontColor: ColorConsatnts.primary,
@@ -63,7 +63,7 @@ class DetailedCategoryItemView extends StatelessWidget {
                       current is RadioCurrentChoice,
                   builder: (context, state) {
                     return Text(
-                    CategoryConstants.printing[categoryItemIndex]
+                    CategoryConstants.getPrintingCategories(context)[categoryItemIndex]
                         .details[context.read<HomePageCubit>().indexFromChoice]
                     ["title"],
                     style: applySemiBoldStyle(
@@ -116,7 +116,7 @@ class ItemRadioButtons extends StatelessWidget {
       buildWhen: (previous, current) => current is RadioCurrentChoice,
       builder: (context, state) => IntrinsicHeight(
         child: Column(
-          children: CategoryConstants.printing[categoryItemIndex].radioOptions
+          children: CategoryConstants.getPrintingCategories(context)[categoryItemIndex].radioOptions
               .map((val) => CustomRadioButton(
                   text: val,
                   value: val,
@@ -126,7 +126,7 @@ class ItemRadioButtons extends StatelessWidget {
                     context.read<HomePageCubit>().rebuildRadioOnChooseing(
                         value!,
                         CategoryConstants
-                            .printing[categoryItemIndex].radioOptions
+                            .getPrintingCategories(context)[categoryItemIndex].radioOptions
                             .indexOf(value));
                   }))
               .toList(),
@@ -149,7 +149,7 @@ class ItemRequiredDropDowns extends StatelessWidget {
     return BlocBuilder<HomePageCubit, HomePageState>(
       buildWhen: (previous, current) => current is RadioCurrentChoice,
       builder: (context, state) {
-        final radioDropDowns = CategoryConstants.printing[categoryItemIndex]
+        final radioDropDowns = CategoryConstants.getPrintingCategories(context)[categoryItemIndex]
                 .details[context.read<HomePageCubit>().indexFromChoice]
             ["details"] as Map<String, dynamic>;
         for (var e in radioDropDowns.entries) {
@@ -196,7 +196,7 @@ class ItemTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomePageCubit, HomePageState>(
       builder: (context, state) {
-        final bool isRequird = CategoryConstants.printing[categoryItemIndex]
+        final bool isRequird = CategoryConstants.getPrintingCategories(context)[categoryItemIndex]
                 .details[context.read<HomePageCubit>().indexFromChoice]
             ["isRequired"];
         return Form(
@@ -238,7 +238,7 @@ class AdditionalDropDowns extends StatelessWidget {
     return BlocBuilder<HomePageCubit, HomePageState>(
       buildWhen: (previous, current) => current is RadioCurrentChoice,
       builder: (context, state) {
-        final radioDropDowns = CategoryConstants.printing[categoryItemIndex]
+        final radioDropDowns = CategoryConstants.getPrintingCategories(context)[categoryItemIndex]
                 .details[context.read<HomePageCubit>().indexFromChoice]["other"]
             as Map<String, dynamic>;
         for (var e in radioDropDowns.entries) {

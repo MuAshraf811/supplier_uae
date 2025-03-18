@@ -46,9 +46,9 @@ class DetailedItemPackaging extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: (packageOrderIndex - 4 >= 0 &&
                           packageOrderIndex - 4 <
-                              PackagingConstants.innerTitles.length)
+                              PackagingConstants.innerTitles(context).length)
                       ? PackagingConstants
-                          .innerTitles[packageOrderIndex - 4].length
+                          .innerTitles(context)[packageOrderIndex - 4].length
                       : 0,
                   itemBuilder: (context, index) => Container(
                     height: 64.h,
@@ -95,7 +95,7 @@ class DetailedItemPackaging extends StatelessWidget {
                           const HorizontalSpacer(space: 12),
                           Text(
                             PackagingConstants
-                                .innerTitles[packageOrderIndex - 4][index],
+                                .innerTitles(context)[packageOrderIndex - 4][index],
                             style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.black,

@@ -79,6 +79,7 @@ flutter:
     - assets/images/Hygiene and protection/
     - assets/images/Alumium Products/Containers/
     - assets/images/Alumium Products/Foils/
+    #assets/images/Plastic Products/Plate_Trays/1.jpeg
     - assets/images/Alumium Products/Platters/
     - assets/images/Alumium Products/Pots/
     - assets/images/Plastic Products/Bakery Range/
@@ -90,11 +91,11 @@ flutter:
     - assets/images/Plastic Products/Deli Containers/
     - assets/images/Plastic Products/Garbage Bags/
     - assets/images/Plastic Products/Microwave Containers/
-    - assets/images/Plastic Products/Plate_Trays/
+    - assets/images/Plastic Products/PlateTrays/ 
     - assets/images/Plastic Products/Portion Cups/
     - assets/images/Plastic Products/Powls/
     - assets/images/Plastic Products/Salad Containers/
-    - assets/images/Plastic Products/Stirrer_Straws/
+    - assets/images/Plastic Products/StirrerStraws/
     - assets/images/Plastic Products/Table Sheets/
     - assets/images/Plastic Products/Tamper Evident Containers/
     - assets/images/Wooden Products/Concession Trays/
@@ -110,7 +111,7 @@ flutter:
     - assets/images/Hygiene and protection/Dispenser/
     - assets/images/Hygiene and protection/Cleaner/
     - assets/images/Hygiene and protection/Gloves/
-    - assets/images/Hygiene and protection/Hygiene/
+    - assets/images/Hygiene and protection/Hygiene/ 
     - supa_keys.env
   fonts:
     - family: Quicksand

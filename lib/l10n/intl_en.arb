@@ -216,7 +216,7 @@
     "plasticBagHd": "Plastic Bag HD",
     "plasticBagLd": "Plastic Bag LD",
     "courierBag": "Courier Bag",
-
+  
     "paperCup": "Paper Cup",
     "paperCupSingleWall": "Paper Cup Single Wall",
     "paperCupDoubleWall": "Paper Cup Double Wall",
@@ -272,7 +272,21 @@
     "white": "White",
     "brown": "Brown",
 
-
+    "gold": "Gold",
+  "silver": "Silver",
+  "outside": "Outside",
+  "inside": "Inside",
+  "inside_print": "Inside Print",
+  "sheet": "Sheet",
+  "folding": "Folding",
+  "pages": "Pages",
+  "dai_cut": "Dai Cut",
+  "steel": "Steel",
+  "cylinder": "Cylinder",
+ "offset": "Offset",
+  "shape": "Shape",
+  "special": "Special",
+  "curve": "Curve",
     "containers": "Containers",
     "foils": "Foils",
     "platters": "Platters",
@@ -287,7 +301,7 @@
     "microwaveContainers": "Microwave Containers",
     "plateTrays": "Plate/Trays",
     "portionCups": "Portion Cups",
-    "bowls": "Bowls",
+    "bowls": "Powls",
     "saladContainers": "Salad Containers",
     "stirrerStraws": "Stirrer/Straws",
     "tableSheets": "Table Sheets",
@@ -303,7 +317,150 @@
     "sweetBoxes": "Sweet Boxes",
     "concessionTrays": "Concession Trays",
     "cutleries": "Cutleries",
-    "sticksAndSkewers": "Sticks & Skewers"
+    "sticksAndSkewers": "Sticks & Skewers",
+  
+  "envelopes": "Envelopes",
+  "invoices": "Invoices",
+ 
+  "plastic_sticker": "Plastic Sticker",
+  "menu_leather_folder": "Menu Leather / Folder",
+
+  "invoice_book": "Invoice Book",
+  "receipt_voucher": "Receipt Voucher",
+  "payment_voucher": "Payment Voucher",
+  "captain_order": "Captain Order",
+  "paper_sticker": "Paper Sticker",
+  "pvc_sticker": "PVC Sticker",
+  "leather_menu_folder": "Leather Menu / Folder",
+  "business_profile": "Business Profile", 
+ 
+  "spot_uv": "Spot UV",
+  "optional_field": "This field is optional", 
+
+
+  "paper_products_brochure": "Paper Products - Brochure",
+  "order_details_note": "Please write your order details:",
+  "order_execution_note": "Note: Your order will be executed based on the details you provide in this section.",
+
+  "threed_boards": "3D Boards",
+  "twod_boards": "2D Boards",
+  
+  "cleaning_protection_products": "Cleaning & Protection Products", 
+  "l_shaped_paper": "L-Shaped Paper",
+  "sandwich_bag": "Sandwich Bag",
+  "paper_roll_wrap": "Paper Roll Wrap",
+  "sweets_wrapping_roll": "Sweets Wrapping Roll", 
+  "coffee_bags_with_zipper": "Coffee Bags with Zipper",
+  "coffee_bags_with_filter": "Coffee Bags with Filter",
+  "plastic_coffee_bags": "Plastic Coffee Bags",
+  "paper_coffee_bags": "Paper Coffee Bags",
+
+  "pizza_box": "Pizza Box",
+  "lunch_box": "Lunch Box",
+  "food_box": "Food Box",
+  "sandwich_box": "Sandwich Box",
+  "duplex_burger_box": "Duplex Burger Box",
+  "salad_box": "Salad Box",
+  "manakish_box": "Manakish Box",
+  "sandwich_takeaway_box": "Sandwich Takeaway Box",
+  "takeaway_box": "Takeaway Box",
+  "noodle_box": "Noodle Box",
+  "carton_products": "Carton Products",
+  "fiber_products": "Fiber Products",
+  "aluminum_products": "Aluminum Products",
+ 
+  "wood_products": "Wood Products",
+  "cleaning_and_protection_products": "Cleaning & Protection Products",
+
+ 
+  "flex_boards": "Flex Boards",
+  "digital_screens": "Digital Screens",
+
+  "outdoor_stickers": "Outdoor Stickers",
+  "roll_up": "Roll-Up",
+  "side_boards": "Side Boards",
+
+  "various_products": "Various Products",
+  "flash_memory": "Flash Memory",
+  "business_card": "Business Card",
+
+  "mug": "Mug",
+  "memorial_plaque": "Memorial Plaque",
+  "table_stand": "Table Stand",
+
+  "tshirt": "T-shirt",
+  "trousers": "Trousers",
+  
+  "catalog": "Catalog",
+  "digital_card": "Digital Card",
+  
+  "small_shopping_bags": "Small Shopping Bags",
+  "sticker": "Sticker",
+
+  "plastic_cups_pp": "Plastic Cups PP",
+  "plastic_cups_pet": "Plastic Cups PET",
+  "single_layer_paper_cups": "Single Layer Paper Cups",
+  "double_layer_paper_cups": "Double Layer Paper Cups",
+  "corrugated_paper_cups": "Corrugated Paper Cups",
+  "ice_cream_cups": "Ice Cream Cups",
+  "foam_cups": "Foam Cups",
+
+  "plastic_bags_hd": "Plastic Bags HD",
+  "plastic_bags_ld": "Plastic Bags LD",
+  "shipping_bags": "Shipping Bags",
+
+  "fabric_bags_with_handle": "Fabric Bags with Handle",
+  "fabric_bags_with_square_bottom": "Fabric Bags with Square Bottom",
+  "flat_fabric_bags": "Flat Fabric Bags",
+
+  "paper_bags_with_twisted_handle": "Paper Bags with Twisted Handle",
+  "paper_bags_with_square_bottom": "Paper Bags with Square Bottom (SOS)",
+  "flat_paper_bags": "Flat Paper Bags",
+  "flat_paper_bags_with_window": "Flat Paper Bags with Window",
+  
+  "cardboard_shopping_bags": "Cardboard Shopping Bags",
+  "custom_shopping_bags": "Custom Shopping Bags",
+
+  "cup_holder": "Cup Holder",
+  "cup_sleeve": "Cup Sleeve",
+  "printed_tissue_boxes": "Printed Tissue Boxes",
+  "printed_tissues": "Printed Tissues",
+  "printed_wet_wipes": "Printed Wet Wipes",
+  
+  "printer_paper": "Printer Paper",
+  "thermal_printer_paper": "Thermal Printer Paper", 
+  "error": "Error",
+  "bakery_supplies": "Bakery Supplies",
+  "plastic_film": "Plastic Film",
+  "cutlery": "Cutlery",
+  "daily_containers": "Daily Containers",
+  "garbage_bags": "Garbage Bags",
+  "microwave_containers": "Microwave Containers",
+  "plates_trays": "Plates: Trays",
+  "serving_cups": "Serving Cups",
+  "bowls_dishes": "Bowls",
+  "salad_containers": "Salad Containers",
+  "straws_sticks": "Straws: Sticks",
+  "table_covers": "Table Covers",
+  "resistant_containers": "Resistant Containers",
+  "foil_containers": "Foil Containers",
+  "aluminum_foil": "Aluminum Foil",
+  "aluminum_plates": "Aluminum Plates",
+  "aluminum_utensils": "Aluminum Utensils",
+  "hygiene_protection": "Hygiene & Protection",
+  "packaging_tools": "Packaging Tools",
+  "packaging_bowls": "Packaging Bowls",
+  "packaging_boxes": "Packaging Boxes",
+  "special_tools": "Special Tools",
+  "sweets_boxes": "Sweets Boxes",
+  "dispensers": "Dispensers",
+  "cleaners": "Cleaners",
+  "hygiene_containers": "Hygiene Containers",
+  "special_plates": "Special Plates",
+  "dining_utensils": "Dining Utensils",
+  "sticks_skewers": "Sticks & Skewers"
+
+ 
 
 
 

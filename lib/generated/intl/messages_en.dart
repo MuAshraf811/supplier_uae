@@ -32,19 +32,32 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Already have an account"),
         "aluminium_products":
             MessageLookupByLibrary.simpleMessage("Aluminium Products"),
+        "aluminum_foil": MessageLookupByLibrary.simpleMessage("Aluminum Foil"),
+        "aluminum_plates":
+            MessageLookupByLibrary.simpleMessage("Aluminum Plates"),
+        "aluminum_products":
+            MessageLookupByLibrary.simpleMessage("Aluminum Products"),
+        "aluminum_utensils":
+            MessageLookupByLibrary.simpleMessage("Aluminum Utensils"),
         "bakeryRange": MessageLookupByLibrary.simpleMessage("Bakery Range"),
+        "bakery_supplies":
+            MessageLookupByLibrary.simpleMessage("Bakery Supplies"),
         "bakingRange": MessageLookupByLibrary.simpleMessage("Baking Range"),
         "block": MessageLookupByLibrary.simpleMessage("Block"),
         "book": MessageLookupByLibrary.simpleMessage("Book"),
         "bottles": MessageLookupByLibrary.simpleMessage("Bottles"),
         "bottom": MessageLookupByLibrary.simpleMessage("Bottom"),
-        "bowls": MessageLookupByLibrary.simpleMessage("Bowls"),
+        "bowls": MessageLookupByLibrary.simpleMessage("Powls"),
+        "bowls_dishes": MessageLookupByLibrary.simpleMessage("Bowls"),
         "boxes": MessageLookupByLibrary.simpleMessage("Boxes"),
         "brochure": MessageLookupByLibrary.simpleMessage("Brochure"),
         "brown": MessageLookupByLibrary.simpleMessage("Brown"),
         "burgerBox": MessageLookupByLibrary.simpleMessage("Burger Box"),
         "businessCard": MessageLookupByLibrary.simpleMessage("Business Card"),
         "businessProfile":
+            MessageLookupByLibrary.simpleMessage("Business Profile"),
+        "business_card": MessageLookupByLibrary.simpleMessage("Business Card"),
+        "business_profile":
             MessageLookupByLibrary.simpleMessage("Business Profile"),
         "canvasBag": MessageLookupByLibrary.simpleMessage("Canvas Bag"),
         "canvasBagFlat":
@@ -55,9 +68,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Canvas Bag With Handle"),
         "canvas_bags": MessageLookupByLibrary.simpleMessage("Canvas Bags"),
         "captainOrder": MessageLookupByLibrary.simpleMessage("Captain Order"),
+        "captain_order": MessageLookupByLibrary.simpleMessage("Captain Order"),
+        "cardboard_shopping_bags":
+            MessageLookupByLibrary.simpleMessage("Cardboard Shopping Bags"),
         "carton": MessageLookupByLibrary.simpleMessage("Carton Products"),
         "cartonBoxes": MessageLookupByLibrary.simpleMessage("Carton Boxes"),
         "carton_boxes": MessageLookupByLibrary.simpleMessage("Carton Boxes"),
+        "carton_products":
+            MessageLookupByLibrary.simpleMessage("Carton Products"),
+        "catalog": MessageLookupByLibrary.simpleMessage("Catalog"),
         "catalogue": MessageLookupByLibrary.simpleMessage("Catalogue"),
         "categories_quality_description": MessageLookupByLibrary.simpleMessage(
             "Categories & Quality: Our app offers a wide range of categories such as Digital Printing, Offset Printing, Packaging, and more. We guarantee quality and efficient execution. Buyers can submit detailed requests for specific services like packaging, designing, and large-format printing. Sellers respond with quotes. What is easier than that!"),
@@ -68,6 +87,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "chef_jacket": MessageLookupByLibrary.simpleMessage("Chef Jacket"),
         "city": MessageLookupByLibrary.simpleMessage("City: "),
         "cleaner": MessageLookupByLibrary.simpleMessage("Cleaner"),
+        "cleaners": MessageLookupByLibrary.simpleMessage("Cleaners"),
+        "cleaning_and_protection_products":
+            MessageLookupByLibrary.simpleMessage(
+                "Cleaning & Protection Products"),
+        "cleaning_protection_products": MessageLookupByLibrary.simpleMessage(
+            "Cleaning & Protection Products"),
         "clingFilm": MessageLookupByLibrary.simpleMessage("Cling Film"),
         "coffeeBag": MessageLookupByLibrary.simpleMessage("Coffee Bag"),
         "coffeeBagWithFilter":
@@ -75,6 +100,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "coffeeBagWithZipper":
             MessageLookupByLibrary.simpleMessage("Coffee Bag With Zipper"),
         "coffee_bags": MessageLookupByLibrary.simpleMessage("Coffee Bags"),
+        "coffee_bags_with_filter":
+            MessageLookupByLibrary.simpleMessage("Coffee Bags with Filter"),
+        "coffee_bags_with_zipper":
+            MessageLookupByLibrary.simpleMessage("Coffee Bags with Zipper"),
         "color": MessageLookupByLibrary.simpleMessage("Color"),
         "concessionSupplies":
             MessageLookupByLibrary.simpleMessage("Concession Supplies"),
@@ -85,70 +114,125 @@ class MessageLookup extends MessageLookupByLibrary {
         "copy": MessageLookupByLibrary.simpleMessage("Copy"),
         "corrugated_cartons":
             MessageLookupByLibrary.simpleMessage("Corrugated Cartons"),
+        "corrugated_paper_cups":
+            MessageLookupByLibrary.simpleMessage("Corrugated Paper Cups"),
         "courierBag": MessageLookupByLibrary.simpleMessage("Courier Bag"),
         "creasing": MessageLookupByLibrary.simpleMessage("Creasing"),
         "crystal_trophy":
             MessageLookupByLibrary.simpleMessage("Crystal Trophy"),
         "cupHolder": MessageLookupByLibrary.simpleMessage("Cup Holder"),
+        "cup_holder": MessageLookupByLibrary.simpleMessage("Cup Holder"),
+        "cup_sleeve": MessageLookupByLibrary.simpleMessage("Cup Sleeve"),
         "cups": MessageLookupByLibrary.simpleMessage("Cups"),
+        "curve": MessageLookupByLibrary.simpleMessage("Curve"),
+        "custom_shopping_bags":
+            MessageLookupByLibrary.simpleMessage("Custom Shopping Bags"),
         "customize": MessageLookupByLibrary.simpleMessage("Customize"),
         "cutleries": MessageLookupByLibrary.simpleMessage("Cutleries"),
+        "cutlery": MessageLookupByLibrary.simpleMessage("Cutlery"),
         "cutleryRange": MessageLookupByLibrary.simpleMessage("Cutlery Range"),
         "cutting": MessageLookupByLibrary.simpleMessage("Cutting"),
+        "cylinder": MessageLookupByLibrary.simpleMessage("Cylinder"),
+        "dai_cut": MessageLookupByLibrary.simpleMessage("Dai Cut"),
+        "daily_containers":
+            MessageLookupByLibrary.simpleMessage("Daily Containers"),
         "delete_account":
             MessageLookupByLibrary.simpleMessage("Delete Account"),
         "deliContainers":
             MessageLookupByLibrary.simpleMessage("Deli Containers"),
         "digital": MessageLookupByLibrary.simpleMessage("Digital"),
+        "digital_card": MessageLookupByLibrary.simpleMessage("Digital Card"),
         "digital_cards": MessageLookupByLibrary.simpleMessage("Digital Cards"),
         "digital_screen":
             MessageLookupByLibrary.simpleMessage("Digital Screen"),
+        "digital_screens":
+            MessageLookupByLibrary.simpleMessage("Digital Screens"),
         "digital_stickers":
             MessageLookupByLibrary.simpleMessage("Digital Stickers"),
+        "dining_utensils":
+            MessageLookupByLibrary.simpleMessage("Dining Utensils"),
         "dispenser": MessageLookupByLibrary.simpleMessage("Dispenser"),
+        "dispensers": MessageLookupByLibrary.simpleMessage("Dispensers"),
         "diverse_digital": MessageLookupByLibrary.simpleMessage("Diverse"),
         "diverse_gift_items": MessageLookupByLibrary.simpleMessage("Diverse"),
         "diverse_printing": MessageLookupByLibrary.simpleMessage("Diverse"),
         "diverse_signage": MessageLookupByLibrary.simpleMessage("Diverse"),
         "diverse_uniform": MessageLookupByLibrary.simpleMessage("Diverse"),
+        "double_layer_paper_cups":
+            MessageLookupByLibrary.simpleMessage("Double Layer Paper Cups"),
         "duplexBox": MessageLookupByLibrary.simpleMessage("Duplex Box"),
+        "duplex_burger_box":
+            MessageLookupByLibrary.simpleMessage("Duplex Burger Box"),
         "emboss": MessageLookupByLibrary.simpleMessage("Emboss"),
         "envelope": MessageLookupByLibrary.simpleMessage("Envelope"),
+        "envelopes": MessageLookupByLibrary.simpleMessage("Envelopes"),
+        "error": MessageLookupByLibrary.simpleMessage("Error"),
         "exhibition_stand":
             MessageLookupByLibrary.simpleMessage("exhibition stand"),
         "extra_details": MessageLookupByLibrary.simpleMessage("Extra Details"),
+        "fabric_bags_with_handle":
+            MessageLookupByLibrary.simpleMessage("Fabric Bags with Handle"),
+        "fabric_bags_with_square_bottom": MessageLookupByLibrary.simpleMessage(
+            "Fabric Bags with Square Bottom"),
         "facialTissuePrinted":
             MessageLookupByLibrary.simpleMessage("Facial Tissue Printed"),
         "fast_print":
             MessageLookupByLibrary.simpleMessage("Digital Fast Print"),
+        "fiber_products":
+            MessageLookupByLibrary.simpleMessage("Fiber Products"),
         "find_supplier": MessageLookupByLibrary.simpleMessage("FIND SUPPLIER"),
         "find_us_on": MessageLookupByLibrary.simpleMessage("Find Us On"),
         "first_name": MessageLookupByLibrary.simpleMessage("First name"),
         "flags": MessageLookupByLibrary.simpleMessage("Flags"),
+        "flash_memory": MessageLookupByLibrary.simpleMessage("Flash Memory"),
+        "flat_fabric_bags":
+            MessageLookupByLibrary.simpleMessage("Flat Fabric Bags"),
+        "flat_paper_bags":
+            MessageLookupByLibrary.simpleMessage("Flat Paper Bags"),
+        "flat_paper_bags_with_window":
+            MessageLookupByLibrary.simpleMessage("Flat Paper Bags with Window"),
+        "flex_boards": MessageLookupByLibrary.simpleMessage("Flex Boards"),
         "flex_signage": MessageLookupByLibrary.simpleMessage("Flex Signage"),
         "flyer": MessageLookupByLibrary.simpleMessage("Flyer"),
         "flyers": MessageLookupByLibrary.simpleMessage("Flyers"),
+        "foam_cups": MessageLookupByLibrary.simpleMessage("Foam Cups"),
         "foam_products": MessageLookupByLibrary.simpleMessage("Foam Products"),
         "foil": MessageLookupByLibrary.simpleMessage("Foil"),
+        "foil_containers":
+            MessageLookupByLibrary.simpleMessage("Foil Containers"),
         "foils": MessageLookupByLibrary.simpleMessage("Foils"),
+        "folding": MessageLookupByLibrary.simpleMessage("Folding"),
+        "food_box": MessageLookupByLibrary.simpleMessage("Food Box"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password"),
         "full_set": MessageLookupByLibrary.simpleMessage("Full Set"),
         "garbageBags": MessageLookupByLibrary.simpleMessage("Garbage Bags"),
+        "garbage_bags": MessageLookupByLibrary.simpleMessage("Garbage Bags"),
         "gift_items": MessageLookupByLibrary.simpleMessage("Gift Items"),
         "glossy": MessageLookupByLibrary.simpleMessage("Glossy"),
         "gloves": MessageLookupByLibrary.simpleMessage("Gloves"),
+        "gold": MessageLookupByLibrary.simpleMessage("Gold"),
         "handle": MessageLookupByLibrary.simpleMessage("Handle"),
         "height": MessageLookupByLibrary.simpleMessage("height"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hygiene": MessageLookupByLibrary.simpleMessage("Hygiene"),
         "hygiene_and_protection":
             MessageLookupByLibrary.simpleMessage("Hygiene and Protection"),
+        "hygiene_containers":
+            MessageLookupByLibrary.simpleMessage("Hygiene Containers"),
+        "hygiene_protection":
+            MessageLookupByLibrary.simpleMessage("Hygiene & Protection"),
         "i_am_a_supplier":
             MessageLookupByLibrary.simpleMessage("I am a supplier"),
         "iceCreamCup": MessageLookupByLibrary.simpleMessage("Ice Cream Cup"),
+        "ice_cream_cups":
+            MessageLookupByLibrary.simpleMessage("Ice Cream Cups"),
         "id_cards": MessageLookupByLibrary.simpleMessage("ID Cards"),
+        "inside": MessageLookupByLibrary.simpleMessage("Inside"),
+        "inside_print": MessageLookupByLibrary.simpleMessage("Inside Print"),
         "invoiceBook": MessageLookupByLibrary.simpleMessage("Invoice Book"),
+        "invoice_book": MessageLookupByLibrary.simpleMessage("Invoice Book"),
+        "invoices": MessageLookupByLibrary.simpleMessage("Invoices"),
         "kraftPaperBags":
             MessageLookupByLibrary.simpleMessage("Kraft Paper Bags"),
         "kraftPaperBagsFlat":
@@ -160,6 +244,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "kraftPaperBagsWithTwistedHandle": MessageLookupByLibrary.simpleMessage(
             "Kraft Paper Bags With Twisted Handle"),
         "lShapePaper": MessageLookupByLibrary.simpleMessage("L Shape Paper"),
+        "l_shaped_paper":
+            MessageLookupByLibrary.simpleMessage("L-Shaped Paper"),
         "label": MessageLookupByLibrary.simpleMessage("Label"),
         "lamination": MessageLookupByLibrary.simpleMessage("Lamination"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
@@ -170,18 +256,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "last_name": MessageLookupByLibrary.simpleMessage("Last name"),
         "leatherMenuFolder":
             MessageLookupByLibrary.simpleMessage("Leather Menu / Folder"),
+        "leather_menu_folder":
+            MessageLookupByLibrary.simpleMessage("Leather Menu / Folder"),
         "length": MessageLookupByLibrary.simpleMessage("Length"),
         "letterhead": MessageLookupByLibrary.simpleMessage("Letterhead"),
         "lid": MessageLookupByLibrary.simpleMessage("Lid"),
         "log_in": MessageLookupByLibrary.simpleMessage("Log In"),
         "log_out": MessageLookupByLibrary.simpleMessage("Log Out"),
         "lunchBox": MessageLookupByLibrary.simpleMessage("Lunch Box"),
+        "lunch_box": MessageLookupByLibrary.simpleMessage("Lunch Box"),
         "manakishBox": MessageLookupByLibrary.simpleMessage("Manakish Box"),
+        "manakish_box": MessageLookupByLibrary.simpleMessage("Manakish Box"),
         "material": MessageLookupByLibrary.simpleMessage("Material"),
         "matt": MessageLookupByLibrary.simpleMessage("Matt"),
         "mealBox": MessageLookupByLibrary.simpleMessage("Meal Box"),
+        "memorial_plaque":
+            MessageLookupByLibrary.simpleMessage("Memorial Plaque"),
         "menu": MessageLookupByLibrary.simpleMessage("Menu"),
+        "menu_leather_folder":
+            MessageLookupByLibrary.simpleMessage("Menu Leather / Folder"),
         "microwaveContainers":
+            MessageLookupByLibrary.simpleMessage("Microwave Containers"),
+        "microwave_containers":
             MessageLookupByLibrary.simpleMessage("Microwave Containers"),
         "mobile_cover": MessageLookupByLibrary.simpleMessage("Mobile Cover"),
         "mobile_number": MessageLookupByLibrary.simpleMessage("Mobile Number"),
@@ -190,6 +286,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "more_quotes_offers": MessageLookupByLibrary.simpleMessage(
             "More Quotes, Offers & Outstanding Service"),
         "mouse_pad": MessageLookupByLibrary.simpleMessage("Mouse Pad"),
+        "mug": MessageLookupByLibrary.simpleMessage("Mug"),
         "mugs": MessageLookupByLibrary.simpleMessage("Mugs"),
         "napkinTissuePrinted":
             MessageLookupByLibrary.simpleMessage("Napkin Tissue Printed"),
@@ -199,6 +296,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No Notifications Yet!"),
         "no_orders": MessageLookupByLibrary.simpleMessage("There is no Orders"),
         "non": MessageLookupByLibrary.simpleMessage("Non"),
+        "noodle_box": MessageLookupByLibrary.simpleMessage("Noodle Box"),
         "noodlesBox": MessageLookupByLibrary.simpleMessage("Noodles Box"),
         "normal": MessageLookupByLibrary.simpleMessage("Normal"),
         "note_order_details": MessageLookupByLibrary.simpleMessage(
@@ -208,10 +306,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "notebook": MessageLookupByLibrary.simpleMessage("Notebook"),
         "notebooks": MessageLookupByLibrary.simpleMessage("Notebooks"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "offset": MessageLookupByLibrary.simpleMessage("Offset"),
         "offsetPrint": MessageLookupByLibrary.simpleMessage("Offset Print"),
         "offset_print": MessageLookupByLibrary.simpleMessage("Offset Print"),
+        "optional_field":
+            MessageLookupByLibrary.simpleMessage("This field is optional"),
         "order_date": MessageLookupByLibrary.simpleMessage("Order Date"),
         "order_details": MessageLookupByLibrary.simpleMessage("Order Details"),
+        "order_details_note": MessageLookupByLibrary.simpleMessage(
+            "Please write your order details:"),
+        "order_execution_note": MessageLookupByLibrary.simpleMessage(
+            "Note: Your order will be executed based on the details you provide in this section."),
         "order_name": MessageLookupByLibrary.simpleMessage("Order Name"),
         "order_summary": MessageLookupByLibrary.simpleMessage("Order summary"),
         "order_variation": MessageLookupByLibrary.simpleMessage(
@@ -219,10 +324,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_view": MessageLookupByLibrary.simpleMessage("Order View"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "our_website": MessageLookupByLibrary.simpleMessage("Our Website"),
+        "outdoor_stickers":
+            MessageLookupByLibrary.simpleMessage("Outdoor Stickers"),
+        "outside": MessageLookupByLibrary.simpleMessage("Outside"),
         "packaging": MessageLookupByLibrary.simpleMessage("Packaging"),
+        "packaging_bowls":
+            MessageLookupByLibrary.simpleMessage("Packaging Bowls"),
+        "packaging_boxes":
+            MessageLookupByLibrary.simpleMessage("Packaging Boxes"),
+        "packaging_tools":
+            MessageLookupByLibrary.simpleMessage("Packaging Tools"),
         "packaging_view":
             MessageLookupByLibrary.simpleMessage("Packaging View"),
         "packing": MessageLookupByLibrary.simpleMessage("Packing"),
+        "pages": MessageLookupByLibrary.simpleMessage("Pages"),
         "paper": MessageLookupByLibrary.simpleMessage("Paper"),
         "paperBags": MessageLookupByLibrary.simpleMessage("Paper Bags"),
         "paperBoxes": MessageLookupByLibrary.simpleMessage("Paper Boxes"),
@@ -237,16 +352,30 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Paper Cup Single Wall"),
         "paperSticker": MessageLookupByLibrary.simpleMessage("Paper Sticker"),
         "paper_bags": MessageLookupByLibrary.simpleMessage("Paper Bags"),
+        "paper_bags_with_square_bottom": MessageLookupByLibrary.simpleMessage(
+            "Paper Bags with Square Bottom (SOS)"),
+        "paper_bags_with_twisted_handle": MessageLookupByLibrary.simpleMessage(
+            "Paper Bags with Twisted Handle"),
         "paper_boxes": MessageLookupByLibrary.simpleMessage("Paper Boxes"),
+        "paper_coffee_bags":
+            MessageLookupByLibrary.simpleMessage("Paper Coffee Bags"),
         "paper_cups": MessageLookupByLibrary.simpleMessage("Paper Cups"),
         "paper_products":
             MessageLookupByLibrary.simpleMessage("Paper Products"),
+        "paper_products_brochure":
+            MessageLookupByLibrary.simpleMessage("Paper Products - Brochure"),
+        "paper_roll_wrap":
+            MessageLookupByLibrary.simpleMessage("Paper Roll Wrap"),
+        "paper_sticker": MessageLookupByLibrary.simpleMessage("Paper Sticker"),
         "paymentVoucher":
+            MessageLookupByLibrary.simpleMessage("Payment Voucher"),
+        "payment_voucher":
             MessageLookupByLibrary.simpleMessage("Payment Voucher"),
         "pen": MessageLookupByLibrary.simpleMessage("Pen"),
         "person_or_company":
             MessageLookupByLibrary.simpleMessage("(Person / Company)"),
         "pizzaBox": MessageLookupByLibrary.simpleMessage("Pizza Box"),
+        "pizza_box": MessageLookupByLibrary.simpleMessage("Pizza Box"),
         "plastic": MessageLookupByLibrary.simpleMessage("Plastic Products"),
         "plasticBag": MessageLookupByLibrary.simpleMessage("Plastic Bag"),
         "plasticBagHd": MessageLookupByLibrary.simpleMessage("Plastic Bag HD"),
@@ -258,21 +387,43 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Plastic Cup PET"),
         "plasticCupPp": MessageLookupByLibrary.simpleMessage("Plastic Cup PP"),
         "plastic_bags": MessageLookupByLibrary.simpleMessage("Plastic Bags"),
+        "plastic_bags_hd":
+            MessageLookupByLibrary.simpleMessage("Plastic Bags HD"),
+        "plastic_bags_ld":
+            MessageLookupByLibrary.simpleMessage("Plastic Bags LD"),
+        "plastic_coffee_bags":
+            MessageLookupByLibrary.simpleMessage("Plastic Coffee Bags"),
         "plastic_cups": MessageLookupByLibrary.simpleMessage("Plastic Cups"),
+        "plastic_cups_pet":
+            MessageLookupByLibrary.simpleMessage("Plastic Cups PET"),
+        "plastic_cups_pp":
+            MessageLookupByLibrary.simpleMessage("Plastic Cups PP"),
+        "plastic_film": MessageLookupByLibrary.simpleMessage("Plastic Film"),
         "plastic_products":
             MessageLookupByLibrary.simpleMessage("Plastic Products"),
+        "plastic_sticker":
+            MessageLookupByLibrary.simpleMessage("Plastic Sticker"),
         "plateTrays": MessageLookupByLibrary.simpleMessage("Plate/Trays"),
+        "plates_trays": MessageLookupByLibrary.simpleMessage("Plates: Trays"),
         "platters": MessageLookupByLibrary.simpleMessage("Platters"),
         "popCornCup": MessageLookupByLibrary.simpleMessage("Pop Corn Cup"),
         "pop_up": MessageLookupByLibrary.simpleMessage("Pop Up"),
         "portionCups": MessageLookupByLibrary.simpleMessage("Portion Cups"),
         "pots": MessageLookupByLibrary.simpleMessage("Pots"),
+        "printed_tissue_boxes":
+            MessageLookupByLibrary.simpleMessage("Printed Tissue Boxes"),
+        "printed_tissues":
+            MessageLookupByLibrary.simpleMessage("Printed Tissues"),
+        "printed_wet_wipes":
+            MessageLookupByLibrary.simpleMessage("Printed Wet Wipes"),
+        "printer_paper": MessageLookupByLibrary.simpleMessage("Printer Paper"),
         "printersPaper": MessageLookupByLibrary.simpleMessage("Printers Paper"),
         "printing": MessageLookupByLibrary.simpleMessage("Printing"),
         "printing_press_company_agency": MessageLookupByLibrary.simpleMessage(
             "(Printing Press / Company / Agency)"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "pvcSticker": MessageLookupByLibrary.simpleMessage("PVC Sticker"),
+        "pvc_sticker": MessageLookupByLibrary.simpleMessage("PVC Sticker"),
         "quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "quotation_condition_1": MessageLookupByLibrary.simpleMessage(
             "By accepting this price offer, you agree to Quotes Terms & Conditions and provide your LPO approval to place the order."),
@@ -294,19 +445,35 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quotes Terms & Conditions :"),
         "receiptVoucher":
             MessageLookupByLibrary.simpleMessage("Receipt Voucher"),
+        "receipt_voucher":
+            MessageLookupByLibrary.simpleMessage("Receipt Voucher"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registration_role":
             MessageLookupByLibrary.simpleMessage("Registration Role"),
+        "resistant_containers":
+            MessageLookupByLibrary.simpleMessage("Resistant Containers"),
+        "roll_up": MessageLookupByLibrary.simpleMessage("Roll-Up"),
         "rollup": MessageLookupByLibrary.simpleMessage("Rollup"),
         "saladBox": MessageLookupByLibrary.simpleMessage("Salad Box"),
         "saladContainers":
             MessageLookupByLibrary.simpleMessage("Salad Containers"),
+        "salad_box": MessageLookupByLibrary.simpleMessage("Salad Box"),
+        "salad_containers":
+            MessageLookupByLibrary.simpleMessage("Salad Containers"),
         "sandwichBox": MessageLookupByLibrary.simpleMessage("Sandwich Box"),
         "sandwichPaper": MessageLookupByLibrary.simpleMessage("Sandwich Paper"),
         "sandwichPouch": MessageLookupByLibrary.simpleMessage("Sandwich Pouch"),
+        "sandwich_bag": MessageLookupByLibrary.simpleMessage("Sandwich Bag"),
+        "sandwich_box": MessageLookupByLibrary.simpleMessage("Sandwich Box"),
+        "sandwich_takeaway_box":
+            MessageLookupByLibrary.simpleMessage("Sandwich Takeaway Box"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "select_section": MessageLookupByLibrary.simpleMessage(
             "Select Your Wanted Section :"),
+        "serving_cups": MessageLookupByLibrary.simpleMessage("Serving Cups"),
+        "shape": MessageLookupByLibrary.simpleMessage("Shape"),
+        "sheet": MessageLookupByLibrary.simpleMessage("Sheet"),
+        "shipping_bags": MessageLookupByLibrary.simpleMessage("Shipping Bags"),
         "shirt": MessageLookupByLibrary.simpleMessage("Shirt"),
         "shoppingBag": MessageLookupByLibrary.simpleMessage("Shopping Bag"),
         "shoppingBagAsRequest":
@@ -314,31 +481,53 @@ class MessageLookup extends MessageLookupByLibrary {
         "shoppingBagCardboard":
             MessageLookupByLibrary.simpleMessage("Shopping Bag CardBoard"),
         "shopping_bags": MessageLookupByLibrary.simpleMessage("Shopping Bags"),
+        "side_boards": MessageLookupByLibrary.simpleMessage("Side Boards"),
         "side_signage": MessageLookupByLibrary.simpleMessage("Side Signage"),
         "signage": MessageLookupByLibrary.simpleMessage("Signage"),
+        "silver": MessageLookupByLibrary.simpleMessage("Silver"),
+        "single_layer_paper_cups":
+            MessageLookupByLibrary.simpleMessage("Single Layer Paper Cups"),
         "size": MessageLookupByLibrary.simpleMessage("Size"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "sleeve": MessageLookupByLibrary.simpleMessage("Sleeve"),
         "small_shopping_bag":
             MessageLookupByLibrary.simpleMessage("Small Shopping Bag"),
+        "small_shopping_bags":
+            MessageLookupByLibrary.simpleMessage("Small Shopping Bags"),
+        "special": MessageLookupByLibrary.simpleMessage("Special"),
+        "special_plates":
+            MessageLookupByLibrary.simpleMessage("Special Plates"),
+        "special_tools": MessageLookupByLibrary.simpleMessage("Special Tools"),
         "spotUv": MessageLookupByLibrary.simpleMessage("Spot UV"),
+        "spot_uv": MessageLookupByLibrary.simpleMessage("Spot UV"),
         "stand": MessageLookupByLibrary.simpleMessage("Stand"),
         "standard": MessageLookupByLibrary.simpleMessage("Standard"),
         "stands": MessageLookupByLibrary.simpleMessage("Stands"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
+        "steel": MessageLookupByLibrary.simpleMessage("Steel"),
+        "sticker": MessageLookupByLibrary.simpleMessage("Sticker"),
         "stickers": MessageLookupByLibrary.simpleMessage("Stickers"),
         "stickers_digital": MessageLookupByLibrary.simpleMessage("Stickers"),
         "sticksAndSkewers":
             MessageLookupByLibrary.simpleMessage("Sticks & Skewers"),
+        "sticks_skewers":
+            MessageLookupByLibrary.simpleMessage("Sticks & Skewers"),
         "stirrerStraws": MessageLookupByLibrary.simpleMessage("Stirrer/Straws"),
+        "straws_sticks": MessageLookupByLibrary.simpleMessage("Straws: Sticks"),
         "suit": MessageLookupByLibrary.simpleMessage("Suit"),
         "supplier_app_description": MessageLookupByLibrary.simpleMessage(
             "SUPPLIER is a marketplace app that bridges the gap between Buyers and Sellers in Printing, Packaging, and advertising industry"),
         "sweetBoxes": MessageLookupByLibrary.simpleMessage("Sweet Boxes"),
         "sweetRoll": MessageLookupByLibrary.simpleMessage("Sweet Roll"),
+        "sweets_boxes": MessageLookupByLibrary.simpleMessage("Sweets Boxes"),
+        "sweets_wrapping_roll":
+            MessageLookupByLibrary.simpleMessage("Sweets Wrapping Roll"),
         "t_shirt": MessageLookupByLibrary.simpleMessage("T-Shirt"),
         "tableSheets": MessageLookupByLibrary.simpleMessage("Table Sheets"),
+        "table_covers": MessageLookupByLibrary.simpleMessage("Table Covers"),
+        "table_stand": MessageLookupByLibrary.simpleMessage("Table Stand"),
         "takeAwayBox": MessageLookupByLibrary.simpleMessage("Take Away Box"),
+        "takeaway_box": MessageLookupByLibrary.simpleMessage("Takeaway Box"),
         "tamperEvidentContainers":
             MessageLookupByLibrary.simpleMessage("Tamper Evident Containers"),
         "terms_and_conditions":
@@ -349,16 +538,22 @@ class MessageLookup extends MessageLookupByLibrary {
             "By joining SUPPLIER app as a Seller, you agree to uphold the following standards in quality,\nquantity, and delivery timing. Failure to meet these conditions may result in penalties,\nsuspension, or termination of your account.- e seller must provide complete and correct information along with a copy of the trade license.\nIn the event that fraud or fraudulent information is discovered,\nthe account will be deleted immediately without consulting the seller.\nShipping and delivery : FREE\nare the responsibility of the SUPPLIER app and without collecting fees from the seller\n1. Quality Standards\n1.1 Quality Assurance: Sellers must ensure that all products and services meet industry\nstandards and comply with speci cations provided by the Buyer in the quote request.\n1.2 Consistency: Sellers agree to deliver consistent quality across all orders. is includes\nusing appropriate materials, adhering to design speci cations, and maintaining color\naccuracy, print clarity, and nishing quality.\n1.3 Inspection: Sellers must inspect each order before dispatch to verify that it meets\nagreed-upon quality standards. Repeated failure to meet quality standards may result\nin account suspension.\n1.4 Complaint Resolution: Sellers are required to promptly address any complaints about quality.\nf a product or service is deemed unsatisfactory or defective,\nthe Seller must o er an appropriate resolution, which may include repairs, replacements,\nor refunds, as SUPPLIER app requierment determined on a case-by-case basis.\n2. Quantity Standards\n2.1 Order Fulllment: Sellers must fulll orders according to the quantities specifed in each\ncontract. Any discrepancies in quantity (shortage or surplus) without prior written agreement\nfrom the SUPPLIER app are not permitted.\n2.2 Excess Quantity Handling: Any excess quantity delivered without the Buyer’s request or\nconsent may be returned at the Seller’s expense or discarded.\n2.3 Shortage Penalties: Failure to deliver the agreed quantity may result in a penalty and\npotential reimbursement of costs incurred by the Buyer due to the shortage.\n3. Delivery Timing\n3.1 On-Time Delivery: Sellers are required to meet the delivery timeline speci ed in the\nBuyer’s contract or agreement. Late deliveries can negatively impact the Buyer and may\nresult in penalties.\n3.2 Communication of Delays: If delays are unavoidable, Sellers must notify the SUPPLIER app\nimmediately, providing an updated delivery timeline. Failure to communicate delays promptly\nmay result in additional penalties.\n3.3 Rush Orders: If the Seller accepts a rush order, they must deliver within the expedited\ntimeline speci ed. If the Seller fails to meet the rush order timing, they may be liable for\nrefunds or compensation.\n3.4 Penalty for Delays: Repeated or unjusti ed delays may result in penalties,\nand SUPPLIER app reserves the right to suspend or terminate the Seller’s account if they\nconsistently fail to meet agreed-upon timelines.\n4. Guarantee\n4.1 Satisfaction Guarantee: Sellers must guarantee satisfaction in terms of quality,\nquantity, and timeliness. If the product does not meet the agreed-upon standards,\nthe Seller agrees to o er a replacement, repair, or refund as According to the conditions\napplicable in the SUPPLIER app.\n4.2 Guarantee Period: e seller must ensure the quality of the product before sending it for\nshipping or delivery\ne seller is also committed to the agreed upon product sent in the price o er with all its details\nIn the event of a violation of the product details sent by the seller, the supplier application has the\nright to reject the product or return it according to the customer’s requirements without the seller\nrejecting it and deducting the full price of the product or o ering the seller a solution by\nreproducing the product according to the speci cations of the price o er.\n5. Return and Refund Policy:\n5.1 Sellers must return products in the following cases:- e product is di erent from the speci cations included in the\nprice quote.- Defect in agreed upon colours.- Change in the materials agreed upon in the price o er.- Shortage in the agreed upon quantity.- Delay in product delivery.\n5.2 Accountability: SUPPLIER app reserves the right to review Seller performance periodically.\nSellers who repeatedly fail to uphold these conditions may face account penalties,\nincluding suspension or permanent removal from the platform.\n6.Commission Tiers (Dubai - Sharjah - Ajman)\nOrders from Dhs. 500, to Dhs. 1000\nCommission Rate: %15\nExample: For an order worth Dhs. 500 is a minimum , the commission fee would be\nDhs. 75, and the Seller would receive Dhs 425. .\nOrders from Dhs. 1001 to Dhs. 5000\nCommission Rate: %10\nExample: For an order worth Dhs 1,500, the commission fee would be Dhs.150, and the Seller\nwould receive Dhs.1,350.\nOrders from Dhs. 5,001 to Dhs. 10,000\nCommission Rate: %7\nExample: For an order worth Dhs. 5,200, the commission fee would be Dhs. 364, and the Seller\nwould receive Dhs. 4,836.\nOrders Above Dhs. 10,000\nCommission Rate: %5\nExample: For an order worth Dhs. 10,050, the commission fee would be Dhs. 502.50, and the\nSeller would receive Dhs. 9,547.50.\nDelivery Conditions\n1. It is prohibited to place the seller’s logo or any details (address,\nphone number, any social media method) on the shipment when\nit is received by the shipping company.\n2. e seller must ship the product, whatever it is, in plain\nboxes/wrapping paper without any drawings or details.\n3. e shipping company must deliver a delivery note in the name of\nthe SUPPLIER app.\n* If the seller does not adhere to the shipping terms, fees and penalties\nmay be imposed on the seller from SUPPLIER app.\nAdditional Conditions\nPromotional Discounts: SUPPLIER app may, at its discretion, o er promotional discounts on\ncommission rates. Sellers will be noti ed of such promotions and how long they apply.\nCommission Deduction and Payout\nAutomatic Deduction: e commission is automatically deducted from the Seller’s payout upon\ncompletion of each transaction.\nPayout Schedule: Payouts are issued on a [weekly] basis to the Seller’s designated account,\nminus the commission fee and any applicable processing charges (Agreed upon in advance).\nRefunds and Adjustments\nOrder Cancellations: If an order is canceled before completion, no commission is charged.\nDisputed Orders: In cases of disputes where a partial refund is granted, the commission will be\nadjusted based on the nal agreed-upon amount.\nInvoices\nSellers must issue an invoice in the name of SUPPLYER PORTAL.\nFor every purchase made through the supplier’s application.\nDisputes\nis Agreement is protected and construed in accordance with the laws of the United Arab\nEmirates and the laws of the Emirate of Dubai. e Dubai Courts have jurisdiction to hear\nevery dispute arising from this agreement.\nLegal obligations of Seller\nYou acknowledge and commit as a party to this agreement to:\nCompliance with applicable laws at all times and with legislation and regulations in this agreement,\nincluding - without exception - all privacy protection legislation, laws and regulations.\nYou have all the powers and capacity to enter into this agreement and pay the dues in accordance\nwith the terms and conditions contained therein.\nAcknowledgment- By joining SUPPLIER app as a Seller, you acknowledge and agree to abide by these standards.- By accepting these terms, you agree to the commission structure outlined above.\nSUPPLIER app reserves the right to modify commission rates with advance notice to Sellers."),
         "thermalPaperForPrinters":
             MessageLookupByLibrary.simpleMessage("Thermal Paper For Printers"),
+        "thermal_printer_paper":
+            MessageLookupByLibrary.simpleMessage("Thermal Printer Paper"),
         "this_field_is_optional":
             MessageLookupByLibrary.simpleMessage("This Field is Optional"),
         "this_field_is_required":
             MessageLookupByLibrary.simpleMessage("This field is required"),
         "three_d_signage": MessageLookupByLibrary.simpleMessage("3D Signage"),
+        "threed_boards": MessageLookupByLibrary.simpleMessage("3D Boards"),
         "tissue_products":
             MessageLookupByLibrary.simpleMessage("Tissue Products"),
         "trophy": MessageLookupByLibrary.simpleMessage("Trophy"),
         "trouser": MessageLookupByLibrary.simpleMessage("Trouser"),
+        "trousers": MessageLookupByLibrary.simpleMessage("Trousers"),
+        "tshirt": MessageLookupByLibrary.simpleMessage("T-shirt"),
         "two_d_signage": MessageLookupByLibrary.simpleMessage("2D Signage"),
+        "twod_boards": MessageLookupByLibrary.simpleMessage("2D Boards"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
         "umbrella": MessageLookupByLibrary.simpleMessage("Umbrella"),
         "uniform": MessageLookupByLibrary.simpleMessage("Uniform"),
@@ -369,10 +564,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "VALIDITY: 10 DAYS FROM ABOVE DATE"),
         "variousProducts":
             MessageLookupByLibrary.simpleMessage("Various Products"),
+        "various_products":
+            MessageLookupByLibrary.simpleMessage("Various Products"),
         "wetNapkinPrinted":
             MessageLookupByLibrary.simpleMessage("Wet Napkin Printed"),
         "white": MessageLookupByLibrary.simpleMessage("White"),
         "width": MessageLookupByLibrary.simpleMessage("width"),
+        "wood_products": MessageLookupByLibrary.simpleMessage("Wood Products"),
         "wooden_products":
             MessageLookupByLibrary.simpleMessage("Wooden Products"),
         "wrappingPaper": MessageLookupByLibrary.simpleMessage("Wrapping Paper"),

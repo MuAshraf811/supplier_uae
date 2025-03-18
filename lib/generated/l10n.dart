@@ -2530,6 +2530,156 @@ class S {
     );
   }
 
+  /// `Gold`
+  String get gold {
+    return Intl.message(
+      'Gold',
+      name: 'gold',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Silver`
+  String get silver {
+    return Intl.message(
+      'Silver',
+      name: 'silver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Outside`
+  String get outside {
+    return Intl.message(
+      'Outside',
+      name: 'outside',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inside`
+  String get inside {
+    return Intl.message(
+      'Inside',
+      name: 'inside',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inside Print`
+  String get inside_print {
+    return Intl.message(
+      'Inside Print',
+      name: 'inside_print',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sheet`
+  String get sheet {
+    return Intl.message(
+      'Sheet',
+      name: 'sheet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Folding`
+  String get folding {
+    return Intl.message(
+      'Folding',
+      name: 'folding',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pages`
+  String get pages {
+    return Intl.message(
+      'Pages',
+      name: 'pages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dai Cut`
+  String get dai_cut {
+    return Intl.message(
+      'Dai Cut',
+      name: 'dai_cut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Steel`
+  String get steel {
+    return Intl.message(
+      'Steel',
+      name: 'steel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cylinder`
+  String get cylinder {
+    return Intl.message(
+      'Cylinder',
+      name: 'cylinder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offset`
+  String get offset {
+    return Intl.message(
+      'Offset',
+      name: 'offset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shape`
+  String get shape {
+    return Intl.message(
+      'Shape',
+      name: 'shape',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Special`
+  String get special {
+    return Intl.message(
+      'Special',
+      name: 'special',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Curve`
+  String get curve {
+    return Intl.message(
+      'Curve',
+      name: 'curve',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Containers`
   String get containers {
     return Intl.message(
@@ -2670,10 +2820,10 @@ class S {
     );
   }
 
-  /// `Bowls`
+  /// `Powls`
   String get bowls {
     return Intl.message(
-      'Bowls',
+      'Powls',
       name: 'bowls',
       desc: '',
       args: [],
@@ -2835,6 +2985,1166 @@ class S {
     return Intl.message(
       'Sticks & Skewers',
       name: 'sticksAndSkewers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Envelopes`
+  String get envelopes {
+    return Intl.message(
+      'Envelopes',
+      name: 'envelopes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invoices`
+  String get invoices {
+    return Intl.message(
+      'Invoices',
+      name: 'invoices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plastic Sticker`
+  String get plastic_sticker {
+    return Intl.message(
+      'Plastic Sticker',
+      name: 'plastic_sticker',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Menu Leather / Folder`
+  String get menu_leather_folder {
+    return Intl.message(
+      'Menu Leather / Folder',
+      name: 'menu_leather_folder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invoice Book`
+  String get invoice_book {
+    return Intl.message(
+      'Invoice Book',
+      name: 'invoice_book',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receipt Voucher`
+  String get receipt_voucher {
+    return Intl.message(
+      'Receipt Voucher',
+      name: 'receipt_voucher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Voucher`
+  String get payment_voucher {
+    return Intl.message(
+      'Payment Voucher',
+      name: 'payment_voucher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Captain Order`
+  String get captain_order {
+    return Intl.message(
+      'Captain Order',
+      name: 'captain_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paper Sticker`
+  String get paper_sticker {
+    return Intl.message(
+      'Paper Sticker',
+      name: 'paper_sticker',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PVC Sticker`
+  String get pvc_sticker {
+    return Intl.message(
+      'PVC Sticker',
+      name: 'pvc_sticker',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leather Menu / Folder`
+  String get leather_menu_folder {
+    return Intl.message(
+      'Leather Menu / Folder',
+      name: 'leather_menu_folder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business Profile`
+  String get business_profile {
+    return Intl.message(
+      'Business Profile',
+      name: 'business_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Spot UV`
+  String get spot_uv {
+    return Intl.message(
+      'Spot UV',
+      name: 'spot_uv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field is optional`
+  String get optional_field {
+    return Intl.message(
+      'This field is optional',
+      name: 'optional_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paper Products - Brochure`
+  String get paper_products_brochure {
+    return Intl.message(
+      'Paper Products - Brochure',
+      name: 'paper_products_brochure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please write your order details:`
+  String get order_details_note {
+    return Intl.message(
+      'Please write your order details:',
+      name: 'order_details_note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note: Your order will be executed based on the details you provide in this section.`
+  String get order_execution_note {
+    return Intl.message(
+      'Note: Your order will be executed based on the details you provide in this section.',
+      name: 'order_execution_note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3D Boards`
+  String get threed_boards {
+    return Intl.message(
+      '3D Boards',
+      name: 'threed_boards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2D Boards`
+  String get twod_boards {
+    return Intl.message(
+      '2D Boards',
+      name: 'twod_boards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cleaning & Protection Products`
+  String get cleaning_protection_products {
+    return Intl.message(
+      'Cleaning & Protection Products',
+      name: 'cleaning_protection_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `L-Shaped Paper`
+  String get l_shaped_paper {
+    return Intl.message(
+      'L-Shaped Paper',
+      name: 'l_shaped_paper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sandwich Bag`
+  String get sandwich_bag {
+    return Intl.message(
+      'Sandwich Bag',
+      name: 'sandwich_bag',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paper Roll Wrap`
+  String get paper_roll_wrap {
+    return Intl.message(
+      'Paper Roll Wrap',
+      name: 'paper_roll_wrap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sweets Wrapping Roll`
+  String get sweets_wrapping_roll {
+    return Intl.message(
+      'Sweets Wrapping Roll',
+      name: 'sweets_wrapping_roll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coffee Bags with Zipper`
+  String get coffee_bags_with_zipper {
+    return Intl.message(
+      'Coffee Bags with Zipper',
+      name: 'coffee_bags_with_zipper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coffee Bags with Filter`
+  String get coffee_bags_with_filter {
+    return Intl.message(
+      'Coffee Bags with Filter',
+      name: 'coffee_bags_with_filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plastic Coffee Bags`
+  String get plastic_coffee_bags {
+    return Intl.message(
+      'Plastic Coffee Bags',
+      name: 'plastic_coffee_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paper Coffee Bags`
+  String get paper_coffee_bags {
+    return Intl.message(
+      'Paper Coffee Bags',
+      name: 'paper_coffee_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pizza Box`
+  String get pizza_box {
+    return Intl.message(
+      'Pizza Box',
+      name: 'pizza_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lunch Box`
+  String get lunch_box {
+    return Intl.message(
+      'Lunch Box',
+      name: 'lunch_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food Box`
+  String get food_box {
+    return Intl.message(
+      'Food Box',
+      name: 'food_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sandwich Box`
+  String get sandwich_box {
+    return Intl.message(
+      'Sandwich Box',
+      name: 'sandwich_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duplex Burger Box`
+  String get duplex_burger_box {
+    return Intl.message(
+      'Duplex Burger Box',
+      name: 'duplex_burger_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salad Box`
+  String get salad_box {
+    return Intl.message(
+      'Salad Box',
+      name: 'salad_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manakish Box`
+  String get manakish_box {
+    return Intl.message(
+      'Manakish Box',
+      name: 'manakish_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sandwich Takeaway Box`
+  String get sandwich_takeaway_box {
+    return Intl.message(
+      'Sandwich Takeaway Box',
+      name: 'sandwich_takeaway_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Takeaway Box`
+  String get takeaway_box {
+    return Intl.message(
+      'Takeaway Box',
+      name: 'takeaway_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Noodle Box`
+  String get noodle_box {
+    return Intl.message(
+      'Noodle Box',
+      name: 'noodle_box',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Carton Products`
+  String get carton_products {
+    return Intl.message(
+      'Carton Products',
+      name: 'carton_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fiber Products`
+  String get fiber_products {
+    return Intl.message(
+      'Fiber Products',
+      name: 'fiber_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Aluminum Products`
+  String get aluminum_products {
+    return Intl.message(
+      'Aluminum Products',
+      name: 'aluminum_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wood Products`
+  String get wood_products {
+    return Intl.message(
+      'Wood Products',
+      name: 'wood_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cleaning & Protection Products`
+  String get cleaning_and_protection_products {
+    return Intl.message(
+      'Cleaning & Protection Products',
+      name: 'cleaning_and_protection_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flex Boards`
+  String get flex_boards {
+    return Intl.message(
+      'Flex Boards',
+      name: 'flex_boards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Digital Screens`
+  String get digital_screens {
+    return Intl.message(
+      'Digital Screens',
+      name: 'digital_screens',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Outdoor Stickers`
+  String get outdoor_stickers {
+    return Intl.message(
+      'Outdoor Stickers',
+      name: 'outdoor_stickers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Roll-Up`
+  String get roll_up {
+    return Intl.message(
+      'Roll-Up',
+      name: 'roll_up',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Side Boards`
+  String get side_boards {
+    return Intl.message(
+      'Side Boards',
+      name: 'side_boards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Various Products`
+  String get various_products {
+    return Intl.message(
+      'Various Products',
+      name: 'various_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flash Memory`
+  String get flash_memory {
+    return Intl.message(
+      'Flash Memory',
+      name: 'flash_memory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business Card`
+  String get business_card {
+    return Intl.message(
+      'Business Card',
+      name: 'business_card',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mug`
+  String get mug {
+    return Intl.message(
+      'Mug',
+      name: 'mug',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Memorial Plaque`
+  String get memorial_plaque {
+    return Intl.message(
+      'Memorial Plaque',
+      name: 'memorial_plaque',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Table Stand`
+  String get table_stand {
+    return Intl.message(
+      'Table Stand',
+      name: 'table_stand',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `T-shirt`
+  String get tshirt {
+    return Intl.message(
+      'T-shirt',
+      name: 'tshirt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trousers`
+  String get trousers {
+    return Intl.message(
+      'Trousers',
+      name: 'trousers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Catalog`
+  String get catalog {
+    return Intl.message(
+      'Catalog',
+      name: 'catalog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Digital Card`
+  String get digital_card {
+    return Intl.message(
+      'Digital Card',
+      name: 'digital_card',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Small Shopping Bags`
+  String get small_shopping_bags {
+    return Intl.message(
+      'Small Shopping Bags',
+      name: 'small_shopping_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sticker`
+  String get sticker {
+    return Intl.message(
+      'Sticker',
+      name: 'sticker',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plastic Cups PP`
+  String get plastic_cups_pp {
+    return Intl.message(
+      'Plastic Cups PP',
+      name: 'plastic_cups_pp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plastic Cups PET`
+  String get plastic_cups_pet {
+    return Intl.message(
+      'Plastic Cups PET',
+      name: 'plastic_cups_pet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Single Layer Paper Cups`
+  String get single_layer_paper_cups {
+    return Intl.message(
+      'Single Layer Paper Cups',
+      name: 'single_layer_paper_cups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Double Layer Paper Cups`
+  String get double_layer_paper_cups {
+    return Intl.message(
+      'Double Layer Paper Cups',
+      name: 'double_layer_paper_cups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Corrugated Paper Cups`
+  String get corrugated_paper_cups {
+    return Intl.message(
+      'Corrugated Paper Cups',
+      name: 'corrugated_paper_cups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ice Cream Cups`
+  String get ice_cream_cups {
+    return Intl.message(
+      'Ice Cream Cups',
+      name: 'ice_cream_cups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Foam Cups`
+  String get foam_cups {
+    return Intl.message(
+      'Foam Cups',
+      name: 'foam_cups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plastic Bags HD`
+  String get plastic_bags_hd {
+    return Intl.message(
+      'Plastic Bags HD',
+      name: 'plastic_bags_hd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plastic Bags LD`
+  String get plastic_bags_ld {
+    return Intl.message(
+      'Plastic Bags LD',
+      name: 'plastic_bags_ld',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping Bags`
+  String get shipping_bags {
+    return Intl.message(
+      'Shipping Bags',
+      name: 'shipping_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fabric Bags with Handle`
+  String get fabric_bags_with_handle {
+    return Intl.message(
+      'Fabric Bags with Handle',
+      name: 'fabric_bags_with_handle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fabric Bags with Square Bottom`
+  String get fabric_bags_with_square_bottom {
+    return Intl.message(
+      'Fabric Bags with Square Bottom',
+      name: 'fabric_bags_with_square_bottom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flat Fabric Bags`
+  String get flat_fabric_bags {
+    return Intl.message(
+      'Flat Fabric Bags',
+      name: 'flat_fabric_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paper Bags with Twisted Handle`
+  String get paper_bags_with_twisted_handle {
+    return Intl.message(
+      'Paper Bags with Twisted Handle',
+      name: 'paper_bags_with_twisted_handle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paper Bags with Square Bottom (SOS)`
+  String get paper_bags_with_square_bottom {
+    return Intl.message(
+      'Paper Bags with Square Bottom (SOS)',
+      name: 'paper_bags_with_square_bottom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flat Paper Bags`
+  String get flat_paper_bags {
+    return Intl.message(
+      'Flat Paper Bags',
+      name: 'flat_paper_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flat Paper Bags with Window`
+  String get flat_paper_bags_with_window {
+    return Intl.message(
+      'Flat Paper Bags with Window',
+      name: 'flat_paper_bags_with_window',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cardboard Shopping Bags`
+  String get cardboard_shopping_bags {
+    return Intl.message(
+      'Cardboard Shopping Bags',
+      name: 'cardboard_shopping_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom Shopping Bags`
+  String get custom_shopping_bags {
+    return Intl.message(
+      'Custom Shopping Bags',
+      name: 'custom_shopping_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cup Holder`
+  String get cup_holder {
+    return Intl.message(
+      'Cup Holder',
+      name: 'cup_holder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cup Sleeve`
+  String get cup_sleeve {
+    return Intl.message(
+      'Cup Sleeve',
+      name: 'cup_sleeve',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Printed Tissue Boxes`
+  String get printed_tissue_boxes {
+    return Intl.message(
+      'Printed Tissue Boxes',
+      name: 'printed_tissue_boxes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Printed Tissues`
+  String get printed_tissues {
+    return Intl.message(
+      'Printed Tissues',
+      name: 'printed_tissues',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Printed Wet Wipes`
+  String get printed_wet_wipes {
+    return Intl.message(
+      'Printed Wet Wipes',
+      name: 'printed_wet_wipes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Printer Paper`
+  String get printer_paper {
+    return Intl.message(
+      'Printer Paper',
+      name: 'printer_paper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thermal Printer Paper`
+  String get thermal_printer_paper {
+    return Intl.message(
+      'Thermal Printer Paper',
+      name: 'thermal_printer_paper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bakery Supplies`
+  String get bakery_supplies {
+    return Intl.message(
+      'Bakery Supplies',
+      name: 'bakery_supplies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plastic Film`
+  String get plastic_film {
+    return Intl.message(
+      'Plastic Film',
+      name: 'plastic_film',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cutlery`
+  String get cutlery {
+    return Intl.message(
+      'Cutlery',
+      name: 'cutlery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily Containers`
+  String get daily_containers {
+    return Intl.message(
+      'Daily Containers',
+      name: 'daily_containers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Garbage Bags`
+  String get garbage_bags {
+    return Intl.message(
+      'Garbage Bags',
+      name: 'garbage_bags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Microwave Containers`
+  String get microwave_containers {
+    return Intl.message(
+      'Microwave Containers',
+      name: 'microwave_containers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plates: Trays`
+  String get plates_trays {
+    return Intl.message(
+      'Plates: Trays',
+      name: 'plates_trays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Serving Cups`
+  String get serving_cups {
+    return Intl.message(
+      'Serving Cups',
+      name: 'serving_cups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bowls`
+  String get bowls_dishes {
+    return Intl.message(
+      'Bowls',
+      name: 'bowls_dishes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salad Containers`
+  String get salad_containers {
+    return Intl.message(
+      'Salad Containers',
+      name: 'salad_containers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Straws: Sticks`
+  String get straws_sticks {
+    return Intl.message(
+      'Straws: Sticks',
+      name: 'straws_sticks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Table Covers`
+  String get table_covers {
+    return Intl.message(
+      'Table Covers',
+      name: 'table_covers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resistant Containers`
+  String get resistant_containers {
+    return Intl.message(
+      'Resistant Containers',
+      name: 'resistant_containers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Foil Containers`
+  String get foil_containers {
+    return Intl.message(
+      'Foil Containers',
+      name: 'foil_containers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Aluminum Foil`
+  String get aluminum_foil {
+    return Intl.message(
+      'Aluminum Foil',
+      name: 'aluminum_foil',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Aluminum Plates`
+  String get aluminum_plates {
+    return Intl.message(
+      'Aluminum Plates',
+      name: 'aluminum_plates',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Aluminum Utensils`
+  String get aluminum_utensils {
+    return Intl.message(
+      'Aluminum Utensils',
+      name: 'aluminum_utensils',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hygiene & Protection`
+  String get hygiene_protection {
+    return Intl.message(
+      'Hygiene & Protection',
+      name: 'hygiene_protection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Packaging Tools`
+  String get packaging_tools {
+    return Intl.message(
+      'Packaging Tools',
+      name: 'packaging_tools',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Packaging Bowls`
+  String get packaging_bowls {
+    return Intl.message(
+      'Packaging Bowls',
+      name: 'packaging_bowls',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Packaging Boxes`
+  String get packaging_boxes {
+    return Intl.message(
+      'Packaging Boxes',
+      name: 'packaging_boxes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Special Tools`
+  String get special_tools {
+    return Intl.message(
+      'Special Tools',
+      name: 'special_tools',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sweets Boxes`
+  String get sweets_boxes {
+    return Intl.message(
+      'Sweets Boxes',
+      name: 'sweets_boxes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dispensers`
+  String get dispensers {
+    return Intl.message(
+      'Dispensers',
+      name: 'dispensers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cleaners`
+  String get cleaners {
+    return Intl.message(
+      'Cleaners',
+      name: 'cleaners',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hygiene Containers`
+  String get hygiene_containers {
+    return Intl.message(
+      'Hygiene Containers',
+      name: 'hygiene_containers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Special Plates`
+  String get special_plates {
+    return Intl.message(
+      'Special Plates',
+      name: 'special_plates',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dining Utensils`
+  String get dining_utensils {
+    return Intl.message(
+      'Dining Utensils',
+      name: 'dining_utensils',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sticks & Skewers`
+  String get sticks_skewers {
+    return Intl.message(
+      'Sticks & Skewers',
+      name: 'sticks_skewers',
       desc: '',
       args: [],
     );

@@ -101,13 +101,13 @@ class EPrinter extends StatelessWidget {
           builder: (BuildContext context) {
             return AlertDialog(
               title: const Text('Oops, Something went wrong'),
-              content: SingleChildScrollView(
+              content: const SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // Text(details.exceptionAsString()),
-                    const SizedBox(height: 16),
-                    const Text('Please try again or contact support if the problem persists.'),
+                     SizedBox(height: 16),
+                     Text('Please try again or contact support if the problem persists.'),
                   ],
               ),
             ),

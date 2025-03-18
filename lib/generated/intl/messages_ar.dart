@@ -32,19 +32,31 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لديك حساب بالفعل"),
         "aluminium_products":
             MessageLookupByLibrary.simpleMessage("منتجات الألمنيوم"),
+        "aluminum_foil": MessageLookupByLibrary.simpleMessage("رقائق المونيوم"),
+        "aluminum_plates": MessageLookupByLibrary.simpleMessage("أطباق"),
+        "aluminum_products":
+            MessageLookupByLibrary.simpleMessage("منتجات الألمونيوم"),
+        "aluminum_utensils": MessageLookupByLibrary.simpleMessage("أواني"),
         "bakeryRange": MessageLookupByLibrary.simpleMessage("تشكيلة المخبز"),
+        "bakery_supplies":
+            MessageLookupByLibrary.simpleMessage("مسلتزمات المخابز"),
         "bakingRange": MessageLookupByLibrary.simpleMessage("مجموعة الخبز"),
         "block": MessageLookupByLibrary.simpleMessage("البلوك"),
         "book": MessageLookupByLibrary.simpleMessage("كتاب"),
         "bottles": MessageLookupByLibrary.simpleMessage("زجاجات"),
         "bottom": MessageLookupByLibrary.simpleMessage("القاعدة"),
         "bowls": MessageLookupByLibrary.simpleMessage("أوعية"),
-        "boxes": MessageLookupByLibrary.simpleMessage("صناديق"),
+        "bowls_dishes": MessageLookupByLibrary.simpleMessage("اوعية"),
+        "boxes": MessageLookupByLibrary.simpleMessage("علب"),
         "brochure": MessageLookupByLibrary.simpleMessage("بروشور"),
         "brown": MessageLookupByLibrary.simpleMessage("بني"),
-        "burgerBox": MessageLookupByLibrary.simpleMessage("صندوق برجر"),
-        "businessCard": MessageLookupByLibrary.simpleMessage("بطاقة عمل"),
-        "businessProfile": MessageLookupByLibrary.simpleMessage("ملف تعريفي"),
+        "burgerBox": MessageLookupByLibrary.simpleMessage("بوكس برجر"),
+        "businessCard": MessageLookupByLibrary.simpleMessage(" بزنس كارد"),
+        "businessProfile":
+            MessageLookupByLibrary.simpleMessage(" بيزنس بروفايل"),
+        "business_card": MessageLookupByLibrary.simpleMessage("بزنس كارد"),
+        "business_profile":
+            MessageLookupByLibrary.simpleMessage("بزنس بروفايل"),
         "canvasBag": MessageLookupByLibrary.simpleMessage("حقيبة قماش"),
         "canvasBagFlat":
             MessageLookupByLibrary.simpleMessage("حقيبة قماش مسطحة"),
@@ -53,10 +65,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "canvasBagWithHandle":
             MessageLookupByLibrary.simpleMessage("حقيبة قماش بمقبض"),
         "canvas_bags": MessageLookupByLibrary.simpleMessage("أكياس قماش"),
-        "captainOrder": MessageLookupByLibrary.simpleMessage("طلب كابتن"),
+        "captainOrder": MessageLookupByLibrary.simpleMessage(" كابتن أوردر"),
+        "captain_order": MessageLookupByLibrary.simpleMessage("كابتن أوردر"),
+        "cardboard_shopping_bags":
+            MessageLookupByLibrary.simpleMessage("أكياس تسوق كارتون"),
         "carton": MessageLookupByLibrary.simpleMessage("منتجات كرتونية"),
         "cartonBoxes": MessageLookupByLibrary.simpleMessage("صناديق كرتون"),
         "carton_boxes": MessageLookupByLibrary.simpleMessage("علب كرتون"),
+        "carton_products":
+            MessageLookupByLibrary.simpleMessage("منتجات الكارتون"),
+        "catalog": MessageLookupByLibrary.simpleMessage("كتالوج"),
         "catalogue": MessageLookupByLibrary.simpleMessage("كتالوج"),
         "categories_quality_description": MessageLookupByLibrary.simpleMessage(
             "الفئات والجودة: يقدم تطبيقنا مجموعة واسعة من الفئات مثل الطباعة الرقمية، طباعة الأوفست، التغليف والمزيد. نضمن الجودة والتنفيذ الفعال. يمكن للمشترين تقديم طلبات مفصلة لخدمات محددة مثل التغليف، التصميم والطباعة ذات التنسيق الكبير. يرد البائعون بعروض الأسعار. ما الذي يمكن أن يكون أسهل من ذلك!"),
@@ -67,7 +85,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "chef_cap": MessageLookupByLibrary.simpleMessage("كاب الشيف"),
         "chef_jacket": MessageLookupByLibrary.simpleMessage("جاكيت الشيف"),
         "city": MessageLookupByLibrary.simpleMessage("المدينة: "),
-        "cleaner": MessageLookupByLibrary.simpleMessage("منظف"),
+        "cleaner": MessageLookupByLibrary.simpleMessage("منظفات"),
+        "cleaners": MessageLookupByLibrary.simpleMessage("منظفات"),
+        "cleaning_and_protection_products":
+            MessageLookupByLibrary.simpleMessage("منتجات النظافة والحماية"),
+        "cleaning_protection_products":
+            MessageLookupByLibrary.simpleMessage("منتجات النظافة والحماية"),
         "clingFilm": MessageLookupByLibrary.simpleMessage("غلاف بلاستيكي"),
         "coffeeBag": MessageLookupByLibrary.simpleMessage("كيس قهوة"),
         "coffeeBagWithFilter":
@@ -75,86 +98,141 @@ class MessageLookup extends MessageLookupByLibrary {
         "coffeeBagWithZipper":
             MessageLookupByLibrary.simpleMessage("كيس قهوة بسحاب"),
         "coffee_bags": MessageLookupByLibrary.simpleMessage("أكياس القهوة"),
+        "coffee_bags_with_filter":
+            MessageLookupByLibrary.simpleMessage("أكياس قهوة مع فلتر"),
+        "coffee_bags_with_zipper":
+            MessageLookupByLibrary.simpleMessage("أكياس قهوة مع سحاب"),
         "color": MessageLookupByLibrary.simpleMessage("اللون"),
         "concessionSupplies":
-            MessageLookupByLibrary.simpleMessage("مستلزمات الامتياز"),
-        "concessionTrays":
-            MessageLookupByLibrary.simpleMessage("صواني الامتياز"),
+            MessageLookupByLibrary.simpleMessage("أدوات مميزة "),
+        "concessionTrays": MessageLookupByLibrary.simpleMessage("اطباق مميزة"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "containers": MessageLookupByLibrary.simpleMessage("حاويات"),
         "copy": MessageLookupByLibrary.simpleMessage("نسخ"),
         "corrugated_cartons":
             MessageLookupByLibrary.simpleMessage("منتجات الكرتون المموج"),
+        "corrugated_paper_cups":
+            MessageLookupByLibrary.simpleMessage("أكواب ورق مموج"),
         "courierBag": MessageLookupByLibrary.simpleMessage("كيس شحن"),
         "creasing": MessageLookupByLibrary.simpleMessage("التجعيد"),
         "crystal_trophy":
             MessageLookupByLibrary.simpleMessage("هدايا الكريستال"),
         "cupHolder": MessageLookupByLibrary.simpleMessage("حامل أكواب"),
+        "cup_holder": MessageLookupByLibrary.simpleMessage("حامل أكواب"),
+        "cup_sleeve": MessageLookupByLibrary.simpleMessage("غلاف أكواب"),
         "cups": MessageLookupByLibrary.simpleMessage("أكواب"),
+        "curve": MessageLookupByLibrary.simpleMessage("منحني"),
+        "custom_shopping_bags":
+            MessageLookupByLibrary.simpleMessage("أكياس تسوق حسب الطلب"),
         "customize": MessageLookupByLibrary.simpleMessage("تخصيص"),
         "cutleries": MessageLookupByLibrary.simpleMessage("أدوات المائدة"),
+        "cutlery": MessageLookupByLibrary.simpleMessage("ادوات المائدة"),
         "cutleryRange": MessageLookupByLibrary.simpleMessage("أدوات المائدة"),
         "cutting": MessageLookupByLibrary.simpleMessage("القص"),
+        "cylinder": MessageLookupByLibrary.simpleMessage("الأسطوانة"),
+        "dai_cut": MessageLookupByLibrary.simpleMessage("قطع القالب"),
+        "daily_containers":
+            MessageLookupByLibrary.simpleMessage("حاويات يومية"),
         "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "deliContainers":
             MessageLookupByLibrary.simpleMessage("حاويات الوجبات الجاهزة"),
         "digital": MessageLookupByLibrary.simpleMessage("طباعة ديجيتال"),
+        "digital_card": MessageLookupByLibrary.simpleMessage("ديجتال كارد"),
         "digital_cards": MessageLookupByLibrary.simpleMessage("كارد شخصي"),
         "digital_screen": MessageLookupByLibrary.simpleMessage("شاشات رقمية"),
+        "digital_screens": MessageLookupByLibrary.simpleMessage("شاشات ديجتال"),
         "digital_stickers":
             MessageLookupByLibrary.simpleMessage("استيكرات رقمية"),
-        "dispenser": MessageLookupByLibrary.simpleMessage("موزع"),
+        "dining_utensils":
+            MessageLookupByLibrary.simpleMessage("ادوات المائدة"),
+        "dispenser": MessageLookupByLibrary.simpleMessage("أجهزة التوزيع"),
+        "dispensers": MessageLookupByLibrary.simpleMessage("اجهزة التوزيع"),
         "diverse_digital": MessageLookupByLibrary.simpleMessage("متنوع"),
         "diverse_gift_items": MessageLookupByLibrary.simpleMessage("متنوع"),
         "diverse_printing": MessageLookupByLibrary.simpleMessage("متنوع"),
         "diverse_signage": MessageLookupByLibrary.simpleMessage("متنوع"),
         "diverse_uniform": MessageLookupByLibrary.simpleMessage("متنوع"),
-        "duplexBox": MessageLookupByLibrary.simpleMessage("صندوق دوبلكس"),
+        "double_layer_paper_cups":
+            MessageLookupByLibrary.simpleMessage("أكواب ورق طبقتين"),
+        "duplexBox": MessageLookupByLibrary.simpleMessage("علبة دوبلكس"),
+        "duplex_burger_box":
+            MessageLookupByLibrary.simpleMessage("علبة دوبليكس برجر بوكس"),
         "emboss": MessageLookupByLibrary.simpleMessage("نقش بارز"),
-        "envelope": MessageLookupByLibrary.simpleMessage("ظرف"),
+        "envelope": MessageLookupByLibrary.simpleMessage("أظرف"),
+        "error": MessageLookupByLibrary.simpleMessage("خطاء"),
         "exhibition_stand": MessageLookupByLibrary.simpleMessage("ستاند معارض"),
         "extra_details": MessageLookupByLibrary.simpleMessage("تفاصيل إضافية"),
+        "fabric_bags_with_handle":
+            MessageLookupByLibrary.simpleMessage("أكياس قماش مع يد"),
+        "fabric_bags_with_square_bottom":
+            MessageLookupByLibrary.simpleMessage("أكياس قماش مع قاع مربع"),
         "facialTissuePrinted":
             MessageLookupByLibrary.simpleMessage("مناديل وجه مطبوعة"),
         "fast_print": MessageLookupByLibrary.simpleMessage("طباعة رقمية سريعة"),
+        "fiber_products":
+            MessageLookupByLibrary.simpleMessage("منتجات الفايبر"),
         "find_supplier": MessageLookupByLibrary.simpleMessage("ابحث عن مورد"),
         "find_us_on": MessageLookupByLibrary.simpleMessage("تجدنا على"),
         "first_name": MessageLookupByLibrary.simpleMessage("الاسم الاول"),
         "flags": MessageLookupByLibrary.simpleMessage("أعلام"),
+        "flash_memory": MessageLookupByLibrary.simpleMessage("فلاش ميموري"),
+        "flat_fabric_bags":
+            MessageLookupByLibrary.simpleMessage("أكياس قماش مسطحة"),
+        "flat_paper_bags":
+            MessageLookupByLibrary.simpleMessage("أكياس ورق مسطحة"),
+        "flat_paper_bags_with_window":
+            MessageLookupByLibrary.simpleMessage("أكياس ورق مسطحة مع شباك"),
+        "flex_boards": MessageLookupByLibrary.simpleMessage("لوحات فيلكس"),
         "flex_signage": MessageLookupByLibrary.simpleMessage("لافتات فلكس"),
         "flyer": MessageLookupByLibrary.simpleMessage("فلاير"),
         "flyers": MessageLookupByLibrary.simpleMessage("فلاير"),
+        "foam_cups": MessageLookupByLibrary.simpleMessage("أكواب فوم"),
         "foam_products": MessageLookupByLibrary.simpleMessage("منتجات الفوم"),
         "foil": MessageLookupByLibrary.simpleMessage("رقائق معدنية"),
+        "foil_containers": MessageLookupByLibrary.simpleMessage("حاويات"),
         "foils": MessageLookupByLibrary.simpleMessage("رقائق"),
+        "folding": MessageLookupByLibrary.simpleMessage("طي"),
+        "food_box": MessageLookupByLibrary.simpleMessage("علبة الغذاء"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور"),
         "full_set": MessageLookupByLibrary.simpleMessage("طقم كامل"),
         "garbageBags": MessageLookupByLibrary.simpleMessage("أكياس القمامة"),
+        "garbage_bags": MessageLookupByLibrary.simpleMessage("اكياس قمامة"),
         "gift_items": MessageLookupByLibrary.simpleMessage("الهدايا"),
         "glossy": MessageLookupByLibrary.simpleMessage("لامع"),
         "gloves": MessageLookupByLibrary.simpleMessage("قفازات"),
+        "gold": MessageLookupByLibrary.simpleMessage("ذهب"),
         "handle": MessageLookupByLibrary.simpleMessage("المقبض"),
         "height": MessageLookupByLibrary.simpleMessage("الارتفاع"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
-        "hygiene": MessageLookupByLibrary.simpleMessage("نظافة"),
+        "hygiene": MessageLookupByLibrary.simpleMessage("حاويات النظافة"),
         "hygiene_and_protection":
+            MessageLookupByLibrary.simpleMessage("النظافة والحماية"),
+        "hygiene_containers":
+            MessageLookupByLibrary.simpleMessage("حاويات النظافة"),
+        "hygiene_protection":
             MessageLookupByLibrary.simpleMessage("النظافة والحماية"),
         "i_am_a_supplier": MessageLookupByLibrary.simpleMessage("أنا مورد"),
         "iceCreamCup": MessageLookupByLibrary.simpleMessage("كوب آيس كريم"),
+        "ice_cream_cups":
+            MessageLookupByLibrary.simpleMessage("أكواب أيس كريم"),
         "id_cards": MessageLookupByLibrary.simpleMessage("كارد تعريف"),
+        "inside": MessageLookupByLibrary.simpleMessage("الداخل"),
+        "inside_print": MessageLookupByLibrary.simpleMessage("طباعة داخلية"),
         "invoiceBook": MessageLookupByLibrary.simpleMessage("دفتر فواتير"),
+        "invoice_book": MessageLookupByLibrary.simpleMessage("دفتر فواتير"),
         "kraftPaperBags":
             MessageLookupByLibrary.simpleMessage("أكياس ورق كرافت"),
         "kraftPaperBagsFlat":
             MessageLookupByLibrary.simpleMessage("أكياس كرافت مسطحة"),
         "kraftPaperBagsFlatWithWindow":
-            MessageLookupByLibrary.simpleMessage("أكياس كرافت مسطحة بنافذة"),
+            MessageLookupByLibrary.simpleMessage("أكياس كرافت مسطحة مع شباك"),
         "kraftPaperBagsSquareBottom":
             MessageLookupByLibrary.simpleMessage("أكياس كرافت بقاعدة مربعة"),
         "kraftPaperBagsWithTwistedHandle":
             MessageLookupByLibrary.simpleMessage("أكياس كرافت بمقبض ملتوي"),
         "lShapePaper": MessageLookupByLibrary.simpleMessage("ورق على شكل L"),
+        "l_shaped_paper": MessageLookupByLibrary.simpleMessage("ورق بحرف L"),
         "label": MessageLookupByLibrary.simpleMessage("الوسم"),
         "lamination": MessageLookupByLibrary.simpleMessage("التغليف"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
@@ -164,20 +242,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "laser": MessageLookupByLibrary.simpleMessage("ليزر"),
         "last_name": MessageLookupByLibrary.simpleMessage("الاسم الاخير"),
         "leatherMenuFolder":
-            MessageLookupByLibrary.simpleMessage("قائمة/ملف جلد"),
+            MessageLookupByLibrary.simpleMessage("منيو جلد/فولدر"),
+        "leather_menu_folder":
+            MessageLookupByLibrary.simpleMessage("منيو جلد / فولدر"),
         "length": MessageLookupByLibrary.simpleMessage("الطول"),
-        "letterhead": MessageLookupByLibrary.simpleMessage("ورق مراسلات"),
+        "letterhead": MessageLookupByLibrary.simpleMessage("ليتيرهيد"),
         "lid": MessageLookupByLibrary.simpleMessage("الغطاء"),
         "log_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "log_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
-        "lunchBox": MessageLookupByLibrary.simpleMessage("صندوق غداء"),
-        "manakishBox": MessageLookupByLibrary.simpleMessage("صندوق مناقيش"),
+        "lunchBox": MessageLookupByLibrary.simpleMessage(" لانش بوكس"),
+        "lunch_box": MessageLookupByLibrary.simpleMessage("لانش بوكس"),
+        "manakishBox": MessageLookupByLibrary.simpleMessage("بوكس مناقيش"),
+        "manakish_box": MessageLookupByLibrary.simpleMessage("بوكس مناقيش"),
         "material": MessageLookupByLibrary.simpleMessage("الخامة"),
         "matt": MessageLookupByLibrary.simpleMessage("مطفي"),
-        "mealBox": MessageLookupByLibrary.simpleMessage("صندوق وجبات"),
-        "menu": MessageLookupByLibrary.simpleMessage("قائمة طعام"),
+        "mealBox": MessageLookupByLibrary.simpleMessage("علبة غذاء"),
+        "memorial_plaque": MessageLookupByLibrary.simpleMessage("نصب تذكاري"),
+        "menu": MessageLookupByLibrary.simpleMessage(" منيو"),
         "microwaveContainers":
             MessageLookupByLibrary.simpleMessage("حاويات المايكروويف"),
+        "microwave_containers":
+            MessageLookupByLibrary.simpleMessage("حاويات ميكرويف"),
         "mobile_cover": MessageLookupByLibrary.simpleMessage("غطاء موبايل"),
         "mobile_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "molded_fiber_products":
@@ -185,6 +270,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "more_quotes_offers": MessageLookupByLibrary.simpleMessage(
             "المزيد من العروض والأسعار والخدمة المتميزة"),
         "mouse_pad": MessageLookupByLibrary.simpleMessage("لوحة ماوس"),
+        "mug": MessageLookupByLibrary.simpleMessage("مج"),
         "mugs": MessageLookupByLibrary.simpleMessage("أكواب"),
         "napkinTissuePrinted":
             MessageLookupByLibrary.simpleMessage("مناديل طاولة مطبوعة"),
@@ -195,19 +281,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_orders":
             MessageLookupByLibrary.simpleMessage("لا يوجد طلبات حتي الان"),
         "non": MessageLookupByLibrary.simpleMessage("بدون"),
-        "noodlesBox": MessageLookupByLibrary.simpleMessage("صندوق نودلز"),
+        "noodle_box": MessageLookupByLibrary.simpleMessage("بوكس نوديل"),
+        "noodlesBox": MessageLookupByLibrary.simpleMessage("بوكس نودلز"),
         "normal": MessageLookupByLibrary.simpleMessage("عادي"),
         "note_order_details": MessageLookupByLibrary.simpleMessage(
             "ملاحظة، سيتم تنفيذ طلبك بناءً على التفاصيل التي تقدمها في هذا القسم"),
         "note_payment": MessageLookupByLibrary.simpleMessage(
             "ملاحظة: دفع المبلغ 50٪ مقدمًا و50٪ نقدًا عند الاستلام."),
-        "notebook": MessageLookupByLibrary.simpleMessage("دفتر ملاحظات"),
+        "notebook": MessageLookupByLibrary.simpleMessage(" نوت بوك"),
         "notebooks": MessageLookupByLibrary.simpleMessage("نوت بوك"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+        "offset": MessageLookupByLibrary.simpleMessage("أوفست"),
         "offsetPrint": MessageLookupByLibrary.simpleMessage("طباعة أوفست"),
         "offset_print": MessageLookupByLibrary.simpleMessage("طباعة أوفست"),
+        "optional_field":
+            MessageLookupByLibrary.simpleMessage("هذا الحقل أختياري"),
         "order_date": MessageLookupByLibrary.simpleMessage("تاريخ الطلب"),
         "order_details": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
+        "order_details_note":
+            MessageLookupByLibrary.simpleMessage("يرجى كتابة تفاصيل طلبك:"),
+        "order_execution_note": MessageLookupByLibrary.simpleMessage(
+            "ملاحظة، سيتم تنفيذ طلبك بناءً على التفاصيل التي تقدمها في هذا القسم."),
         "order_name": MessageLookupByLibrary.simpleMessage("اسم الطلب"),
         "order_summary": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
         "order_variation": MessageLookupByLibrary.simpleMessage(
@@ -216,9 +310,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "our_website":
             MessageLookupByLibrary.simpleMessage("موقعنا الإلكتروني"),
+        "outdoor_stickers":
+            MessageLookupByLibrary.simpleMessage("استيكرات خارجية"),
+        "outside": MessageLookupByLibrary.simpleMessage("الخارج"),
         "packaging": MessageLookupByLibrary.simpleMessage("التعبئة والتغليف"),
+        "packaging_bowls": MessageLookupByLibrary.simpleMessage("أوعية"),
+        "packaging_boxes": MessageLookupByLibrary.simpleMessage("علب"),
+        "packaging_tools":
+            MessageLookupByLibrary.simpleMessage("ادوات التغليف"),
         "packaging_view": MessageLookupByLibrary.simpleMessage("عرض التغليف"),
         "packing": MessageLookupByLibrary.simpleMessage("التعبئة"),
+        "pages": MessageLookupByLibrary.simpleMessage("صفحات"),
         "paper": MessageLookupByLibrary.simpleMessage("الورق"),
         "paperBags": MessageLookupByLibrary.simpleMessage("أكياس ورقية"),
         "paperBoxes": MessageLookupByLibrary.simpleMessage("صناديق ورقية"),
@@ -227,19 +329,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "paperCupCorrugated":
             MessageLookupByLibrary.simpleMessage("كوب ورقي مموج"),
         "paperCupDoubleWall":
-            MessageLookupByLibrary.simpleMessage("كوب ورقي جدار مزدوج"),
+            MessageLookupByLibrary.simpleMessage("كوب ورقي طبقة مزدوج"),
         "paperCupSingleWall":
-            MessageLookupByLibrary.simpleMessage("كوب ورقي جدار واحد"),
+            MessageLookupByLibrary.simpleMessage("كوب ورقي طبقة واحدة"),
         "paperSticker": MessageLookupByLibrary.simpleMessage("ملصق ورقي"),
         "paper_bags": MessageLookupByLibrary.simpleMessage("أكياس ورق"),
+        "paper_bags_with_square_bottom":
+            MessageLookupByLibrary.simpleMessage("أكياس ورق مع قاع مربع )SOS("),
+        "paper_bags_with_twisted_handle":
+            MessageLookupByLibrary.simpleMessage("أكياس ورق مع يد ملتوية"),
         "paper_boxes": MessageLookupByLibrary.simpleMessage("علب ورقية"),
+        "paper_coffee_bags":
+            MessageLookupByLibrary.simpleMessage("أكياس قهوة ورق"),
         "paper_cups": MessageLookupByLibrary.simpleMessage("أكواب ورقية"),
         "paper_products": MessageLookupByLibrary.simpleMessage("منتجات ورقية"),
+        "paper_products_brochure":
+            MessageLookupByLibrary.simpleMessage("منتجات الورق بروشور"),
+        "paper_roll_wrap": MessageLookupByLibrary.simpleMessage("رول ورق لف"),
+        "paper_sticker": MessageLookupByLibrary.simpleMessage("استيكر ورق"),
         "paymentVoucher": MessageLookupByLibrary.simpleMessage("سند صرف"),
+        "payment_voucher": MessageLookupByLibrary.simpleMessage("سند صرف"),
         "pen": MessageLookupByLibrary.simpleMessage("قلم"),
         "person_or_company":
             MessageLookupByLibrary.simpleMessage("(شخص / شركة)"),
-        "pizzaBox": MessageLookupByLibrary.simpleMessage("صندوق بيتزا"),
+        "pizzaBox": MessageLookupByLibrary.simpleMessage("علب بيتزا"),
+        "pizza_box": MessageLookupByLibrary.simpleMessage("علبة بيتزا"),
         "plasticBag": MessageLookupByLibrary.simpleMessage("كيس بلاستيك"),
         "plasticBagHd": MessageLookupByLibrary.simpleMessage("كيس بلاستيك HD"),
         "plasticBagLd": MessageLookupByLibrary.simpleMessage("كيس بلاستيك LD"),
@@ -250,21 +364,41 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("PET كوب بلاستيك"),
         "plasticCupPp": MessageLookupByLibrary.simpleMessage("PP كوب بلاستيك"),
         "plastic_bags": MessageLookupByLibrary.simpleMessage("أكياس بلاستيك"),
+        "plastic_bags_hd":
+            MessageLookupByLibrary.simpleMessage("أكياس بلاستيك أتش دي"),
+        "plastic_bags_ld":
+            MessageLookupByLibrary.simpleMessage("أكياس بلاستيك إل دي"),
+        "plastic_coffee_bags":
+            MessageLookupByLibrary.simpleMessage("أكياس قهوة بلاستيك"),
         "plastic_cups": MessageLookupByLibrary.simpleMessage("أكواب بلاستيك"),
+        "plastic_cups_pet":
+            MessageLookupByLibrary.simpleMessage("أكواب بلاستيك PET"),
+        "plastic_cups_pp":
+            MessageLookupByLibrary.simpleMessage("أكواب بلاستيك PP"),
+        "plastic_film": MessageLookupByLibrary.simpleMessage("غلاف بلاستيكي"),
         "plastic_products":
             MessageLookupByLibrary.simpleMessage("منتجات بلاستيكية"),
-        "plateTrays": MessageLookupByLibrary.simpleMessage("صواني الأطباق"),
+        "plateTrays": MessageLookupByLibrary.simpleMessage("صواني / الأطباق"),
+        "plates_trays": MessageLookupByLibrary.simpleMessage("اطباق:صواني"),
         "platters": MessageLookupByLibrary.simpleMessage("أطباق"),
         "popCornCup": MessageLookupByLibrary.simpleMessage("كوب فشار"),
         "pop_up": MessageLookupByLibrary.simpleMessage("بوب أب"),
-        "portionCups": MessageLookupByLibrary.simpleMessage("أكواب الحصص"),
+        "portionCups": MessageLookupByLibrary.simpleMessage("أكواب التقديم"),
         "pots": MessageLookupByLibrary.simpleMessage("أواني"),
+        "printed_tissue_boxes":
+            MessageLookupByLibrary.simpleMessage("علب مناديل مطبوعة"),
+        "printed_tissues":
+            MessageLookupByLibrary.simpleMessage("مناديل ورقية مطبوعة"),
+        "printed_wet_wipes":
+            MessageLookupByLibrary.simpleMessage("مناديل مبللة مطبوعة"),
+        "printer_paper": MessageLookupByLibrary.simpleMessage("ورق طابعات"),
         "printersPaper": MessageLookupByLibrary.simpleMessage("ورق طابعات"),
         "printing": MessageLookupByLibrary.simpleMessage("الطباعة"),
         "printing_press_company_agency":
             MessageLookupByLibrary.simpleMessage("(مطبعة / شركة / وكالة)"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "pvcSticker": MessageLookupByLibrary.simpleMessage("ملصق بي في سي"),
+        "pvc_sticker": MessageLookupByLibrary.simpleMessage("استيكر بلاستيك"),
         "quantity": MessageLookupByLibrary.simpleMessage("الكمية"),
         "quotation_condition_1": MessageLookupByLibrary.simpleMessage(
             "بقبولك لهذا العرض السعري، فإنك توافق على شروط وأحكام العروض وتقدم موافقتك على أمر الشراء لوضع الطلب."),
@@ -285,19 +419,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "quotes_terms":
             MessageLookupByLibrary.simpleMessage("شروط وأحكام العروض :"),
         "receiptVoucher": MessageLookupByLibrary.simpleMessage("سند قبض"),
+        "receipt_voucher": MessageLookupByLibrary.simpleMessage("سند قبض"),
         "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "registration_role":
             MessageLookupByLibrary.simpleMessage("دور التسجيل"),
+        "resistant_containers":
+            MessageLookupByLibrary.simpleMessage("حاويات مقاومة"),
+        "roll_up": MessageLookupByLibrary.simpleMessage("رول أب"),
         "rollup": MessageLookupByLibrary.simpleMessage("رول أب"),
-        "saladBox": MessageLookupByLibrary.simpleMessage("صندوق سلطة"),
+        "saladBox": MessageLookupByLibrary.simpleMessage("بوكس سلطة"),
         "saladContainers":
             MessageLookupByLibrary.simpleMessage("حاويات السلطة"),
-        "sandwichBox": MessageLookupByLibrary.simpleMessage("صندوق ساندوتش"),
+        "salad_box": MessageLookupByLibrary.simpleMessage("بوكس سلطة"),
+        "salad_containers": MessageLookupByLibrary.simpleMessage("حاويات سلطة"),
+        "sandwichBox": MessageLookupByLibrary.simpleMessage("علبة ساندوتش"),
         "sandwichPaper": MessageLookupByLibrary.simpleMessage("ورق ساندوتش"),
         "sandwichPouch": MessageLookupByLibrary.simpleMessage("كيس ساندوتش"),
+        "sandwich_bag": MessageLookupByLibrary.simpleMessage("كيس ساندويش"),
+        "sandwich_box": MessageLookupByLibrary.simpleMessage("علبة ساندويش"),
+        "sandwich_takeaway_box":
+            MessageLookupByLibrary.simpleMessage("بوكس ساندويش"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "select_section":
             MessageLookupByLibrary.simpleMessage("اختر القسم المطلوب :"),
+        "serving_cups": MessageLookupByLibrary.simpleMessage("اكواب تقديم"),
+        "shape": MessageLookupByLibrary.simpleMessage("شكل"),
+        "sheet": MessageLookupByLibrary.simpleMessage("ورقة"),
+        "shipping_bags": MessageLookupByLibrary.simpleMessage("أكياس شحن"),
         "shirt": MessageLookupByLibrary.simpleMessage("قميص"),
         "shoppingBag": MessageLookupByLibrary.simpleMessage("كيس تسوق"),
         "shoppingBagAsRequest":
@@ -305,34 +453,54 @@ class MessageLookup extends MessageLookupByLibrary {
         "shoppingBagCardboard":
             MessageLookupByLibrary.simpleMessage("كيس تسوق كرتون"),
         "shopping_bags": MessageLookupByLibrary.simpleMessage("أكياس التسوق"),
+        "side_boards": MessageLookupByLibrary.simpleMessage("لوحات جانبية"),
         "side_signage": MessageLookupByLibrary.simpleMessage("لافتات جانبية"),
         "signage": MessageLookupByLibrary.simpleMessage("اللافتات"),
+        "silver": MessageLookupByLibrary.simpleMessage("فضة"),
+        "single_layer_paper_cups":
+            MessageLookupByLibrary.simpleMessage("أكواب ورق طبقة واحدة"),
         "size": MessageLookupByLibrary.simpleMessage("الحجم"),
         "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
         "sleeve": MessageLookupByLibrary.simpleMessage("كم"),
         "small_shopping_bag":
             MessageLookupByLibrary.simpleMessage("أكياس تسوق صغيرة"),
+        "small_shopping_bags":
+            MessageLookupByLibrary.simpleMessage("اكياس تسوق صغيرة"),
+        "special": MessageLookupByLibrary.simpleMessage("خاص"),
+        "special_plates": MessageLookupByLibrary.simpleMessage("اطباق مميزة"),
+        "special_tools": MessageLookupByLibrary.simpleMessage("ادوات مميزة"),
         "spotUv": MessageLookupByLibrary.simpleMessage("طلاء UV موضعي"),
+        "spot_uv": MessageLookupByLibrary.simpleMessage("سبوت يو في"),
         "stand": MessageLookupByLibrary.simpleMessage("ستاند"),
         "standard": MessageLookupByLibrary.simpleMessage("قياسي"),
         "stands": MessageLookupByLibrary.simpleMessage("ستاند"),
         "start": MessageLookupByLibrary.simpleMessage("ابدأ"),
+        "steel": MessageLookupByLibrary.simpleMessage("فولاذ"),
+        "sticker": MessageLookupByLibrary.simpleMessage("استيكر"),
         "stickers": MessageLookupByLibrary.simpleMessage("استيكر"),
         "stickers_digital": MessageLookupByLibrary.simpleMessage("استيكر"),
         "sticksAndSkewers":
             MessageLookupByLibrary.simpleMessage("أعواد وأسياخ"),
-        "stirrerStraws": MessageLookupByLibrary.simpleMessage("قش التحريك"),
+        "sticks_skewers":
+            MessageLookupByLibrary.simpleMessage("العصي والاسياخ"),
+        "stirrerStraws": MessageLookupByLibrary.simpleMessage(" عصا / ماصة"),
+        "straws_sticks": MessageLookupByLibrary.simpleMessage("عصا:ماصات"),
         "suit": MessageLookupByLibrary.simpleMessage("بدلة"),
         "supplier_app_description": MessageLookupByLibrary.simpleMessage(
             "SUPPLIER هو تطبيق سوق يربط بين المشترين والبائعين في صناعة الطباعة والتغليف والإعلان"),
         "sweetBoxes": MessageLookupByLibrary.simpleMessage("صناديق الحلويات"),
-        "sweetRoll": MessageLookupByLibrary.simpleMessage("لفة حلويات"),
+        "sweetRoll": MessageLookupByLibrary.simpleMessage(" رول لفة حلويات"),
+        "sweets_boxes": MessageLookupByLibrary.simpleMessage("علب حلويات"),
+        "sweets_wrapping_roll":
+            MessageLookupByLibrary.simpleMessage("رول لف حلويات"),
         "t_shirt": MessageLookupByLibrary.simpleMessage("تي شيرت"),
         "tableSheets": MessageLookupByLibrary.simpleMessage("مفارش الطاولة"),
-        "takeAwayBox":
-            MessageLookupByLibrary.simpleMessage("صندوق طلبات خارجية"),
+        "table_covers": MessageLookupByLibrary.simpleMessage("اغطية الطاولات"),
+        "table_stand": MessageLookupByLibrary.simpleMessage("ستاند طاولة"),
+        "takeAwayBox": MessageLookupByLibrary.simpleMessage("بوكس تيك أواي  "),
+        "takeaway_box": MessageLookupByLibrary.simpleMessage("بوكس تيك اواي"),
         "tamperEvidentContainers":
-            MessageLookupByLibrary.simpleMessage("حاويات مضادة للعبث"),
+            MessageLookupByLibrary.simpleMessage("حاويات  مقاومة"),
         "terms_and_conditions":
             MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
         "terms_client": MessageLookupByLibrary.simpleMessage(
@@ -341,18 +509,26 @@ class MessageLookup extends MessageLookupByLibrary {
             "بالانضمام إلى تطبيق SUPPLIER كبائع، فإنك توافق على الالتزام بالمعايير التالية من حيث الجودة، والكمية، وتوقيت التسليم. قد يؤدي عدم الوفاء بهذه الشروط إلى فرض عقوبات أو تعليق أو إنهاء حسابك.\n- يجب على البائع تقديم معلومات كاملة وصحيحة إلى جانب نسخة من الرخصة التجارية.\nفي حال اكتشاف احتيال أو معلومات احتيالية، سيتم حذف الحساب فورًا دون التشاور مع البائع.\nالشحن والتوصيل: مجاني\nوتكون مسؤولية تطبيق SUPPLIER دون جمع رسوم من البائع.\n1. معايير الجودة\n1.1 ضمان الجودة: يجب على البائعين التأكد من أن جميع المنتجات والخدمات تلبي معايير الصناعة وتوافق المواصفات المقدمة من المشتري في طلب العرض.\n1.2 الاتساق: يوافق البائعون على تقديم جودة متسقة في جميع الطلبات. ويشمل ذلك استخدام المواد المناسبة، والالتزام بمواصفات التصميم، والحفاظ على دقة الألوان، ووضوح الطباعة، وجودة التشطيب.\n1.3 الفحص: يجب على البائعين فحص كل طلب قبل إرساله للتحقق من أنه يفي بمعايير الجودة المتفق عليها. وقد يؤدي الفشل المتكرر في تحقيق معايير الجودة إلى تعليق الحساب.\n1.4 حل الشكاوى: يُطلب من البائعين معالجة أي شكاوى تتعلق بالجودة بسرعة. إذا تبين أن منتجًا أو خدمة غير مرضية أو معيبة، يجب على البائع تقديم حل مناسب، والذي قد يشمل الإصلاحات أو الاستبدال أو استرداد الأموال، حسبما يقتضيه تطبيق SUPPLIER على أساس كل حالة على حدة.\n2. معايير الكمية\n2.1 تنفيذ الطلب: يجب على البائعين تنفيذ الطلبات وفقًا للكميات المحددة في كل عقد. لا يُسمح بأي اختلاف في الكمية (نقص أو فائض) دون الحصول على اتفاق خطي مسبق من تطبيق SUPPLIER.\n2.2 التعامل مع الكميات الزائدة: يمكن إعادة أي كمية زائدة تم تسليمها دون طلب أو موافقة المشتري على نفقة البائع أو التخلص منها.\n2.3 عقوبات النقص: قد يؤدي عدم تسليم الكمية المتفق عليها إلى فرض غرامة وتعويض محتمل عن التكاليف التي تكبدها المشتري نتيجة النقص.\n3. توقيت التسليم\n3.1 التسليم في الوقت المحدد: يجب على البائعين الالتزام بجدول التسليم المحدد في عقد أو اتفاق المشتري. يمكن أن تؤثر التسليمات المتأخرة سلبًا على المشتري وقد تؤدي إلى فرض عقوبات.\n3.2 الإبلاغ عن التأخيرات: إذا كانت التأخيرات لا مفر منها، يجب على البائعين إبلاغ تطبيق SUPPLIER فورًا، مع تقديم جدول زمني محدث للتسليم. قد يؤدي الفشل في الإبلاغ عن التأخيرات بسرعة إلى فرض عقوبات إضافية.\n3.3 الطلبات العاجلة: إذا قبل البائع طلبًا عاجلاً، يجب عليه التسليم ضمن الجدول الزمني السريع المحدد. إذا فشل البائع في تلبية توقيت الطلب العاجل، فقد يكون مسؤولاً عن استرداد المبالغ أو التعويض.\n3.4 عقوبة التأخير: قد يؤدي التأخير المتكرر أو غير المبرر إلى فرض عقوبات، ويحتفظ تطبيق SUPPLIER بالحق في تعليق أو إنهاء حساب البائع إذا فشل باستمرار في الالتزام بالمواعيد المتفق عليها.\n4. الضمان\n4.1 ضمان الرضا: يجب على البائعين ضمان الرضا من حيث الجودة، والكمية، والتوقيت. إذا لم يلب المنتج المعايير المتفق عليها، يوافق البائع على تقديم بديل أو إصلاح أو استرداد وفقًا للشروط المعمول بها في تطبيق SUPPLIER.\n4.2 فترة الضمان: يجب على البائع التأكد من جودة المنتج قبل إرساله للشحن أو التوصيل. كما يلتزم البائع بتقديم المنتج المتفق عليه في عرض السعر مع كافة تفاصيله. في حال خرق تفاصيل المنتج المرسلة من قبل البائع، يحتفظ تطبيق SUPPLIER بالحق في رفض المنتج أو إرجاعه وفقًا لمتطلبات العميل دون أن يقوم البائع برفضه، وخصم السعر الكامل للمنتج، أو تقديم حل من خلال إعادة إنتاج المنتج وفقًا لمواصفات عرض السعر.\n5. سياسة الاسترجاع واسترداد الأموال:\n5.1 يجب على البائعين استرجاع المنتجات في الحالات التالية:- إذا كان المنتج مختلفًا عن المواصفات المدرجة في عرض السعر.- عيب في الألوان المتفق عليها.- تغيير في المواد المتفق عليها في عرض السعر.- نقص في الكمية المتفق عليها.- تأخير في تسليم المنتج.\n5.2 المساءلة: يحتفظ تطبيق SUPPLIER بالحق في مراجعة أداء البائعين بشكل دوري. قد يواجه البائعون الذين يفشلون بشكل متكرر في الالتزام بهذه الشروط عقوبات على الحساب، بما في ذلك التعليق أو الإزالة الدائمة من المنصة.\n6. مستويات العمولة (دبي - الشارقة - عجمان)\nالطلبات من 500 درهم إلى 1000 درهم\nنسبة العمولة: 15%\nمثال: لطلب بقيمة 500 درهم كحد أدنى، ستكون رسوم العمولة 75 درهم، ويتلقى البائع 425 درهم.\nالطلبات من 1001 درهم إلى 5000 درهم\nنسبة العمولة: 10%\nمثال: لطلب بقيمة 1500 درهم، ستكون رسوم العمولة 150 درهم، ويتلقى البائع 1350 درهم.\nالطلبات من 5001 درهم إلى 10000 درهم\nنسبة العمولة: 7%\nمثال: لطلب بقيمة 5200 درهم، ستكون رسوم العمولة 364 درهم، ويتلقى البائع 4836 درهم.\nالطلبات التي تزيد عن 10000 درهم\nنسبة العمولة: 5%\nمثال: لطلب بقيمة 10050 درهم، ستكون رسوم العمولة 502.50 درهم، ويتلقى البائع 9547.50 درهم.\nشروط التسليم\n1. يُحظر وضع شعار البائع أو أي تفاصيل (العنوان، رقم الهاتف، أو أي وسيلة تواصل عبر وسائل التواصل الاجتماعي) على الشحنة عند استلامها من قبل شركة الشحن.\n2. يجب على البائع شحن المنتج، مهما كان، في صناديق بسيطة أو على ورق تغليف عادي بدون أي رسومات أو تفاصيل.\n3. يجب على شركة الشحن تسليم إيصال توصيل باسم تطبيق SUPPLIER.\n* إذا لم يلتزم البائع بشروط الشحن، فقد يتم فرض رسوم وغرامات عليه من قبل تطبيق SUPPLIER.\nالشروط الإضافية\nالخصومات الترويجية: قد يقدم تطبيق SUPPLIER، حسب تقديره، خصومات ترويجية على نسب العمولة. سيتم إشعار البائعين بهذه العروض ومدتها.\nخصم العمولة وصرف المدفوعات\nالخصم التلقائي: يتم خصم العمولة تلقائيًا من مستحقات البائع عند إتمام كل معاملة.\nجدول الصرف: تُصرف المدفوعات على أساس [أسبوعي] إلى الحساب المخصص للبائع، مع خصم رسوم العمولة وأي رسوم معالجة معمول بها (المتفق عليها مسبقًا).\nاسترداد الأموال والتعديلات\nإلغاء الطلبات: إذا تم إلغاء الطلب قبل إتمامه، لا يتم فرض أي عمولة.\nالطلبات المتنازع عليها: في حالات النزاعات التي يتم فيها منح استرداد جزئي، ستُعدل العمولة بناءً على المبلغ النهائي المتفق عليه.\nالفواتير\nيجب على البائعين إصدار فاتورة باسم SUPPLYER PORTAL عن كل عملية شراء تتم من خلال تطبيق المورد.\nالنزاعات\nيُحمى هذا الاتفاق ويفسر وفقًا لقوانين دولة الإمارات العربية المتحدة وقوانين إمارة دبي. للمحاكم في دبي الولاية القضائية للنظر في كل نزاع ينشأ عن هذا الاتفاق.\nالالتزامات القانونية للبائع\nتقر وتلتزم، بصفتك طرفًا في هذا الاتفاق، بـ:\nالامتثال للقوانين المعمول بها في جميع الأوقات وللتشريعات والأنظمة في هذا الاتفاق، بما في ذلك – دون استثناء – جميع تشريعات وقوانين وأنظمة حماية الخصوصية.\nكما تقر بأن لديك كل الصلاحيات والقدرات للدخول في هذا الاتفاق ودفع المستحقات وفقًا للشروط والأحكام الواردة فيه.\nالإقرار – بانضمامك إلى تطبيق SUPPLIER كبائع، فإنك تقر وتوافق على الالتزام بهذه المعايير. – بقبولك هذه الشروط، فإنك توافق على هيكل العمولة المبين أعلاه.\nيحتفظ تطبيق SUPPLIER بالحق في تعديل نسب العمولة مع إشعار مسبق للبائعين."),
         "thermalPaperForPrinters":
             MessageLookupByLibrary.simpleMessage("ورق حراري للطابعات"),
+        "thermal_printer_paper":
+            MessageLookupByLibrary.simpleMessage("ورق حراري للطابعات"),
         "this_field_is_optional":
             MessageLookupByLibrary.simpleMessage("هذا الحقل اختياري"),
         "this_field_is_required":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "three_d_signage":
             MessageLookupByLibrary.simpleMessage("لافتات ثلاثية الأبعاد"),
+        "threed_boards":
+            MessageLookupByLibrary.simpleMessage("لوحات ثلاثية الأبعاد"),
         "tissue_products":
             MessageLookupByLibrary.simpleMessage("منتجات المناديل"),
         "trophy": MessageLookupByLibrary.simpleMessage("هدايا"),
         "trouser": MessageLookupByLibrary.simpleMessage("بنطلون"),
+        "trousers": MessageLookupByLibrary.simpleMessage("بنطلون"),
+        "tshirt": MessageLookupByLibrary.simpleMessage("تي شيرت"),
         "two_d_signage":
             MessageLookupByLibrary.simpleMessage("لافتات ثنائية الأبعاد"),
+        "twod_boards":
+            MessageLookupByLibrary.simpleMessage("لوحات ثنائية الأبعاد"),
         "type": MessageLookupByLibrary.simpleMessage("النوع"),
         "umbrella": MessageLookupByLibrary.simpleMessage("مظلة"),
         "uniform": MessageLookupByLibrary.simpleMessage("الزي الموحد"),
@@ -362,13 +538,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "الصلاحية: 10 أيام من التاريخ أعلاه"),
         "variousProducts":
             MessageLookupByLibrary.simpleMessage("منتجات متنوعة"),
+        "various_products":
+            MessageLookupByLibrary.simpleMessage("منتجات متنوعة"),
         "wetNapkinPrinted":
             MessageLookupByLibrary.simpleMessage("مناديل مبللة مطبوعة"),
         "white": MessageLookupByLibrary.simpleMessage("أبيض"),
         "width": MessageLookupByLibrary.simpleMessage("العرض"),
+        "wood_products": MessageLookupByLibrary.simpleMessage("منتجات الخشب"),
         "wooden_products": MessageLookupByLibrary.simpleMessage("منتجات خشبية"),
         "wrappingPaper": MessageLookupByLibrary.simpleMessage("ورق تغليف"),
-        "wrappingRoll": MessageLookupByLibrary.simpleMessage("لفة تغليف"),
+        "wrappingRoll": MessageLookupByLibrary.simpleMessage(" رول ورق لف"),
         "wrapping_paper": MessageLookupByLibrary.simpleMessage("ورق اللف"),
         "wristband": MessageLookupByLibrary.simpleMessage("معصم بلاستيك"),
         "write_a_message": MessageLookupByLibrary.simpleMessage("اكتب رسالة"),
