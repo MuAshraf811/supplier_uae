@@ -56,7 +56,7 @@ class UserTypeView extends StatelessWidget {
                       AppConfigCubit.isSupplier = true;
 
                       Navigator.popAndPushNamed(
-                          context, RouteConstants.supplierLogInView);
+                          context, RouteConstants.supplierHomeView);
                     },
                     title: "I AM A SUPPLIER", 
                     titleAr: 'أنا مورد',
