@@ -110,7 +110,6 @@ fetchOffers()async{
   } 
    @override
   Future<void> close() {
-    // Remove listeners to prevent memory leaks
     quotationQuantityController.removeListener(_updateCalculations);
     quotationRateController.removeListener(_updateCalculations);
     

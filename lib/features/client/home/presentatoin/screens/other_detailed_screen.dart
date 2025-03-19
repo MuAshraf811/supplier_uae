@@ -31,7 +31,7 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
   Widget build(BuildContext context) {
     return Scaffold( 
       backgroundColor: ColorConsatnts.white, 
-            resizeToAvoidBottomInset: false,
+            
 
       body: SafeArea(
         child: Padding(
