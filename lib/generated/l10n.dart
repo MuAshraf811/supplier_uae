@@ -4149,6 +4149,16 @@ class S {
       args: [],
     );
   }
+
+  /// `\n\nVALIDITY OFFER :\n10 DAYES FROM ABOVE DATE NOTE:\nORDERING AFTER THE OFFER EXPIRATION DATE MAY RESULT IN SOME PRICES BEING CHANGE.\n-----------------\n AMOUNT PAYMENT:\n70% IN ADVANCE AND 30% BEFOR RECEIVED\n--------------------------\n. SOME TYPE OF ORDERS THAT ARE 10% MORE OR 10% LESS THAN THE QUANTITY QUOTED WILL BE INVOICED AT THE TIME THE ORDER IS COMPLETED AND WILL BE ADDED OR DEDUCTED FROM THE TOTAL AMOUNT REMAINING. Payment Terms & Conditions Currently, there are two ways to pay: 1- by bank transfer to the account of the business that owns the application, which is displayed below. 2- by collection with one of the application's agents. Whenever you submit a request, we will get in touch with you to fulfill it. Quotes Terms & Conditions 1- By accepting this price offer, you agree to Quotes Terms & Conditions and provide your Details to place the order. 2- The application agent will get in touch with you to confirm the order. 3- A sample of the order to be completed will be created and signed by the buyer after the deposit has been paid. 4- Befor or On the same day of delivery, the remaining balance must be paid...`
+  String get supplierterms {
+    return Intl.message(
+      '\n\nVALIDITY OFFER :\n10 DAYES FROM ABOVE DATE NOTE:\nORDERING AFTER THE OFFER EXPIRATION DATE MAY RESULT IN SOME PRICES BEING CHANGE.\n-----------------\n AMOUNT PAYMENT:\n70% IN ADVANCE AND 30% BEFOR RECEIVED\n--------------------------\n. SOME TYPE OF ORDERS THAT ARE 10% MORE OR 10% LESS THAN THE QUANTITY QUOTED WILL BE INVOICED AT THE TIME THE ORDER IS COMPLETED AND WILL BE ADDED OR DEDUCTED FROM THE TOTAL AMOUNT REMAINING. Payment Terms & Conditions Currently, there are two ways to pay: 1- by bank transfer to the account of the business that owns the application, which is displayed below. 2- by collection with one of the application\'s agents. Whenever you submit a request, we will get in touch with you to fulfill it. Quotes Terms & Conditions 1- By accepting this price offer, you agree to Quotes Terms & Conditions and provide your Details to place the order. 2- The application agent will get in touch with you to confirm the order. 3- A sample of the order to be completed will be created and signed by the buyer after the deposit has been paid. 4- Befor or On the same day of delivery, the remaining balance must be paid...',
+      name: 'supplierterms',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

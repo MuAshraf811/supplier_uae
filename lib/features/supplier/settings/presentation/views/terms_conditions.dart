@@ -41,7 +41,7 @@ class TermsAndConditionsViewSupplier extends StatelessWidget {
                 child: ListView(
                   children: [
                     Text(
-                      S.of(context).terms_supplier,
+                      S.of(context).supplierterms,
                       style: applyMediumStyle(
                         fontSize: 16,
                         fontColor: ColorConsatnts.black,
