@@ -233,7 +233,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أكياس كرافت بمقبض ملتوي"),
         "lShapePaper": MessageLookupByLibrary.simpleMessage("ورق على شكل L"),
         "l_shaped_paper": MessageLookupByLibrary.simpleMessage("ورق بحرف L"),
-        "label": MessageLookupByLibrary.simpleMessage("الوسم"),
+        "label": MessageLookupByLibrary.simpleMessage("ملصقات"),
         "lamination": MessageLookupByLibrary.simpleMessage("التغليف"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "lanyard": MessageLookupByLibrary.simpleMessage("حبل"),

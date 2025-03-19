@@ -807,7 +807,7 @@ class PackagingConstants {
               .map((e) => PackagingModel(
                   title: e,
                   image:
-                      "assets/images/Hygiene and protection/ Dispenser/$loopIndex.jpeg"))
+                      "assets/images/Hygiene and protection/Dispenser/$loopIndex.jpeg"))
               .toList(),
           [
             "All Purpose Cleaner 5L",
