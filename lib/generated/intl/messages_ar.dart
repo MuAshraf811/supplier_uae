@@ -548,6 +548,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "width": MessageLookupByLibrary.simpleMessage("العرض"),
         "wood_products": MessageLookupByLibrary.simpleMessage("منتجات الخشب"),
         "wooden_products": MessageLookupByLibrary.simpleMessage("منتجات خشبية"),
+        "wooden_stand": MessageLookupByLibrary.simpleMessage("حامل خشبي"),
         "wrappingPaper": MessageLookupByLibrary.simpleMessage("ورق تغليف"),
         "wrappingRoll": MessageLookupByLibrary.simpleMessage(" رول ورق لف"),
         "wrapping_paper": MessageLookupByLibrary.simpleMessage("ورق اللف"),

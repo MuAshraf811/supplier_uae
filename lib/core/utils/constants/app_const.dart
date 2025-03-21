@@ -4,7 +4,6 @@ import 'package:supplier/core/utils/models/category_model.dart';
 import 'package:supplier/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-import '../../../features/client/chat/model/message_model.dart';
 
 class AppConst {
 
@@ -355,7 +354,7 @@ static List<String> homeCategoryStrings(BuildContext context) {
             index: 0),
         CategoryModel(
             image: "assets/images/Gift Items/flash memory.jpeg",
-            title: S.of(context).offset_print,
+            title: S.of(context).flash_memory,
             index: 1),
         CategoryModel(
             image: "assets/images/Gift Items/ID Card.jpeg",
@@ -391,7 +390,7 @@ static List<String> homeCategoryStrings(BuildContext context) {
             index: 9),
         CategoryModel(
             image: "assets/images/Gift Items/Wooden-Stand-.jpeg",
-            title: S.of(context).offset_print,
+            title: S.of(context).wooden_stand,
             index: 10),
         CategoryModel(
             image: "assets/images/Gift Items/Wristband.jpeg",

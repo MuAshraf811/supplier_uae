@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
-import 'package:supplier/core/utils/constants/assets_constants.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
 

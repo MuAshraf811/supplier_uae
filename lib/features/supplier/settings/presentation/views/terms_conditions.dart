@@ -1,4 +1,3 @@
-import 'package:supplier/core/utils/constants/app_const.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';

@@ -11,7 +11,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../core/cubit/app_config_cubit.dart';
-import '../../core/utils/constants/app_const.dart';
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
 
