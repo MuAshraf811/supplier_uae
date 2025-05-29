@@ -47,7 +47,8 @@ showOrderConfirmation(
           child: ListView(
             children: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     padding:
@@ -248,18 +249,23 @@ class TitleWithValueText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          maxLines: 2,
-          style:
-              applySemiBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black),
+        Flexible(
+          child: Text(
+            title,
+            maxLines: 2, 
+             overflow: TextOverflow.ellipsis,
+            style:
+                applySemiBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black),
+          ),
         ),
-        Text(
-          value,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: applySemiBoldStyle(
-              fontSize: 16, fontColor: valueColor ?? ColorConsatnts.black),
+        Flexible(
+          child: Text(
+            value,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: applySemiBoldStyle(
+                fontSize: 16, fontColor: valueColor ?? ColorConsatnts.black),
+          ),
         ),
       ],
     );

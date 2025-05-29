@@ -48,7 +48,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyBheZpG2QCtBrBspDi0ns_OWWAGWkSNMYw',
-    appId: '1:583335541663:web:848c56d79894a07f219baa',
+    appId: '1:583335541663:web:21bd55f2728bdb97219baa',
     messagingSenderId: '583335541663',
     projectId: 'supply-20735',
     authDomain: 'supply-20735.firebaseapp.com',
@@ -57,7 +57,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBO5rUcDeWOAqr4mfx2HGiBpYc-hxGZ5Lk',
-    appId: '1:583335541663:android:99cc30195a6497b6219baa',
+    appId: '1:583335541663:android:04ce12f75cdc585c219baa',
     messagingSenderId: '583335541663',
     projectId: 'supply-20735',
     storageBucket: 'supply-20735.firebasestorage.app',
@@ -65,10 +65,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCGTyCIqOHeV6IpsKRsDMymXPKeEKrw_QQ',
-    appId: '1:583335541663:ios:adb311e13a42ff55219baa',
+    appId: '1:583335541663:ios:1dab9bf29ac5ee45219baa',
     messagingSenderId: '583335541663',
     projectId: 'supply-20735',
     storageBucket: 'supply-20735.firebasestorage.app',
+    androidClientId: '583335541663-2akegcu9i456kbjdho9nr6cpgob9oedb.apps.googleusercontent.com',
+    iosClientId: '583335541663-6tn1ilb9uackkfcnf861bnq8lhotl1ug.apps.googleusercontent.com',
     iosBundleId: 'com.falcon.Supplier',
   );
+
 }

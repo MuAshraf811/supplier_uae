@@ -310,10 +310,10 @@ class S {
     );
   }
 
-  /// `Diverse`
+  /// `Various Products`
   String get diverse_digital {
     return Intl.message(
-      'Diverse',
+      'Various Products',
       name: 'diverse_digital',
       desc: '',
       args: [],

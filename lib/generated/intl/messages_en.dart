@@ -153,7 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dining Utensils"),
         "dispenser": MessageLookupByLibrary.simpleMessage("Dispenser"),
         "dispensers": MessageLookupByLibrary.simpleMessage("Dispensers"),
-        "diverse_digital": MessageLookupByLibrary.simpleMessage("Diverse"),
+        "diverse_digital":
+            MessageLookupByLibrary.simpleMessage("Various Products"),
         "diverse_gift_items": MessageLookupByLibrary.simpleMessage("Diverse"),
         "diverse_printing": MessageLookupByLibrary.simpleMessage("Diverse"),
         "diverse_signage": MessageLookupByLibrary.simpleMessage("Diverse"),

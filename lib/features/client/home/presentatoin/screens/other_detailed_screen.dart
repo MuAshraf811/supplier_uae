@@ -57,21 +57,23 @@ class _OtherDetailedScreenState extends State<OtherDetailedScreen> {
                         ),
                       ),
                       const HorizontalSpacer(space: 32),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                             widget.data["cat name"],
-                             style:const  TextStyle( color: Colors.black, fontSize: 17),
-
-                          ),
-                          const VerticalSpacer(space: 8),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
                             Text(
-                             widget.data["item name"],
-                             style:const  TextStyle( color: Colors.blue, fontSize: 12, fontWeight: FontWeight.bold),
-
-                          ),
-                        ],
+                               widget.data["cat name"],
+                               style:const  TextStyle( color: Colors.black, fontSize: 17),
+                        
+                            ),
+                            const VerticalSpacer(space: 8),
+                              Text(
+                               widget.data["item name"],
+                               style:const  TextStyle( color: Colors.blue, fontSize: 12, fontWeight: FontWeight.bold),
+                        
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
