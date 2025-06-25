@@ -486,12 +486,7 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
     if(res.docs.isNotEmpty){
       return true;
     }
-    res = await FirebaseFirestore.instance
-          .collection('Suppliers')
-          .where('mobile', isEqualTo: phone).get();
-    if(res.docs.isNotEmpty){
-      return true;
-    }
+   
 
     res = await FirebaseFirestore.instance
           .collection('Users')
@@ -499,13 +494,7 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
     if(res.docs.isNotEmpty){
       return true;
     }
-    res = await FirebaseFirestore.instance
-          .collection('Users')
-          .where('mobile_number', isEqualTo: phone).get();
-    if(res.docs.isNotEmpty){
-      return true;
-    }
-
+    
 
 
     return false;

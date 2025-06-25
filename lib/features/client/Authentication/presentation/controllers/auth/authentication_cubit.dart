@@ -1,9 +1,7 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
-import 'package:supplier/core/utils/constants/app_const.dart';
 import 'package:supplier/core/utils/constants/storage_const.dart';
 import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/features/client/Authentication/model/user_data_model.dart';
@@ -14,7 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../../../core/utils/notification_service.dart';
 import '../../../../../../core/utils/service_locator.dart';
-import '../../../../../supplier/notifications/data/models/notifications_model.dart';
+
 part 'authentication_state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
@@ -50,30 +48,29 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
 
 
-  Future<void>  addUserToDataBase() async {
+  Future<bool> addUserToDataBase() async {
     try {
       emit(AddingUserDataState());
-      final user = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-        email: emailRegisterController.text,
-        password: passwordRegisterController.text,);
-      try {
-        await SharedPreferencesManager.storeStringValue(
-            key: StorageConstants.userId, value: user.user!.uid );
-      } on Exception catch (e) {
-        log(e.toString());
-        AddingUserDataErrorState(error: e.toString());
-      }
-      final fcmToken = SharedPreferencesManager.getStringValue(key: StorageConstants.fcmToken);
+      
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser == null) throw Exception("User not authenticated");
 
-      final instance = FirebaseFirestore.instance.collection("Users");
-      bool isDuplicate = await checkEmailOrPhoneDuplication(emailRegisterController.text, mobileNumberRegisterController.text);
+      // Check for duplicate again right before adding to database
+      bool isDuplicate = await checkEmailOrPhoneDuplication(
+        emailRegisterController.text, 
+        mobileNumberRegisterController.text
+      );
 
-      if(isDuplicate){
+      if (isDuplicate) {
         emit(AddingUserDataErrorState(error: "Email or Phone number already exists"));
-        return;
+        return false;
       }
-      final obj = await instance.add({
+
+      final fcmToken = SharedPreferencesManager.getStringValue(
+        key: StorageConstants.fcmToken
+      );
+
+      final userData = {
         "first_name": firstNameRegisterController.text,
         "last_name": lastNameRegisterController.text,
         "email": emailRegisterController.text,
@@ -81,27 +78,39 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         "role": "client",
         "mobile_number": mobileNumberRegisterController.text,
         "city": citySelection,
-        "uuid": user.user!.uid,
+        "uuid": currentUser.uid,
         "fcmToken": fcmToken,
-        "notificationHistory":""
-      });
-      log("******* addUserToDataBase *******");
-      log(obj.path);
-      SharedPreferencesManager.storeStringValue(
-          key: StorageConstants.userDataIdKey, value: obj.id);
+        "notificationHistory": ""
+      };
 
-      ServiceLocator.getIt<NotificationService>().createNotification(
+      final docRef = await FirebaseFirestore.instance
+          .collection("Users")
+          .add(userData);
+
+      // Store document ID
+      await SharedPreferencesManager.storeStringValue(
+        key: StorageConstants.userDataIdKey, 
+        value: docRef.id
+      );
+
+      // Send notification to admin
+      await ServiceLocator.getIt<NotificationService>().createNotification(
         title: "New client registered",
         body: "Client email: ${emailRegisterController.text}",
         recipientId: 'admin',
       );
+
       emit(AddingUserDataSuccessState());
-    } catch (e) {
-      log("******** addUserToDataBase ********");
-      log(e.toString());
-      AddingUserDataErrorState(error: e.toString());
+      return true;
+      
+    } catch (e, stack) {
+      log("Database addition error: $e");
+      log("Stack trace: $stack");
+      emit(AddingUserDataErrorState(error: "Failed to add user data"));
+      return false;
     }
   }
+
 
   void addUserToDataBaseWithOtherMethods() async {
     try {
@@ -236,28 +245,47 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  Future<bool> registerWithEmail() async {
+Future<bool> registerWithEmail() async {
     try {
       emit(LoadingAuthenticationWithEmailState());
-      final response = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailRegisterController.text,
-              password: passwordRegisterController.text);
+      
+      // Check for duplicate email/phone before attempting registration
+      bool isDuplicate = await checkEmailOrPhoneDuplication(
+        emailRegisterController.text, 
+        mobileNumberRegisterController.text
+      );
 
-      log(response.user!.email.toString());
-      bool isDuplicate = await checkEmailOrPhoneDuplication(emailRegisterController.text, mobileNumberRegisterController.text);
-
-      if(isDuplicate){
-        emit(AddingUserDataErrorState(error: "Email or Phone number already exists"));
+      if (isDuplicate) {
+        emit(ErrorAuthenticationWithEmailState(
+          error: "Email or Phone number already exists"
+        ));
         return false;
       }
+
+      // Create user with email and password
+      final response = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: emailRegisterController.text,
+            password: passwordRegisterController.text);
+
+      // Store user ID
+      await SharedPreferencesManager.storeStringValue(
+        key: StorageConstants.userId, 
+        value: response.user!.uid
+      );
+
       emit(SuccessAuthenticationWithEmailState());
       return true;
+      
     } on FirebaseAuthException catch (e) {
       emit(ErrorAuthenticationWithEmailState(error: e.message.toString()));
       return false;
+    } catch (e) {
+      emit(ErrorAuthenticationWithEmailState(error: "An unexpected error occurred"));
+      return false;
     }
   }
+
 
   Future<void> logInWithEmail() async {
     // normal login
@@ -444,12 +472,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     if(res.docs.isNotEmpty){
       return true;
     }
-    res = await FirebaseFirestore.instance
-          .collection('Suppliers')
-          .where('mobile', isEqualTo: phone).get();
-    if(res.docs.isNotEmpty){
-      return true;
-    }
+   
 
     res = await FirebaseFirestore.instance
           .collection('Users')
@@ -457,12 +480,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     if(res.docs.isNotEmpty){
       return true;
     }
-    res = await FirebaseFirestore.instance
-          .collection('Users')
-          .where('mobile_number', isEqualTo: phone).get();
-    if(res.docs.isNotEmpty){
-      return true;
-    }
+   
     return false;
   }
 

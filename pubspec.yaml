@@ -9,6 +9,7 @@ environment:
   sdk: ^3.5.2
 
 dependencies:
+  sentry_flutter: ^9.1.0
   carousel_slider: ^5.0.0
   cloud_firestore: ^5.5.0
   cupertino_icons: ^1.0.8
@@ -42,6 +43,7 @@ dependencies:
   supabase_flutter: ^2.8.1
   url_launcher: ^6.3.1
 dev_dependencies:
+  sentry_dart_plugin: ^3.0.0
   flutter_launcher_icons: ^0.14.2
   flutter_lints: ^4.0.0
   flutter_test:
@@ -133,3 +135,9 @@ flutter:
         - asset: assets/fonts/cairo/Cairo-Bold.ttf
 flutter_intl:
   enabled: true
+
+sentry:
+  upload_debug_symbols: true
+  upload_source_maps: true
+  project: flutter
+  org: supplier

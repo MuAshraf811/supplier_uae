@@ -191,129 +191,119 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   const VerticalSpacer(space: 10),
                   BlocConsumer<AuthenticationCubit, AuthenticationState>(
-                    listener: (context, state) {
-                      if (state is ErrorAuthenticationWithEmailState) {
-                        showCustomSnackBar(context, state.error, Colors.red,
-                            duration: 8);
-                      }
+  listener: (context, state) {
+    if (state is ErrorAuthenticationWithEmailState) {
+      showCustomSnackBar(context, state.error, Colors.red, duration: 8);
+    }
+    if (state is AddingUserDataErrorState) {
+      showCustomSnackBar(context, state.error, ColorConsatnts.red, duration: 3);
+    }
+  },
+  builder: (context, state) {
+    return Column(
+      children: [
+        if (state is LoadingAuthenticationWithEmailState || 
+            state is AddingUserDataState)
+          LinearProgressIndicator(
+            backgroundColor: Colors.grey[300],
+            valueColor: AlwaysStoppedAnimation<Color>(ColorConsatnts.primary),
+            minHeight: 4,
+          ),
+        const SizedBox(height: 8),
+        AppButton(
+          text: "Register",
+          onTap: () async {
+            if (formKey.currentState!.validate()) {
+              // Set mobile number from phone controller
+              ServiceLocator.getIt<AuthenticationCubit>()
+                  .mobileNumberRegisterController.text = 
+                  "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}";
 
-                      if (state is SuccessAuthenticationWithEmailState) {
-                        showCustomSnackBar(context, "Successful Registration ",
-                            ColorConsatnts.primary,
-                            duration: 3);
-                        showTermsAndConditionsDialog(context, false);
-                      }
+              // Send OTP
+              final otpResult = await ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
+                  .sendOtp(mobile: "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}");
 
-                      if (state is AddingUserDataErrorState) {
-                        showCustomSnackBar(
-                            context, state.error, ColorConsatnts.red,
-                            duration: 3);
-                      }
-                    },
-                    builder: (context, state) {
-                      if (state is LoadingAuthenticationWithEmailState) {
-                        return Container(
-                          width: double.infinity,
-                          height: 38.h,
-                          decoration: BoxDecoration(
-                              color: ColorConsatnts.primary,
-                              borderRadius: BorderRadius.circular(12.r)),
-                          child: Center(
-                            child: Transform.scale(
-                              scale: 0.7,
-                              child: CircularProgressIndicator.adaptive(
-                                backgroundColor: ColorConsatnts.primary,
-                                valueColor: AlwaysStoppedAnimation(
-                                    ColorConsatnts.white.withOpacity(0.85)),
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                      return AppButton(
-                        text: "Register",
-                        onTap: () {
-                          if (formKey
-                              .currentState!
-                              .validate()) {
+              if (!otpResult.success) {
+                showCustomSnackBar(context, otpResult.message, Colors.redAccent);
+                return;
+              }
 
-                            ServiceLocator.getIt<AuthenticationCubit>()
-                                .mobileNumberRegisterController.text = "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}";
-
-
-                            ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
-                                .sendOtp(mobile: "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}")
-                                .then((value) {
-                                  if(value.success){
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => Scaffold(
-                                        appBar: AppBar(
-                                          leading: IconButton(
-                                              onPressed: () => Navigator.of(context).pop(),
-                                              icon: const Icon(Icons.close)),
-                                        ),
-                                        body: Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(20.0),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                const SizedBox(height: 50,),
-                                                const Text("Enter Verification Code below",style: TextStyle(fontSize: 20,),maxLines: 2,),
-                                                const SizedBox(height: 20,),
-                                                AppTextField(
-                                                  label: "Otp code",
-                                                  type: TextInputType.number,
-                                                  suffixIcon: Icons.numbers,
-                                                  controller: otpController,
-                                                ),
-                                                VerticalSpacer(space: 20),
-                                                isVerifyPressed?
-                                                const Center(child: CircularProgressIndicator(),):
-                                                AppButton(text: "Verify Code", onTap: () {
-                                                  setState(() {
-                                                    isVerifyPressed = true;
-                                                  });
-                                                  ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
-                                                      .verifyOtp(userCode: otpController.text)
-                                                      .then((value) {
-                                                    setState(() {
-                                                      isVerifyPressed = false;
-                                                    });
-                                                    if(value.success){
-                                                      showCustomSnackBar(context, "Code Verified", Colors.green);
-                                                      Navigator.of(context).pop();
-                                                      ServiceLocator.getIt<AuthenticationCubit>()
-                                                          .registerWithEmail().then((value) {
-                                                        if(value){
-                                                          ServiceLocator.getIt<AuthenticationCubit>()
-                                                              .addUserToDataBase().then((value) {
-
-                                                          },);
-                                                            }
-                                                      },);
-                                                    }else{
-                                                      showCustomSnackBar(context, value.message, Colors.redAccent);
-                                                    }
-                                                  },);
-                                                },),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ) ,);
-                                    showCustomSnackBar(context, "Code sent successfully", Colors.green);
-                                  }else{
-                                    showCustomSnackBar(context, value.message, Colors.redAccent);
-                                  }
-                            },);
-                            //  showTermsAndConditionsDialog(context, false);
-                          }
-                        },
-                      );
-                    },
+              // Show OTP dialog
+              final otpVerified = await showDialog<bool>(
+                context: context,
+                builder: (context) => Scaffold(
+                  appBar: AppBar(
+                    leading: IconButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      icon: const Icon(Icons.close)),
                   ),
+                  body: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 50),
+                          const Text(
+                            "Enter Verification Code below",
+                            style: TextStyle(fontSize: 20),
+                            maxLines: 2,
+                          ),
+                          const SizedBox(height: 20),
+                          AppTextField(
+                            label: "Otp code",
+                            type: TextInputType.number,
+                            suffixIcon: Icons.numbers,
+                            controller: otpController,
+                          ),
+                          VerticalSpacer(space: 20),
+                          state is LoadingAuthenticationWithEmailState
+                              ? const Center(child: CircularProgressIndicator())
+                              : AppButton(
+                                  text: "Verify Code",
+                                  onTap: () async {
+                                    final verifyResult = await ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
+                                        .verifyOtp(userCode: otpController.text);
+                                    
+                                    if (verifyResult.success) {
+                                      showCustomSnackBar(context, "Code Verified", Colors.green);
+                                      Navigator.of(context).pop(true);
+                                    } else {
+                                      showCustomSnackBar(context, verifyResult.message, Colors.redAccent);
+                                    }
+                                  },
+                                ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+
+              if (otpVerified == true) {
+                // Proceed with registration
+                final registered = await ServiceLocator.getIt<AuthenticationCubit>()
+                    .registerWithEmail();
+                
+                if (registered) {
+                  await ServiceLocator.getIt<AuthenticationCubit>()
+                      .addUserToDataBase();
+                  showCustomSnackBar(
+                    context, 
+                    "Successful Registration", 
+                    ColorConsatnts.primary,
+                    duration: 3
+                  );
+                  showTermsAndConditionsDialog(context, false);
+                }
+              }
+            }
+          },
+        ),
+      ],
+    );
+  },
+),
                   const VerticalSpacer(space: 14),
                   const OrDivider(),
                   const VerticalSpacer(space: 14),

@@ -603,7 +603,8 @@ class CategoryConstants {
         {
           "title": "Wrapping Roll",
           "details": {
-           
+                       S.of(context).quantity: [30000, 40000, 50000, 60000, 70000, 80000],
+
           },
           "other": {
             S.of(context).block: [S.of(context).normal, S.of(context).laser],
@@ -614,10 +615,11 @@ class CategoryConstants {
         {
           "title": "Sweet Roll",
           "details": {
-           
+                       S.of(context).quantity: [30000, 40000, 50000, 60000, 70000, 80000],
+
           },
           "other": {
-            S.of(context).block: ["Laaser", S.of(context).laser],
+            S.of(context).block: ["Laser", S.of(context).laser],
             S.of(context).packing: [1000, 2000],
           },
           "isRequired": true,

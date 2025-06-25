@@ -1,4 +1,3 @@
-import 'package:phone_form_field/phone_form_field.dart';
 import 'package:supplier/core/utils/widgets/custom_phone_field.dart';
 import 'package:supplier/core/utils/widgets/snack_bar.dart';
 import 'package:supplier/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';

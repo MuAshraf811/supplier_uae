@@ -27,7 +27,8 @@ class RemoteDataBase {
         .from(AppConst.supaBaseStorageBacketName)
         .upload(
           imagePath,
-          imageFile,
+          imageFile, 
+          fileOptions: FileOptions(upsert: true)
         );
   }
 }
