@@ -206,7 +206,7 @@ class _RegisterViewState extends State<RegisterView> {
             state is AddingUserDataState)
           LinearProgressIndicator(
             backgroundColor: Colors.grey[300],
-            valueColor: AlwaysStoppedAnimation<Color>(ColorConsatnts.primary),
+            valueColor: const AlwaysStoppedAnimation<Color>(ColorConsatnts.primary),
             minHeight: 4,
           ),
         const SizedBox(height: 8),
@@ -256,7 +256,7 @@ class _RegisterViewState extends State<RegisterView> {
                             suffixIcon: Icons.numbers,
                             controller: otpController,
                           ),
-                          VerticalSpacer(space: 20),
+                          const VerticalSpacer(space: 20),
                           state is LoadingAuthenticationWithEmailState
                               ? const Center(child: CircularProgressIndicator())
                               : AppButton(

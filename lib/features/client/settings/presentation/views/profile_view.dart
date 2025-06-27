@@ -368,7 +368,7 @@ class ProfileInformation extends StatelessWidget {
                 CircleAvatar(
                   backgroundColor: ColorConsatnts.primary,
                   radius: 32.w,
-                  child: Icon(Icons.person),
+                  child: const Icon(Icons.person),
                 ),
                 const HorizontalSpacer(space: 24),
                 Column(
@@ -416,7 +416,7 @@ class ProfileInformation extends StatelessWidget {
             ),
           );
         } else if (state is FetchUserDataErrorState) {
-          return Center(child: Text("No user data found"));
+          return const Center(child: Text("No user data found"));
         }
         print(state);
         ServiceLocator.getIt<AuthenticationCubit>().getUserData();

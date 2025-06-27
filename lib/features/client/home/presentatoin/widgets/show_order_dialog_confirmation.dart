@@ -12,8 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/service_locator.dart';
-import '../../../Authentication/presentation/controllers/auth/authentication_cubit.dart';
 
 showOrderConfirmation(
     {required BuildContext context,

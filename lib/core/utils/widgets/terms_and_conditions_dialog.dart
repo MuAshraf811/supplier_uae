@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supplier/core/cubit/app_config_cubit.dart';
-import 'package:supplier/core/utils/constants/app_const.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
 import 'package:supplier/core/utils/service_locator.dart';

@@ -15,7 +15,7 @@ import '../../../../client/Authentication/presentation/widgets/drop_down_text_fi
 class StepOneContent extends StatelessWidget {
   final stepOneFormKey;
 
-  StepOneContent({super.key, required this.stepOneFormKey});
+  const StepOneContent({super.key, required this.stepOneFormKey});
 
   @override
   Widget build(BuildContext context) {

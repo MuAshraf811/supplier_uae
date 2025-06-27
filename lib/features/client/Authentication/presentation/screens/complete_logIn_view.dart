@@ -199,7 +199,7 @@ class CompleteLoginView extends StatelessWidget {
                                             suffixIcon: Icons.numbers,
                                             controller: otpController,
                                           ),
-                                          VerticalSpacer(space: 20),
+                                          const VerticalSpacer(space: 20),
                                           AppButton(text: "Verify Code", onTap: () {
                                             if(otpController.text.isNotEmpty){
                                             ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {

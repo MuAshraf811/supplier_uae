@@ -51,7 +51,7 @@ class NotificationsManager {
     _firebaseMessaging.onTokenRefresh.listen(_storeFCMToken);
   }
   Future<void> _storeFCMToken(String token) async {
-    if(token != null && token.isNotEmpty) {
+    if(token.isNotEmpty) {
       // print("storing token: $token");
       await SharedPreferencesManager.storeStringValue(
       key: StorageConstants.fcmToken,

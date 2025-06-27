@@ -1,4 +1,3 @@
-import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/route_constants.dart';
 import 'package:supplier/core/utils/widgets/app_text_field.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/constants/color_consatnts.dart';
-import '../../../../../core/utils/service_locator.dart';
 import '../../../../../core/utils/styles/text_styles.dart';
 import '../../../../../core/utils/widgets/app_button.dart';
 import '../../../../../generated/l10n.dart';

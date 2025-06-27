@@ -160,7 +160,7 @@ class AppRouter {
         );
       case RouteConstants.registerView:
         return MaterialPageRoute(
-          builder: (context) => RegisterView(),
+          builder: (context) => const RegisterView(),
 
         );
       case RouteConstants.completeLoginView:

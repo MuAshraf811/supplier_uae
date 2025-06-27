@@ -115,7 +115,7 @@ class _RegisterStepperState extends State<RegisterStepper> {
                                               suffixIcon: Icons.numbers,
                                               controller: otpController,
                                             ),
-                                            VerticalSpacer(space: 20),
+                                            const VerticalSpacer(space: 20),
                                             details.currentStep == 0 && isVerifyClicked?
                                             const Center(child: CircularProgressIndicator(),)
                                             : AppButton(text: "Verify Code", onTap: () {

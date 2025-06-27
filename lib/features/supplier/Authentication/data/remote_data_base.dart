@@ -28,7 +28,7 @@ class RemoteDataBase {
         .upload(
           imagePath,
           imageFile, 
-          fileOptions: FileOptions(upsert: true)
+          fileOptions: const FileOptions(upsert: true)
         );
   }
 }

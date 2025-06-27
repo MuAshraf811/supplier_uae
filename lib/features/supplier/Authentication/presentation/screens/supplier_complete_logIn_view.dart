@@ -77,7 +77,7 @@ class SupplierCompleteLoginView extends StatelessWidget {
                     context: context,
                     thePhoneController: context.read<SupplierAuthCubit>().thePhoneController,
                     myWidth: MediaQuery.of(context).size.width),
-                VerticalSpacer(space: 20),
+                const VerticalSpacer(space: 20),
                 InkWell(
             onTap: () {
               context.read<SupplierAuthCubit>().getTradeLisence();  
@@ -249,7 +249,7 @@ class SupplierCompleteLoginView extends StatelessWidget {
                                             suffixIcon: Icons.numbers,
                                             controller: otpController,
                                           ),
-                                          VerticalSpacer(space: 20),
+                                          const VerticalSpacer(space: 20),
                                           AppButton(text: "Verify Code", onTap: () {
                                             if(otpController.text.isNotEmpty){
                                               ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {

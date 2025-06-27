@@ -35,6 +35,7 @@ static List<String> homeCategoryStrings(BuildContext context) {
       S.of(context).gift_items,
     ];
   }
+  
 
   static String getDate() {
     final day = DateTime.now().day.toString().padLeft(2, "0");
