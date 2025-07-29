@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:supplier/core/utils/models/detailed_category_model.dart';
-import 'package:supplier/generated/l10n.dart';
+import 'package:supplier_app/core/utils/models/detailed_category_model.dart';
+import 'package:supplier_app/generated/l10n.dart';
 
 class CategoryConstants {
   static List<DetailedCategoryModel> getPrintingCategories(BuildContext context) { 

@@ -1,4 +1,4 @@
-import 'package:supplier/core/utils/constants/font_family_constants.dart';
+import 'package:supplier_app/core/utils/constants/font_family_constants.dart';
 import 'package:flutter/material.dart';
 
 TextStyle applyRegularStyle({

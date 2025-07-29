@@ -1,13 +1,13 @@
-import 'package:supplier/core/utils/constants/app_const.dart';
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/app_button.dart';
-import 'package:supplier/core/utils/widgets/app_text_field.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/chat/presentation/widgets/chat_app_bar.dart';
-import 'package:supplier/features/client/home/presentatoin/widgets/show_order_dialog_confirmation.dart';
+import 'package:supplier_app/core/utils/constants/app_const.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/app_button.dart';
+import 'package:supplier_app/core/utils/widgets/app_text_field.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/chat/presentation/widgets/chat_app_bar.dart';
+import 'package:supplier_app/features/client/home/presentatoin/widgets/show_order_dialog_confirmation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

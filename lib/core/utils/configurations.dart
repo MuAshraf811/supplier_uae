@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:supplier/core/utils/constants/storage_const.dart';
-import 'package:supplier/core/utils/storage/shared_preferences.dart';
-import 'package:supplier/features/supplier/notifications/data/models/notifications_model.dart';
-import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
+import 'package:supplier_app/core/utils/constants/storage_const.dart';
+import 'package:supplier_app/core/utils/storage/shared_preferences.dart';
+import 'package:supplier_app/features/supplier/notifications/data/models/notifications_model.dart';
+import 'package:supplier_app/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
 
 import '../cubit/app_config_cubit.dart';
 
@@ -52,7 +52,6 @@ class NotificationsManager {
   }
   Future<void> _storeFCMToken(String token) async {
     if(token != null && token.isNotEmpty) {
-      // print("storing token: $token");
       await SharedPreferencesManager.storeStringValue(
       key: StorageConstants.fcmToken,
       value: token,

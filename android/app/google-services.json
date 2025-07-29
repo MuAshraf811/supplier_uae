@@ -7,42 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:583335541663:android:393361833a903a33219baa",
-        "android_client_info": {
-          "package_name": "com.falcon.Supplier"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "583335541663-q1fss9bbrfke42smhbqida5uj1rrn1qn.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBO5rUcDeWOAqr4mfx2HGiBpYc-hxGZ5Lk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "583335541663-9330jmvdhvsl0vo0qvvpg7h0339hmdo0.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "583335541663-6tn1ilb9uackkfcnf861bnq8lhotl1ug.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.falcon.Supplier"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:583335541663:android:83b3969feceb43bd219baa",
         "android_client_info": {
           "package_name": "com.falcon.SupplierApp"
@@ -50,41 +14,53 @@
       },
       "oauth_client": [
         {
-          "client_id": "583335541663-q1fss9bbrfke42smhbqida5uj1rrn1qn.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
+          "client_id": "583335541663-96h6cl10ofg8d480c2jv330tqgg31mab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.falcon.SupplierApp",
+            "certificate_hash": "3b7064bf5cc849d40514fd5385d3778d159334c1"
+          }
+        },
         {
-          "current_key": "AIzaSyBO5rUcDeWOAqr4mfx2HGiBpYc-hxGZ5Lk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "583335541663-9330jmvdhvsl0vo0qvvpg7h0339hmdo0.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "583335541663-6tn1ilb9uackkfcnf861bnq8lhotl1ug.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.falcon.Supplier"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:583335541663:android:04ce12f75cdc585c219baa",
-        "android_client_info": {
-          "package_name": "com.falcon.SupplierFoundation"
-        }
-      },
-      "oauth_client": [
+          "client_id": "583335541663-9s2c8di9f38m8m1gbj3lcf07d9md241k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.falcon.SupplierApp",
+            "certificate_hash": "d9df4ccf29aba3eae7c5620a496ab07f783a50f9"
+          }
+        },
+        {
+          "client_id": "583335541663-p48lj7u2av8ipp15nt9443p0g3dvcvlo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.falcon.SupplierApp",
+            "certificate_hash": "a90fadb1b2e366ec01a4bbca68f5ed4380a9a304"
+          }
+        },
+        {
+          "client_id": "583335541663-qcoc6881u0egjs5f9n12rkonpro5juag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.falcon.SupplierApp",
+            "certificate_hash": "f3706e6fc6b0645f727d914f392300f004f79c07"
+          }
+        },
+        {
+          "client_id": "583335541663-se8drdraaicpi8icbtpgi8s3jdebrhbp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.falcon.SupplierApp",
+            "certificate_hash": "3729ec0956e67d8699da532d1fedd2db508e184c"
+          }
+        },
+        {
+          "client_id": "583335541663-tq8s9b2purlsl4vnv9a5thrgk2bd7avq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.falcon.SupplierApp",
+            "certificate_hash": "ab49deced94cc2c9dc7ef50cf9dcd439365f47bf"
+          }
+        },
         {
           "client_id": "583335541663-q1fss9bbrfke42smhbqida5uj1rrn1qn.apps.googleusercontent.com",
           "client_type": 3

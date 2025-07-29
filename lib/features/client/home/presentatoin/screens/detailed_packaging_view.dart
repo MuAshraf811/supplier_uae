@@ -1,9 +1,9 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/constants/packaging_constants.dart';
-import 'package:supplier/core/utils/constants/route_constants.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/features/client/chat/presentation/widgets/chat_app_bar.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/constants/packaging_constants.dart';
+import 'package:supplier_app/core/utils/constants/route_constants.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/features/client/chat/presentation/widgets/chat_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

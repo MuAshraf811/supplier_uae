@@ -1,6 +1,6 @@
-import 'package:supplier/core/utils/regex.dart';
-import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
-import 'package:supplier/features/client/Authentication/presentation/widgets/password_validation.dart';
+import 'package:supplier_app/core/utils/regex.dart';
+import 'package:supplier_app/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
+import 'package:supplier_app/features/client/Authentication/presentation/widgets/password_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

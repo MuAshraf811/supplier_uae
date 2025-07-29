@@ -1,4 +1,4 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/constants/assets_constants.dart';

@@ -1,12 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:supplier/features/supplier/notifications/data/models/notifications_model.dart';
-import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
-import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_states.dart';
+import 'package:supplier_app/features/supplier/notifications/data/models/notifications_model.dart';
+import 'package:supplier_app/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
+import 'package:supplier_app/features/supplier/notifications/presentation/cubit/notification_states.dart';
 
 import '../../../../core/utils/notification_service.dart';
 import '../../../../core/utils/service_locator.dart';

@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:supplier/core/utils/constants/storage_const.dart';
-import 'package:supplier/core/utils/storage/shared_preferences.dart';
-import 'package:supplier/features/client/orders/model/client_order_model.dart';
+import 'package:supplier_app/core/utils/constants/storage_const.dart';
+import 'package:supplier_app/core/utils/storage/shared_preferences.dart';
+import 'package:supplier_app/features/client/orders/model/client_order_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +53,7 @@ class OrdersCubit extends Cubit<OrdersState> {
 
       // Get the userId from SharedPreferences
       final String userId = SharedPreferencesManager.getStringValue(
-        key: StorageConstants.userId,
+        key: StorageConstants.userDataIdKey,
       );
 
       // Query Firestore to fetch only documents matching the userId
@@ -62,6 +62,10 @@ class OrdersCubit extends Cubit<OrdersState> {
               .collection("accepted_orders")
               .where("userId", isEqualTo: userId)
               .get();
+      print("fetchClientOrders");
+      print(response.size);
+      print(response.docs.first.data());
+
       // Map the documents to  model
       clientOrders = response.docs
           .map(

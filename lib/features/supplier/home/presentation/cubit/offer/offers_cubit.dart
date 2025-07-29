@@ -2,7 +2,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:supplier/features/supplier/home/model/quotation_model.dart';
+import 'package:supplier_app/features/supplier/home/model/quotation_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 

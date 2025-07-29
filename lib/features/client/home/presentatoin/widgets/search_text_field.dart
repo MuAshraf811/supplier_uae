@@ -1,5 +1,5 @@
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/generated/l10n.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

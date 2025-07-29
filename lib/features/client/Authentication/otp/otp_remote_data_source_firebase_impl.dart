@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:supplier/core/utils/widgets/snack_bar.dart';
+import 'package:supplier_app/core/utils/widgets/snack_bar.dart';
 
 import 'otp_response_entity.dart';
 class OtpRemoteDataSourceFirebaseImpl{

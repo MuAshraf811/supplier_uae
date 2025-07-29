@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supplier/generated/l10n.dart';
+import 'package:supplier_app/generated/l10n.dart';
 
 class PackagingModel {
   final String title;

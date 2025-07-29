@@ -1,7 +1,7 @@
-import 'package:supplier/core/cubit/app_config_cubit.dart';
-import 'package:supplier/core/routes/app_router.dart';
-import 'package:supplier/core/utils/service_locator.dart';
-import 'package:supplier/generated/l10n.dart'; 
+import 'package:supplier_app/core/cubit/app_config_cubit.dart';
+import 'package:supplier_app/core/routes/app_router.dart';
+import 'package:supplier_app/core/utils/service_locator.dart';
+import 'package:supplier_app/generated/l10n.dart'; 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

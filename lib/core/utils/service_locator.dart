@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:supplier/core/utils/notification_service.dart';
-import 'package:supplier/features/client/Authentication/otp/otp_remote_data_source_firebase_impl.dart';
-import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
-import 'package:supplier/features/client/chat/presentation/cubit/chat_cubit.dart';
-import 'package:supplier/features/client/orders/presentation/cubit/orders_cubit.dart';
-import 'package:supplier/features/client/settings/presentation/controller/cubit/settings_cubit.dart';
-import 'package:supplier/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
+import 'package:supplier_app/core/utils/notification_service.dart';
+import 'package:supplier_app/features/client/Authentication/otp/otp_remote_data_source_firebase_impl.dart';
+import 'package:supplier_app/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
+import 'package:supplier_app/features/client/chat/presentation/cubit/chat_cubit.dart';
+import 'package:supplier_app/features/client/orders/presentation/cubit/orders_cubit.dart';
+import 'package:supplier_app/features/client/settings/presentation/controller/cubit/settings_cubit.dart';
+import 'package:supplier_app/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/supplier/chatSupplier/presentation/cubit/chat_cubit.dart';
