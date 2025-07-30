@@ -1,5 +1,5 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +20,7 @@ class AppTextField extends StatelessWidget {
     this.suffixSvg , 
     this.readOnly,   
     this.isSecured,
-    
+    this.onChange
   });
   final String label; 
   final bool? readOnly;
@@ -36,11 +36,13 @@ class AppTextField extends StatelessWidget {
   final  Widget? suffixSvg;
   final Color? suffixColor;  
   final bool? isSecured;
+  final void Function(String)? onChange;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       validator: validator,
+      onChanged: onChange ,
       keyboardType: type,
       maxLines: maxLines,
       minLines: minLines, 

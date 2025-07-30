@@ -1,7 +1,7 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supplier/features/client/home/model/order_model.dart';
+import 'package:supplier_app/features/client/home/model/order_model.dart';
 
 import '../../../../../../core/utils/constants/category_constants.dart';
 part 'home_page_state.dart';
@@ -14,8 +14,8 @@ class HomePageCubit extends Cubit<HomePageState> {
   late String radioButtonGroupValue;
   late OrderModel addedOrder;
   Map<String, dynamic> orderDetails = {};
-  initGroupVal(int index) {
-    radioButtonGroupValue = CategoryConstants.printing[index].radioOptions[0];
+  initGroupVal(int index, BuildContext context) {
+    radioButtonGroupValue = CategoryConstants.getPrintingCategories(context)[index].radioOptions[0];
   }
  
   rebuildRadioOnChooseing(String choice, int choiceIndex) {

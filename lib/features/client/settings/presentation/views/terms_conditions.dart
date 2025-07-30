@@ -1,14 +1,22 @@
-import 'package:supplier/core/utils/constants/app_const.dart';
+<<<<<<< HEAD
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
+=======
+import 'package:supplier_app/core/utils/constants/app_const.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+>>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/cubit/app_config_cubit.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../chat/presentation/widgets/chat_app_bar.dart';
 
-class TermsAndConditionsView extends StatelessWidget {
-  const TermsAndConditionsView({super.key});
+class TermsAndConditionsViewClient extends StatelessWidget {
+  const TermsAndConditionsViewClient({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +28,16 @@ class TermsAndConditionsView extends StatelessWidget {
           child: Column(
             children: [
               const VerticalSpacer(space: 16),
-              const CustomAppbar(title: "TERMS AND CONDITIONS"),
+              CustomAppbar(title: AppConfigCubit.isEnglish? "TERMS AND CONDITIONS": "الأحكام والشروط"),
               Text(
-                "TERMS AND CONDITIONS",
+                AppConfigCubit.isEnglish? "TERMS AND CONDITIONS": "الأحكام والشروط",
                 style: applyBoldStyle(
                   fontSize: 16,
                   fontColor: ColorConsatnts.primary,
                 ),
               ),
               Text(
-                "Last Updated : [01/12/2024]",
+                AppConfigCubit.isEnglish? "Last Updated : [01/12/2024]":"آخر تحديث : [1/12/2024]",
                 style: applySemiBoldStyle(
                   fontSize: 16,
                   fontColor: Colors.red,
@@ -39,7 +47,7 @@ class TermsAndConditionsView extends StatelessWidget {
                 child: ListView(
                   children: [
                     Text(
-                      AppConst.termsAndConditions,
+                      S.of(context).terms_client,
                       style: applyMediumStyle(
                         fontSize: 16,
                         fontColor: ColorConsatnts.black,

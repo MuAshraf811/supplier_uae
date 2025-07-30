@@ -1,9 +1,10 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/constants/route_constants.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/features/onboarding&splash/widgets/logo_animation.dart';
-import 'package:supplier/features/onboarding&splash/widgets/role_container.dart';
+import 'package:supplier_app/core/cubit/app_config_cubit.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/constants/route_constants.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/features/onboarding&splash/widgets/logo_animation.dart';
+import 'package:supplier_app/features/onboarding&splash/widgets/role_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,6 +13,7 @@ class UserTypeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: ColorConsatnts.white,
       body: SafeArea(
@@ -23,7 +25,7 @@ class UserTypeView extends StatelessWidget {
                 offset: Offset(0, -72.h),
                 child: const LogoAnimation(),
               ),
-              const VerticalSpacer(space: 30),
+              const VerticalSpacer(space: 10),
               Text(
                 "REGISTRATION ROLE",
                 textAlign: TextAlign.center,
@@ -38,22 +40,26 @@ class UserTypeView extends StatelessWidget {
                 children: [
                   RoleContainer(
                     onTap: () { 
-                      
+
+                      AppConfigCubit.isSupplier = false;
                       Navigator.popAndPushNamed(
                           context, RouteConstants.logInView); 
                     },
-                    title: 'FIND SUPPLIER',
+                    title: 'FIND SUPPLIER', 
+                    titleAr: 'البحث عن مورد',
                     discription: '(Person / Company)',
                     imagePath: 'assets/images/role1.jpeg',
                   ),
                   const HorizontalSpacer(space: 18),
                   RoleContainer(
-                    onTap: () { 
-                     
+                    onTap: () {
+                      AppConfigCubit.isSupplier = true;
+
                       Navigator.popAndPushNamed(
                           context, RouteConstants.supplierLogInView);
                     },
-                    title: "I AM A SUPPLIER",
+                    title: "I AM A SUPPLIER", 
+                    titleAr: 'أنا مورد',
                     discription: '(Printing Press / Company / Agency).',
                     imagePath: 'assets/images/role2.jpeg',
                   ),

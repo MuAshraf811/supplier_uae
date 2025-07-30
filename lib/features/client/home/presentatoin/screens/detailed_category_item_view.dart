@@ -1,16 +1,16 @@
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/category_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/app_text_field.dart';
-import 'package:supplier/core/utils/widgets/snack_bar.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/home/presentatoin/cubit/cubit/home_page_cubit.dart';
-import 'package:supplier/features/client/home/presentatoin/widgets/custom_drop_down.dart';
-import 'package:supplier/features/client/home/presentatoin/widgets/custom_radio_button.dart';
-import 'package:supplier/features/client/home/presentatoin/widgets/detailed_screen_order_button.dart';
-import 'package:supplier/generated/l10n.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/category_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/app_text_field.dart';
+import 'package:supplier_app/core/utils/widgets/snack_bar.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/home/presentatoin/cubit/cubit/home_page_cubit.dart';
+import 'package:supplier_app/features/client/home/presentatoin/widgets/custom_drop_down.dart';
+import 'package:supplier_app/features/client/home/presentatoin/widgets/custom_radio_button.dart';
+import 'package:supplier_app/features/client/home/presentatoin/widgets/detailed_screen_order_button.dart';
+import 'package:supplier_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +20,7 @@ class DetailedCategoryItemView extends StatelessWidget {
   final int categoryItemIndex;
   @override
   Widget build(BuildContext context) {
-    context.read<HomePageCubit>().initGroupVal(categoryItemIndex);
+    context.read<HomePageCubit>().initGroupVal(categoryItemIndex, context);
     return Scaffold( 
       backgroundColor: ColorConsatnts.white,
       body: SafeArea(
@@ -47,7 +47,7 @@ class DetailedCategoryItemView extends StatelessWidget {
               ),
               const VerticalSpacer(space: 18),
               Text(
-                CategoryConstants.printing[categoryItemIndex].title,
+                    CategoryConstants.getPrintingCategories(context)[categoryItemIndex].title,
                 style: applySemiBoldStyle(
                   fontSize: 16,
                   fontColor: ColorConsatnts.primary,
@@ -61,14 +61,17 @@ class DetailedCategoryItemView extends StatelessWidget {
                 child: BlocBuilder<HomePageCubit, HomePageState>(
                   buildWhen: (previous, current) =>
                       current is RadioCurrentChoice,
-                  builder: (context, state) => Text(
-                    CategoryConstants.printing[categoryItemIndex].details[
-                        context.read<HomePageCubit>().indexFromChoice]["title"],
+                  builder: (context, state) {
+                    return Text(
+                    CategoryConstants.getPrintingCategories(context)[categoryItemIndex]
+                        .details[context.read<HomePageCubit>().indexFromChoice]
+                    ["title"],
                     style: applySemiBoldStyle(
                       fontSize: 16,
                       fontColor: ColorConsatnts.primary,
                     ),
-                  ),
+                  );
+                  },
                 ),
               ),
               const VerticalSpacer(space: 12),
@@ -77,7 +80,7 @@ class DetailedCategoryItemView extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Additionals",
+                  S.of(context).extra_details,
                   style: applySemiBoldStyle(
                     fontSize: 16,
                     fontColor: ColorConsatnts.primary,
@@ -113,7 +116,7 @@ class ItemRadioButtons extends StatelessWidget {
       buildWhen: (previous, current) => current is RadioCurrentChoice,
       builder: (context, state) => IntrinsicHeight(
         child: Column(
-          children: CategoryConstants.printing[categoryItemIndex].radioOptions
+          children: CategoryConstants.getPrintingCategories(context)[categoryItemIndex].radioOptions
               .map((val) => CustomRadioButton(
                   text: val,
                   value: val,
@@ -123,7 +126,7 @@ class ItemRadioButtons extends StatelessWidget {
                     context.read<HomePageCubit>().rebuildRadioOnChooseing(
                         value!,
                         CategoryConstants
-                            .printing[categoryItemIndex].radioOptions
+                            .getPrintingCategories(context)[categoryItemIndex].radioOptions
                             .indexOf(value));
                   }))
               .toList(),
@@ -146,7 +149,7 @@ class ItemRequiredDropDowns extends StatelessWidget {
     return BlocBuilder<HomePageCubit, HomePageState>(
       buildWhen: (previous, current) => current is RadioCurrentChoice,
       builder: (context, state) {
-        final radioDropDowns = CategoryConstants.printing[categoryItemIndex]
+        final radioDropDowns = CategoryConstants.getPrintingCategories(context)[categoryItemIndex]
                 .details[context.read<HomePageCubit>().indexFromChoice]
             ["details"] as Map<String, dynamic>;
         for (var e in radioDropDowns.entries) {
@@ -193,7 +196,7 @@ class ItemTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomePageCubit, HomePageState>(
       builder: (context, state) {
-        final bool isRequird = CategoryConstants.printing[categoryItemIndex]
+        final bool isRequird = CategoryConstants.getPrintingCategories(context)[categoryItemIndex]
                 .details[context.read<HomePageCubit>().indexFromChoice]
             ["isRequired"];
         return Form(
@@ -235,7 +238,7 @@ class AdditionalDropDowns extends StatelessWidget {
     return BlocBuilder<HomePageCubit, HomePageState>(
       buildWhen: (previous, current) => current is RadioCurrentChoice,
       builder: (context, state) {
-        final radioDropDowns = CategoryConstants.printing[categoryItemIndex]
+        final radioDropDowns = CategoryConstants.getPrintingCategories(context)[categoryItemIndex]
                 .details[context.read<HomePageCubit>().indexFromChoice]["other"]
             as Map<String, dynamic>;
         for (var e in radioDropDowns.entries) {

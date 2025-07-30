@@ -1,4 +1,4 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,12 +10,14 @@ class RoleContainer extends StatelessWidget {
     required this.imagePath,
     required this.title,
     required this.discription,
-    required this.onTap,
+    required this.onTap, 
+    required this.titleAr,
   });
   final String imagePath;
   final String title;
   final String discription;
-  final VoidCallback onTap;
+  final VoidCallback onTap; 
+  final String titleAr;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -47,6 +49,12 @@ class RoleContainer extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               title,
+              style:
+                  applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black),
+            ),
+            const SizedBox(height: 10), 
+            Text(
+              titleAr,
               style:
                   applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black),
             ),

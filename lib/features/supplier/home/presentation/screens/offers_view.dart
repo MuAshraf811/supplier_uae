@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:supplier/core/utils/constants/assets_constants.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
@@ -6,6 +7,17 @@ import 'package:supplier/core/utils/widgets/svg_handler.dart';
 import 'package:supplier/features/client/orders/presentation/widget/order_shimmer.dart';
 import 'package:supplier/features/supplier/home/model/quotation_model.dart';
 import 'package:supplier/features/supplier/home/presentation/cubit/offer/offers_cubit.dart';
+=======
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/orders/presentation/widget/order_shimmer.dart';
+import 'package:supplier_app/features/supplier/home/model/quotation_model.dart';
+import 'package:supplier_app/features/supplier/home/presentation/cubit/offer/offers_cubit.dart';
+>>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,7 +77,10 @@ class OffersView extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: context.read<OffersCubit>().supplierOffers.length,
                     itemBuilder: (context, index) => OfferItem(  
-                      onDelete: () {
+                      onDelete: () async {
+
+                        context.read<OffersCubit>().deleteMyOffer(context, index);
+
                       },
                       index: index + 1,
                       offerDetails: res[index].quotationDescription,
@@ -86,6 +101,7 @@ class OffersView extends StatelessWidget {
       ),
     );
   }
+
 }
 
 class OfferItem extends StatelessWidget {

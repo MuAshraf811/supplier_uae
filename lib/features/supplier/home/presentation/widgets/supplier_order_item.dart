@@ -1,10 +1,10 @@
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/app_button.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/orders/presentation/widget/divider_with_text.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/app_button.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/orders/presentation/widget/divider_with_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -40,20 +40,20 @@ class SupplierOrderItem extends StatelessWidget {
               Text(
               "Client : ",
               style: applyBoldStyle(
-                  fontSize: 14, fontColor: ColorConsatnts.primary),
+                  fontSize: 12, fontColor: ColorConsatnts.primary),
             ),
               const SvgHandler(
                 imagePath: AssetsConstants.anonymousPerson,
                 color: ColorConsatnts.grey,
-                height: 26,
+                height: 24,
                 width: 24,
               ),
 
-            const HorizontalSpacer(space: 3),
+            const HorizontalSpacer(space: 2),
             Text(
               clientId,
               style: applyMediumStyle(
-                  fontSize: 14, fontColor: ColorConsatnts.lightBlack).copyWith(
+                  fontSize: 13, fontColor: ColorConsatnts.lightBlack).copyWith(
                 overflow: TextOverflow.ellipsis
               ),
             )

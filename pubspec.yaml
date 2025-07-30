@@ -1,17 +1,23 @@
-name: supplier
+name: supplier_app
 description: "A new Flutter project."
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+<<<<<<< HEAD
+version: 1.1.10+15
+=======
+version: 1.1.4+24
+>>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 
 environment:
   sdk: ^3.5.2
 
 dependencies:
+  sentry_flutter: ^9.1.0
   carousel_slider: ^5.0.0
   cloud_firestore: ^5.5.0
   cupertino_icons: ^1.0.8
+  device_preview: ^1.2.0
   firebase_auth: ^5.3.3
   firebase_core: ^3.8.0
   firebase_messaging: ^15.1.6
@@ -27,18 +33,22 @@ dependencies:
   flutter_pdfview: ^1.3.4
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.12
+  fluttertoast: ^8.2.10
   get_it: ^8.0.2
   google_sign_in: ^6.2.2
   image_picker: ^1.1.2
   lottie: ^3.1.3
+  ntp: ^2.0.0
   package_info_plus: ^8.1.2
-  shared_preferences: ^2.3.3
+  phone_form_field: ^10.0.4
+  shared_preferences: ^2.5.2
   shimmer: ^3.0.0
   sign_in_with_apple: ^6.1.4
   smooth_page_indicator: ^1.2.0+3
   supabase_flutter: ^2.8.1
   url_launcher: ^6.3.1
 dev_dependencies:
+  sentry_dart_plugin: ^3.0.0
   flutter_launcher_icons: ^0.14.2
   flutter_lints: ^4.0.0
   flutter_test:
@@ -76,6 +86,7 @@ flutter:
     - assets/images/Hygiene and protection/
     - assets/images/Alumium Products/Containers/
     - assets/images/Alumium Products/Foils/
+    #assets/images/Plastic Products/Plate_Trays/1.jpeg
     - assets/images/Alumium Products/Platters/
     - assets/images/Alumium Products/Pots/
     - assets/images/Plastic Products/Bakery Range/
@@ -87,11 +98,11 @@ flutter:
     - assets/images/Plastic Products/Deli Containers/
     - assets/images/Plastic Products/Garbage Bags/
     - assets/images/Plastic Products/Microwave Containers/
-    - assets/images/Plastic Products/Plate_Trays/
+    - assets/images/Plastic Products/PlateTrays/ 
     - assets/images/Plastic Products/Portion Cups/
     - assets/images/Plastic Products/Powls/
     - assets/images/Plastic Products/Salad Containers/
-    - assets/images/Plastic Products/Stirrer_Straws/
+    - assets/images/Plastic Products/StirrerStraws/
     - assets/images/Plastic Products/Table Sheets/
     - assets/images/Plastic Products/Tamper Evident Containers/
     - assets/images/Wooden Products/Concession Trays/
@@ -104,10 +115,10 @@ flutter:
     - assets/images/paper products/Cups/
     - assets/images/paper products/Paper Bags/
     - assets/images/paper products/Sweet Boxes/
-    - assets/images/Hygiene and protection/ Dispenser/
+    - assets/images/Hygiene and protection/Dispenser/
     - assets/images/Hygiene and protection/Cleaner/
     - assets/images/Hygiene and protection/Gloves/
-    - assets/images/Hygiene and protection/Hygiene/
+    - assets/images/Hygiene and protection/Hygiene/ 
     - supa_keys.env
   fonts:
     - family: Quicksand
@@ -129,3 +140,9 @@ flutter:
         - asset: assets/fonts/cairo/Cairo-Bold.ttf
 flutter_intl:
   enabled: true
+
+sentry:
+  upload_debug_symbols: true
+  upload_source_maps: true
+  project: flutter
+  org: supplier

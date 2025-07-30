@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:supplier_app/generated/l10n.dart';
+
 class PackagingModel {
   final String title;
   final String image;
@@ -11,43 +14,55 @@ class PackagingModel {
 }
 
 class PackagingConstants {
-  static List<List<String>> innerTitles = [
-    [
-      "Containers",
-      "Foils",
-      "Platters",
-      "Pots",
+  static List<List<String>> innerTitles(BuildContext context) { return [
+    [ 
+      S.of(context).containers, 
+      S.of(context).foils,
+      S.of(context).platters,
+      S.of(context).pots,
+   
+    ], 
+    [ 
+      S.of(context).bakeryRange,
+      S.of(context).bottles,
+      S.of(context).clingFilm,
+      S.of(context).containers,
+      S.of(context).cups,
+      S.of(context).cutleryRange,
+      S.of(context).deliContainers,
+      S.of(context).garbageBags,
+      S.of(context).microwaveContainers,
+      S.of(context).plateTrays,
+      S.of(context).portionCups,
+      S.of(context).bowls,
+      S.of(context).saladContainers,
+      S.of(context).stirrerStraws,
+      S.of(context).tableSheets,
+      S.of(context).tamperEvidentContainers
+     
     ],
     [
-      "Bakery Range",
-      "Bottels",
-      "Cling Film",
-      "Containers",
-      "Cups",
-      "Cutlery Range",
-      "Deli Containers",
-      "Garbage Bags",
-      "Microwave Containers",
-      "Plate:Trays",
-      "Portion Cups",
-      "Powls",
-      "Salad Containers",
-      "Stirrer:Straws",
-      "Table Sheets",
-      "Tamper Evident Containers"
+      S.of(context).dispenser,
+      S.of(context).cleaner,
+      S.of(context).gloves,
+      S.of(context).hygiene
     ],
-    ["Dispanser", "Cleaner", "Gloves", "Hygiene"],
     [
-      "Baking Range",
-      "Bowls",
-      "Boxes",
-      "Concession Supplies",
-      "Cups",
-      "Paper Bags",
-      "Sweet Boxes"
+      S.of(context).bakingRange,
+      S.of(context).bowls,
+      S.of(context).boxes,
+      S.of(context).concessionSupplies,
+      S.of(context).cups,
+      S.of(context).paperBags,
+      S.of(context).sweetBoxes
     ],
-    ["Concession Trays", "Cutleries", "Sticks & Skewers"],
-  ];
+    [
+      S.of(context).concessionTrays,
+      S.of(context).cutleries,
+      S.of(context).sticks_skewers
+    ],
+   
+  ];}
   static List tissue = [
     "Bed Roll Couch 1-Ply",
     "Bed Roll Paper 1-Ply 50cm",
@@ -644,7 +659,7 @@ class PackagingConstants {
               .map((e) => PackagingModel(
                   title: e,
                   image:
-                      "assets/images/Plastic Products/Plate:Trays/$loopIndex.jpeg"))
+                      "assets/images/Plastic Products/PlateTrays/$loopIndex.jpeg"))
               .toList(),
           [
             "Black Portion Cup 1oz Base",
@@ -735,7 +750,7 @@ class PackagingConstants {
               .map((e) => PackagingModel(
                   title: e,
                   image:
-                      "assets/images/Plastic Products/Stirrer:Straws/$loopIndex.jpeg"))
+                      "assets/images/Plastic Products/StirrerStraws/$loopIndex.jpeg"))
               .toList(),
           [
             "Disposable Prayer Mat Ld 60X115Cm",
@@ -792,7 +807,7 @@ class PackagingConstants {
               .map((e) => PackagingModel(
                   title: e,
                   image:
-                      "assets/images/Hygiene and protection/ Dispenser/$loopIndex.jpeg"))
+                      "assets/images/Hygiene and protection/Dispenser/$loopIndex.jpeg"))
               .toList(),
           [
             "All Purpose Cleaner 5L",

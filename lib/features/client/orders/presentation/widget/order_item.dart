@@ -1,11 +1,13 @@
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/orders/presentation/widget/divider_with_text.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/orders/presentation/widget/divider_with_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../generated/l10n.dart';
 
 class OrderItem extends StatelessWidget {
   const OrderItem({
@@ -60,7 +62,7 @@ class OrderItem extends StatelessWidget {
             ),
           ),
           const VerticalSpacer(space: 8),
-          const DividerWithText(text: "Order Details"),
+          DividerWithText(text: S.of(context).order_details),
           const VerticalSpacer(space: 8),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.w),
@@ -74,7 +76,7 @@ class OrderItem extends StatelessWidget {
             ),
           ),
           const VerticalSpacer(space: 8),
-          const DividerWithText(text: "Order Description"),
+          DividerWithText(text: S.of(context).order_summary),
           const VerticalSpacer(space: 8),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.w),

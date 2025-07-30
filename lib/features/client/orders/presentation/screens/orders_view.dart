@@ -1,15 +1,17 @@
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/orders/model/client_order_model.dart';
-import 'package:supplier/features/client/orders/presentation/cubit/orders_cubit.dart';
-import 'package:supplier/features/client/orders/presentation/widget/order_item.dart';
-import 'package:supplier/features/client/orders/presentation/widget/order_shimmer.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/orders/model/client_order_model.dart';
+import 'package:supplier_app/features/client/orders/presentation/cubit/orders_cubit.dart';
+import 'package:supplier_app/features/client/orders/presentation/widget/order_item.dart';
+import 'package:supplier_app/features/client/orders/presentation/widget/order_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../generated/l10n.dart';
 
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
@@ -25,7 +27,7 @@ class OrdersView extends StatelessWidget {
           Align( 
             alignment: Alignment.topCenter,
             child: Text(
-              "Your Order Summary ",
+              S.of(context).your_order,
               style:
                   applyBoldStyle(fontSize: 17, fontColor: ColorConsatnts.black),
             ),
@@ -50,7 +52,7 @@ class OrdersView extends StatelessWidget {
                             width: 54),
                         const VerticalSpacer(space: 28),
                         Text(
-                          "There is no orders ",
+                          S.of(context).no_orders,
                           style: applyMediumStyle(
                               fontSize: 18, fontColor: ColorConsatnts.black),
                         )

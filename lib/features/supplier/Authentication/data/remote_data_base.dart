@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:supplier/core/utils/constants/app_const.dart';
+import 'package:supplier_app/core/utils/constants/app_const.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class RemoteDataBase {
@@ -27,7 +27,8 @@ class RemoteDataBase {
         .from(AppConst.supaBaseStorageBacketName)
         .upload(
           imagePath,
-          imageFile,
+          imageFile, 
+          fileOptions: const FileOptions(upsert: true)
         );
   }
 }

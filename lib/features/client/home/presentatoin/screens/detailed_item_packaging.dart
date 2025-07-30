@@ -1,14 +1,15 @@
 import 'dart:developer';
 
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/chat/presentation/widgets/chat_app_bar.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/chat/presentation/widgets/chat_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/constants/packaging_constants.dart';
 import '../../../../../core/utils/constants/route_constants.dart';
+import '../../../../../generated/l10n.dart';
 
 class DetailedItemPackaging extends StatelessWidget {
   const DetailedItemPackaging({
@@ -33,9 +34,9 @@ class DetailedItemPackaging extends StatelessWidget {
               const VerticalSpacer(space: 16),
               CustomAppbar(title: title),
               const VerticalSpacer(space: 12),
-              const Text(
-                "Select Your Wanted Section :",
-                style: TextStyle(
+               Text(
+                S.of(context).select_section,
+                style: const TextStyle(
                     fontSize: 14,
                     color: Colors.red,
                     fontWeight: FontWeight.bold),
@@ -45,9 +46,9 @@ class DetailedItemPackaging extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: (packageOrderIndex - 4 >= 0 &&
                           packageOrderIndex - 4 <
-                              PackagingConstants.innerTitles.length)
+                              PackagingConstants.innerTitles(context).length)
                       ? PackagingConstants
-                          .innerTitles[packageOrderIndex - 4].length
+                          .innerTitles(context)[packageOrderIndex - 4].length
                       : 0,
                   itemBuilder: (context, index) => Container(
                     height: 64.h,
@@ -94,7 +95,7 @@ class DetailedItemPackaging extends StatelessWidget {
                           const HorizontalSpacer(space: 12),
                           Text(
                             PackagingConstants
-                                .innerTitles[packageOrderIndex - 4][index],
+                                .innerTitles(context)[packageOrderIndex - 4][index],
                             style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.black,

@@ -1,4 +1,4 @@
-import 'package:supplier/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

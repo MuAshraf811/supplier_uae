@@ -1,19 +1,17 @@
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/app_button.dart';
-import 'package:supplier/core/utils/widgets/snack_bar.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
-import 'package:supplier/features/client/orders/presentation/cubit/orders_cubit.dart';
-import 'package:supplier/generated/l10n.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/app_button.dart';
+import 'package:supplier_app/core/utils/widgets/snack_bar.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
+import 'package:supplier_app/features/client/orders/presentation/cubit/orders_cubit.dart';
+import 'package:supplier_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/service_locator.dart';
-import '../../../Authentication/presentation/controllers/auth/authentication_cubit.dart';
 
 showOrderConfirmation(
     {required BuildContext context,
@@ -47,7 +45,8 @@ showOrderConfirmation(
           child: ListView(
             children: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     padding:
@@ -153,7 +152,7 @@ showOrderConfirmation(
                         context, state.error, ColorConsatnts.red);
                   }
                   if (state is AddingOrderSuccessState) {
-                    showCustomSnackBar(context, "Orders added successfully",
+                    showCustomSnackBar(context, "Order added successfully",
                         ColorConsatnts.primary);
                     Navigator.pop(context);
                   }
@@ -248,18 +247,23 @@ class TitleWithValueText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          maxLines: 2,
-          style:
-              applySemiBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black),
+        Flexible(
+          child: Text(
+            title,
+            maxLines: 2, 
+             overflow: TextOverflow.ellipsis,
+            style:
+                applySemiBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black),
+          ),
         ),
-        Text(
-          value,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: applySemiBoldStyle(
-              fontSize: 16, fontColor: valueColor ?? ColorConsatnts.black),
+        Flexible(
+          child: Text(
+            value,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: applySemiBoldStyle(
+                fontSize: 16, fontColor: valueColor ?? ColorConsatnts.black),
+          ),
         ),
       ],
     );

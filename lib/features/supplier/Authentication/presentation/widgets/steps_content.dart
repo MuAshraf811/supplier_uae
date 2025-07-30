@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+import 'package:supplier/core/utils/widgets/custom_phone_field.dart';
 import 'package:supplier/core/utils/widgets/snack_bar.dart';
 import 'package:supplier/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
+=======
+import 'package:phone_form_field/phone_form_field.dart';
+import 'package:supplier_app/core/utils/widgets/custom_phone_field.dart';
+import 'package:supplier_app/core/utils/widgets/snack_bar.dart';
+import 'package:supplier_app/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
+>>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,12 +20,14 @@ import '../../../../../core/utils/widgets/svg_handler.dart';
 import '../../../../client/Authentication/presentation/widgets/drop_down_text_field.dart';
 
 class StepOneContent extends StatelessWidget {
-  const StepOneContent({super.key});
+  final stepOneFormKey;
+
+  const StepOneContent({super.key, required this.stepOneFormKey});
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<SupplierAuthCubit>().stepOneFormKey,
+      key: stepOneFormKey,
       child: Column(
         children: [
           AppTextField(
@@ -25,9 +35,9 @@ class StepOneContent extends StatelessWidget {
             validator: (val) {
               if (val == null || val.isEmpty) {
                 return "This field should not be null";
-              }else if(val.endsWith(".com")==false && !val.endsWith(".net") ){ 
+              }else if(val.endsWith(".com")==false && !val.endsWith(".net") ){
                 return "Enter Valid Email";
-              } else if (val.contains("@")==false){ 
+              } else if (val.contains("@")==false){
                 return "Enter Valid Email";
               }
               return null;
@@ -42,7 +52,7 @@ class StepOneContent extends StatelessWidget {
             validator: (val) {
               if (val == null || val.isEmpty) {
                 return "This field should not be null";
-              }else if(val.length<=7){ 
+              }else if(val.length<=7){
                 return "Password should be 8 or more digits";
               }
               return null;
@@ -63,8 +73,8 @@ class StepOneContent extends StatelessWidget {
                 return "This field should not be null";
               } else if (context.read<SupplierAuthCubit>().passwordRegisterController.text !=context
                 .read<SupplierAuthCubit>()
-                .confirmPasswordRegisterController.text ){ 
-                  return"Passwords don't match" ; 
+                .confirmPasswordRegisterController.text ){
+                  return"Passwords don't match" ;
                 }
               return null;
             },
@@ -74,21 +84,11 @@ class StepOneContent extends StatelessWidget {
                 .confirmPasswordRegisterController,
           ),
           const VerticalSpacer(space: 10),
-          AppTextField(
-            label: "Mobile Number",
-            validator: (val) {
-              if (val == null || val.isEmpty) {
-                return "This field should not be null";
-              }if(val.length != 10){ 
-                return "Enter Valid Mobile Number" ;
-              }
-              return null;
-            },
-            type: TextInputType.phone,
-            suffixIcon: Icons.phone_android_outlined,
-            controller:
-                context.read<SupplierAuthCubit>().mobileNumberController,
-          ),
+          CustomPhoneField(
+              context: context,
+              thePhoneController: context.read<SupplierAuthCubit>().thePhoneController,
+              myWidth: MediaQuery.of(context).size.width),
+
           const VerticalSpacer(space: 10),
           Row(
             children: [
@@ -118,12 +118,14 @@ class StepOneContent extends StatelessWidget {
 }
 
 class StepTwoContent extends StatelessWidget {
-  const StepTwoContent({super.key});
+  final stepTwoFormKey;
+
+  const StepTwoContent({super.key, required this.stepTwoFormKey});
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<SupplierAuthCubit>().stepTwoFormKey,
+      key: stepTwoFormKey,
       child: Column(
         children: [
           const VerticalSpacer(space: 16),
@@ -226,6 +228,9 @@ class StepTwoContent extends StatelessWidget {
               if (val == null || val.isEmpty) {
                 return "This field should not be null";
               }
+              if(val.length != 15){
+                return "Tax number length must be 15";
+              }
               return null;
             },
             controller: context.read<SupplierAuthCubit>().taxNumberController,
@@ -245,10 +250,13 @@ class StepTwoContent extends StatelessWidget {
           ),
           const VerticalSpacer(space: 12),
           AppTextField(
-            label: "Ipan Number",
+            label: "IBAN Number",
             validator: (val) {
               if (val == null || val.isEmpty) {
                 return "This field should not be null";
+              }
+              if(val.length != 23){
+                return "IBAN number length must be 23";
               }
               return null;
             },

@@ -1,11 +1,13 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/constants/packaging_constants.dart';
-import 'package:supplier/core/utils/constants/route_constants.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/features/client/chat/presentation/widgets/chat_app_bar.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/constants/packaging_constants.dart';
+import 'package:supplier_app/core/utils/constants/route_constants.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/features/client/chat/presentation/widgets/chat_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart'; 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../generated/l10n.dart';
 
 class DetailedPackagingView extends StatelessWidget {
   const DetailedPackagingView({
@@ -31,7 +33,7 @@ class DetailedPackagingView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const VerticalSpacer(space: 16),
-              const CustomAppbar(title: "Packaging View"),
+              CustomAppbar(title: S.of(context).packaging_view),
               const VerticalSpacer(space: 12),
               Text(
                 itemTitle,
@@ -76,7 +78,7 @@ class DetailedPackagingView extends StatelessWidget {
                                               innerIndex)[packageItemIndex]
                                       [innerIndex][loopIndex]
                                   .image,
-                          "cat name": "Packaging\n$itemTitle",
+                          "cat name": "${S.of(context).packaging}\n$itemTitle",
                           "item name": packageItemIndex <= 3
                               ? PackagingConstants.showPackagingItems(
                                           loopIndex: loopIndex + 1,

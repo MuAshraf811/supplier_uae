@@ -1,19 +1,21 @@
-import 'package:supplier/core/utils/constants/app_const.dart';
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/constants/storage_const.dart';
-import 'package:supplier/core/utils/storage/shared_preferences.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/app_button.dart';
-import 'package:supplier/core/utils/widgets/app_text_field.dart';
-import 'package:supplier/core/utils/widgets/snack_bar.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/orders/presentation/cubit/orders_cubit.dart';
-import 'package:supplier/features/supplier/home/presentation/cubit/quotation/quotation_cubit.dart';
+import 'package:supplier_app/core/utils/constants/app_const.dart';
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/constants/storage_const.dart';
+import 'package:supplier_app/core/utils/storage/shared_preferences.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/app_button.dart';
+import 'package:supplier_app/core/utils/widgets/app_text_field.dart';
+import 'package:supplier_app/core/utils/widgets/snack_bar.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+import 'package:supplier_app/features/client/orders/presentation/cubit/orders_cubit.dart';
+import 'package:supplier_app/features/supplier/home/presentation/cubit/quotation/quotation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../generated/l10n.dart';
 
 showQuotationDialog(BuildContext context, QuotationCubit cubit) {
   showModalBottomSheet(
@@ -146,8 +148,8 @@ showQuotationDialog(BuildContext context, QuotationCubit cubit) {
                     svg: AssetsConstants.editIcon,
                     icon: Icons.date_range,
                   ),
-                  const VerticalSpacer(space: 10),
-                  const QuotationTermsAndCondition(),
+                  // const VerticalSpacer(space: 10),
+                  // const QuotationTermsAndCondition(),
                   const VerticalSpacer(space: 8),
                   BlocConsumer<QuotationCubit, QuotationState>(
                     buildWhen: (previous, current) =>
@@ -172,10 +174,8 @@ showQuotationDialog(BuildContext context, QuotationCubit cubit) {
                     },
                     builder: (context, state) {
                       if (state is AddingQuotationState) {
-                        return SizedBox(
-                          width: 32.w,
-                          height: 32.w,
-                          child: const CircularProgressIndicator.adaptive(
+                        return const Center(
+                          child: CircularProgressIndicator(
                             backgroundColor: ColorConsatnts.primary,
                           ),
                         );
@@ -189,7 +189,7 @@ showQuotationDialog(BuildContext context, QuotationCubit cubit) {
                               .currentState!
                               .validate()) {
                             context.read<QuotationCubit>().addquotationOffer(
-                                  supplierId: SharedPreferencesManager.getStringValue(key: StorageConstants.userDataId),
+                                  supplierId: SharedPreferencesManager.getStringValue(key: StorageConstants.userDataIdKey),
                                   supplierName: "Muhammed Ashraf",
                                 );
                           }
@@ -264,26 +264,26 @@ class QuotationTermsAndCondition extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Terms and Conditions :',
+        Text(S.of(context).terms_and_conditions,
             style: applyBoldStyle(fontSize: 18, fontColor: ColorConsatnts.red)),
         const VerticalSpacer(space: 4),
-        Text('VALIDITY: 10 DAYS FROM ABOVE DATE',
+        Text(S.of(context).validity,
             style:
                 applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black)),
         Text(
-            'NOTE: AMOUNT PAYMENT 50% IN ADVANCE AND 50% CASH ON DATE OF RECEIVED.',
+            S.of(context).note_payment,
             style:
                 applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.black)),
         Text(
-            'SOME TYPE OF ORDERS THAT ARE 10% MORE OR 10% LESS THAN THE QUANTITY QUOTED WILL BE INVOICED AT THE TIME THE ORDER IS COMPLETED AND WILL BE ADDED OR DEDUCTED FROM THE TOTAL AMOUNT REMAINING.',
+            S.of(context).order_variation,
             style: applyMediumStyle(
                 fontSize: 15, fontColor: ColorConsatnts.black)),
         const VerticalSpacer(space: 4),
-        Text('Quotes Terms & Conditions : ',
+        Text(S.of(context).quotes_terms,
             style: applyBoldStyle(fontSize: 16, fontColor: ColorConsatnts.red)),
         const VerticalSpacer(space: 4),
         for (var i = 1; i <= 7; i++)
-          Text('$i- ${AppConst.getQuotationConditionText(i)}',
+          Text('$i- ${AppConst.getQuotationConditionText(context,i)}',
               style: applySemiBoldStyle(
                   fontSize: 15, fontColor: ColorConsatnts.black)),
       ],

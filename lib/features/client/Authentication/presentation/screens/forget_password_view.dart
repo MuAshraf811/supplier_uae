@@ -1,16 +1,19 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/widgets/app_button.dart';
-import 'package:supplier/core/utils/widgets/app_text_field.dart';
-import 'package:supplier/core/utils/widgets/custom_app_bar.dart';
-import 'package:supplier/core/utils/widgets/snack_bar.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/widgets/app_button.dart';
+import 'package:supplier_app/core/utils/widgets/app_text_field.dart';
+import 'package:supplier_app/core/utils/widgets/custom_app_bar.dart';
+import 'package:supplier_app/core/utils/widgets/snack_bar.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/service_locator.dart';
+
 class ForgetPasswordClientView extends StatelessWidget {
-  const ForgetPasswordClientView({super.key});
+  ForgetPasswordClientView({super.key});
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class ForgetPasswordClientView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Form(
-            key: context.read<AuthenticationCubit>().forgetPasswordViewFormKey,
+            key: formKey,
             child: Column(
               children: [
                 const VerticalSpacer(space: 32),
@@ -29,7 +32,7 @@ class ForgetPasswordClientView extends StatelessWidget {
                  AppTextField(
                   label: "Enter Your Email",
                   suffixIcon: Icons.email,  
-                  controller: context.read<AuthenticationCubit>().emailResetController,
+                  controller: ServiceLocator.getIt<AuthenticationCubit>().emailResetController,
                   validator: (val) {
                     if(val == null || val.isEmpty){ 
                       return "Enter Your Email";
@@ -59,12 +62,10 @@ class ForgetPasswordClientView extends StatelessWidget {
                     return AppButton(
                       text: "Send",
                       onTap: () {
-                        if (context
-                            .read<AuthenticationCubit>()
-                            .forgetPasswordViewFormKey
+                        if (formKey
                             .currentState!
                             .validate()) {
-                          context.read<AuthenticationCubit>().forgetPassword();
+                          ServiceLocator.getIt<AuthenticationCubit>().forgetPassword();
                         }
                       },
                     );

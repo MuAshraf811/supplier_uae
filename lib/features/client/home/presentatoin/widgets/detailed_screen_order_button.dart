@@ -1,6 +1,6 @@
-import 'package:supplier/features/client/home/presentatoin/cubit/cubit/home_page_cubit.dart';
-import 'package:supplier/features/client/home/presentatoin/widgets/show_order_dialog_confirmation.dart';
-import 'package:supplier/generated/l10n.dart';
+import 'package:supplier_app/features/client/home/presentatoin/cubit/cubit/home_page_cubit.dart';
+import 'package:supplier_app/features/client/home/presentatoin/widgets/show_order_dialog_confirmation.dart';
+import 'package:supplier_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

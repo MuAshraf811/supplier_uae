@@ -6,6 +6,9 @@ class UserDataModel {
     required this.lastName,
     required this.mobileNumber,
     required this.city,
+    required this.uuid,
+    required this.fcmToken,
+    required this.notificationHistory,
   });
 
   final String email;
@@ -14,8 +17,12 @@ class UserDataModel {
   final String lastName;
   final String mobileNumber;
   final String city;
+  final String uuid;
+  final String fcmToken;
+  final String notificationHistory;
 
   factory UserDataModel.fromJson(Map<String, dynamic> res) {
+
     return UserDataModel(
       email: res["email"] ?? 'Something went wrong',
       password: res["password"] ?? '',
@@ -23,6 +30,9 @@ class UserDataModel {
       lastName: res["last_name"] ?? '',
       mobileNumber: res["mobile_number"] ?? 'Something went wrong',
       city: res["city"] ?? "Something went wrong",
+      uuid: res["uuid"] ?? "",
+      fcmToken: res["fcmToken"] ?? "",
+      notificationHistory: res["notificationHistory"] ?? "",
     );
   }
 }

@@ -1,7 +1,9 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../generated/l10n.dart';
 
 class CustomCheck extends StatefulWidget {
   const CustomCheck({super.key, this.title});
@@ -29,7 +31,7 @@ class _CustomCheckState extends State<CustomCheck> {
         ),
         const HorizontalSpacer(space: 6),
         Text(
-          widget.title ?? "I agree to The Terms and Conditions",
+          widget.title ?? S.of(context).agree_terms,
           style:
               applyMediumStyle(fontSize: 14, fontColor: ColorConsatnts.black),
         )

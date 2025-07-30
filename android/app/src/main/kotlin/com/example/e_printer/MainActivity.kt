@@ -1,4 +1,4 @@
-package com.falcon.Supplier
+package com.falcon.SupplierApp
 
 import io.flutter.embedding.android.FlutterActivity
 

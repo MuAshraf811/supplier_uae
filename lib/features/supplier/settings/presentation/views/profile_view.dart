@@ -1,283 +1,445 @@
-import 'package:supplier/core/utils/constants/app_const.dart';
-import 'package:supplier/core/utils/constants/assets_constants.dart';
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/constants/route_constants.dart';
-import 'package:supplier/core/utils/storage/shared_preferences.dart';
-import 'package:supplier/core/utils/styles/text_styles.dart';
-import 'package:supplier/core/utils/widgets/custom_dialog.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/core/utils/widgets/svg_handler.dart';
-import 'package:supplier/features/client/home/presentatoin/widgets/custom_drop_down.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:supplier_app/core/cubit/app_config_cubit.dart';
+// import 'package:supplier_app/core/utils/constants/app_const.dart';
+// import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+// import 'package:supplier_app/core/utils/constants/route_constants.dart';
+// import 'package:supplier_app/core/utils/service_locator.dart';
+// import 'package:supplier_app/core/utils/styles/text_styles.dart';
+// import 'package:supplier_app/core/utils/widgets/spacers.dart';
+// import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
+// import 'package:supplier_app/features/client/Authentication/model/user_data_model.dart';
+// import 'package:supplier_app/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
+// import 'package:supplier_app/features/client/home/presentatoin/widgets/custom_drop_down.dart';
+// import 'package:supplier_app/features/client/settings/presentation/controller/cubit/settings_cubit.dart';
+// import 'package:supplier_app/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
+// import 'package:supplier_app/features/supplier/notifications/presentation/cubit/notification_cubit.dart';
+// import 'package:supplier_app/generated/l10n.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:shimmer/shimmer.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../../core/cubit/app_config_cubit.dart';
-import '../../../../../core/utils/constants/storage_const.dart';
+// import '../../../../../core/utils/constants/storage_const.dart';
+// import '../../../../../core/utils/storage/shared_preferences.dart';
+// import '../../../../../core/utils/widgets/custom_dialog.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
+// class SupplierProfileView extends StatefulWidget {
+//   const SupplierProfileView({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
-      child: Column(
-        children: [
-          const ProfileInformation(),
-          const LanguageDropDown(),
-          const VerticalSpacer(space: 12),
-          SizedBox(
-            height: 248.h,
-            child: ListView.builder(
-              itemCount: AppConst.settingsText(context).length,
-              padding: EdgeInsets.symmetric(horizontal: 12.w),
-              itemBuilder: (context, index) => SettingsItem(index: index),
-            ),
-          ),
-          const VerticalSpacer(space: 6),
-          Text(
-            "Find Us On",
-            style: applyBoldStyle(fontSize: 14, fontColor: ColorConsatnts.grey),
-          ),
-          const VerticalSpacer(space: 16),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SocialMdiaIcons(icon: AssetsConstants.facebookIcon),
-              HorizontalSpacer(space: 18),
-              SocialMdiaIcons(icon: AssetsConstants.instagramIcon),
-              HorizontalSpacer(space: 18),
-              SocialMdiaIcons(icon: AssetsConstants.whatsupIcon),
-              HorizontalSpacer(space: 18),
-              SocialMdiaIcons(icon: AssetsConstants.linkedInIcon),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   State<SupplierProfileView> createState() => _SupplierProfileViewState();
+// }
 
-class SocialMdiaIcons extends StatelessWidget {
-  const SocialMdiaIcons({
-    super.key,
-    required this.icon,
-  });
-  final String icon;
+// class _SupplierProfileViewState extends State<SupplierProfileView> {
 
-  @override
-  Widget build(BuildContext context) {
-    return SvgHandler(
-      imagePath: icon,
-      height: 24,
-      width: 24,
-      color: ColorConsatnts.primary,
-    );
-  }
-}
+//   @override @override
+//   void initState() {
+//     ServiceLocator.getIt<SupplierAuthCubit>().getUserData();
+//     super.initState();
+//   }
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: EdgeInsets.symmetric(horizontal: 12.w),
+//       child: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             const ProfileInformation(),
+            
+//             const LanguageDropDown(),
+//             const VerticalSpacer(space: 12),
+//             SizedBox(
+//               height: 248.h,
+//               child: ListView.builder(
+//                 itemCount: AppConst.settingsText(context).length,
+//                 padding: EdgeInsets.symmetric(horizontal: 12.w),
+//                 itemBuilder: (context, index) => SettingsItem(index: index),
+//               ),
+//             ),
+//             const VerticalSpacer(space: 6),
+//             Text(
+//               S.of(context).find_us_on,
+//               style: applyBoldStyle(fontSize: 14, fontColor: ColorConsatnts.grey),
+//             ),
+//             const VerticalSpacer(space: 16),
+//             SizedBox(
+//               height: 32.w,
+//               // width: double.infinity,
+//               child: ListView.builder(
+//                 physics:const  NeverScrollableScrollPhysics(),
+//                 padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.37),
+//                 scrollDirection: Axis.horizontal,
+//                 itemCount: AppConst.socialMediaIcons.length,
+//                 itemBuilder: (context, index) => SocialMediaIcons(
+//                   onTap: () {
+//                     context.read<SettingsCubit>().launchUrl(url: AppConst.socialMediaLinks[index]);
+//                   },
+//                   icon: AppConst.socialMediaIcons[index],
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class SettingsItem extends StatelessWidget {
-  const SettingsItem({
-    super.key,
-    required this.index,
-  });
-  final int index;
+// class SocialMediaIcons extends StatelessWidget {
+//   const SocialMediaIcons({
+//     super.key,
+//     required this.icon, required this.onTap,
+//   });
+//   final String icon;
+//   final VoidCallback onTap;
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 46.h,
-      child: InkWell(
-        onTap: () {
-          switch (index) {
-            case 0:
-            case 1:
-              Navigator.pushNamed(
-                  context, RouteConstants.termsAndConditionsView);
-            case 2:
-            case 3:
-              showCustomDialog(context, title: "Delete Account", onConfirm: () {
-                SharedPreferencesManager.storeBoolValue(
-                    key: AppConst.isUserLogged, value: false);
-                Navigator.pushReplacementNamed(
-                    context, RouteConstants.userTypeView);
-              }, buttonText: "Yes");
-            case 4:
-              showCustomDialog(context, title: "Log Out", onConfirm: () async {
-                SharedPreferencesManager.storeBoolValue(
-                    key: AppConst.isUserLogged, value: false);
-                SharedPreferencesManager.storeBoolValue(
-                    key: AppConst.isSupplier, value: false);
-                AppConfigCubit.isUserLogged = false;
-                AppConfigCubit.isSupplier=false;
-                // await  SharedPreferencesManager.storeStringValue(
-                //     key: StorageConstants.userDataId,
-                //     value: ''
-                // );
-                Navigator.pushReplacementNamed(
-                    context, RouteConstants.userTypeView);
-              }, buttonText: "Log Out");
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding:  EdgeInsets.only(left: 20.w),
+//       child: InkWell(
+//         onTap: onTap,
+//         child: SvgHandler(
+//           imagePath: icon,
+//           height: 24,
+//           width: 24,
+//           color: ColorConsatnts.primary,
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-          }
-        },
-        child: Row(
-          children: [
-            SvgHandler(
-              imagePath: AppConst.settingsIcon[index],
-              height: 22,
-              width: 22,
-              color: AppConst.settingsIconColor[index],
-            ),
-            const HorizontalSpacer(space: 12),
-            Text(
-              AppConst.settingsText(context)[index],
-              style: applySemiBoldStyle(
-                fontSize: 15,
-                fontColor: ColorConsatnts.black,
-              ),
-            ),
-            const Spacer(),
-            Icon(
-              Icons.arrow_forward_ios_outlined,
-              color: ColorConsatnts.lightBlack,
-              size: 20.w,
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
+// class SettingsItem extends StatelessWidget {
+//   const SettingsItem({
+//     super.key,
+//     required this.index,
+//   });
+//   final int index;
 
-class LanguageDropDown extends StatelessWidget {
-  const LanguageDropDown({
-    super.key,
-  });
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 46.h,
+//       child: InkWell(
+//         onTap: () {
+//           switch (index) {
+//             case 0:
+//               // AppConfigCubit.isSupplier?
+//               Navigator.pushNamed(context, RouteConstants.supplierAccountView);
+//               // Navigator.pushNamed(context, RouteConstants.accountView);
+//             case 1:
+//               Navigator.pushNamed(
+//                   context, RouteConstants.termsAndConditionsView);
+//             case 2:
+//               launchUrl(Uri.parse(AppConst.websiteUrl));
+//             case 3:
+//               showCustomDialog(context, title: "Delete Account", onConfirm: () {
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Language",
-            style:
-                applyBoldStyle(fontSize: 15, fontColor: ColorConsatnts.black),
-          ),
-          CustomDropDown(
-            onSelected: (p0) {},
-            text: "",
-            entries: const [
-              "English",
-              "Arabic",
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
+//                 String collectionName = AppConfigCubit.isSupplier ? 'Suppliers' : 'Users';
+//                 String userId =  SharedPreferencesManager
+//                     .getStringValue(key: StorageConstants.userDataIdKey);
+//                 FirebaseFirestore.instance
+//                     .collection(collectionName)
+//                     .doc(userId)
+//                     .delete();
 
-class ThemeSwitch extends StatefulWidget {
-  const ThemeSwitch({
-    super.key,
-  });
+//                 SharedPreferencesManager.storeBoolValue(
+//                     key: StorageConstants.isUserLoggedKey, value: false);
+//                 Navigator.pushReplacementNamed(
+//                     context, RouteConstants.userTypeView);
+//               }, buttonText: "Delete");
+//             case 4:
+//               showCustomDialog(context, title: "Log Out", onConfirm: () async {
+//                 SharedPreferencesManager.storeBoolValue(
+//                     key: StorageConstants.isUserLoggedKey, value: false);
+//                 SharedPreferencesManager.storeBoolValue(
+//                     key: StorageConstants.isSupplierKey, value: false);
+//                 SharedPreferencesManager.storeStringValue(
+//                     key: StorageConstants.userDataIdKey,
+//                     value: ''
+//                 );
 
-  @override
-  State<ThemeSwitch> createState() => _ThemeSwitchState();
-}
+//                 NotificationsCubit().clearNotifications();
 
-class _ThemeSwitchState extends State<ThemeSwitch> {
-  bool value = false;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Dark Mode",
-            style:
-                applyBoldStyle(fontSize: 15, fontColor: ColorConsatnts.black),
-          ),
-          Transform.scale(
-            scale: 0.85,
-            child: Switch(
-              value: value,
-              activeColor: ColorConsatnts.primary,
-              inactiveThumbColor: ColorConsatnts.black,
-              trackOutlineColor:
-                  const WidgetStatePropertyAll(ColorConsatnts.primary),
-              thumbColor: const WidgetStatePropertyAll(ColorConsatnts.white),
-              onChanged: (val) {
-                setState(() {
-                  value = val;
-                });
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//                 AppConfigCubit.isLogged = false;
+//                 AppConfigCubit.isSupplier=false;
+//                 AppConfigCubit.currentUserDataId = '';
+//                 AppConfigCubit.currentUserId = '';
+//                 // SupplierAuthCubit.supplierPersonalData = UserDataModel(email: 'email', password: 'password', firstName: 'firstName', lastName: 'lastName', mobileNumber: 'mobileNumber', city: 'city', uuid: 'uuid');
 
-class ProfileInformation extends StatelessWidget {
-  const ProfileInformation({
-    super.key,
-  });
+//                 ServiceLocator.getIt<SupplierAuthCubit>().clearControllers();
+//                 ServiceLocator.getIt<SupplierAuthCubit>().clearControllers();
+//                 SharedPreferencesManager.clearCache();
+//                 Navigator.pushNamedAndRemoveUntil(
+//                   context, RouteConstants.userTypeView,
+//                       (route) => false,
+//                 );
+//               }, buttonText: "Log Out");
+//           }
+//         },
+//         child: Row(
+//           children: [
+//             SvgHandler(
+//               imagePath: AppConst.settingsIcon[index],
+//               height: 22,
+//               width: 22,
+//               color: AppConst.settingsIconColor[index],
+//             ),
+//             const HorizontalSpacer(space: 12),
+//             Text(
+//               AppConst.settingsText(context)[index],
+//               style: applySemiBoldStyle(
+//                 fontSize: 15,
+//                 fontColor: ColorConsatnts.black,
+//               ),
+//             ),
+//             const Spacer(),
+//             Icon(
+//               Icons.arrow_forward_ios_outlined,
+//               color: ColorConsatnts.lightBlack,
+//               size: 20.w,
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-      margin: EdgeInsets.only(top: 18.h, bottom: 20.h),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24.r),
-        border: Border.all(
-          color: ColorConsatnts.grey,
-          width: 0.5,
-        ),
-      ),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundColor: ColorConsatnts.primary,
-            radius: 32.w,
-          ),
-          const HorizontalSpacer(space: 24),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Muhammed Ashraf Alarabi",
-                style: applyBoldStyle(
-                  fontSize: 16,
-                  fontColor: ColorConsatnts.black,
-                ),
-              ),
-              Text(
-                "Sharkia-Egypt",
-                style: applySemiBoldStyle(
-                  fontSize: 16,
-                  fontColor: ColorConsatnts.lightBlack,
-                ),
-              ),
-              Text(
-                "01002011850",
-                style: applySemiBoldStyle(
-                  fontSize: 16,
-                  fontColor: ColorConsatnts.lightBlack,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
+// class LanguageDropDown extends StatelessWidget {
+//   const LanguageDropDown({
+//     super.key,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: EdgeInsets.symmetric(horizontal: 5.w),
+//       child: Row(
+//         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//         children: [
+//           Text(
+//             S.of(context).language,
+//             style:
+//             applyBoldStyle(fontSize: 15, fontColor: ColorConsatnts.black),
+//           ),
+//           SizedBox(
+//             // width: 200,
+//             child: CustomDropDown(
+//               width: 100,
+//               onSelected: (val) {
+//                 context.read<AppConfigCubit>().changeLanguage(val);
+//               },
+//               text: "",
+//               entries: const [
+//                 "English",
+//                 "ألعربية",
+//               ],
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+// class ThemeSwitch extends StatefulWidget {
+//   const ThemeSwitch({
+//     super.key,
+//   });
+
+//   @override
+//   State<ThemeSwitch> createState() => _ThemeSwitchState();
+// }
+
+// class _ThemeSwitchState extends State<ThemeSwitch> {
+//   bool value = false;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: EdgeInsets.symmetric(horizontal: 12.w),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           Text(
+//             "Dark Mode",
+//             style:
+//             applyBoldStyle(fontSize: 15, fontColor: ColorConsatnts.black),
+//           ),
+//           Transform.scale(
+//             scale: 0.85,
+//             child: Switch(
+//               value: value,
+//               activeColor: ColorConsatnts.primary,
+//               inactiveThumbColor: ColorConsatnts.black,
+//               trackOutlineColor:
+//               const WidgetStatePropertyAll(ColorConsatnts.primary),
+//               thumbColor: const WidgetStatePropertyAll(ColorConsatnts.white),
+//               onChanged: (val) {
+//                 setState(() {
+//                   value = val;
+//                 });
+//               },
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+// class ProfileInformation extends StatelessWidget {
+//   const ProfileInformation({
+//     super.key,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocConsumer<SupplierAuthCubit, SupplierAuthState>(
+//       listener: (context, state) {
+
+//       },
+//       buildWhen: (previous, current) =>
+//           current is FetchSupplierDataErrorState ||
+//           current is FetchingSupplierDataState ||
+//           current is FetchingSupplierDataSuccessState,
+//       builder:  (context, state) {
+//         if (state is FetchingSupplierDataSuccessState) {
+//           final userModel =
+//               SupplierAuthCubit.supplierPersonalData;
+//           return Container(
+//             width: double.infinity,
+//             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+//             margin: EdgeInsets.only(top: 18.h, bottom: 20.h),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(24.r),
+//               border: Border.all(
+//                 color: ColorConsatnts.grey,
+//                 width: 0.5,
+//               ),
+//             ),
+//             child: Row(
+//               children: [
+//                 CircleAvatar(
+//                   backgroundColor: ColorConsatnts.primary,
+//                   radius: 32.w,
+//                   child: Icon(Icons.person),
+//                 ),
+//                 const HorizontalSpacer(space: 24),
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     Text(
+//                       SupplierAuthCubit.supplierPersonalData.companyName,
+//                       style: applyBoldStyle(
+//                         fontSize: 16,
+//                         fontColor: ColorConsatnts.black,
+//                       ),
+//                     ),
+//                     Text(
+//                       SupplierAuthCubit.supplierPersonalData.city,
+//                       style: applySemiBoldStyle(
+//                         fontSize: 16,
+//                         fontColor: ColorConsatnts.lightBlack,
+//                       ),
+//                     ),
+//                     Text(
+//                       SupplierAuthCubit.supplierPersonalData.email,
+//                       style: applySemiBoldStyle(
+//                         fontSize: 16,
+//                         fontColor: ColorConsatnts.primary,
+//                       ),
+//                     ),
+//                     Text(
+//                       SupplierAuthCubit.supplierPersonalData.mobile,
+//                       style: applySemiBoldStyle(
+//                         fontSize: 16,
+//                         fontColor: ColorConsatnts.lightBlack,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ],
+//             ),
+//           );
+//         } else if (state is FetchSupplierDataErrorState) {
+//           return Center(child: Text(state.error));
+//         }
+//         print(state);
+//         ServiceLocator.getIt<SupplierAuthCubit>().getUserData();
+//         return const InfoShimmer();
+//       },
+//     );
+//   }
+// }
+
+// class InfoShimmer extends StatelessWidget {
+//   const InfoShimmer({
+//     super.key,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Shimmer.fromColors(
+//       baseColor: ColorConsatnts.grey.shade500,
+//       highlightColor: Colors.white,
+//       child: Container(
+//         margin: EdgeInsets.symmetric(horizontal: 12.w),
+//         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
+//         width: double.infinity,
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(12.r),
+//         ),
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.start,
+//           children: [
+//             CircleAvatar(
+//               radius: 26.w,
+//               backgroundColor: Colors.grey.shade500,
+//             ),
+//             const HorizontalSpacer(space: 24),
+//             Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Container(
+//                   width: 100.w,
+//                   height: 4.h,
+//                   margin: EdgeInsets.only(bottom: 4.h),
+//                   decoration: BoxDecoration(
+//                       color: Colors.grey.shade800,
+//                       borderRadius: BorderRadius.circular(14.r)),
+//                 ),
+//                 Container(
+//                   width: 100.w,
+//                   height: 4.h,
+//                   margin: EdgeInsets.only(bottom: 4.h),
+//                   decoration: BoxDecoration(
+//                       color: Colors.grey.shade500,
+//                       borderRadius: BorderRadius.circular(14.r)),
+//                 ),
+//                 Container(
+//                   width: 100.w,
+//                   height: 4.h,
+//                   margin: EdgeInsets.only(bottom: 4.h),
+//                   decoration: BoxDecoration(
+//                       color: Colors.grey.shade500,
+//                       borderRadius: BorderRadius.circular(14.r)),
+//                 ),
+//                 Container(
+//                   width: 100.w,
+//                   height: 4.h,
+//                   margin: EdgeInsets.only(bottom: 4.h),
+//                   decoration: BoxDecoration(
+//                       color: Colors.grey.shade500,
+//                       borderRadius: BorderRadius.circular(14.r)),
+//                 )
+//               ],
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

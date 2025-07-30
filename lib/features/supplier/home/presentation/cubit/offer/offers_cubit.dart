@@ -2,7 +2,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:supplier/features/supplier/home/model/quotation_model.dart';
+import 'package:supplier_app/features/supplier/home/model/quotation_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class OffersCubit extends Cubit<OffersState> {
   void fetchSupplierAvailableOffers() async {
     try { 
        final String userId = SharedPreferencesManager.getStringValue(
-        key: StorageConstants.userDataId,
+        key: StorageConstants.userDataIdKey,
       );
       emit(FetchingOfferState());
 
@@ -39,4 +39,26 @@ class OffersCubit extends Cubit<OffersState> {
       log("Error fetching orders: $error");
       emit(FetchingOfferErrorState(error: error.toString()));
     }
-  }}
+  }
+
+  Future<void> deleteMyOffer(BuildContext context, int index) async {
+
+    emit(OffersInitial());
+    final currentOffer = await FirebaseFirestore.instance
+        .collection('accepted_offers')
+        .where(
+        'orderNumber',
+        isEqualTo: context.read<OffersCubit>().supplierOffers[index].orderNumber
+    ).get();
+
+    FirebaseFirestore.instance.collection('accepted_offers')
+        .doc(currentOffer.docs.first.id).delete();
+
+    fetchSupplierAvailableOffers();
+
+    // emit(FetchingOfferSuccessState());
+  }
+
+
+
+}
