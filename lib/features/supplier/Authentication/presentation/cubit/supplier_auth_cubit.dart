@@ -4,12 +4,12 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:phone_form_field/phone_form_field.dart';
-import 'package:supplier/core/cubit/app_config_cubit.dart';
-import 'package:supplier/core/utils/constants/storage_const.dart';
-import 'package:supplier/core/utils/native/image_picker.dart';
-import 'package:supplier/core/utils/storage/shared_preferences.dart';
-import 'package:supplier/features/supplier/Authentication/data/remote_data_base.dart';
-import 'package:supplier/features/supplier/Authentication/model/supplier_user_model.dart';
+import 'package:supplier_app/core/cubit/app_config_cubit.dart';
+import 'package:supplier_app/core/utils/constants/storage_const.dart';
+import 'package:supplier_app/core/utils/native/image_picker.dart';
+import 'package:supplier_app/core/utils/storage/shared_preferences.dart';
+import 'package:supplier_app/features/supplier/Authentication/data/remote_data_base.dart';
+import 'package:supplier_app/features/supplier/Authentication/model/supplier_user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -169,9 +169,10 @@ class SupplierAuthCubit extends Cubit<SupplierAuthState> {
         log(res.data().toString());
         emit(FetchSupplierDataErrorState(error: "Couldn't fetch your data"));
       }
-    } catch (e) {
+    } catch (e,st) {
       log("---------------");
       log(e.toString());
+      print(st);
       emit(FetchSupplierDataErrorState(error: e.toString()));
     }
   }

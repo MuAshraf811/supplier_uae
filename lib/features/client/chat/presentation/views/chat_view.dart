@@ -1,8 +1,8 @@
-import 'package:supplier/core/utils/constants/color_consatnts.dart';
-import 'package:supplier/core/utils/constants/storage_const.dart';
-import 'package:supplier/core/utils/widgets/spacers.dart';
-import 'package:supplier/features/client/chat/model/message_prod_model.dart';
-import 'package:supplier/features/client/chat/presentation/cubit/chat_cubit.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/constants/storage_const.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/features/client/chat/model/message_prod_model.dart';
+import 'package:supplier_app/features/client/chat/presentation/cubit/chat_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

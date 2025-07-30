@@ -1,10 +1,18 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+<<<<<<< HEAD
 import 'package:supplier/core/cubit/app_config_cubit.dart';
 import 'package:supplier/core/utils/constants/storage_const.dart';
 import 'package:supplier/core/utils/storage/shared_preferences.dart';
 import 'package:supplier/features/client/Authentication/model/user_data_model.dart';
+=======
+import 'package:supplier_app/core/cubit/app_config_cubit.dart';
+import 'package:supplier_app/core/utils/constants/app_const.dart';
+import 'package:supplier_app/core/utils/constants/storage_const.dart';
+import 'package:supplier_app/core/utils/storage/shared_preferences.dart';
+import 'package:supplier_app/features/client/Authentication/model/user_data_model.dart';
+>>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';

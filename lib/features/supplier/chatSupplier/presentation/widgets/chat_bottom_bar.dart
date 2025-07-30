@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import 'package:supplier/core/utils/constants/assets_constants.dart';
 import 'package:supplier/core/utils/constants/color_consatnts.dart';
 import 'package:supplier/core/utils/styles/text_styles.dart';
 import 'package:supplier/core/utils/widgets/app_text_field.dart';
+=======
+import 'package:supplier_app/core/utils/constants/assets_constants.dart';
+import 'package:supplier_app/core/utils/constants/color_consatnts.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
+import 'package:supplier_app/core/utils/widgets/app_text_field.dart';
+import 'package:supplier_app/features/client/chat/presentation/cubit/chat_cubit.dart';
+>>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

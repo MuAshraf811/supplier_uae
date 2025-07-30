@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supplier/core/utils/constants/storage_const.dart';
-import 'package:supplier/core/utils/storage/shared_preferences.dart';
-import 'package:supplier/features/supplier/notifications/presentation/cubit/notification_states.dart';
+import 'package:supplier_app/core/utils/constants/storage_const.dart';
+import 'package:supplier_app/core/utils/storage/shared_preferences.dart';
+import 'package:supplier_app/features/supplier/notifications/presentation/cubit/notification_states.dart';
 
 import '../../../../../core/cubit/app_config_cubit.dart';
 import '../../../../client/Authentication/model/user_data_model.dart';

@@ -1,5 +1,5 @@
-import 'package:supplier/core/utils/widgets/custom_app_bar.dart';
-import 'package:supplier/features/supplier/Authentication/presentation/widgets/stepper.dart';
+import 'package:supplier_app/core/utils/widgets/custom_app_bar.dart';
+import 'package:supplier_app/features/supplier/Authentication/presentation/widgets/stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/constants/color_consatnts.dart';

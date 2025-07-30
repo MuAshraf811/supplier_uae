@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 import 'package:supplier/core/utils/constants/route_constants.dart';
 import 'package:supplier/core/utils/widgets/app_text_field.dart';
 import 'package:supplier/core/utils/widgets/spacers.dart';
 import 'package:supplier/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier/features/client/chat/presentation/widgets/chat_app_bar.dart';
+=======
+import 'package:supplier_app/core/cubit/app_config_cubit.dart';
+import 'package:supplier_app/core/utils/constants/route_constants.dart';
+import 'package:supplier_app/core/utils/widgets/app_text_field.dart';
+import 'package:supplier_app/core/utils/widgets/spacers.dart';
+import 'package:supplier_app/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
+import 'package:supplier_app/features/client/chat/presentation/widgets/chat_app_bar.dart';
+>>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

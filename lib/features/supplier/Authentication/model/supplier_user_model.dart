@@ -27,15 +27,16 @@ class SupplierUserModel {
 
       // this is factory constructor to convert firebase response to dart model 
       factory SupplierUserModel.fromJson(Map<String, dynamic> json) {
+        String phoneKey = json['mobile'] != null ? 'mobile' : 'mobile_number';
     return SupplierUserModel(
       email: json['email'],
-      mobile: json['mobile'], 
-      imagePath: json["imagePath"],
+      mobile: json[phoneKey],
+      imagePath: json["imagePath"]??"",
       city: json['city'],
-      companyName: json['companyName'],
-      taxNumber: json['taxNumber'],
-      bankName: json['bankName'],
-      ipanNumber: json['ipanNumber'],
+      companyName: json['companyName']??"",
+      taxNumber: json['taxNumber']??"",
+      bankName: json['bankName']??"",
+      ipanNumber: json['ipanNumber']??"",
       uuid: json['uuid'],
       approved: json['approved']??"FALSE"
     );
