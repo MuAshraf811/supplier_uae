@@ -53,7 +53,7 @@ void main() async {
 
   runApp(
       AppExpiryWrapper(
-      expiryDate: DateTime(2025, 8, 5),
+      expiryDate: DateTime(2026, 8, 5),
       child: const EPrinter()
       )
   );

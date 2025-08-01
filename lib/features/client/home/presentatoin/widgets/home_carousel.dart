@@ -28,15 +28,12 @@ class CustomCarousel extends StatelessWidget {
         onTap: () {
           if (index == 0) {
             UrlLauncherHandler.go(url: "https://wa.me/qr/WT5QTJ7JKCGGM1");
-          }
-          if (index == 1) {
+          } else if (index == 1) {
             UrlLauncherHandler.go(url: "https://wa.me/+971555590984");
-          }
-          if (index == 2) {
-            UrlLauncherHandler.go(url: "www.fgk.ae");
-          }
-          if (index == 3) {
-            UrlLauncherHandler.go(url: "https://wa.me/+971585373350");
+          } else if (index == 2) {
+            UrlLauncherHandler.go(url: "https://www.fgk.ae");
+          } else if (index == 3) {
+            UrlLauncherHandler.go(url: "https://wa.me/+971558132316");
           } else {
             Navigator.pushNamed(context, RouteConstants.chatView);
           }

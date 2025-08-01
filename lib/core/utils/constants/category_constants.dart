@@ -529,7 +529,7 @@ class CategoryConstants {
             S.of(context).printing: ["1/0 Color", "2/0 Color", "3/0 Color", "4/0 Color"],
             S.of(context).paper: [250,300,350],
             S.of(context).lamination: [S.of(context).glossy, S.of(context).matt, S.of(context).non],
-            S.of(context).shape: [500, 1000, 1500, 2000],
+            S.of(context).shape: [S.of(context).standard,S.of(context).customize],
             S.of(context).quantity: [5000, 7000, 10000, 12000, 15000, 17000, 20000],
           },
           "other": {

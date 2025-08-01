@@ -167,7 +167,9 @@ class CompleteLoginView extends StatelessWidget {
                       onTap: () {
                         if (formKey
                             .currentState!
-                            .validate()) {
+                            .validate()) { 
+                                                                          showCustomSnackBar(context, "Processing....", ColorConsatnts.primary);
+
                           context.read<AuthenticationCubit>()
                                 .mobileNumberRegisterController.text = "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}";
 
@@ -199,7 +201,8 @@ class CompleteLoginView extends StatelessWidget {
                                             controller: otpController,
                                           ),
                                           const VerticalSpacer(space: 20),
-                                          AppButton(text: "Verify Code", onTap: () {
+                                          AppButton(text: "Verify Code", onTap: () { 
+                                            showCustomSnackBar(context, "Processing....", ColorConsatnts.primary);
                                             if(otpController.text.isNotEmpty){
                                             ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>().verifyOtp(userCode: otpController.text).then((value) {
                                               if(value.success){
