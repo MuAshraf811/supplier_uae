@@ -17,7 +17,6 @@ import '../../../../../core/utils/widgets/app_text_field.dart';
 import '../../../../../core/utils/widgets/custom_app_bar.dart';
 import '../../../../../core/utils/widgets/snack_bar.dart';
 import '../../../../../core/utils/widgets/spacers.dart';
-import '../../../../supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
 import '../../otp/otp_remote_data_source_firebase_impl.dart';
 
 class CompleteLoginView extends StatelessWidget {

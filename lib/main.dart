@@ -14,7 +14,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 
 void main() async {
@@ -22,16 +21,6 @@ void main() async {
   await dotenv.load(fileName: "supa_keys.env");
   Bloc.observer = MyBlocObserver();
 
-<<<<<<< HEAD
-  SharedPreferencesManager.init(); 
-  ServiceLocator.setObjects();  
-   await Supabase.initialize(
-    url: AppConst.supabaseUrl, 
-   anonKey: dotenv.env["SUPA_BASE_KEY"]??"NO KEY FOUND",  
-   
-    // Replace with your Supabase Anon Key
-  ); 
-=======
   SharedPreferencesManager.init();
   ServiceLocator.setObjects();
   await Supabase.initialize(
@@ -39,7 +28,6 @@ void main() async {
     anonKey: dotenv.env["SUPA_BASE_KEY"] ??
         "NO KEY FOUND", // Replace with your Supabase Anon Key
   );
->>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -63,30 +51,12 @@ void main() async {
           key: StorageConstants.isEnglishKey) ??
       true;
 
-<<<<<<< HEAD
-   await SentryFlutter.init(
-    (options) {
-      options.dsn = 'https://2bd27d374c952eb9105422ab091cc47a@o4509559589109760.ingest.de.sentry.io/4509559590617168'; 
-       options.debug = true;
-      // Adds request headers and IP for users,
-      // visit: https://docs.sentry.io/platforms/dart/data-management/data-collected/ for more info
-      options.sendDefaultPii = true;
-    },
-    appRunner: () => runApp(
-      SentryWidget(
-        child: const EPrinter(),
-      ),
-    ),
-  );
- 
-=======
   runApp(
       AppExpiryWrapper(
-      expiryDate: DateTime(2025, 7, 28),
+      expiryDate: DateTime(2025, 8, 5),
       child: const EPrinter()
       )
   );
->>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 }
 
 Future<void> _handleBackGroundFirebaseMessage(RemoteMessage message) async {

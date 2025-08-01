@@ -1,7 +1,6 @@
 import 'package:supplier_app/core/cubit/nav_bar_cubit.dart';
 import 'package:supplier_app/core/utils/constants/route_constants.dart';
 import 'package:supplier_app/core/utils/service_locator.dart';
-import 'package:supplier_app/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier_app/features/client/Authentication/presentation/screens/complete_logIn_view.dart';
 import 'package:supplier_app/features/client/Authentication/presentation/screens/forget_password_view.dart';
 import 'package:supplier_app/features/client/home/presentatoin/cubit/cubit/home_page_cubit.dart';
@@ -13,15 +12,12 @@ import 'package:supplier_app/features/supplier/Authentication/presentation/scree
 import 'package:supplier_app/features/onboarding&splash/first_view.dart';
 import 'package:supplier_app/features/onboarding&splash/on_boarding_view.dart';
 import 'package:supplier_app/features/onboarding&splash/user_type_view.dart';
-import 'package:supplier_app/features/supplier/Authentication/presentation/cubit/supplier_auth_cubit.dart';
 import 'package:supplier_app/features/supplier/Authentication/presentation/screens/login_view.dart';
 import 'package:supplier_app/features/supplier/Authentication/presentation/screens/supplier_register_view.dart';
 import 'package:supplier_app/features/supplier/home/presentation/cubit/supplier_nav_bar_cubit.dart';
-import 'package:supplier_app/features/supplier/home/presentation/screens/filter_view.dart';
 import 'package:supplier_app/features/supplier/home/presentation/screens/supplier_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supplier_app/features/supplier/settings/presentation/views/profile_view.dart';
 import 'package:supplier_app/features/supplier/settings/presentation/views/supplier_account_view.dart';
 import '../../features/client/Authentication/presentation/screens/login_view.dart';
 import '../../features/client/Authentication/presentation/screens/register_view.dart';

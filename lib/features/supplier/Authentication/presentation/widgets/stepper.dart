@@ -12,7 +12,6 @@ import '../../../../../core/utils/widgets/app_text_field.dart';
 import '../../../../../core/utils/widgets/snack_bar.dart';
 import '../../../../../core/utils/widgets/spacers.dart';
 import '../../../../client/Authentication/otp/otp_remote_data_source_firebase_impl.dart';
-import '../../../../client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 
 class RegisterStepper extends StatefulWidget {
   const RegisterStepper({

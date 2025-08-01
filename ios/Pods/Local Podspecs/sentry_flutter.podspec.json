@@ -1,6 +1,6 @@
 {
   "name": "sentry_flutter",
-  "version": "9.1.0",
+  "version": "9.5.0",
   "summary": "Sentry SDK for Flutter.",
   "description": "Sentry SDK for Flutter with support to native through sentry-cocoa.",
   "homepage": "https://sentry.io",
@@ -11,7 +11,7 @@
   "authors": "Sentry",
   "source": {
     "git": "https://github.com/getsentry/sentry-dart.git",
-    "tag": "9.1.0"
+    "tag": "9.5.0"
   },
   "source_files": "sentry_flutter/Sources/**/*",
   "public_header_files": "sentry_flutter/Sources/**/*.h",

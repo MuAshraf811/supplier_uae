@@ -23,7 +23,7 @@ class NotificationsManager {
     print("requesting permission");
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       await _setupTokens();
-      await _setupMessageHandlers();
+    //  await _setupMessageHandlers();
     }
   }
 
@@ -51,12 +51,7 @@ class NotificationsManager {
     _firebaseMessaging.onTokenRefresh.listen(_storeFCMToken);
   }
   Future<void> _storeFCMToken(String token) async {
-<<<<<<< HEAD
     if(token.isNotEmpty) {
-      // print("storing token: $token");
-=======
-    if(token != null && token.isNotEmpty) {
->>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
       await SharedPreferencesManager.storeStringValue(
       key: StorageConstants.fcmToken,
       value: token,
@@ -77,18 +72,18 @@ class NotificationsManager {
     }
   }
 
-  Future<void> _setupMessageHandlers() async {
+  Future<void> setupMessageHandlers() async {
     // Foreground messages
-    FirebaseMessaging.onMessage.listen(_handleMessage);
+    FirebaseMessaging.onMessage.listen(handleMessage);
 
     // When app is opened from notification
-    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+    FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
 
     // Background messages
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   }
 
-  void _handleMessage(RemoteMessage message) {
+  void handleMessage(RemoteMessage message) {
     if (message.notification != null) {
       // final notification = NotificationModel(
       //   id: '0',

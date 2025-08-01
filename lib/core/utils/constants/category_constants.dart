@@ -332,12 +332,12 @@ class CategoryConstants {
           "title": "Pizza Box",
           "details": {
             S.of(context).height: [4,5,6,7,8,9,10],
-            S.of(context).width: [23, 28, 33, ],
-            S.of(context).length: [23, 28, 33, ],
+            S.of(context).width: [23, 28, 33, 35 , 40, 45 , 50 ],
+            S.of(context).length: [23, 28, 33, 35 , 40 , 45 , 50],
             S.of(context).printing: [1, 2, 3, 4],
             S.of(context).carton: ["3 Ply", "5 Ply"],
             S.of(context).outside: [S.of(context).brown, S.of(context).white],
-            S.of(context).inside: [S.of(context).length, S.of(context).white],
+            S.of(context).inside: [S.of(context).brown, S.of(context).white],
             S.of(context).block: [S.of(context).laser, S.of(context).normal],
             S.of(context).quantity: [1000, 3000, 5000, 10000, 15000],
           },
@@ -351,8 +351,8 @@ class CategoryConstants {
           "title": "Lunch Box",
           "details": {
             S.of(context).height: [5, 6, 7, 8, 9],
-            S.of(context).width: [5, 6, 7, 8, 9],
-            S.of(context).length: [5, 6, 7, 8, 9],
+            S.of(context).width: [25,30,35,40,45,50,55,60],
+            S.of(context).length:[25,30,35,40,45,50,55,60],
             S.of(context).printing: [1, 2, 3, 4],
             S.of(context).carton: ["3 Ply", "5 ply"],
           S.of(context).outside: [S.of(context).brown, S.of(context).white,"duplex"],
@@ -370,8 +370,8 @@ class CategoryConstants {
           "title": "Meal Box",
           "details": {
             S.of(context).height: [5, 6, 7, 8, 9],
-            S.of(context).width: [5, 6, 7, 8, 9],
-            S.of(context).length: [5, 6, 7, 8, 9],
+            S.of(context).width: [25,30,35,40,45,50,55,60],
+            S.of(context).length: [25,30,35,40,45,50,55,60],
             S.of(context).printing: [1, 2, 3, 4],
             S.of(context).carton: ["3 Ply" , "5 ply"],
             S.of(context).outside: [S.of(context).brown, S.of(context).white],
@@ -389,8 +389,8 @@ class CategoryConstants {
           "title": "Sandwich Box",
           "details": {
             S.of(context).height: [5, 6, 7, 8, 9],
-            S.of(context).width: [5, 6, 7, 8, 9],
-            S.of(context).length: [5, 6, 7, 8, 9],
+            S.of(context).width:[25,30,35,40,45,50,55,60],
+            S.of(context).length: [25,30,35,40,45,50,55,60],
             S.of(context).printing: [1, 2, 3, 4],
             S.of(context).carton: ["3 Ply", "4 ply"],
             S.of(context).outside: [S.of(context).brown, S.of(context).white],
@@ -408,8 +408,8 @@ class CategoryConstants {
           "title": "Duplex Box",
           "details": {
             S.of(context).height: [5, 6, 7, 8, 9],
-            S.of(context).width: [5, 6, 7, 8, 9],
-            S.of(context).length: [5, 6, 7, 8, 9],
+            S.of(context).width: [25,30,35,40,45,50,55,60],
+            S.of(context).length: [25,30,35,40,45,50,55,60],
             S.of(context).printing: [1, 2, 3, 4],
             S.of(context).carton: ["3 Ply", "5 ply"],
             S.of(context).outside: [S.of(context).brown, S.of(context).white, "Duplex"],
@@ -462,7 +462,6 @@ class CategoryConstants {
             S.of(context).printing: ["1/0 Color", "2/0 Color", "3/0 Color", "4/0 Color"],
             S.of(context).paper: [250,300,350],
             S.of(context).lamination: [S.of(context).glossy, S.of(context).matt, S.of(context).non],
-            S.of(context).shape: [500, 1000, 1500, 2000],
             S.of(context).quantity: [5000, 7000, 10000, 12000, 15000, 17000, 20000],
           },
           "other": {
@@ -479,7 +478,7 @@ class CategoryConstants {
             S.of(context).printing: ["1/0 Color", "2/0 Color", "3/0 Color", "4/0 Color"],
             S.of(context).paper: [250,300,350],
             S.of(context).lamination: [S.of(context).glossy, S.of(context).matt, S.of(context).non],
-            S.of(context).shape: [500, 1000, 1500, 2000],
+            S.of(context).shape: [S.of(context).standard,S.of(context).customize],
             S.of(context).quantity: [5000, 7000, 10000, 12000, 15000, 17000, 20000],
           },
           "other": {
@@ -496,7 +495,7 @@ class CategoryConstants {
             S.of(context).printing: ["1/0 Color", "2/0 Color", "3/0 Color", "4/0 Color"],
             S.of(context).paper: [250,300,350],
             S.of(context).lamination: [S.of(context).glossy, S.of(context).matt, S.of(context).non],
-            S.of(context).shape: [500, 1000, 1500, 2000],
+            S.of(context).shape: [S.of(context).standard,S.of(context).customize],
             S.of(context).quantity: [5000, 7000, 10000, 12000, 15000, 17000, 20000],
           },
           "other": {
@@ -513,7 +512,7 @@ class CategoryConstants {
             S.of(context).printing: ["1/0 Color", "2/0 Color", "3/0 Color", "4/0 Color"],
             S.of(context).paper: [250,300,350],
             S.of(context).lamination: [S.of(context).glossy, S.of(context).matt, S.of(context).non],
-            S.of(context).shape: [500, 1000, 1500, 2000],
+            S.of(context).shape: [S.of(context).standard,S.of(context).customize],
             S.of(context).quantity: [5000, 7000, 10000, 12000, 15000, 17000, 20000],
           },
           "other": {
@@ -602,9 +601,13 @@ class CategoryConstants {
         },
         {
           "title": "Wrapping Roll",
-          "details": {
-                       S.of(context).quantity: [30000, 40000, 50000, 60000, 70000, 80000],
-
+          "details": { 
+             S.of(context).height: [25, 30, 35, 40, 45],
+            S.of(context).width: [25, 30, 35, 40, 45],
+            S.of(context).paper: [25, 30, 35, 40, 45, 50],
+            S.of(context).printing: [1, 2, 3,4],
+            S.of(context).quantity: [30000, 40000, 50000, 60000, 70000, 80000],
+            "Cutting": ["Auto Sel", S.of(context).normal],
           },
           "other": {
             S.of(context).block: [S.of(context).normal, S.of(context).laser],
@@ -614,9 +617,13 @@ class CategoryConstants {
         },
         {
           "title": "Sweet Roll",
-          "details": {
-                       S.of(context).quantity: [30000, 40000, 50000, 60000, 70000, 80000],
-
+          "details": { 
+             S.of(context).height: [25, 30, 35, 40, 45],
+            S.of(context).width: [25, 30, 35, 40, 45],
+            S.of(context).paper: [25, 30, 35, 40, 45, 50],
+            S.of(context).printing: [1, 2, 3,4],
+            S.of(context).quantity: [30000, 40000, 50000, 60000, 70000, 80000],
+            "Cutting": ["Auto Sel", S.of(context).normal],
           },
           "other": {
             S.of(context).block: ["Laser", S.of(context).laser],
@@ -718,7 +725,7 @@ class CategoryConstants {
         {
           "title": "Shopping Bag CardBoard",
           "details": {
-            S.of(context).color: [S.of(context).white, S.of(context).length],
+            S.of(context).color: [S.of(context).white, S.of(context).brown],
             S.of(context).height: [25, 30, 35, 40, 45],
             S.of(context).width: [25, 30, 35, 40, 45],
             S.of(context).bottom: [10, 20, 30],
@@ -736,7 +743,7 @@ class CategoryConstants {
         {
           "title": "Shopping Bag as Request",
           "details": {
-            S.of(context).color: [S.of(context).white, S.of(context).length],
+            S.of(context).color: [S.of(context).white, S.of(context).brown],
             S.of(context).height: [25, 30, 35, 40, 45],
             S.of(context).width: [25, 30, 35, 40, 45],
             S.of(context).bottom: [10, 20, 30],
@@ -766,10 +773,10 @@ class CategoryConstants {
         {
           "title": "Kraft Paper Bags With Twisted Handle",
           "details": {
-            S.of(context).color: [S.of(context).white, S.of(context).length],
+            S.of(context).color: [S.of(context).white, S.of(context).brown],
             S.of(context).height: [25, 30, 35, 40, 45],
             S.of(context).width: [25, 30, 35, 40, 45],
-            S.of(context).bottom: [25, 30, 35, 40],
+            S.of(context).bottom: [10, 12, 15, 17,18],
             S.of(context).printing: [1, 2, 3,4],
             S.of(context).handle: [S.of(context).paper,],
             S.of(context).block: [S.of(context).laser, S.of(context).normal],
@@ -784,10 +791,10 @@ class CategoryConstants {
         {
           "title": "Kraft Paper Bags Square Bottom (SOS)",
            "details": {
-            S.of(context).color: [S.of(context).white, S.of(context).length],
+            S.of(context).color: [S.of(context).white, S.of(context).brown],
             S.of(context).height: [25, 30, 35, 40, 45],
             S.of(context).width: [25, 30, 35, 40, 45],
-            S.of(context).bottom: [25, 30, 35, 40],
+            S.of(context).bottom: [10, 12, 15, 17,18],
             S.of(context).printing: [1, 2, 3,4],
             S.of(context).block: [S.of(context).laser, S.of(context).normal],
             S.of(context).quantity: [1000, 5000, 10000],
@@ -817,7 +824,7 @@ class CategoryConstants {
         {
           "title": "Kraft Paper Bags Flat With Window",
           "details": {
-            S.of(context).color: [S.of(context).white, S.of(context).length],
+            S.of(context).color: [S.of(context).white, S.of(context).brown],
             S.of(context).height: [25, 30, 35, 40, 45],
             S.of(context).width: [25, 30, 35, 40, 45],
             S.of(context).printing: [1, 2, 3,4],
@@ -933,11 +940,18 @@ S.of(context).courierBag
         },
         {
           "title": "Courier Bag",
-          "details": {
-           
+          "details": { 
+            S.of(context).height: [25, 30, 35, 40, 45],
+            S.of(context).width: [25, 30, 35, 40, 45],
+            "Gasset": [10, 20, 30],
+            S.of(context).printing: [1, 2, 3,4],
+            S.of(context).handle: [S.of(context).normal, "banana"],
+            S.of(context).block: [S.of(context).laser, S.of(context).normal],
+            S.of(context).quantity: [250, 300, 500],
+
           },
           "other": {
-          
+           S.of(context).packing: ["50 Kg"],
           },
           "isRequired": true,
         },
@@ -1050,7 +1064,7 @@ S.of(context).courierBag
              S.of(context).size: [8, 10, 12, 14, 16,20 , 22],
             S.of(context).lid: [ S.of(context).yes, S.of(context).no],
             S.of(context).foil: [S.of(context).silver, S.of(context).gold, S.of(context).non],
-            S.of(context).printing: [1, 2, 3],
+            S.of(context).printing: [1, 2, 3,4],
             S.of(context).block: [S.of(context).laser, S.of(context).normal],
             S.of(context).quantity: [5000, 10000, 20000, 30000],
           },
@@ -1066,7 +1080,7 @@ S.of(context).courierBag
              S.of(context).size: [8, 10, 12, 14, 16,20 , 22],
             S.of(context).lid: [ S.of(context).yes, S.of(context).no],
             S.of(context).foil: [S.of(context).silver, S.of(context).gold, S.of(context).non],
-            S.of(context).printing: [1, 2, 3],
+            S.of(context).printing: [1, 2, 3,4],
             S.of(context).block: [S.of(context).laser, S.of(context).normal],
             S.of(context).quantity: [5000, 10000, 20000, 30000],
           },

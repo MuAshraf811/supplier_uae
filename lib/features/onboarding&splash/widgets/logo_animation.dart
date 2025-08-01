@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import 'package:supplier_app/core/utils/constants/assets_constants.dart';
->>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

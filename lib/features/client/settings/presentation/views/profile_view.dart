@@ -10,7 +10,6 @@ import 'package:supplier_app/core/utils/service_locator.dart';
 import 'package:supplier_app/core/utils/styles/text_styles.dart';
 import 'package:supplier_app/core/utils/widgets/spacers.dart';
 import 'package:supplier_app/core/utils/widgets/svg_handler.dart';
-import 'package:supplier_app/features/client/Authentication/model/user_data_model.dart';
 import 'package:supplier_app/features/client/Authentication/presentation/controllers/auth/authentication_cubit.dart';
 import 'package:supplier_app/features/client/home/presentatoin/widgets/custom_drop_down.dart';
 import 'package:supplier_app/features/client/settings/presentation/controller/cubit/settings_cubit.dart';

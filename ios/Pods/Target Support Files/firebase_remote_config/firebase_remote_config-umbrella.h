@@ -10,8 +10,6 @@
 #endif
 #endif
 
-#import "FLTFirebaseRemoteConfigPlugin.h"
-#import "FLTFirebaseRemoteConfigUtils.h"
 
 FOUNDATION_EXPORT double firebase_remote_configVersionNumber;
 FOUNDATION_EXPORT const unsigned char firebase_remote_configVersionString[];

@@ -34,19 +34,18 @@ class RegisterView extends StatefulWidget {
 class _RegisterViewState extends State<RegisterView> {
   final formKey = GlobalKey<FormState>();
 
-  PhoneController thePhoneController = PhoneController(initialValue: PhoneNumber.parse("+971"));
+  PhoneController thePhoneController =
+      PhoneController(initialValue: PhoneNumber.parse("+971"));
 
   TextEditingController otpController = TextEditingController();
 
-  bool isVerifyPressed= false;
+  bool isVerifyPressed = false;
 
   @override
   Widget build(BuildContext context) {
-    return  BlocConsumer<AuthenticationCubit, AuthenticationState>(
-      listener: (context, state) {
-
-      },
-      builder:(context, state) =>  Scaffold(
+    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+      listener: (context, state) {},
+      builder: (context, state) => Scaffold(
         backgroundColor: ColorConsatnts.white,
         body: SafeArea(
           child: Padding(
@@ -56,7 +55,10 @@ class _RegisterViewState extends State<RegisterView> {
               child: ListView(
                 children: [
                   const VerticalSpacer(space: 18),
-                  const GeneralAppBar(title: "Register Page", isBackArrowShown: true,),
+                  const GeneralAppBar(
+                    title: "Register Page",
+                    isBackArrowShown: true,
+                  ),
                   const VerticalSpacer(space: 20),
                   Row(
                     children: [
@@ -71,8 +73,9 @@ class _RegisterViewState extends State<RegisterView> {
                           label: 'First Name',
                           maxHeight: 40,
                           suffixIcon: Icons.person_2_rounded,
-                          controller: ServiceLocator.getIt<AuthenticationCubit>()
-                              .firstNameRegisterController,
+                          controller:
+                              ServiceLocator.getIt<AuthenticationCubit>()
+                                  .firstNameRegisterController,
                         ),
                       ),
                       const HorizontalSpacer(space: 12),
@@ -81,8 +84,9 @@ class _RegisterViewState extends State<RegisterView> {
                           label: 'Last Name',
                           maxHeight: 40,
                           suffixIcon: Icons.person_2_rounded,
-                          controller: ServiceLocator.getIt<AuthenticationCubit>()
-                              .lastNameRegisterController,
+                          controller:
+                              ServiceLocator.getIt<AuthenticationCubit>()
+                                  .lastNameRegisterController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "This Field Shouldn't be empty";
@@ -115,16 +119,21 @@ class _RegisterViewState extends State<RegisterView> {
                     controller: ServiceLocator.getIt<AuthenticationCubit>()
                         .passwordRegisterController,
                     onChange: (p0) {
-                      ServiceLocator.getIt<AuthenticationCubit>().passwordChangeNotifier();
+                      ServiceLocator.getIt<AuthenticationCubit>()
+                          .passwordChangeNotifier();
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "This Field Shouldn't be empty";
                       }
-                      if (!ServiceLocator.getIt<AuthenticationCubit>().isMoreThan8 ||
-                          !ServiceLocator.getIt<AuthenticationCubit>().isNumber ||
-                          !ServiceLocator.getIt<AuthenticationCubit>().isSpecial ||
-                          !ServiceLocator.getIt<AuthenticationCubit>().isUpperCase) {
+                      if (!ServiceLocator.getIt<AuthenticationCubit>()
+                              .isMoreThan8 ||
+                          !ServiceLocator.getIt<AuthenticationCubit>()
+                              .isNumber ||
+                          !ServiceLocator.getIt<AuthenticationCubit>()
+                              .isSpecial ||
+                          !ServiceLocator.getIt<AuthenticationCubit>()
+                              .isUpperCase) {
                         return "Read Password Roles Under This Field";
                       }
                       return null;
@@ -140,7 +149,8 @@ class _RegisterViewState extends State<RegisterView> {
                     controller: ServiceLocator.getIt<AuthenticationCubit>()
                         .passwordConfirmationRegisterController,
                     onChange: (p0) {
-                      ServiceLocator.getIt<AuthenticationCubit>().passwordChangeNotifier();
+                      ServiceLocator.getIt<AuthenticationCubit>()
+                          .passwordChangeNotifier();
                     },
                     validator: (value) {
                       if (ServiceLocator.getIt<AuthenticationCubit>()
@@ -158,7 +168,10 @@ class _RegisterViewState extends State<RegisterView> {
                     },
                   ),
                   const VerticalSpacer(space: 8),
-                  CustomPhoneField(context: context, thePhoneController: thePhoneController, myWidth: MediaQuery.of(context).size.width),
+                  CustomPhoneField(
+                      context: context,
+                      thePhoneController: thePhoneController,
+                      myWidth: MediaQuery.of(context).size.width),
                   // AppTextField(
                   //   label: "Mobile Number",
                   //   maxHeight: 40,
@@ -191,119 +204,158 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   const VerticalSpacer(space: 10),
                   BlocConsumer<AuthenticationCubit, AuthenticationState>(
-  listener: (context, state) {
-    if (state is ErrorAuthenticationWithEmailState) {
-      showCustomSnackBar(context, state.error, Colors.red, duration: 8);
-    }
-    if (state is AddingUserDataErrorState) {
-      showCustomSnackBar(context, state.error, ColorConsatnts.red, duration: 3);
-    }
-  },
-  builder: (context, state) {
-    return Column(
-      children: [
-        if (state is LoadingAuthenticationWithEmailState || 
-            state is AddingUserDataState)
-          LinearProgressIndicator(
-            backgroundColor: Colors.grey[300],
-            valueColor: const AlwaysStoppedAnimation<Color>(ColorConsatnts.primary),
-            minHeight: 4,
-          ),
-        const SizedBox(height: 8),
-        AppButton(
-          text: "Register",
-          onTap: () async {
-            if (formKey.currentState!.validate()) {
-              // Set mobile number from phone controller
-              ServiceLocator.getIt<AuthenticationCubit>()
-                  .mobileNumberRegisterController.text = 
-                  "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}";
-
-              // Send OTP
-              final otpResult = await ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
-                  .sendOtp(mobile: "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}");
-
-              if (!otpResult.success) {
-                showCustomSnackBar(context, otpResult.message, Colors.redAccent);
-                return;
-              }
-
-              // Show OTP dialog
-              final otpVerified = await showDialog<bool>(
-                context: context,
-                builder: (context) => Scaffold(
-                  appBar: AppBar(
-                    leading: IconButton(
-                      onPressed: () => Navigator.of(context).pop(false),
-                      icon: const Icon(Icons.close)),
-                  ),
-                  body: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    listener: (context, state) {
+                      if (state is ErrorAuthenticationWithEmailState) {
+                        showCustomSnackBar(context, state.error, Colors.red,
+                            duration: 8);
+                      }
+                      if (state is LoadingAuthenticationWithEmailState ||
+                          state is AddingUserDataState) {}
+                      if (state is AddingUserDataErrorState) {
+                        showCustomSnackBar(
+                            context, state.error, ColorConsatnts.red,
+                            duration: 3);
+                      }
+                    },
+                    builder: (context, state) {
+                      return Column(
                         children: [
-                          const SizedBox(height: 50),
-                          const Text(
-                            "Enter Verification Code below",
-                            style: TextStyle(fontSize: 20),
-                            maxLines: 2,
-                          ),
-                          const SizedBox(height: 20),
-                          AppTextField(
-                            label: "Otp code",
-                            type: TextInputType.number,
-                            suffixIcon: Icons.numbers,
-                            controller: otpController,
-                          ),
-                          const VerticalSpacer(space: 20),
-                          state is LoadingAuthenticationWithEmailState
-                              ? const Center(child: CircularProgressIndicator())
-                              : AppButton(
-                                  text: "Verify Code",
-                                  onTap: () async {
-                                    final verifyResult = await ServiceLocator.getIt<OtpRemoteDataSourceFirebaseImpl>()
-                                        .verifyOtp(userCode: otpController.text);
-                                    
-                                    if (verifyResult.success) {
-                                      showCustomSnackBar(context, "Code Verified", Colors.green);
-                                      Navigator.of(context).pop(true);
-                                    } else {
-                                      showCustomSnackBar(context, verifyResult.message, Colors.redAccent);
-                                    }
-                                  },
-                                ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              );
+                          if (state is LoadingAuthenticationWithEmailState ||
+                              state is AddingUserDataState)
+                            LinearProgressIndicator(
+                              backgroundColor: Colors.grey[300],
+                              valueColor: const AlwaysStoppedAnimation<Color>(
+                                  ColorConsatnts.primary),
+                              minHeight: 4,
+                            ),
+                          const SizedBox(height: 8),
+                          AppButton(
+                            text: "Register",
+                            onTap: () async {
+                              if (formKey.currentState!.validate()) {
+                                showCustomSnackBar(
+                                    context,
+                                    " Your request is being processed .....",
+                                    ColorConsatnts.primary,
+                                    duration: 3);
 
-              if (otpVerified == true) {
-                // Proceed with registration
-                final registered = await ServiceLocator.getIt<AuthenticationCubit>()
-                    .registerWithEmail();
-                
-                if (registered) {
-                  await ServiceLocator.getIt<AuthenticationCubit>()
-                      .addUserToDataBase();
-                  showCustomSnackBar(
-                    context, 
-                    "Successful Registration", 
-                    ColorConsatnts.primary,
-                    duration: 3
-                  );
-                  showTermsAndConditionsDialog(context, false);
-                }
-              }
-            }
-          },
-        ),
-      ],
-    );
-  },
-),
+                                // Set mobile number from phone controller
+                                ServiceLocator.getIt<AuthenticationCubit>()
+                                        .mobileNumberRegisterController
+                                        .text =
+                                    "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}";
+
+                                // Send OTP
+                                final otpResult = await ServiceLocator.getIt<
+                                        OtpRemoteDataSourceFirebaseImpl>()
+                                    .sendOtp(
+                                        mobile:
+                                            "+${thePhoneController.value.countryCode}${thePhoneController.value.nsn}");
+
+                                if (!otpResult.success) {
+                                  showCustomSnackBar(context, otpResult.message,
+                                      Colors.redAccent);
+                                  return;
+                                }
+
+                                // Show OTP dialog
+                                final otpVerified = await showDialog<bool>(
+                                  context: context,
+                                  builder: (context) => Scaffold(
+                                    appBar: AppBar(
+                                      leading: IconButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(false),
+                                          icon: const Icon(Icons.close)),
+                                    ),
+                                    body: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const SizedBox(height: 50),
+                                            const Text(
+                                              "Enter Verification Code below",
+                                              style: TextStyle(fontSize: 20),
+                                              maxLines: 2,
+                                            ),
+                                            const SizedBox(height: 20),
+                                            AppTextField(
+                                              label: "Otp code",
+                                              type: TextInputType.number,
+                                              suffixIcon: Icons.numbers,
+                                              controller: otpController,
+                                            ),
+                                            const VerticalSpacer(space: 20),
+                                            state
+                                                    is LoadingAuthenticationWithEmailState
+                                                ? const Center(
+                                                    child:
+                                                        CircularProgressIndicator())
+                                                : AppButton(
+                                                    text: "Verify Code",
+                                                    onTap: () async {
+                                                      final verifyResult =
+                                                          await ServiceLocator
+                                                                  .getIt<
+                                                                      OtpRemoteDataSourceFirebaseImpl>()
+                                                              .verifyOtp(
+                                                                  userCode:
+                                                                      otpController
+                                                                          .text);
+
+                                                      if (verifyResult
+                                                          .success) {
+                                                        showCustomSnackBar(
+                                                            context,
+                                                            "Code Verified",
+                                                            Colors.green);
+                                                        Navigator.of(context)
+                                                            .pop(true);
+                                                      } else {
+                                                        showCustomSnackBar(
+                                                            context,
+                                                            verifyResult
+                                                                .message,
+                                                            Colors.redAccent);
+                                                      }
+                                                    },
+                                                  ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+
+                                if (otpVerified == true) {
+                                  // Proceed with registration
+                                  final registered = await ServiceLocator.getIt<
+                                          AuthenticationCubit>()
+                                      .registerWithEmail();
+
+                                  if (registered) {
+                                    await ServiceLocator.getIt<
+                                            AuthenticationCubit>()
+                                        .addUserToDataBase();
+                                    showCustomSnackBar(
+                                        context,
+                                        "Successful Registration",
+                                        ColorConsatnts.primary,
+                                        duration: 3);
+                                    showTermsAndConditionsDialog(
+                                        context, false);
+                                  }
+                                }
+                              }
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                   const VerticalSpacer(space: 14),
                   const OrDivider(),
                   const VerticalSpacer(space: 14),
@@ -321,18 +373,18 @@ class _RegisterViewState extends State<RegisterView> {
                         showCustomSnackBar(context, state.error, Colors.red,
                             duration: 8);
                         if (state is SuccessLogInWithGoogleState) {
-
-                    AppConfigCubit.isLogged = true;
-                    AppConfigCubit.isSupplier = false;
-                    SharedPreferencesManager.storeBoolValue(
-                        key: StorageConstants.isUserLoggedKey, value: true);
-                    SharedPreferencesManager.storeBoolValue(
-                        key: StorageConstants.isSupplierKey, value: false);
+                          AppConfigCubit.isLogged = true;
+                          AppConfigCubit.isSupplier = false;
+                          SharedPreferencesManager.storeBoolValue(
+                              key: StorageConstants.isUserLoggedKey,
+                              value: true);
+                          SharedPreferencesManager.storeBoolValue(
+                              key: StorageConstants.isSupplierKey,
+                              value: false);
 
                           Navigator.pushReplacementNamed(
-                          context, RouteConstants.homePage);
-                        }
-                        else if (state is NewUserState){
+                              context, RouteConstants.homePage);
+                        } else if (state is NewUserState) {
                           Navigator.pushReplacementNamed(
                               context, RouteConstants.completeLoginView);
                         }
@@ -372,68 +424,69 @@ class _RegisterViewState extends State<RegisterView> {
                       );
                     },
                   ),
-                   BlocConsumer<AuthenticationCubit, AuthenticationState>(
-                  listenWhen: (previous, current) =>
-                      current is SuccessLogInWithAppleState ||
-                      current is ErrorLogInWithAppleState ||
-                      current is LoadingLogInWithAppleState|| current is NewUserState,
-                  buildWhen: (previous, current) =>
-                      current is SuccessLogInWithAppleState ||
-                      current is ErrorLogInWithAppleState ||
-                      current is LoadingLogInWithAppleState,
-                  listener: (context, state) {
-                    if (state is ErrorLogInWithAppleState) {
-                      showCustomSnackBar(context, state.error, Colors.red,
-                          duration: 8);
-                    }
-                    if (state is SuccessLogInWithAppleState) {
+                  BlocConsumer<AuthenticationCubit, AuthenticationState>(
+                    listenWhen: (previous, current) =>
+                        current is SuccessLogInWithAppleState ||
+                        current is ErrorLogInWithAppleState ||
+                        current is LoadingLogInWithAppleState ||
+                        current is NewUserState,
+                    buildWhen: (previous, current) =>
+                        current is SuccessLogInWithAppleState ||
+                        current is ErrorLogInWithAppleState ||
+                        current is LoadingLogInWithAppleState,
+                    listener: (context, state) {
+                      if (state is ErrorLogInWithAppleState) {
+                        showCustomSnackBar(context, state.error, Colors.red,
+                            duration: 8);
+                      }
+                      if (state is SuccessLogInWithAppleState) {
+                        AppConfigCubit.isLogged = true;
+                        AppConfigCubit.isSupplier = false;
+                        SharedPreferencesManager.storeBoolValue(
+                            key: StorageConstants.isUserLoggedKey, value: true);
+                        SharedPreferencesManager.storeBoolValue(
+                            key: StorageConstants.isSupplierKey, value: false);
 
-                    AppConfigCubit.isLogged = true;
-                    AppConfigCubit.isSupplier = false;
-                    SharedPreferencesManager.storeBoolValue(
-                        key: StorageConstants.isUserLoggedKey, value: true);
-                    SharedPreferencesManager.storeBoolValue(
-                        key: StorageConstants.isSupplierKey, value: false);
-
-                      Navigator.pushReplacementNamed(
-                          context, RouteConstants.homePage);
-                    } else if (state is NewUserState) {
-                      Navigator.pushReplacementNamed(
-                          context, RouteConstants.completeLoginView);
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state is LoadingLogInWithAppleState) {
-                      return Container(
-                        width: double.infinity,
-                        height: 38.h,
-                        decoration: BoxDecoration(
-                            color: ColorConsatnts.white,
-                            border: Border.all(color: ColorConsatnts.primary),
-                            borderRadius: BorderRadius.circular(12.r)),
-                        child: Center(
-                          child: Transform.scale(
-                            scale: 0.9,
-                            child: CircularProgressIndicator.adaptive(
-                              backgroundColor: ColorConsatnts.primary,
-                              valueColor: AlwaysStoppedAnimation(
-                                  ColorConsatnts.white.withOpacity(0.85)),
+                        Navigator.pushReplacementNamed(
+                            context, RouteConstants.homePage);
+                      } else if (state is NewUserState) {
+                        Navigator.pushReplacementNamed(
+                            context, RouteConstants.completeLoginView);
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is LoadingLogInWithAppleState) {
+                        return Container(
+                          width: double.infinity,
+                          height: 38.h,
+                          decoration: BoxDecoration(
+                              color: ColorConsatnts.white,
+                              border: Border.all(color: ColorConsatnts.primary),
+                              borderRadius: BorderRadius.circular(12.r)),
+                          child: Center(
+                            child: Transform.scale(
+                              scale: 0.9,
+                              child: CircularProgressIndicator.adaptive(
+                                backgroundColor: ColorConsatnts.primary,
+                                valueColor: AlwaysStoppedAnimation(
+                                    ColorConsatnts.white.withOpacity(0.85)),
+                              ),
                             ),
                           ),
+                        );
+                      }
+                      return InkWell(
+                        onTap: () {
+                          ServiceLocator.getIt<AuthenticationCubit>()
+                              .logInWithApple();
+                        },
+                        child: const LogInWithContainer(
+                          label: "LogIn With Apple",
+                          imagePath: AssetsConstants.iosIcon,
                         ),
                       );
-                    }
-                    return InkWell(
-                      onTap: () {
-                        ServiceLocator.getIt<AuthenticationCubit>().logInWithApple();
-                      },
-                      child: const LogInWithContainer(
-                        label: "LogIn With Apple",
-                        imagePath: AssetsConstants.iosIcon,
-                      ),
-                    );
-                  },
-                ),
+                    },
+                  ),
                   const VerticalSpacer(space: 12),
                 ],
               ),

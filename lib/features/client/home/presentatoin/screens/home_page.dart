@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supplier_app/core/utils/constants/route_constants.dart';
+import 'package:supplier_app/core/utils/styles/text_styles.dart';
 import '../../../../../core/cubit/app_config_cubit.dart';
 import '../../../../../core/cubit/nav_bar_cubit.dart';
 import '../../../../../core/utils/constants/app_const.dart';
@@ -95,6 +96,8 @@ class _MainViewState extends State<MainView> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const UpperAppBar(),
+        const VerticalSpacer(space: 6), 
+         Text("If You like any advertisement just press the image ..! ", style: applyMediumStyle(fontSize: 14, fontColor: ColorConsatnts.grey,)),
         const CustomCarousel(),
         const VerticalSpacer(space: 14),
         const CategorySection(),

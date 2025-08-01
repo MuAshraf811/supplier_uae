@@ -18,20 +18,17 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(
-      _current != null,
-      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
-    );
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -44,10 +41,8 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(
-      instance != null,
-      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
-    );
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -57,7 +52,12 @@ class S {
 
   /// `Carton Products`
   String get carton {
-    return Intl.message('Carton Products', name: 'carton', desc: '', args: []);
+    return Intl.message(
+      'Carton Products',
+      name: 'carton',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Products`
@@ -72,7 +72,12 @@ class S {
 
   /// `Register`
   String get register {
-    return Intl.message('Register', name: 'register', desc: '', args: []);
+    return Intl.message(
+      'Register',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Digital Fast Print`
@@ -87,7 +92,12 @@ class S {
 
   /// `Printing`
   String get printing {
-    return Intl.message('Printing', name: 'printing', desc: '', args: []);
+    return Intl.message(
+      'Printing',
+      name: 'printing',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Offset Print`
@@ -102,7 +112,12 @@ class S {
 
   /// `Stickers`
   String get stickers {
-    return Intl.message('Stickers', name: 'stickers', desc: '', args: []);
+    return Intl.message(
+      'Stickers',
+      name: 'stickers',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Wrapping Paper`
@@ -117,7 +132,12 @@ class S {
 
   /// `Paper Boxes`
   String get paper_boxes {
-    return Intl.message('Paper Boxes', name: 'paper_boxes', desc: '', args: []);
+    return Intl.message(
+      'Paper Boxes',
+      name: 'paper_boxes',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Carton Boxes`
@@ -132,7 +152,12 @@ class S {
 
   /// `Paper Bags`
   String get paper_bags {
-    return Intl.message('Paper Bags', name: 'paper_bags', desc: '', args: []);
+    return Intl.message(
+      'Paper Bags',
+      name: 'paper_bags',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Shopping Bags`
@@ -147,7 +172,12 @@ class S {
 
   /// `Canvas Bags`
   String get canvas_bags {
-    return Intl.message('Canvas Bags', name: 'canvas_bags', desc: '', args: []);
+    return Intl.message(
+      'Canvas Bags',
+      name: 'canvas_bags',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Bags`
@@ -162,12 +192,22 @@ class S {
 
   /// `Coffee Bags`
   String get coffee_bags {
-    return Intl.message('Coffee Bags', name: 'coffee_bags', desc: '', args: []);
+    return Intl.message(
+      'Coffee Bags',
+      name: 'coffee_bags',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Paper Cups`
   String get paper_cups {
-    return Intl.message('Paper Cups', name: 'paper_cups', desc: '', args: []);
+    return Intl.message(
+      'Paper Cups',
+      name: 'paper_cups',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Cups`
@@ -182,7 +222,12 @@ class S {
 
   /// `Label`
   String get label {
-    return Intl.message('Label', name: 'label', desc: '', args: []);
+    return Intl.message(
+      'Label',
+      name: 'label',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Diverse`
@@ -197,7 +242,12 @@ class S {
 
   /// `Digital`
   String get digital {
-    return Intl.message('Digital', name: 'digital', desc: '', args: []);
+    return Intl.message(
+      'Digital',
+      name: 'digital',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Digital Cards`
@@ -212,17 +262,32 @@ class S {
 
   /// `Flyers`
   String get flyers {
-    return Intl.message('Flyers', name: 'flyers', desc: '', args: []);
+    return Intl.message(
+      'Flyers',
+      name: 'flyers',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Brochure`
   String get brochure {
-    return Intl.message('Brochure', name: 'brochure', desc: '', args: []);
+    return Intl.message(
+      'Brochure',
+      name: 'brochure',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Catalogue`
   String get catalogue {
-    return Intl.message('Catalogue', name: 'catalogue', desc: '', args: []);
+    return Intl.message(
+      'Catalogue',
+      name: 'catalogue',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Small Shopping Bag`
@@ -257,52 +322,102 @@ class S {
 
   /// `Uniform`
   String get uniform {
-    return Intl.message('Uniform', name: 'uniform', desc: '', args: []);
+    return Intl.message(
+      'Uniform',
+      name: 'uniform',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Chef Jacket`
   String get chef_jacket {
-    return Intl.message('Chef Jacket', name: 'chef_jacket', desc: '', args: []);
+    return Intl.message(
+      'Chef Jacket',
+      name: 'chef_jacket',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Chef Cap`
   String get chef_cap {
-    return Intl.message('Chef Cap', name: 'chef_cap', desc: '', args: []);
+    return Intl.message(
+      'Chef Cap',
+      name: 'chef_cap',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Trouser`
   String get trouser {
-    return Intl.message('Trouser', name: 'trouser', desc: '', args: []);
+    return Intl.message(
+      'Trouser',
+      name: 'trouser',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `T-Shirt`
   String get t_shirt {
-    return Intl.message('T-Shirt', name: 't_shirt', desc: '', args: []);
+    return Intl.message(
+      'T-Shirt',
+      name: 't_shirt',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Shirt`
   String get shirt {
-    return Intl.message('Shirt', name: 'shirt', desc: '', args: []);
+    return Intl.message(
+      'Shirt',
+      name: 'shirt',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Suit`
   String get suit {
-    return Intl.message('Suit', name: 'suit', desc: '', args: []);
+    return Intl.message(
+      'Suit',
+      name: 'suit',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Full Set`
   String get full_set {
-    return Intl.message('Full Set', name: 'full_set', desc: '', args: []);
+    return Intl.message(
+      'Full Set',
+      name: 'full_set',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Diverse`
   String get diverse_uniform {
-    return Intl.message('Diverse', name: 'diverse_uniform', desc: '', args: []);
+    return Intl.message(
+      'Diverse',
+      name: 'diverse_uniform',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Signage`
   String get signage {
-    return Intl.message('Signage', name: 'signage', desc: '', args: []);
+    return Intl.message(
+      'Signage',
+      name: 'signage',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `3D Signage`
@@ -367,87 +482,172 @@ class S {
 
   /// `Stands`
   String get stands {
-    return Intl.message('Stands', name: 'stands', desc: '', args: []);
+    return Intl.message(
+      'Stands',
+      name: 'stands',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Rollup`
   String get rollup {
-    return Intl.message('Rollup', name: 'rollup', desc: '', args: []);
+    return Intl.message(
+      'Rollup',
+      name: 'rollup',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Pop Up`
   String get pop_up {
-    return Intl.message('Pop Up', name: 'pop_up', desc: '', args: []);
+    return Intl.message(
+      'Pop Up',
+      name: 'pop_up',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Flags`
   String get flags {
-    return Intl.message('Flags', name: 'flags', desc: '', args: []);
+    return Intl.message(
+      'Flags',
+      name: 'flags',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Diverse`
   String get diverse_signage {
-    return Intl.message('Diverse', name: 'diverse_signage', desc: '', args: []);
+    return Intl.message(
+      'Diverse',
+      name: 'diverse_signage',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Gift Items`
   String get gift_items {
-    return Intl.message('Gift Items', name: 'gift_items', desc: '', args: []);
+    return Intl.message(
+      'Gift Items',
+      name: 'gift_items',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Agenda`
   String get agenda {
-    return Intl.message('Agenda', name: 'agenda', desc: '', args: []);
+    return Intl.message(
+      'Agenda',
+      name: 'agenda',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Pen`
   String get pen {
-    return Intl.message('Pen', name: 'pen', desc: '', args: []);
+    return Intl.message(
+      'Pen',
+      name: 'pen',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `USB`
   String get usb {
-    return Intl.message('USB', name: 'usb', desc: '', args: []);
+    return Intl.message(
+      'USB',
+      name: 'usb',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Stand`
   String get stand {
-    return Intl.message('Stand', name: 'stand', desc: '', args: []);
+    return Intl.message(
+      'Stand',
+      name: 'stand',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Mugs`
   String get mugs {
-    return Intl.message('Mugs', name: 'mugs', desc: '', args: []);
+    return Intl.message(
+      'Mugs',
+      name: 'mugs',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Lanyard`
   String get lanyard {
-    return Intl.message('Lanyard', name: 'lanyard', desc: '', args: []);
+    return Intl.message(
+      'Lanyard',
+      name: 'lanyard',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `ID Cards`
   String get id_cards {
-    return Intl.message('ID Cards', name: 'id_cards', desc: '', args: []);
+    return Intl.message(
+      'ID Cards',
+      name: 'id_cards',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Notebooks`
   String get notebooks {
-    return Intl.message('Notebooks', name: 'notebooks', desc: '', args: []);
+    return Intl.message(
+      'Notebooks',
+      name: 'notebooks',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Mouse Pad`
   String get mouse_pad {
-    return Intl.message('Mouse Pad', name: 'mouse_pad', desc: '', args: []);
+    return Intl.message(
+      'Mouse Pad',
+      name: 'mouse_pad',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Wristband`
   String get wristband {
-    return Intl.message('Wristband', name: 'wristband', desc: '', args: []);
+    return Intl.message(
+      'Wristband',
+      name: 'wristband',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Umbrella`
   String get umbrella {
-    return Intl.message('Umbrella', name: 'umbrella', desc: '', args: []);
+    return Intl.message(
+      'Umbrella',
+      name: 'umbrella',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Mobile Cover`
@@ -482,7 +682,12 @@ class S {
 
   /// `Packaging`
   String get packaging {
-    return Intl.message('Packaging', name: 'packaging', desc: '', args: []);
+    return Intl.message(
+      'Packaging',
+      name: 'packaging',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Paper Products`
@@ -577,12 +782,22 @@ class S {
 
   /// `Log In`
   String get log_in {
-    return Intl.message('Log In', name: 'log_in', desc: '', args: []);
+    return Intl.message(
+      'Log In',
+      name: 'log_in',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Confirm`
   String get confirm {
-    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
+    return Intl.message(
+      'Confirm',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `I am a supplier`
@@ -637,17 +852,32 @@ class S {
 
   /// `Start`
   String get start {
-    return Intl.message('Start', name: 'start', desc: '', args: []);
+    return Intl.message(
+      'Start',
+      name: 'start',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Skip`
   String get skip {
-    return Intl.message('Skip', name: 'skip', desc: '', args: []);
+    return Intl.message(
+      'Skip',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Next`
   String get next {
-    return Intl.message('Next', name: 'next', desc: '', args: []);
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Forget Password`
@@ -712,37 +942,72 @@ class S {
 
   /// `Home`
   String get home {
-    return Intl.message('Home', name: 'home', desc: '', args: []);
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Chat`
   String get chat {
-    return Intl.message('Chat', name: 'chat', desc: '', args: []);
+    return Intl.message(
+      'Chat',
+      name: 'chat',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Orders`
   String get orders {
-    return Intl.message('Orders', name: 'orders', desc: '', args: []);
+    return Intl.message(
+      'Orders',
+      name: 'orders',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Profile`
   String get profile {
-    return Intl.message('Profile', name: 'profile', desc: '', args: []);
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Language`
   String get language {
-    return Intl.message('Language', name: 'language', desc: '', args: []);
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Search`
   String get search {
-    return Intl.message('Search', name: 'search', desc: '', args: []);
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Account`
   String get account {
-    return Intl.message('Account', name: 'account', desc: '', args: []);
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Terms & Conditions`
@@ -757,7 +1022,12 @@ class S {
 
   /// `Our Website`
   String get our_website {
-    return Intl.message('Our Website', name: 'our_website', desc: '', args: []);
+    return Intl.message(
+      'Our Website',
+      name: 'our_website',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Delete Account`
@@ -772,12 +1042,22 @@ class S {
 
   /// `Log Out`
   String get log_out {
-    return Intl.message('Log Out', name: 'log_out', desc: '', args: []);
+    return Intl.message(
+      'Log Out',
+      name: 'log_out',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Find Us On`
   String get find_us_on {
-    return Intl.message('Find Us On', name: 'find_us_on', desc: '', args: []);
+    return Intl.message(
+      'Find Us On',
+      name: 'find_us_on',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Notifications`
@@ -812,7 +1092,12 @@ class S {
 
   /// `Add Order`
   String get add_order {
-    return Intl.message('Add Order', name: 'add_order', desc: '', args: []);
+    return Intl.message(
+      'Add Order',
+      name: 'add_order',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `This field is required`
@@ -867,12 +1152,22 @@ class S {
 
   /// `Order Name`
   String get order_name {
-    return Intl.message('Order Name', name: 'order_name', desc: '', args: []);
+    return Intl.message(
+      'Order Name',
+      name: 'order_name',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Order Date`
   String get order_date {
-    return Intl.message('Order Date', name: 'order_date', desc: '', args: []);
+    return Intl.message(
+      'Order Date',
+      name: 'order_date',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Category Name`
@@ -907,12 +1202,22 @@ class S {
 
   /// `First name`
   String get first_name {
-    return Intl.message('First name', name: 'first_name', desc: '', args: []);
+    return Intl.message(
+      'First name',
+      name: 'first_name',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Last name`
   String get last_name {
-    return Intl.message('Last name', name: 'last_name', desc: '', args: []);
+    return Intl.message(
+      'Last name',
+      name: 'last_name',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Mobile Number`
@@ -927,7 +1232,12 @@ class S {
 
   /// `City: `
   String get city {
-    return Intl.message('City: ', name: 'city', desc: '', args: []);
+    return Intl.message(
+      'City: ',
+      name: 'city',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Change Password`
@@ -972,12 +1282,22 @@ class S {
 
   /// `Accept`
   String get accept {
-    return Intl.message('Accept', name: 'accept', desc: '', args: []);
+    return Intl.message(
+      'Accept',
+      name: 'accept',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Trophy`
   String get trophy {
-    return Intl.message('Trophy', name: 'trophy', desc: '', args: []);
+    return Intl.message(
+      'Trophy',
+      name: 'trophy',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `large format sticker`
@@ -1132,7 +1452,12 @@ class S {
 
   /// `Order View`
   String get order_view {
-    return Intl.message('Order View', name: 'order_view', desc: '', args: []);
+    return Intl.message(
+      'Order View',
+      name: 'order_view',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Please Write your order details :`
@@ -1187,22 +1512,42 @@ class S {
 
   /// `Flyer`
   String get flyer {
-    return Intl.message('Flyer', name: 'flyer', desc: '', args: []);
+    return Intl.message(
+      'Flyer',
+      name: 'flyer',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Letterhead`
   String get letterhead {
-    return Intl.message('Letterhead', name: 'letterhead', desc: '', args: []);
+    return Intl.message(
+      'Letterhead',
+      name: 'letterhead',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Envelope`
   String get envelope {
-    return Intl.message('Envelope', name: 'envelope', desc: '', args: []);
+    return Intl.message(
+      'Envelope',
+      name: 'envelope',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Notebook`
   String get notebook {
-    return Intl.message('Notebook', name: 'notebook', desc: '', args: []);
+    return Intl.message(
+      'Notebook',
+      name: 'notebook',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Invoice Book`
@@ -1257,12 +1602,22 @@ class S {
 
   /// `PVC Sticker`
   String get pvcSticker {
-    return Intl.message('PVC Sticker', name: 'pvcSticker', desc: '', args: []);
+    return Intl.message(
+      'PVC Sticker',
+      name: 'pvcSticker',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Menu`
   String get menu {
-    return Intl.message('Menu', name: 'menu', desc: '', args: []);
+    return Intl.message(
+      'Menu',
+      name: 'menu',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Leather Menu / Folder`
@@ -1297,17 +1652,32 @@ class S {
 
   /// `Pizza Box`
   String get pizzaBox {
-    return Intl.message('Pizza Box', name: 'pizzaBox', desc: '', args: []);
+    return Intl.message(
+      'Pizza Box',
+      name: 'pizzaBox',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Lunch Box`
   String get lunchBox {
-    return Intl.message('Lunch Box', name: 'lunchBox', desc: '', args: []);
+    return Intl.message(
+      'Lunch Box',
+      name: 'lunchBox',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Meal Box`
   String get mealBox {
-    return Intl.message('Meal Box', name: 'mealBox', desc: '', args: []);
+    return Intl.message(
+      'Meal Box',
+      name: 'mealBox',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Sandwich Box`
@@ -1322,22 +1692,42 @@ class S {
 
   /// `Duplex Box`
   String get duplexBox {
-    return Intl.message('Duplex Box', name: 'duplexBox', desc: '', args: []);
+    return Intl.message(
+      'Duplex Box',
+      name: 'duplexBox',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Paper Boxes`
   String get paperBoxes {
-    return Intl.message('Paper Boxes', name: 'paperBoxes', desc: '', args: []);
+    return Intl.message(
+      'Paper Boxes',
+      name: 'paperBoxes',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Burger Box`
   String get burgerBox {
-    return Intl.message('Burger Box', name: 'burgerBox', desc: '', args: []);
+    return Intl.message(
+      'Burger Box',
+      name: 'burgerBox',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Salad Box`
   String get saladBox {
-    return Intl.message('Salad Box', name: 'saladBox', desc: '', args: []);
+    return Intl.message(
+      'Salad Box',
+      name: 'saladBox',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Manakish Box`
@@ -1362,7 +1752,12 @@ class S {
 
   /// `Noodles Box`
   String get noodlesBox {
-    return Intl.message('Noodles Box', name: 'noodlesBox', desc: '', args: []);
+    return Intl.message(
+      'Noodles Box',
+      name: 'noodlesBox',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Wrapping Paper`
@@ -1417,12 +1812,22 @@ class S {
 
   /// `Sweet Roll`
   String get sweetRoll {
-    return Intl.message('Sweet Roll', name: 'sweetRoll', desc: '', args: []);
+    return Intl.message(
+      'Sweet Roll',
+      name: 'sweetRoll',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Coffee Bag`
   String get coffeeBag {
-    return Intl.message('Coffee Bag', name: 'coffeeBag', desc: '', args: []);
+    return Intl.message(
+      'Coffee Bag',
+      name: 'coffeeBag',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Coffee Bag With Zipper`
@@ -1547,7 +1952,12 @@ class S {
 
   /// `Canvas Bag`
   String get canvasBag {
-    return Intl.message('Canvas Bag', name: 'canvasBag', desc: '', args: []);
+    return Intl.message(
+      'Canvas Bag',
+      name: 'canvasBag',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Canvas Bag With Handle`
@@ -1582,7 +1992,12 @@ class S {
 
   /// `Plastic Bag`
   String get plasticBag {
-    return Intl.message('Plastic Bag', name: 'plasticBag', desc: '', args: []);
+    return Intl.message(
+      'Plastic Bag',
+      name: 'plasticBag',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Bag HD`
@@ -1607,12 +2022,22 @@ class S {
 
   /// `Courier Bag`
   String get courierBag {
-    return Intl.message('Courier Bag', name: 'courierBag', desc: '', args: []);
+    return Intl.message(
+      'Courier Bag',
+      name: 'courierBag',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Paper Cup`
   String get paperCup {
-    return Intl.message('Paper Cup', name: 'paperCup', desc: '', args: []);
+    return Intl.message(
+      'Paper Cup',
+      name: 'paperCup',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Paper Cup Single Wall`
@@ -1657,12 +2082,22 @@ class S {
 
   /// `Pop Corn Cup`
   String get popCornCup {
-    return Intl.message('Pop Corn Cup', name: 'popCornCup', desc: '', args: []);
+    return Intl.message(
+      'Pop Corn Cup',
+      name: 'popCornCup',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Cup`
   String get plasticCup {
-    return Intl.message('Plastic Cup', name: 'plasticCup', desc: '', args: []);
+    return Intl.message(
+      'Plastic Cup',
+      name: 'plasticCup',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Cup PP`
@@ -1697,12 +2132,22 @@ class S {
 
   /// `Cup Holder`
   String get cupHolder {
-    return Intl.message('Cup Holder', name: 'cupHolder', desc: '', args: []);
+    return Intl.message(
+      'Cup Holder',
+      name: 'cupHolder',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Sleeve`
   String get sleeve {
-    return Intl.message('Sleeve', name: 'sleeve', desc: '', args: []);
+    return Intl.message(
+      'Sleeve',
+      name: 'sleeve',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Facial Tissue Printed`
@@ -1757,187 +2202,372 @@ class S {
 
   /// `Size`
   String get size {
-    return Intl.message('Size', name: 'size', desc: '', args: []);
+    return Intl.message(
+      'Size',
+      name: 'size',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Paper`
   String get paper {
-    return Intl.message('Paper', name: 'paper', desc: '', args: []);
+    return Intl.message(
+      'Paper',
+      name: 'paper',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Lamination`
   String get lamination {
-    return Intl.message('Lamination', name: 'lamination', desc: '', args: []);
+    return Intl.message(
+      'Lamination',
+      name: 'lamination',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cutting`
   String get cutting {
-    return Intl.message('Cutting', name: 'cutting', desc: '', args: []);
+    return Intl.message(
+      'Cutting',
+      name: 'cutting',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Quantity`
   String get quantity {
-    return Intl.message('Quantity', name: 'quantity', desc: '', args: []);
+    return Intl.message(
+      'Quantity',
+      name: 'quantity',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Foil`
   String get foil {
-    return Intl.message('Foil', name: 'foil', desc: '', args: []);
+    return Intl.message(
+      'Foil',
+      name: 'foil',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Spot UV`
   String get spotUv {
-    return Intl.message('Spot UV', name: 'spotUv', desc: '', args: []);
+    return Intl.message(
+      'Spot UV',
+      name: 'spotUv',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Material`
   String get material {
-    return Intl.message('Material', name: 'material', desc: '', args: []);
+    return Intl.message(
+      'Material',
+      name: 'material',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Creasing`
   String get creasing {
-    return Intl.message('Creasing', name: 'creasing', desc: '', args: []);
+    return Intl.message(
+      'Creasing',
+      name: 'creasing',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Book`
   String get book {
-    return Intl.message('Book', name: 'book', desc: '', args: []);
+    return Intl.message(
+      'Book',
+      name: 'book',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Copy`
   String get copy {
-    return Intl.message('Copy', name: 'copy', desc: '', args: []);
+    return Intl.message(
+      'Copy',
+      name: 'copy',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Type`
   String get type {
-    return Intl.message('Type', name: 'type', desc: '', args: []);
+    return Intl.message(
+      'Type',
+      name: 'type',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `height`
   String get height {
-    return Intl.message('height', name: 'height', desc: '', args: []);
+    return Intl.message(
+      'height',
+      name: 'height',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `width`
   String get width {
-    return Intl.message('width', name: 'width', desc: '', args: []);
+    return Intl.message(
+      'width',
+      name: 'width',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Length`
   String get length {
-    return Intl.message('Length', name: 'length', desc: '', args: []);
+    return Intl.message(
+      'Length',
+      name: 'length',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Bottom`
   String get bottom {
-    return Intl.message('Bottom', name: 'bottom', desc: '', args: []);
+    return Intl.message(
+      'Bottom',
+      name: 'bottom',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Handle`
   String get handle {
-    return Intl.message('Handle', name: 'handle', desc: '', args: []);
+    return Intl.message(
+      'Handle',
+      name: 'handle',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Block`
   String get block {
-    return Intl.message('Block', name: 'block', desc: '', args: []);
+    return Intl.message(
+      'Block',
+      name: 'block',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Color`
   String get color {
-    return Intl.message('Color', name: 'color', desc: '', args: []);
+    return Intl.message(
+      'Color',
+      name: 'color',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Lid`
   String get lid {
-    return Intl.message('Lid', name: 'lid', desc: '', args: []);
+    return Intl.message(
+      'Lid',
+      name: 'lid',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Emboss`
   String get emboss {
-    return Intl.message('Emboss', name: 'emboss', desc: '', args: []);
+    return Intl.message(
+      'Emboss',
+      name: 'emboss',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Packing`
   String get packing {
-    return Intl.message('Packing', name: 'packing', desc: '', args: []);
+    return Intl.message(
+      'Packing',
+      name: 'packing',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Yes`
   String get yes {
-    return Intl.message('Yes', name: 'yes', desc: '', args: []);
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `No`
   String get no {
-    return Intl.message('No', name: 'no', desc: '', args: []);
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Non`
   String get non {
-    return Intl.message('Non', name: 'non', desc: '', args: []);
+    return Intl.message(
+      'Non',
+      name: 'non',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Normal`
   String get normal {
-    return Intl.message('Normal', name: 'normal', desc: '', args: []);
+    return Intl.message(
+      'Normal',
+      name: 'normal',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Customize`
   String get customize {
-    return Intl.message('Customize', name: 'customize', desc: '', args: []);
+    return Intl.message(
+      'Customize',
+      name: 'customize',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Standard`
   String get standard {
-    return Intl.message('Standard', name: 'standard', desc: '', args: []);
+    return Intl.message(
+      'Standard',
+      name: 'standard',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Laser`
   String get laser {
-    return Intl.message('Laser', name: 'laser', desc: '', args: []);
+    return Intl.message(
+      'Laser',
+      name: 'laser',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Glossy`
   String get glossy {
-    return Intl.message('Glossy', name: 'glossy', desc: '', args: []);
+    return Intl.message(
+      'Glossy',
+      name: 'glossy',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Matt`
   String get matt {
-    return Intl.message('Matt', name: 'matt', desc: '', args: []);
+    return Intl.message(
+      'Matt',
+      name: 'matt',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `White`
   String get white {
-    return Intl.message('White', name: 'white', desc: '', args: []);
+    return Intl.message(
+      'White',
+      name: 'white',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Brown`
   String get brown {
-    return Intl.message('Brown', name: 'brown', desc: '', args: []);
+    return Intl.message(
+      'Brown',
+      name: 'brown',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Gold`
   String get gold {
-    return Intl.message('Gold', name: 'gold', desc: '', args: []);
+    return Intl.message(
+      'Gold',
+      name: 'gold',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Silver`
   String get silver {
-    return Intl.message('Silver', name: 'silver', desc: '', args: []);
+    return Intl.message(
+      'Silver',
+      name: 'silver',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Outside`
   String get outside {
-    return Intl.message('Outside', name: 'outside', desc: '', args: []);
+    return Intl.message(
+      'Outside',
+      name: 'outside',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Inside`
   String get inside {
-    return Intl.message('Inside', name: 'inside', desc: '', args: []);
+    return Intl.message(
+      'Inside',
+      name: 'inside',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Inside Print`
@@ -1952,72 +2582,142 @@ class S {
 
   /// `Sheet`
   String get sheet {
-    return Intl.message('Sheet', name: 'sheet', desc: '', args: []);
+    return Intl.message(
+      'Sheet',
+      name: 'sheet',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Folding`
   String get folding {
-    return Intl.message('Folding', name: 'folding', desc: '', args: []);
+    return Intl.message(
+      'Folding',
+      name: 'folding',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Pages`
   String get pages {
-    return Intl.message('Pages', name: 'pages', desc: '', args: []);
+    return Intl.message(
+      'Pages',
+      name: 'pages',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Dai Cut`
   String get dai_cut {
-    return Intl.message('Dai Cut', name: 'dai_cut', desc: '', args: []);
+    return Intl.message(
+      'Dai Cut',
+      name: 'dai_cut',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Steel`
   String get steel {
-    return Intl.message('Steel', name: 'steel', desc: '', args: []);
+    return Intl.message(
+      'Steel',
+      name: 'steel',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cylinder`
   String get cylinder {
-    return Intl.message('Cylinder', name: 'cylinder', desc: '', args: []);
+    return Intl.message(
+      'Cylinder',
+      name: 'cylinder',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Offset`
   String get offset {
-    return Intl.message('Offset', name: 'offset', desc: '', args: []);
+    return Intl.message(
+      'Offset',
+      name: 'offset',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Shape`
   String get shape {
-    return Intl.message('Shape', name: 'shape', desc: '', args: []);
+    return Intl.message(
+      'Shape',
+      name: 'shape',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Special`
   String get special {
-    return Intl.message('Special', name: 'special', desc: '', args: []);
+    return Intl.message(
+      'Special',
+      name: 'special',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Curve`
   String get curve {
-    return Intl.message('Curve', name: 'curve', desc: '', args: []);
+    return Intl.message(
+      'Curve',
+      name: 'curve',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Containers`
   String get containers {
-    return Intl.message('Containers', name: 'containers', desc: '', args: []);
+    return Intl.message(
+      'Containers',
+      name: 'containers',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Foils`
   String get foils {
-    return Intl.message('Foils', name: 'foils', desc: '', args: []);
+    return Intl.message(
+      'Foils',
+      name: 'foils',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Platters`
   String get platters {
-    return Intl.message('Platters', name: 'platters', desc: '', args: []);
+    return Intl.message(
+      'Platters',
+      name: 'platters',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Pots`
   String get pots {
-    return Intl.message('Pots', name: 'pots', desc: '', args: []);
+    return Intl.message(
+      'Pots',
+      name: 'pots',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Bakery Range`
@@ -2032,17 +2732,32 @@ class S {
 
   /// `Bottles`
   String get bottles {
-    return Intl.message('Bottles', name: 'bottles', desc: '', args: []);
+    return Intl.message(
+      'Bottles',
+      name: 'bottles',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cling Film`
   String get clingFilm {
-    return Intl.message('Cling Film', name: 'clingFilm', desc: '', args: []);
+    return Intl.message(
+      'Cling Film',
+      name: 'clingFilm',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cups`
   String get cups {
-    return Intl.message('Cups', name: 'cups', desc: '', args: []);
+    return Intl.message(
+      'Cups',
+      name: 'cups',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cutlery Range`
@@ -2087,7 +2802,12 @@ class S {
 
   /// `Plate/Trays`
   String get plateTrays {
-    return Intl.message('Plate/Trays', name: 'plateTrays', desc: '', args: []);
+    return Intl.message(
+      'Plate/Trays',
+      name: 'plateTrays',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Portion Cups`
@@ -2102,7 +2822,12 @@ class S {
 
   /// `Powls`
   String get bowls {
-    return Intl.message('Powls', name: 'bowls', desc: '', args: []);
+    return Intl.message(
+      'Powls',
+      name: 'bowls',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Salad Containers`
@@ -2147,22 +2872,42 @@ class S {
 
   /// `Dispenser`
   String get dispenser {
-    return Intl.message('Dispenser', name: 'dispenser', desc: '', args: []);
+    return Intl.message(
+      'Dispenser',
+      name: 'dispenser',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cleaner`
   String get cleaner {
-    return Intl.message('Cleaner', name: 'cleaner', desc: '', args: []);
+    return Intl.message(
+      'Cleaner',
+      name: 'cleaner',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Gloves`
   String get gloves {
-    return Intl.message('Gloves', name: 'gloves', desc: '', args: []);
+    return Intl.message(
+      'Gloves',
+      name: 'gloves',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Hygiene`
   String get hygiene {
-    return Intl.message('Hygiene', name: 'hygiene', desc: '', args: []);
+    return Intl.message(
+      'Hygiene',
+      name: 'hygiene',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Baking Range`
@@ -2177,7 +2922,12 @@ class S {
 
   /// `Boxes`
   String get boxes {
-    return Intl.message('Boxes', name: 'boxes', desc: '', args: []);
+    return Intl.message(
+      'Boxes',
+      name: 'boxes',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Concession Supplies`
@@ -2192,12 +2942,22 @@ class S {
 
   /// `Paper Bags`
   String get paperBags {
-    return Intl.message('Paper Bags', name: 'paperBags', desc: '', args: []);
+    return Intl.message(
+      'Paper Bags',
+      name: 'paperBags',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Sweet Boxes`
   String get sweetBoxes {
-    return Intl.message('Sweet Boxes', name: 'sweetBoxes', desc: '', args: []);
+    return Intl.message(
+      'Sweet Boxes',
+      name: 'sweetBoxes',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Concession Trays`
@@ -2212,7 +2972,12 @@ class S {
 
   /// `Cutleries`
   String get cutleries {
-    return Intl.message('Cutleries', name: 'cutleries', desc: '', args: []);
+    return Intl.message(
+      'Cutleries',
+      name: 'cutleries',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Sticks & Skewers`
@@ -2227,12 +2992,22 @@ class S {
 
   /// `Envelopes`
   String get envelopes {
-    return Intl.message('Envelopes', name: 'envelopes', desc: '', args: []);
+    return Intl.message(
+      'Envelopes',
+      name: 'envelopes',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Invoices`
   String get invoices {
-    return Intl.message('Invoices', name: 'invoices', desc: '', args: []);
+    return Intl.message(
+      'Invoices',
+      name: 'invoices',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Sticker`
@@ -2307,7 +3082,12 @@ class S {
 
   /// `PVC Sticker`
   String get pvc_sticker {
-    return Intl.message('PVC Sticker', name: 'pvc_sticker', desc: '', args: []);
+    return Intl.message(
+      'PVC Sticker',
+      name: 'pvc_sticker',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Leather Menu / Folder`
@@ -2332,7 +3112,12 @@ class S {
 
   /// `Spot UV`
   String get spot_uv {
-    return Intl.message('Spot UV', name: 'spot_uv', desc: '', args: []);
+    return Intl.message(
+      'Spot UV',
+      name: 'spot_uv',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `This field is optional`
@@ -2377,12 +3162,22 @@ class S {
 
   /// `3D Boards`
   String get threed_boards {
-    return Intl.message('3D Boards', name: 'threed_boards', desc: '', args: []);
+    return Intl.message(
+      '3D Boards',
+      name: 'threed_boards',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `2D Boards`
   String get twod_boards {
-    return Intl.message('2D Boards', name: 'twod_boards', desc: '', args: []);
+    return Intl.message(
+      '2D Boards',
+      name: 'twod_boards',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cleaning & Protection Products`
@@ -2477,17 +3272,32 @@ class S {
 
   /// `Pizza Box`
   String get pizza_box {
-    return Intl.message('Pizza Box', name: 'pizza_box', desc: '', args: []);
+    return Intl.message(
+      'Pizza Box',
+      name: 'pizza_box',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Lunch Box`
   String get lunch_box {
-    return Intl.message('Lunch Box', name: 'lunch_box', desc: '', args: []);
+    return Intl.message(
+      'Lunch Box',
+      name: 'lunch_box',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Food Box`
   String get food_box {
-    return Intl.message('Food Box', name: 'food_box', desc: '', args: []);
+    return Intl.message(
+      'Food Box',
+      name: 'food_box',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Sandwich Box`
@@ -2512,7 +3322,12 @@ class S {
 
   /// `Salad Box`
   String get salad_box {
-    return Intl.message('Salad Box', name: 'salad_box', desc: '', args: []);
+    return Intl.message(
+      'Salad Box',
+      name: 'salad_box',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Manakish Box`
@@ -2547,7 +3362,12 @@ class S {
 
   /// `Noodle Box`
   String get noodle_box {
-    return Intl.message('Noodle Box', name: 'noodle_box', desc: '', args: []);
+    return Intl.message(
+      'Noodle Box',
+      name: 'noodle_box',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Carton Products`
@@ -2602,7 +3422,12 @@ class S {
 
   /// `Flex Boards`
   String get flex_boards {
-    return Intl.message('Flex Boards', name: 'flex_boards', desc: '', args: []);
+    return Intl.message(
+      'Flex Boards',
+      name: 'flex_boards',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Digital Screens`
@@ -2627,12 +3452,22 @@ class S {
 
   /// `Roll-Up`
   String get roll_up {
-    return Intl.message('Roll-Up', name: 'roll_up', desc: '', args: []);
+    return Intl.message(
+      'Roll-Up',
+      name: 'roll_up',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Side Boards`
   String get side_boards {
-    return Intl.message('Side Boards', name: 'side_boards', desc: '', args: []);
+    return Intl.message(
+      'Side Boards',
+      name: 'side_boards',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Various Products`
@@ -2667,7 +3502,12 @@ class S {
 
   /// `Mug`
   String get mug {
-    return Intl.message('Mug', name: 'mug', desc: '', args: []);
+    return Intl.message(
+      'Mug',
+      name: 'mug',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Memorial Plaque`
@@ -2682,22 +3522,42 @@ class S {
 
   /// `Table Stand`
   String get table_stand {
-    return Intl.message('Table Stand', name: 'table_stand', desc: '', args: []);
+    return Intl.message(
+      'Table Stand',
+      name: 'table_stand',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `T-shirt`
   String get tshirt {
-    return Intl.message('T-shirt', name: 'tshirt', desc: '', args: []);
+    return Intl.message(
+      'T-shirt',
+      name: 'tshirt',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Trousers`
   String get trousers {
-    return Intl.message('Trousers', name: 'trousers', desc: '', args: []);
+    return Intl.message(
+      'Trousers',
+      name: 'trousers',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Catalog`
   String get catalog {
-    return Intl.message('Catalog', name: 'catalog', desc: '', args: []);
+    return Intl.message(
+      'Catalog',
+      name: 'catalog',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Digital Card`
@@ -2722,7 +3582,12 @@ class S {
 
   /// `Sticker`
   String get sticker {
-    return Intl.message('Sticker', name: 'sticker', desc: '', args: []);
+    return Intl.message(
+      'Sticker',
+      name: 'sticker',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Cups PP`
@@ -2787,7 +3652,12 @@ class S {
 
   /// `Foam Cups`
   String get foam_cups {
-    return Intl.message('Foam Cups', name: 'foam_cups', desc: '', args: []);
+    return Intl.message(
+      'Foam Cups',
+      name: 'foam_cups',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Plastic Bags HD`
@@ -2912,12 +3782,22 @@ class S {
 
   /// `Cup Holder`
   String get cup_holder {
-    return Intl.message('Cup Holder', name: 'cup_holder', desc: '', args: []);
+    return Intl.message(
+      'Cup Holder',
+      name: 'cup_holder',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cup Sleeve`
   String get cup_sleeve {
-    return Intl.message('Cup Sleeve', name: 'cup_sleeve', desc: '', args: []);
+    return Intl.message(
+      'Cup Sleeve',
+      name: 'cup_sleeve',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Printed Tissue Boxes`
@@ -2972,7 +3852,12 @@ class S {
 
   /// `Error`
   String get error {
-    return Intl.message('Error', name: 'error', desc: '', args: []);
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Bakery Supplies`
@@ -2997,7 +3882,12 @@ class S {
 
   /// `Cutlery`
   String get cutlery {
-    return Intl.message('Cutlery', name: 'cutlery', desc: '', args: []);
+    return Intl.message(
+      'Cutlery',
+      name: 'cutlery',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Daily Containers`
@@ -3052,7 +3942,12 @@ class S {
 
   /// `Bowls`
   String get bowls_dishes {
-    return Intl.message('Bowls', name: 'bowls_dishes', desc: '', args: []);
+    return Intl.message(
+      'Bowls',
+      name: 'bowls_dishes',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Salad Containers`
@@ -3197,12 +4092,22 @@ class S {
 
   /// `Dispensers`
   String get dispensers {
-    return Intl.message('Dispensers', name: 'dispensers', desc: '', args: []);
+    return Intl.message(
+      'Dispensers',
+      name: 'dispensers',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Cleaners`
   String get cleaners {
-    return Intl.message('Cleaners', name: 'cleaners', desc: '', args: []);
+    return Intl.message(
+      'Cleaners',
+      name: 'cleaners',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Hygiene Containers`
