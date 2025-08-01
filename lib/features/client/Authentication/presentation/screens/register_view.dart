@@ -296,7 +296,11 @@ class _RegisterViewState extends State<RegisterView> {
                                                         CircularProgressIndicator())
                                                 : AppButton(
                                                     text: "Verify Code",
-                                                    onTap: () async {
+                                                    onTap: () async { 
+                                                         showCustomSnackBar(
+                                                            context,
+                                                            "processing.....",
+                                                            Colors.green, duration: 3);
                                                       final verifyResult =
                                                           await ServiceLocator
                                                                   .getIt<
