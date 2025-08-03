@@ -15,15 +15,9 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 android {
-<<<<<<< HEAD
-    namespace = "com.falcon.SupplierFoundation"
-    compileSdk = 34
-    ndkVersion = "25.1.8937393"
-=======
     namespace = "com.falcon.SupplierApp"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
->>>>>>> 057b281301ca97393404df537bfcf6817dae9f82
+    compileSdk = 35
+    ndkVersion = "25.1.8937393"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
